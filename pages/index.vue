@@ -6,6 +6,6 @@
 </template>
 
 <script lang="ts" setup>
-import Intro from "~/components/sections/Intro.vue";
-import Advantages from "~/components/sections/Advantages.vue";
+import Intro from "~/components/sections/intro.vue";
+import Advantages from "~/components/sections/advantages.vue";
 </script>
