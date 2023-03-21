@@ -15,6 +15,7 @@
     "nuxt": "^3.2.3"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.4.7",
     "nuxt-icons": "^3.1.0",
     "nuxt-sanctum-auth": "^0.3.1",
     "pinia": "^2.0.33"
