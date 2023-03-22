@@ -3,12 +3,17 @@
     <app-header/>
     <main role="main" class="flex-1">
       <slot/>
+      <modal-home v-if="store.showModal"/>
     </main>
     <app-footer/>
+
   </div>
 </template>
 
 <script setup>
 import AppHeader from '@/components/layout/header.vue';
 import AppFooter from '@/components/layout/footer.vue';
+import ModalHome from "~/components/Modals/ModalHome.vue";
+import {useStoreIndex} from "~/store";
+const store = useStoreIndex()
 </script>

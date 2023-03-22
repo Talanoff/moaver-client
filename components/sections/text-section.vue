@@ -1,5 +1,5 @@
 <template>
-  <section class="mt-16 mb-16  container">
+  <section class="mt-44 mb-28  container">
 <div class="flex justify-between mx-28" >
   <div class="w-[45%] text-[#0B122D] text-5xl font-bold leading-relaxed ">Voor elke route, op ieder moment, jouw vracht op de juiste plec.</div>
   <div class="w-[45%] flex flex-col justify-between">

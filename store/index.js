@@ -26,9 +26,7 @@ export const useStoreIndex = defineStore("home", {
                 ],
                 showModal: false,
                 steps: {
-                    first: {
-                        title: 'title'
-                    }
+                    category: '',
                 }
             }),
             getters: {},

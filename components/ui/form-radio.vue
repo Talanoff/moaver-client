@@ -4,26 +4,23 @@
       class="block group text-center"
   >
     <div
-        class="flex justify-center items-center p-5 lg:p-8 border-2 border-slate-200 rounded-md group-hover:border-blue-600 group-hover:bg-slate-50 transition-colors duration-300">
+        :class="{'border-blue-600': store.steps.category === props.card.name}" class="flex justify-center items-center p-5 lg:p-8 border-2 border-slate-200 rounded-md group-hover:border-blue-600 group-hover:bg-slate-50 transition-colors duration-300">
       <svg class="h-16">
-        <use :xlink:href="`/icons/categories.svg#${card.icon}`"/>
+        <use :xlink:href="`/icons/categories.svg#${props.card.icon}`"/>
       </svg>
     </div>
 
     <div class="mt-1.5 group-hover:text-slate-700">
-      {{ card.name }}
+      {{ props.card.name }}
     </div>
   </button>
 </template>
 
-<script setup lang="ts">
+<script setup>
+import {useStoreIndex} from "~/store";
+const store = useStoreIndex()
 const props = defineProps({
   card: Object
 })
-
-
 </script>
 
-<style scoped>
-
-</style>
