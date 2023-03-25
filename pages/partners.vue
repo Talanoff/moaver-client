@@ -15,10 +15,15 @@
     </div>
     <div
         class="max-w-[90%] xl:max-w-[64rem] bg-white shadow-2xl shadow-slate-200/75 p-5 lg:p-8 rounded-md mx-auto relative z-1">
-      <div
-          class="p-4 m-16 text-[#0B122D] font-semibold text-2xl text-center flex justify-center items-center p-5 lg:p-8 border-2 border-slate-200 rounded-md group-hover:border-blue-600 group-hover:bg-slate-50 transition-colors duration-300">
-        Join now
-      </div>
+      <button
+          type="button"
+          class="block w-full group text-center"
+      >
+        <div
+            class="flex justify-center items-center p-5 lg:p-8 border-2 border-slate-200 rounded-md group-hover:border-blue-600 group-hover:bg-slate-50 transition-colors duration-300">
+          join now
+        </div>
+      </button>
     </div>
   </section>
 </template>

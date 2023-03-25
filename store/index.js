@@ -2,6 +2,8 @@ import {defineStore} from "pinia";
 
 export const useStoreIndex = defineStore("home", {
             state: () => ({
+                transporters: false,
+                login:false,
                 categories: [
                     {
                         id: 1,
@@ -25,8 +27,32 @@ export const useStoreIndex = defineStore("home", {
                     }
                 ],
                 showModal: false,
+                step:0,
+                stepsProgress: 7,
                 steps: {
                     category: '',
+                    first:{
+                        stuks:'',
+                        kg:'',
+                        message:'',
+                    },
+                    second:{
+                        dateFrom: {
+                            day:'',
+                            month:'',
+                            year:'',
+                        },
+                        locationFrom:'',
+                        locationTypeFrom:'',
+                        dateTo: {
+                            day:'',
+                            month:'',
+                            year:'',
+                        },
+                        locationTo:'',
+                        locationTypeTo:'',
+
+                    }
                 }
             }),
             getters: {},

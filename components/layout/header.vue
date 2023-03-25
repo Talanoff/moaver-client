@@ -16,11 +16,15 @@
           >
         </li>
       </ul>
-      <div class="flex items-center"><img src="images/user.png" alt="" class="mr-1 w-6"><nuxt-link to="/" class="cursor-pointer  text-xl ">LOGIN</nuxt-link></div>
+      <div class="flex items-center" @click="store.login = true; store.showModal = !store.showModal"><img src="images/user.png" alt="" class="mr-1 w-6"><div  class="cursor-pointer  text-xl ">LOGIN</div></div>
     </nav>
   </header>
 </template>
 
-<script setup></script>
+<script setup>
+import {useStoreIndex} from "~/store";
+
+const store = useStoreIndex()
+</script>
 
 <style scoped></style>
