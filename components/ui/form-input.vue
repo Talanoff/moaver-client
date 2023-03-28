@@ -10,9 +10,9 @@
 
 </template>
 <script setup>
-import {useStoreIndex} from "~/store";
+import {useBooking} from "~/store/booking";
 
-const store = useStoreIndex()
+const store = useBooking()
 const props = defineProps({
   placeholder: String,
   typeInput: String,

@@ -24,12 +24,12 @@
 </template>
 
 <script setup>
-import {useStoreIndex} from "~/store";
+import {useBooking} from "~/store/booking";
 import FormCheckbox from "~/components/ui/form-checkbox.vue";
 import FormTextarea from "~/components/ui/form-textarea.vue";
 import FormFile from "~/components/ui/form-file.vue";
 import FormInput from "~/components/ui/form-input.vue";
-const store = useStoreIndex()
+const store = useBooking()
 const inputt = (value, type,dateType) => {
   if(dateType){
     store.steps.second[type][dateType] = value

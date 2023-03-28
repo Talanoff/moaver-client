@@ -5,9 +5,9 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/i18n',
     '@vueuse/nuxt',
+    '@pinia/nuxt',
     'nuxt-sanctum-auth', // https://github.com/dystcz/nuxt-sanctum-auth
     'nuxt-icons', // https://nuxt.com/modules/icons+
-    '@pinia/nuxt',
   ],
 
   app: {

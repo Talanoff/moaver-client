@@ -3,28 +3,41 @@
     <nav class="flex justify-between">
       <ul class="flex w-1/2">
         <li class="mr-16">
-          <nuxt-link to="/" class="text-2xl font-bold text-blue-600 "
-          >MOAVER</nuxt-link
+          <nuxt-link
+              to="/"
+              class="text-2xl font-bold text-blue-600 "
           >
+            MOAVER
+          </nuxt-link>
         </li>
         <li class="mr-6 mt-1">
-          <nuxt-link to="/" class="text-xl font-bold">HOME</nuxt-link>
+          <nuxt-link
+              to="/"
+              class="text-xl font-bold"
+          >
+            HOME
+          </nuxt-link>
         </li>
         <li class="mr-6 mt-1">
-          <nuxt-link to="/partners" class="text-xl font-bold"
-          >BECOME A PARTNER</nuxt-link
+          <nuxt-link
+              to="/partners"
+              class="text-xl font-bold"
           >
+            BECOME A PARTNER
+          </nuxt-link>
         </li>
       </ul>
-      <div class="flex items-center" @click="store.login = true; store.showModal = !store.showModal"><img src="images/user.png" alt="" class="mr-1 w-6"><div  class="cursor-pointer  text-xl ">LOGIN</div></div>
+      <div class="flex items-center" @click="store.login = true; store.showModal = !store.showModal">
+        <img src="images/user.png" alt="" class="mr-1 w-6">
+        <div class="cursor-pointer  text-xl ">LOGIN</div>
+      </div>
     </nav>
   </header>
 </template>
 
 <script setup>
-import {useStoreIndex} from "~/store";
-
-const store = useStoreIndex()
+import { useBooking } from "~/store/booking";
+const store = useBooking();
 </script>
 
 <style scoped></style>

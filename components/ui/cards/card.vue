@@ -20,9 +20,9 @@
 </template>
 
 <script setup lang="ts">
-import {useStoreIndex} from "~/store";
+import {useBooking} from "~/store/booking";
 
-const store = useStoreIndex()
+const store = useBooking()
 const setCategory = (name)=>{
   store.showModal = true
   if(!store.transporters){

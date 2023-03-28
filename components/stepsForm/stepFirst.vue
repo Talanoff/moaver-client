@@ -40,11 +40,11 @@
 <script setup>
 import FormInput from "~/components/ui/form-input.vue";
 import FormRadio from "~/components/ui/form-radio.vue";
-import {useStoreIndex} from "~/store";
+import {useBooking} from "~/store/booking";
 import FormTextarea from "~/components/ui/form-textarea.vue";
 import FormSelect from "~/components/ui/form-select.vue";
 
-const store = useStoreIndex()
+const store = useBooking()
 const options = ref([{name: 'Home'}, {name: 'Office'}, {name: 'Garage'},])
 const form = ref({})
 const setCategory = (name) => {

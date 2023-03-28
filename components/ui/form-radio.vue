@@ -17,8 +17,8 @@
 </template>
 
 <script setup>
-import {useStoreIndex} from "~/store";
-const store = useStoreIndex()
+import {useBooking} from "~/store/booking";
+const store = useBooking()
 const props = defineProps({
   card: Object
 })

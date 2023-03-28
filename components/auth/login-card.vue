@@ -19,10 +19,10 @@
 </template>
 
 <script setup>
-import {useStoreIndex} from "~/store";
+import {useBooking} from "~/store/booking";
 import FormInput from "~/components/ui/form-input.vue";
 const form = ref({})
-const store = useStoreIndex()
+const store = useBooking()
 const submit = ()=>{
   console.log('login',form.value)
   store.showModal = false

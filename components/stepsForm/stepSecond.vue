@@ -46,9 +46,9 @@
 
 <script setup>
 import FormInput from "~/components/ui/form-input.vue";
-import {useStoreIndex} from "~/store";
+import {useBooking} from "~/store/booking";
 import FormSelect from "~/components/ui/form-select.vue";
-const store = useStoreIndex()
+const store = useBooking()
 const options = ref([{name: 'Home'},{name: 'Office'},{name: 'Garage'},{name: 'Magazine'},{name: 'Shop'},])
 const form = ref({})
 const inputt = (value, type) => {

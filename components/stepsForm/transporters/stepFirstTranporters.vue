@@ -53,9 +53,9 @@
 <script setup>
 import FormInput from "~/components/ui/form-input.vue";
 
-import {useStoreIndex} from "~/store";
+import {useBooking} from "~/store/booking";
 
-const store = useStoreIndex()
+const store = useBooking()
 const options = ref([{name: 'Home'}, {name: 'Office'}, {name: 'Garage'},])
 const form = ref({})
 const setCategory = (name) => {
