@@ -11,6 +11,8 @@
 
 <script setup>
 import { useBooking } from "~/store/booking";
+import FormGroup from "~/components/ui/form-group.vue";
+import LoginCard from "~/components/auth/login-card.vue";
 
 const store = useBooking();
 onUnmounted(() => {

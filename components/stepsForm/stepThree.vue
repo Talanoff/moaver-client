@@ -9,45 +9,12 @@
       <div>
         <h2 class="text-xl text-center mb-4">Possibility to check the following options
         </h2>
-        <div class="flex justify-between gap-2 mb-6">
-          <form-checkbox :form="form" :id="1" :title="'Tail lift at pick-up'"
-                         @inputEmit="(value)=>{inputt(value)}" class="w-1/2"/>
-          <form-checkbox :form="form" :id="2" :title="'Tail lift for delivery'"
-                         @inputEmit="(value)=>{inputt(value)}" class="w-1/2"/>
+        <div class="grid grid-cols-2 gap-5">
+          <form-checkbox v-for="(option,idx) in options" :key="option.name" :checked="option.checked" :id="idx"
+                         :title="option.name"
+                         @inputEmit="(value)=>{setForm(value, option.name)}"/>
         </div>
       </div>
-      <div>
-        <div class="flex justify-between gap-2 mb-6">
-          <form-checkbox :form="form" :title="'Indoor charging'" @inputEmit="(value)=>{inputt(value)}" :id="3"
-                         class="w-1/2"/>
-          <form-checkbox :form="form" :title="'Unloading inside'" @inputEmit="(value)=>{inputt(value)}" :id="4"
-                         class="w-1/2"/>
-        </div>
-      </div>
-      <div>
-        <div class="flex justify-between gap-2 mb-6">
-          <form-checkbox :title="'Call before pick-up'" @inputEmit="(value)=>{inputt(value)}" :id="5"
-                         :form=" form" class="w-1/2"/>
-          <form-checkbox :form="form" :title="'Call before delivery'" @inputEmit="(value)=>{inputt(value)}" :id="6"
-                         class="w-1/2"/>
-        </div>
-      </div>
-      <div>
-        <div class="flex justify-between gap-2 mb-6">
-          <form-checkbox :form="form" :title="'Appointment needed for delivery'" @inputEmit="(value)=>{inputt(value)}"
-                         :id="7"
-                         class="w-1/2"/>
-          <form-checkbox :form="form" :title="'Urgent/Rush'" @inputEmit="(value)=>{inputt(value)}" :id="8"
-                         class="w-1/2"/>
-        </div>
-      </div>
-      <div>
-        <div class="flex justify-between gap-2 mb-6">
-          <form-checkbox :form="form" :title="'Forklift needed'" @inputEmit="(value)=>{inputt(value)}" :id="9"
-                         class="w-full "/>
-        </div>
-      </div>
-
     </div>
     <button
         class="absolute -top-5 -right-5 z-10 flex justify-center items-center px-4 py-3 bg-blue-900 rounded-lg text-gray-100"
@@ -77,31 +44,35 @@ import FormSelect from "~/components/ui/form-select.vue";
 import FormCheckbox from "~/components/ui/form-checkbox.vue";
 
 const store = useBooking()
-const form = ref([])
-const inputt = (value) => {
-  if (form.value.length === 0) {
-    form.value.push(value)
-  } else {
-    const index = form.value.indexOf(value);
-    if (index === -1) {
-      form.value.push(value);
-    } else {
-      form.value.splice(index, 1);
-
+const options = ref([
+  {name: 'Tail lift at pick-up', checked: false},
+  {name: 'Tail lift for delivery', checked: false},
+  {name: 'TIndoor charging', checked: false},
+  {name: 'Unloading inside', checked: false},
+  {name: 'Call before pick-up', checked: false},
+  {name: 'Call before delivery', checked: false},
+  {name: 'Appointment needed for delivery', checked: false},
+  {name: 'Urgent/Rush', checked: false},
+  {name: 'Forklift needed', checked: false},
+])
+const setForm = (value, name) => {
+  options.value.forEach((el) => {
+    if (el.name === name) {
+      el.checked = value
     }
-  }
+  })
 }
 const submit = () => {
-  localStorage.step3 = JSON.stringify(form.value)
+  sessionStorage.step3 = JSON.stringify(options.value)
   store.step = 4
 }
 const width = computed(() => {
   return (100 / (store.stepsProgress - store.step)) + '%'
 })
-onBeforeMount(()=>{
-  if (localStorage.step3) {
-    form.value =  JSON.parse(localStorage.step3)
 
-  }
-})
+if (sessionStorage.step3) {
+  options.value = JSON.parse(sessionStorage.step3)
+
+}
+
 </script>

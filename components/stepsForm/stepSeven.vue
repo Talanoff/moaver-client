@@ -1,6 +1,8 @@
 <template>
-  <form class="w-1/2 relative m-auto absolute top-28 left-0 p-10 bg-white rounded-3xl z-20 max-w-[600px]" @submit.prevent="submit">
-    <button class="border-blue-600 p-2 rounded-md border-2" @click="store.step--"><img src="/icons/arrow-left.png" alt=""></button>
+  <form class="w-1/2 relative m-auto absolute top-28 left-0 p-10 bg-white rounded-3xl z-20 max-w-[600px]"
+        @submit.prevent="submit">
+    <button class="border-blue-600 p-2 rounded-md border-2" @click="store.step--"><img src="/icons/arrow-left.png"
+                                                                                       alt=""></button>
     <h2 class="text-2xl font-bold mb-8 mt-2">Thank you for your assignment! We'll get to work for you right away.</h2>
 
 
@@ -10,7 +12,7 @@
     </button>
     <div class="flex justify-between items-center mt-8">
       <div class="w-1/4">
-        <h2>Stap {{store.step}} van {{ store.stepsProgress }}</h2>
+        <h2>Stap {{ store.step }} van {{ store.stepsProgress }}</h2>
         <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
           <div class="bg-blue-600 h-2.5 rounded-full" :style="{width:width }"></div>
         </div>
@@ -29,16 +31,17 @@ import FormCheckbox from "~/components/ui/form-checkbox.vue";
 import FormTextarea from "~/components/ui/form-textarea.vue";
 import FormFile from "~/components/ui/form-file.vue";
 import FormInput from "~/components/ui/form-input.vue";
-const store = useBooking()
-const inputt = (value, type,dateType) => {
-  if(dateType){
-    store.steps.second[type][dateType] = value
-  }else{
-    store.steps.second[type] = value
-  }
-}
-const submit = () => {
 
+const store = useBooking()
+const submit = () => {
+  const form = [
+    {step1: JSON.parse(sessionStorage.step1)},
+    {step2: JSON.parse(sessionStorage.step2)},
+    {step3: JSON.parse(sessionStorage.step3)},
+    {step4: JSON.parse(sessionStorage.step4)},
+    {step6: JSON.parse(sessionStorage.step6)}
+  ]
+  console.log(form)
 }
 const width = computed(() => {
   return (100 / (store.stepsProgress - store.step)) + '%'

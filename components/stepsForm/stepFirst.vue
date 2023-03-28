@@ -1,23 +1,23 @@
 <template>
-  <form class="w-1/2 relative m-auto absolute top-28 left-0 p-10 bg-white rounded-3xl z-20 max-w-[600px]"
+  <form class="w-1/2 relative m-auto absolute top-28 left-0 p-10 bg-white rounded-3xl z-20 max-w-[600px] "
         @submit.prevent="submit">
-    <h2 class="text-3xl font-bold mb-8">{{ store.steps.category }}</h2>
-    <div class="flex justify-between mb-8">
+    <h2 class="text-3xl font-bold mb-8">{{ store.category }}</h2>
+    <div class="mb-8">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 text-sm font-semibold">
-        <form-radio @click="setCategory(card.name);inputt(card.name,'category')" :card="card"
+        <form-radio @click="setCategory(card.name); setForm(card.name,'category')" :card="card"
                     v-for="(card,idx)  in store.categories" :key="idx"/>
       </div>
     </div>
-    <div class="flex gap-2 mb-4" v-if="store.steps.category !== store.categories[3].name">
+    <div class="grid grid-cols-2 gap-5 mb-4" v-if="store.category !== store.categories[3].name">
       <form-input :type-input="'number'" :value="form.stuks" :title="'stuks'" :placeholder="'stuks'"
-                  @inputEmit="(value)=>{inputt(value,'stuks')}"/>
+                  @inputEmit="(value)=>{setForm(value,'stuks')}"/>
       <form-input :type-input="'number'" :value="form.kg" :title="'kg'" :placeholder="'kg'"
-                  @inputEmit="(value)=>{inputt(value, 'kg')}"/>
+                  @inputEmit="(value)=>{setForm(value, 'kg')}"/>
     </div>
     <div v-else class="mb-4">
-      <form-select :options="options"/>
+      <form-select :options="options" :value="form.variousGoods" @inputEmit="(value)=>{setForm(value, 'variousGoods')}"/>
     </div>
-    <form-textarea :value="form.message" @inputEmit="(value)=>{inputt(value, 'message')}"/>
+    <form-textarea :value="form.message" @inputEmit="(value)=>{setForm(value, 'message')}"/>
     <button
         class="absolute -top-5 -right-5 z-10 flex justify-center items-center px-4 py-3 bg-blue-900 rounded-lg text-gray-100"
         @click="store.showModal = false">X
@@ -46,24 +46,38 @@ import FormSelect from "~/components/ui/form-select.vue";
 
 const store = useBooking()
 const options = ref([{name: 'Home'}, {name: 'Office'}, {name: 'Garage'},])
-const form = ref({})
+const form = ref({
+  category: store.category,
+  stuks: '',
+  kg: '',
+  variousGoods: '',
+  message: ''
+})
 const setCategory = (name) => {
   store.showModal = true
-  store.steps.category = name
+  store.category = name
 }
-const inputt = (value, type) => {
+const setForm = (value, type) => {
+  if(type === 'variousGoods'){
+    form.value.stuks = ''
+    form.value.kg = ''
+  }
   form.value[type] = value
 }
 const submit = () => {
+  if(store.category === 'Various goods'){
+    const sendingForm = { variousGoods: form.value.variousGoods, message: form.value.message,  category: store.category,}
+    sessionStorage.step1 = JSON.stringify(sendingForm)
+  }else {
+    const sendingForm = { stuks: form.value.stuks,kg: form.value.kg, message: form.value.message,  category: store.category,}
+    sessionStorage.step1 = JSON.stringify(sendingForm)
+  }
   store.step = 2
-  localStorage.step1 = JSON.stringify(form.value)
 }
 const width = computed(() => {
   return (100 / (store.stepsProgress - store.step)) + '%'
 })
-onMounted(() => {
-  if (localStorage.step1) {
-    form.value = JSON.parse(localStorage.step1)
-  }
-})
+if (sessionStorage.step1) {
+  form.value = JSON.parse(sessionStorage.step1)
+}
 </script>

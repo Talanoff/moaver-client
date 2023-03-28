@@ -32,9 +32,9 @@ import FormInput from "~/components/ui/form-input.vue";
 const store = useBooking()
 const inputt = (value, type,dateType) => {
   if(dateType){
-    store.steps.second[type][dateType] = value
+    store.second[type][dateType] = value
   }else{
-    store.steps.second[type] = value
+    store.second[type] = value
   }
 }
 const submit = () => {

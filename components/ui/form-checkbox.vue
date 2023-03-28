@@ -1,6 +1,6 @@
 <template>
-  <div class="flex items-center pl-4 border border-gray-200  rounded dark:border-gray-700">
-    <input :id="props.id" type="checkbox" v-model="checked" @input="inputChange(props.title)"
+  <div class="flex items-center pl-4 border border-gray-300 text-gray-900 text-sm rounded-lg ">
+    <input :id="props.id" type="checkbox" v-model="checked" @input="inputChange()"
            name="bordered-checkbox"
            class=" w-4 h-4 text-blue-600 bg-gray-100 border-gray-300  rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
     <label :for="props.id"
@@ -14,25 +14,17 @@
 const props = defineProps({
   id: Number,
   title: String,
-  form: [],
+  checked: Boolean
 })
+const checked = ref(props.checked);
 const emit = defineEmits(['inputEmit'])
-const checked = ref(false)
 
-const setChecked = () => {
-  const index = props.form.indexOf(props.title);
-  if (index !== -1) {
-    checked.value = true
+const inputChange = () => {
+  if (!checked.value) {
+    emit('inputEmit', true)
+  } else {
+    emit('inputEmit', false)
   }
-}
-onMounted(() => {
-  if(props.form){
-    setChecked()
-  }
-
-})
-const inputChange = (event) => {
-  emit('inputEmit', event)
 }
 </script>
 

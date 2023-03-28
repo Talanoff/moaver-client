@@ -8,7 +8,7 @@
                   @inputEmit="(value)=>{inputt(value,'TransportCompanyName')}"/>
     </div>
     <h2 class="text-xl font-semibold mt-8 mb-4">Main pitch address</h2>
-    <div class="flex gap-2 mb-4" v-if="store.steps.category !== store.categories[3].name">
+    <div class="flex gap-2 mb-4" v-if="store.category !== store.categories[3].name">
       <form-input :type-input="'text'" class="w-1/2" :value="form.street" :title="'\n'+
 'street'" :placeholder="'street'"
                   @inputEmit="(value)=>{inputt(value,'street')}"/>
@@ -16,14 +16,14 @@
 'house number'" :placeholder="'house number'"
                   @inputEmit="(value)=>{inputt(value,'houseNumber')}"/>
     </div>
-    <div class="flex gap-2 mb-4" v-if="store.steps.category !== store.categories[3].name">
+    <div class="flex gap-2 mb-4" v-if="store.category !== store.categories[3].name">
       <form-input :type-input="'number'" class="w-1/2" :value="form.postcode" :title="'\n'+
 'postcode'" :placeholder="'postcode'"
                   @inputEmit="(value)=>{inputt(value,'postcode')}"/>
       <form-input class="w-1/2" :type-input="'text'" :value="form.country" :title="'country'" :placeholder="'country'"
                   @inputEmit="(value)=>{inputt(value, 'country')}"/>
     </div>
-    <div class="flex gap-2 mb-4" v-if="store.steps.category !== store.categories[3].name">
+    <div class="flex gap-2 mb-4" v-if="store.category !== store.categories[3].name">
       <form-input :type-input="'number'" class="w-1/2" :value="form.phone" :title="'\n'+
 'Telephone number'" :placeholder="'Telephone number'"
                   @inputEmit="(value)=>{inputt(value,'phone')}"/>
@@ -60,7 +60,7 @@ const options = ref([{name: 'Home'}, {name: 'Office'}, {name: 'Garage'},])
 const form = ref({})
 const setCategory = (name) => {
   store.showModal = true
-  store.steps.category = name
+  store.category = name
 }
 const inputt = (value, type) => {
   form.value[type] = value

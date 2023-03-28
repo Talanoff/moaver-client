@@ -9,8 +9,8 @@
       />
 
       <div class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
-        <h1 class="text-white font-bold text-6xl mb-4">Wat wil je vervoeren?</h1>
-        <p class="text-white text-2xl">Vind jouw vervoere, zonder omwegen</p>
+        <h1 class="text-white font-bold text-3xl sm:text-6xl mb-4">Wat wil je vervoeren?</h1>
+        <p class="text-white sm:text-2xl text-xl">Vind jouw vervoere, zonder omwegen</p>
       </div>
     </div>
     <div

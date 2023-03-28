@@ -1,5 +1,5 @@
 <template>
-  <section class="container mb-56">
+  <section class="container sm:mb-56 mb-12">
     <div
         class="relative"
     >
@@ -9,8 +9,8 @@
       />
 
       <div class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
-        <h1 class="text-white font-bold text-6xl mb-4">Wat wil je vervoeren?</h1>
-        <p class="text-white text-2xl">Vind jouw vervoere, zonder omwegen</p>
+        <h1 class="text-white font-bold text-3xl sm:text-6xl mb-4">Wat wil je vervoeren?</h1>
+        <p class="text-white sm:text-2xl text-xl">Vind jouw vervoere, zonder omwegen</p>
       </div>
     </div>
     <div
@@ -20,6 +20,7 @@
           class="block w-full group text-center"
       >
         <div
+            @click="showFrom"
             class="flex justify-center items-center p-5 lg:p-8 border-2 border-slate-200 rounded-md group-hover:border-blue-600 group-hover:bg-slate-50 transition-colors duration-300">
           join now
         </div>
@@ -29,4 +30,12 @@
 </template>
 
 <script lang="ts" setup>
+import {useBooking} from "~/store/booking";
+
+const store = useBooking()
+const showFrom = () => {
+  store.transporters = true
+  store.showModal = true
+  store.step = 1
+}
 </script>

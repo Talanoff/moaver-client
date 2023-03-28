@@ -29,31 +29,7 @@ export const useBooking = defineStore("booking", {
         showModal: false,
         step: 0,
         stepsProgress: 7,
-        steps: {
-          category: '',
-          first: {
-            stuks: '',
-            kg: '',
-            message: '',
-          },
-          second: {
-            dateFrom: {
-              day: '',
-              month: '',
-              year: '',
-            },
-            locationFrom: '',
-            locationTypeFrom: '',
-            dateTo: {
-              day: '',
-              month: '',
-              year: '',
-            },
-            locationTo: '',
-            locationTypeTo: '',
-
-          }
-        }
+        category: '',
       }),
       getters: {},
       watch: {},

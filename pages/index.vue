@@ -1,7 +1,6 @@
 <template>
   <div>
     <intro/>
-    <!--    <advantages/>-->
     <about-us class="mb-16"/>
     <text-section/>
 
