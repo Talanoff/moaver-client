@@ -12,7 +12,7 @@
     <div v-else>
       <step-first-transporters v-if="store.step === 1"/>
       <step-second-transporters v-if="store.step === 2"/>
-      <step-three v-if="store.step === 3"/>
+      <step-three-transporters v-if="store.step === 3"/>
       <step-four v-if="store.step === 4"/>
       <step-five v-if="store.step === 5"/>
       <step-six v-if="store.step === 6"/>
@@ -32,6 +32,7 @@ import StepSix from "~/components/stepsForm/stepSix.vue";
 import StepSeven from "~/components/stepsForm/stepSeven.vue";
 import StepFirstTransporters from "~/components/stepsForm/transporters/stepFirstTranporters.vue";
 import StepSecondTransporters from "~/components/stepsForm/transporters/stepSecondTransporters.vue";
+import StepThreeTransporters from "~/components/stepsForm/transporters/stepThreeTransporters.vue";
 
 const store = useBooking();
 </script>

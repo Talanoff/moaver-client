@@ -5,16 +5,12 @@
                                                                                        alt=""></button>
     <h2 class="text-2xl font-bold mb-8 mt-2">What modes of transport do you provide</h2>
 
-    <div>
-      <div>
+
         <div class="grid gap-2 grid-cols-2 h-1/2 h-[500px] overflow-y-scroll">
-          <form-checkbox :form="form" v-for="(option, idx) in options" :key="option" :id="idx" :title="option"
-                         @inputEmit="(value)=>{inputt(value)}" />
-
+          <form-checkbox v-for="(option, idx) in options" :checked="option.checked" :key="option.name" :id="idx" :title="option.name"
+                         @inputEmit="(value)=>{setForm(value, option.name)}"/>
         </div>
-      </div>
 
-    </div>
     <button
         class="absolute -top-5 -right-5 z-10 flex justify-center items-center px-4 py-3 bg-blue-900 rounded-lg text-gray-100"
         @click="store.showModal = false">X
@@ -35,60 +31,46 @@
 </template>
 
 <script setup>
-import FormInput from "~/components/ui/form-input.vue";
-import FormRadio from "~/components/ui/form-radio.vue";
 import {useBooking} from "~/store/booking";
-import FormTextarea from "~/components/ui/form-textarea.vue";
-import FormSelect from "~/components/ui/form-select.vue";
 import FormCheckbox from "~/components/ui/form-checkbox.vue";
 
 const store = useBooking()
 const options = ref([
-    'Waste materials transport',
-    'Agricultural transport',
-    'Car transport',
-    'Construction materials transport',
-    'Distribution transport',
-    'Exceptional transport',
-    'Conditioned transport',
-    'Intermodal freight transport',
-    'International transport',
-    'Tip-truck',
-    'Courier transport',
-    'Foodstuffs transport',
-    'Passenger transport',
-    'Floriculture transport',
-    'Rail transport',
-    'Tank and silo transport',
-    'Movers',
-    'Stores Distribution',
-    'Sea container transport'
+  {name: 'Waste materials transport', checked: false},
+  {name: 'Agricultural transport', checked: false},
+  {name: 'Car transport', checked: false},
+  {name: 'Construction materials transport', checked: false},
+  {name: 'Distribution transport', checked: false},
+  {name: 'Exceptional transport', checked: false},
+  {name: 'Conditioned transport', checked: false},
+  {name: 'Intermodal freight transport', checked: false},
+  {name: 'Tip-truck', checked: false},
+  {name: 'Courier transport', checked: false},
+  {name: 'Foodstuffs transport', checked: false},
+  {name: 'Passenger transport', checked: false},
+  {name: 'Floriculture transport', checked: false},
+  {name: 'Rail transport', checked: false},
+  {name: 'Tank and silo transport', checked: false},
+  {name: 'Movers', checked: false},
+  {name: 'Stores Distribution', checked: false},
+  {name: 'Sea container transport', checked: false},
 ])
-const form = ref([])
-const inputt = (value) => {
-  if (form.value.length === 0) {
-    form.value.push(value)
-  } else {
-    const index = form.value.indexOf(value);
-    if (index === -1) {
-      form.value.push(value);
-    } else {
-      form.value.splice(index, 1);
-
+const setForm = (value, name) => {
+  options.value.forEach((el) => {
+    if (el.name === name) {
+      el.checked = value
     }
-  }
+  })
 }
 const submit = () => {
-  localStorage.transportersStep2 = JSON.stringify(form.value)
+  sessionStorage.transportersStep2 = JSON.stringify(options.value)
   store.step = 3
 }
 const width = computed(() => {
   return (100 / (store.stepsProgress - store.step)) + '%'
 })
-onBeforeMount(()=>{
-  if (localStorage.transportersStep2) {
-    form.value =  JSON.parse(localStorage.transportersStep2)
 
-  }
-})
+if (sessionStorage.transportersStep2) {
+  options.value = JSON.parse(sessionStorage.transportersStep2)
+}
 </script>
