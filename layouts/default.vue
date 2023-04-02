@@ -12,8 +12,8 @@
 <script setup>
 import AppHeader from '@/components/layout/header.vue';
 import AppFooter from '@/components/layout/footer.vue';
-import { useBooking } from "~/store/booking";
-import Booking from "~/components/modals/booking.vue";
+import {useBooking} from "~/store/booking";
+import Booking from "~/components/modals/booking/booking.vue";
 
 const store = useBooking()
 </script>
