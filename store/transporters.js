@@ -126,7 +126,7 @@ export const useTransporters = defineStore("transporters", {
                 },
                 {
                     id: 3,
-                    title: 'Pick-up and delivery wishes/requirements',
+                    title: 'test',
                     fields: [
                         {
                             id: 0,
@@ -134,15 +134,15 @@ export const useTransporters = defineStore("transporters", {
                             attr: {
                                 required: false,
                                 options: [
-                                    {name: 'Tail lift at pick-up', checked: false},
-                                    {name: 'Tail lift for delivery', checked: false},
-                                    {name: 'TIndoor charging', checked: false},
-                                    {name: 'Unloading inside', checked: false},
-                                    {name: 'Call before pick-up', checked: false},
-                                    {name: 'Call before delivery', checked: false},
-                                    {name: 'Appointment needed for delivery', checked: false},
-                                    {name: 'Urgent/Rush', checked: false},
-                                    {name: 'Forklift needed', checked: false},
+                                    {name: 'Tail lift at pick-up', checked: false, type: 'number', value: ''},
+                                    {name: 'Tail lift for delivery', checked: false, type: 'number', value: ''},
+                                    {name: 'TIndoor charging', checked: false, type: 'number', value: ''},
+                                    {name: 'Unloading inside', checked: false, type: 'number', value: ''},
+                                    {name: 'Call before pick-up', checked: false, type: 'number', value: ''},
+                                    {name: 'Call before delivery', checked: false, type: 'number', value: ''},
+                                    {name: 'Appointment needed for delivery', checked: false, type: 'number', value: ''},
+                                    {name: 'Urgent/Rush', checked: false, type: 'number', value: ''},
+                                    {name: 'Forklift needed', checked: false, type: 'number', value: ''},
                                 ],
                             },
                             fieldType: 'checkBoxGroup',

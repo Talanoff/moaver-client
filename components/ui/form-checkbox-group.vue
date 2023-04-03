@@ -1,14 +1,27 @@
 <template>
   <div class=" ">
-    <form-checkbox v-for="(option,idx) in $attrs.options" :key="option.name" :checked="option.checked"
-                   :title="option.name"
-                   @inputEmit="()=>{setCheckbox(idx)}"/>
+    <div v-for="(option,idx) in $attrs.options" :key="option.name">
+      <div>
+        <form-checkbox v-if="!option.type" :checked="option.checked"
+                       :title="option.name"
+                       @inputEmit="()=>{setCheckbox(idx)}"/>
+        <div v-else class="flex  justify-center flex-wrap">
+          <form-checkbox :checked="option.checked"
+                         class="w-1/2 h-12"
+                         :title="option.name"
+                         @inputEmit="()=>{setCheckbox(idx)}"/>
+          <form-input :type="option.type" v-model="option.value"
+                      class="flex items-center pl-4   text-gray-900 text-sm rounded-lg mb-0 h-12 w-1/2"/>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import FormCheckbox from "~/components/ui/form-checkbox.vue";
 import {useBooking} from "~/store/booking";
+import FormInput from "~/components/ui/form-input.vue";
 
 const store = useBooking()
 const props = defineProps(['id']);

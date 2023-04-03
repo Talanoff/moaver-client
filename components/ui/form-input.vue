@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label class="block mb-2 text-sm  text-gray-900 dark:text-white font-bold">
+    <label class="block mb-2 text-sm  text-gray-900 dark:text-white font-bold" v-if="$attrs.name">
       {{ $attrs.name }}
     </label>
     <input
