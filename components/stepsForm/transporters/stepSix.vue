@@ -9,7 +9,7 @@
 
     <h2 class="text-2xl font-bold mb-8 mt-2">Personal info</h2>
 
-    <div class="max-h-[500px] overflow-y-scroll">
+    <div class="max-h-[400px] overflow-y-scroll">
       <div class="flex justify-between gap-2 mb-4">
         <form-input :type-input="'text'" :value="form.name" class="w-full" :title="'Name'" :placeholder="'Name'"
                     @inputEmit="(value)=>{inputt(value,'name')}"/>
@@ -78,7 +78,7 @@
 </template>
 
 <script setup>
-import { useBooking } from "~/store/booking";
+import {useBooking} from "~/store/booking";
 import FormCheckbox from "~/components/ui/form-checkbox.vue";
 import FormInput from "~/components/ui/form-input.vue";
 

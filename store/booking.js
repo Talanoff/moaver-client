@@ -18,7 +18,7 @@ export const useBooking = defineStore("booking", {
                         {
                             value: '',
                             attr: {
-                                required: true,
+                                required: false,
                                 name: 'stuks',
                                 type: 'number',
                                 placeholder: 'stuks',
@@ -30,7 +30,7 @@ export const useBooking = defineStore("booking", {
                         {
                             value: '',
                             attr: {
-                                required: true,
+                                required: false,
                                 name: 'kg',
                                 type: 'number',
                                 placeholder: 'kg',
@@ -42,8 +42,8 @@ export const useBooking = defineStore("booking", {
                         {
                             value: 'home',
                             attr: {
-                                required: true,
-                                name: 'home',
+                                required: false,
+                                name: 'What exactly do you want to send',
                                 options: ['home', 'office'],
                             },
                             show: false,
@@ -53,7 +53,7 @@ export const useBooking = defineStore("booking", {
                         {
                             value: '',
                             attr: {
-                                required: true,
+                                required: false,
                                 name: 'Message',
                                 type: 'text',
                                 placeholder: 'Message',
@@ -70,7 +70,7 @@ export const useBooking = defineStore("booking", {
                         {
                             value: '',
                             attr: {
-                                required: true,
+                                required: false,
                                 name: 'Date From',
                                 type: 'datetime-local',
                                 placeholder: 'date'
@@ -81,7 +81,7 @@ export const useBooking = defineStore("booking", {
                         {
                             value: '',
                             attr: {
-                                required: true,
+                                required: false,
                                 name: 'Location from',
                                 type: 'text',
                             },
@@ -91,9 +91,8 @@ export const useBooking = defineStore("booking", {
                         {
                             value: 'home',
                             attr: {
-                                required: true,
-                                name: 'Location type',
-                                type: 'text',
+                                required: false,
+                                name: 'Location type from',
                                 options: ['home', 'office'],
                             },
                             fieldType: 'select',
@@ -102,7 +101,7 @@ export const useBooking = defineStore("booking", {
                         {
                             value: '',
                             attr: {
-                                required: true,
+                                required: false,
                                 name: 'Date To',
                                 placeholder: 'date',
                                 type: 'datetime-local',
@@ -113,8 +112,8 @@ export const useBooking = defineStore("booking", {
                         {
                             value: '',
                             attr: {
-                                required: true,
-                                name: 'location to',
+                                required: false,
+                                name: 'Location to',
                                 type: 'text',
                             },
                             fieldType: 'input',
@@ -123,9 +122,8 @@ export const useBooking = defineStore("booking", {
                         {
                             value: 'home',
                             attr: {
-                                required: true,
-                                name: 'stuks',
-                                type: 'text',
+                                required: false,
+                                name: 'Location type to',
                                 options: ['home', 'office'],
                             },
                             fieldType: 'select',
@@ -141,7 +139,7 @@ export const useBooking = defineStore("booking", {
                             id: 0,
                             value: '',
                             attr: {
-                                required: true,
+                                required: false,
                                 options: [
                                     {name: 'Tail lift at pick-up', checked: false},
                                     {name: 'Tail lift for delivery', checked: false},
@@ -167,7 +165,7 @@ export const useBooking = defineStore("booking", {
                             id: 0,
                             value: '',
                             attr: {
-                                required: true,
+                                required: false,
                                 options: [
                                     {name: 'Part load', checked: false},
                                     {name: 'Refrigerated transport', checked: false},
@@ -183,10 +181,10 @@ export const useBooking = defineStore("booking", {
                             id: 1,
                             value: '',
                             attr: {
-                                required: true,
-                                name: 'kg',
+                                required: false,
+                                name: 'additional wishes',
                                 type: 'text',
-                                placeholder: 'kg',
+                                placeholder: 'additional wishes',
                             },
                             fieldType: 'textarea',
                             className: 'w-full'
@@ -195,7 +193,7 @@ export const useBooking = defineStore("booking", {
                             id: 2,
                             value: '',
                             attr: {
-                                required: true,
+                                required: false,
                                 name: 'Pick file',
                                 url: ''
                             },
@@ -223,7 +221,7 @@ export const useBooking = defineStore("booking", {
                             id: 0,
                             value: '',
                             attr: {
-                                required: true,
+                                required: false,
                                 name: 'Name',
                                 type: 'text',
                                 placeholder: 'your name',
@@ -235,7 +233,7 @@ export const useBooking = defineStore("booking", {
                             id: 1,
                             value: '',
                             attr: {
-                                required: true,
+                                required: false,
                                 name: 'Address',
                                 type: 'text',
                                 placeholder: 'your address',
@@ -247,7 +245,7 @@ export const useBooking = defineStore("booking", {
                             id: 2,
                             value: '',
                             attr: {
-                                required: true,
+                                required: false,
                                 name: 'Phone number',
                                 type: 'text',
                                 placeholder: 'Phone number',
@@ -259,7 +257,7 @@ export const useBooking = defineStore("booking", {
                             id: 3,
                             value: '',
                             attr: {
-                                required: true,
+                                required: false,
                                 name: 'E-mail address',
                                 type: 'email',
                                 placeholder: 'E-mail address',
@@ -271,7 +269,7 @@ export const useBooking = defineStore("booking", {
                             id: 4,
                             value: '',
                             attr: {
-                                required: true,
+                                required: false,
                                 name: 'IBAN',
                                 type: 'number',
                                 placeholder: 'IBAN',
@@ -283,7 +281,7 @@ export const useBooking = defineStore("booking", {
                             id: 5,
                             attr: {
                                 title: 'do you want to register?',
-                                required: true,
+                                required: false,
                                 options: [
                                     {name: 'do you want to register', checked: false},
                                 ],
@@ -295,7 +293,7 @@ export const useBooking = defineStore("booking", {
                             id: 6,
                             value: '',
                             attr: {
-                                required: true,
+                                required: false,
                                 name: 'password',
                                 type: 'password',
                                 placeholder: 'password',
@@ -308,9 +306,9 @@ export const useBooking = defineStore("booking", {
                             id: 7,
                             value: '',
                             attr: {
-                                required: true,
-                                name: 'password',
-                                type: 'password',
+                                required: false,
+                                name: 'repeat password',
+                                type: 'repeat password',
                                 placeholder: 'password',
                             },
                             show: false,
@@ -321,7 +319,7 @@ export const useBooking = defineStore("booking", {
                             id: 8,
                             attr: {
                                 title: 'Agree to terms?',
-                                required: true,
+                                required: false,
                                 options: [
                                     {name: 'Agree to terms', checked: false},
                                 ],
@@ -331,7 +329,19 @@ export const useBooking = defineStore("booking", {
                         },
                     ],
 
-                }
+
+                },
+                {
+                    id: 7,
+                    title: 'INFO',
+                    fields: [
+                        {
+                            fieldType: 'formInfo',
+                            className: 'w-full'
+                        },
+                    ],
+
+                },
             ],
             categories: [
                 {

@@ -1,12 +1,20 @@
 <template>
   <div>
-    Category: {{ store.category }}
+    <div class="flex border-b-2 pb-2">
+      <h2 class="font-semibold w-64">Category:</h2> {{ store.category }}
+    </div>
     <div v-for="(field,idx) in fields" :key="idx">
       <div v-if="field.name !== 'Pick file'">
-        <div v-if=" field.name && field.value">{{ field.name }}: {{ field.value }}</div>
+        <div v-if=" field.name && field.value" class="flex border-b-2 pb-2">
+          <h2 class="font-semibold w-64">{{ field.name }}:</h2>
+          <p>{{ field.value }}</p></div>
       </div>
       <div v-else>
-        <div v-if="field.name && field.url">{{ field.name }}: <img :src="field.url" alt=""></div>
+        <div v-if="field.name && field.url" class="flex mt-4 ">
+          <div class="w-64 font-semibold">{{ field.name }}:</div>
+          <img :src="field.url" alt=""
+               class="w-32 ">
+        </div>
       </div>
 
     </div>

@@ -21,7 +21,7 @@
       </div>
       <client-form class="mb-8" v-if="!store.login"/>
       <login-card v-else/>
-      <footer-component/>
+      <footer-component>{{ store.steps.length !== store.currentStep ? 'Next' : 'submit' }}</footer-component>
     </div>
 
   </form>
@@ -35,19 +35,26 @@ import FooterComponent from "~/components/modals/booking/footer-component.vue";
 const store = useBooking();
 const submit = () => {
   if (store.steps.length !== store.currentStep) {
-    store.currentStep++
-
+    if (store.currentStep === 6) {
+      if (store.steps[5].fields[6].value === store.steps[5].fields[7].value && store.steps[5].fields[6].value !== '' || !store.steps[5].fields[6].show) {
+        store.currentStep++
+      } else {
+        store.steps[5].fields[6].value = '';
+        store.steps[5].fields[7].value = '';
+        alert('Password mismatch')
+      }
+    } else {
+      store.currentStep++
+    }
+  } else {
+    console.log(store.steps)
   }
 
 };
 const back = () => {
-
   store.currentStep = store.currentStep - 1
   console.log(store.currentStep)
 }
-onUnmounted(() => {
-  store.$reset()
-});
 </script>
 
 <style scoped></style>
