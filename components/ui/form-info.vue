@@ -5,7 +5,7 @@
     </div>
     <div v-for="(field,idx) in fields" :key="idx">
       <div v-if="field.name !== 'Pick file'">
-        <div v-if=" field.name && field.value" class="flex border-b-2 pb-2">
+        <div v-if="field.name && field.value" class="flex border-b-2 pb-2">
           <h2 class="font-semibold w-64">{{ field.name }}:</h2>
           <p>{{ field.value }}</p></div>
       </div>
@@ -27,6 +27,7 @@ import {useBooking} from "~/store/booking";
 const value = ref([])
 const fields = ref([])
 const store = useBooking()
+const title = ''
 const setValue = () => {
 
   store.steps.forEach(el => el.fields.forEach((elem) => {
