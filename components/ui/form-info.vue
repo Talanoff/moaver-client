@@ -33,7 +33,6 @@ const setValue = () => {
       })
     }
   }))
-  // v-if="field.attr?.name && field.value"
 }
 setValue()
 
