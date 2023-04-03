@@ -26,7 +26,7 @@ import {useBooking} from "~/store/booking";
 
 const store = useBooking()
 const setCategory = (name) => {
-  store.showModal = true
+  store.booking = true
   if (!store.transporters) {
     const isVarious = name === 'Various goods'
     store.category = name
