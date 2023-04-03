@@ -31,11 +31,12 @@
 
 <script lang="ts" setup>
 import {useBooking} from "~/store/booking";
+import {useTransporters} from "~/store/transporters";
 
 const store = useBooking()
+const storeTransporters = useTransporters()
 const showFrom = () => {
   store.transporters = true
-  store.showModal = true
-  store.step = 1
+  storeTransporters.currentStep = 1
 }
 </script>

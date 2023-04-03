@@ -27,7 +27,7 @@
           </nuxt-link>
         </li>
       </ul>
-      <div class="flex items-center" @click="store.login = true; store.showModal = !store.showModal">
+      <div class="flex items-center" @click="store.login = true; store.login = !store.login">
         <img src="images/user.png" alt="" class="mr-1 w-6">
         <div class="cursor-pointer  text-xl ">LOGIN</div>
       </div>
@@ -36,7 +36,8 @@
 </template>
 
 <script setup>
-import { useBooking } from "~/store/booking";
+import {useBooking} from "~/store/booking";
+
 const store = useBooking();
 </script>
 
