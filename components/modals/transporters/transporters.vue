@@ -40,11 +40,11 @@ const storeTransporters = useTransporters();
 const submit = () => {
   if (storeTransporters.steps.length !== storeTransporters.currentStep) {
     if (storeTransporters.currentStep === 6) {
-      if (storeTransporters.steps[5].fields[6].value === storeTransporters.steps[5].fields[7].value && storeTransporters.steps[5].fields[6].value !== '' || !storeTransporters.steps[5].fields[6].show) {
+      if (storeTransporters.steps[5].fields[4].value === storeTransporters.steps[5].fields[5].value && storeTransporters.steps[5].fields[4].value !== '') {
         storeTransporters.currentStep++
       } else {
-        storeTransporters.steps[5].fields[6].value = '';
-        storeTransporters.steps[5].fields[7].value = '';
+        storeTransporters.steps[5].fields[4].value = '';
+        storeTransporters.steps[5].fields[5].value = '';
         alert('Password mismatch')
       }
     } else {

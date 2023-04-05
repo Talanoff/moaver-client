@@ -22,15 +22,22 @@
 import FormCheckbox from "~/components/ui/form-checkbox.vue";
 import {useBooking} from "~/store/booking";
 import FormInput from "~/components/ui/form-input.vue";
+import {useTransporters} from "~/store/transporters";
 
 const store = useBooking()
+const transportersStore = useTransporters()
 const props = defineProps(['id']);
 const setCheckbox = (idx) => {
-  store.steps[store.currentStep - 1].fields[props.id].attr.options[idx].checked = !store.steps[store.currentStep - 1].fields[props.id].attr.options[idx].checked
-  if (store.steps[store.currentStep - 1].fields[props.id].attr.options[idx].name === 'do you want to register') {
-    store.steps[store.currentStep - 1].fields[6].show = store.steps[store.currentStep - 1].fields[props.id].attr.options[idx].checked
-    store.steps[store.currentStep - 1].fields[7].show = store.steps[store.currentStep - 1].fields[props.id].attr.options[idx].checked
+  if (!store.transporters) {
+    store.steps[store.currentStep - 1].fields[props.id].attr.options[idx].checked = !store.steps[store.currentStep - 1].fields[props.id].attr.options[idx].checked
+    if (store.steps[store.currentStep - 1].fields[props.id].attr.options[idx].name === 'do you want to register') {
+      store.steps[store.currentStep - 1].fields[6].show = store.steps[store.currentStep - 1].fields[props.id].attr.options[idx].checked
+      store.steps[store.currentStep - 1].fields[7].show = store.steps[store.currentStep - 1].fields[props.id].attr.options[idx].checked
+    }
+  } else {
+    transportersStore.steps[transportersStore.currentStep - 1].fields[props.id].attr.options[idx].checked = !transportersStore.steps[transportersStore.currentStep - 1].fields[props.id].attr.options[idx].checked
   }
+
 }
 </script>
 <style scoped>
