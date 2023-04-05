@@ -6,6 +6,7 @@ import formTextarea from "~/components/ui/form-textarea.vue";
 import cardWrapper from "~/components/ui/cards/card-wrapper.vue";
 import formCheckboxGroup from "~/components/ui/form-checkbox-group.vue";
 import formInfo from "~/components/ui/form-info.vue";
+import formSelectGroup from "~/components/ui/form-select-group.vue";
 
 export function getFieldName(type) {
     switch (type) {
@@ -23,6 +24,8 @@ export function getFieldName(type) {
             return formTextarea;
         case 'checkBoxGroup':
             return formCheckboxGroup;
+        case 'selectGroup':
+            return formSelectGroup;
         case 'formInfo':
             return formInfo;
         default:

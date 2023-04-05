@@ -6,9 +6,9 @@
 
           <h2 class="text-3xl font-bold mb-8">{{ step.id === 0 ? store.category : step.title }}</h2>
           <div class="flex flex-wrap -m-2.5 max-h-[450px] overflow-y-auto">
-            <div v-for="(field,idx) in step.fields" :key="field.id" class="p-2.5"
+            <div v-for="(field) in step.fields" :key="field.id" class="p-2.5"
                  :class="field.className">
-              <component :is="getFieldName(field.fieldType)" :id="field.id" :index="idx" v-model="field.value"
+              <component :is="getFieldName(field.fieldType)" :id="field.id" v-model="field.value"
                          :value="field.value"
                          v-bind="field.attr"
                          v-if="field.show === true || field.show === undefined"
@@ -18,10 +18,7 @@
                  class="m-2.5 cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
               Add
             </div>
-            <div v-if="step.del" @click="delField(step)"
-                 class="m-2.5 cursor-pointer text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-blue-800">
-              Delete
-            </div>
+
           </div>
         </div>
       </div>
@@ -38,13 +35,36 @@ import {getFieldName} from "~/helpers/field-type";
 import {useTransporters} from "~/store/transporters";
 
 const addField = (step) => {
-  step.fields.push(step.fields[0])
-  step.fields.push(step.fields[1])
-}
-const delField = (step) => {
-  if (step.fields.length > 2) {
-    step.fields.splice(step.fields.length - 2, 2)
-  }
+  step.fields.push({
+    id: Math.random(),
+    attr: {
+      items: [
+        {
+          id: 1,
+          value: 'home',
+          attr: {
+            del: true,
+            required: false,
+            name: 'country',
+            options: ['home', 'office'],
+          }
+        },
+        {
+          id: 2,
+          value: 'home',
+          attr: {
+            del: true,
+            required: false,
+            name: 'country',
+            options: ['home', 'office'],
+          }
+        },
+      ]
+
+    },
+    fieldType: 'selectGroup',
+    className: 'w-full'
+  },)
 }
 const store = useTransporters()
 

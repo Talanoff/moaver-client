@@ -167,27 +167,37 @@ export const useTransporters = defineStore("transporters", {
                     id: 4,
                     title: 'In which countries active and which regions of those countries',
                     add: true,
-                    del: true,
+
                     fields: [
                         {
-                            value: 'home',
+                            id: 1,
                             attr: {
-                                required: false,
-                                name: 'country',
-                                options: ['home', 'office'],
+                                items: [
+                                    {
+                                        id: 1,
+                                        value: 'home',
+                                        attr: {
+                                            del: true,
+                                            required: false,
+                                            name: 'country',
+                                            options: ['home', 'office'],
+                                        }
+                                    },
+                                    {
+                                        id: 2,
+                                        value: 'home',
+                                        attr: {
+                                            del: true,
+                                            required: false,
+                                            name: 'country',
+                                            options: ['home', 'office'],
+                                        }
+                                    },
+                                ]
+
                             },
-                            fieldType: 'select',
-                            className: 'w-1/2'
-                        },
-                        {
-                            value: 'home',
-                            attr: {
-                                required: false,
-                                name: 'region',
-                                options: ['home', 'office'],
-                            },
-                            fieldType: 'select',
-                            className: 'w-1/2'
+                            fieldType: 'selectGroup',
+                            className: 'w-full'
                         },
                     ]
                 },
@@ -288,7 +298,7 @@ export const useTransporters = defineStore("transporters", {
                             className: 'w-full'
                         },
                         {
-                            id: 6,
+                            id: 4,
                             value: '',
                             attr: {
                                 required: false,
@@ -300,7 +310,7 @@ export const useTransporters = defineStore("transporters", {
                             className: 'w-full'
                         },
                         {
-                            id: 7,
+                            id: 5,
                             value: '',
                             attr: {
                                 required: false,
@@ -312,7 +322,7 @@ export const useTransporters = defineStore("transporters", {
                             className: 'w-full'
                         },
                         {
-                            id: 8,
+                            id: 6,
                             attr: {
                                 title: 'Agree to terms?',
                                 required: false,

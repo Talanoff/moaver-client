@@ -10,7 +10,7 @@
                          class="w-1/2 h-12"
                          :title="option.name"
                          @inputEmit="()=>{setCheckbox(idx)}"/>
-          <form-input :type="option.type" v-model="option.value"
+          <form-input :type="option.type" v-model="option.value" :disabled="!option.checked"
                       class="flex items-center pl-4   text-gray-900 text-sm rounded-lg mb-0 h-12 w-1/2"/>
         </div>
       </div>
