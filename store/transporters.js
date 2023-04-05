@@ -325,9 +325,8 @@ export const useTransporters = defineStore("transporters", {
                             id: 6,
                             attr: {
                                 title: 'Agree to terms?',
-                                required: false,
                                 options: [
-                                    {name: 'Agree to terms', checked: false},
+                                    {name: 'Agree to terms', checked: false, required: true,},
                                 ],
                             },
                             fieldType: 'checkBoxGroup',

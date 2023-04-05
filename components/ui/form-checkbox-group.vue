@@ -2,14 +2,16 @@
   <div class=" ">
     <div v-for="(option,idx) in $attrs.options" :key="option.name">
       <div>
-        <form-checkbox v-if="!option.type" :checked="option.checked"
+        <form-checkbox v-if="!option.type" :required="option.required" :checked="option.checked"
                        :title="option.name"
                        @inputEmit="()=>{setCheckbox(idx)}"/>
         <div v-else class="flex  justify-center flex-wrap">
           <form-checkbox :checked="option.checked"
                          class="w-1/2 h-12"
+                         :required="option.required"
                          :title="option.name"
                          @inputEmit="()=>{setCheckbox(idx)}"/>
+
           <form-input :type="option.type" v-model="option.value" :disabled="!option.checked"
                       class="flex items-center pl-4   text-gray-900 text-sm rounded-lg mb-0 h-12 w-1/2"/>
         </div>
