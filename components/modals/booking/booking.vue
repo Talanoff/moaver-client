@@ -20,8 +20,6 @@
             alt="">
       </div>
       <client-form class="mb-8" v-if="!store.login && !store.transporters"/>
-      <transporters-form v-if="!store.login && store.transporters"/>
-      <login-card v-if="store.login"/>
       <footer-component>{{ store.steps.length !== store.currentStep ? 'Next' : 'submit' }}</footer-component>
     </div>
 
@@ -30,9 +28,7 @@
 
 <script setup>
 import {useBooking} from "~/store/booking";
-import LoginCard from "~/components/auth/login-card.vue";
 import FooterComponent from "~/components/modals/booking/footer-component.vue";
-import TransportersForm from "~/components/transportersForm.vue";
 
 const store = useBooking();
 const submit = () => {
