@@ -4,7 +4,7 @@
         class="relative"
     >
       <figure
-          class="h-screen max-h-[32rem] -mb-24 rounded-lg overflow-hidden bg-center bg-cover"
+          class="sm:h-screen h-[120vw] max-h-[32rem] -mb-24 rounded-lg overflow-hidden bg-center bg-cover"
           style="background-image: url('images/topBg.png')"
       />
 
