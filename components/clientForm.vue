@@ -5,8 +5,9 @@
         <div v-if="step.id === store.currentStep" :key="step.id">
           <h2 class="text-3xl font-bold mb-8">{{ step.id === 0 ? store.category : step.title }}</h2>
           <div class="flex flex-wrap -m-2.5 max-h-[450px] overflow-y-auto">
-            <div v-for="field in step.fields" :key="field.id" class="p-2.5" :class="field.className">
+            <div v-for="field in step.fields" :key="field.id" :class="field.className">
               <component
+                  class="p-2.5"
                   :is="getFieldName(field.fieldType)"
                   :id="field.id"
                   v-model="field.value"
@@ -27,8 +28,8 @@
 </template>
 
 <script setup>
-import { getFieldName } from "~/helpers/field-type";
-import { useBooking } from "~/store/booking";
+import {getFieldName} from "~/helpers/field-type";
+import {useBooking} from "~/store/booking";
 
 const store = useBooking()
 </script>

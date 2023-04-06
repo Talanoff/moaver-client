@@ -159,7 +159,7 @@ export const useBooking = defineStore("booking", {
                 },
                 {
                     id: 4,
-                    title: 'Additional wishes:',
+                    title: 'Additional wishes',
                     fields: [
                         {
                             id: 0,
@@ -321,7 +321,7 @@ export const useBooking = defineStore("booking", {
                                 title: 'Agree to terms?',
                                 required: false,
                                 options: [
-                                    {name: 'Agree to terms', checked: false},
+                                    {name: 'Agree to terms', checked: false, required: true},
                                 ],
                             },
                             fieldType: 'checkBoxGroup',
