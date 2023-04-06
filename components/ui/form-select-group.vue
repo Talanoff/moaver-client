@@ -1,5 +1,5 @@
 <template>
-  <div class=" flex items-end w-full gap-5">
+  <div class="flex sm:items-end items-center sm:flex-row flex-col w-full gap-5">
     <div v-for="item in $attrs.items" :key="item.id" class="w-full">
       <!--      {{ value }} {{ item }}-->
       <form-select
@@ -10,7 +10,7 @@
     </div>
 
     <div @click="delField(props.id)"
-         class=" cursor-pointer w-20 mb-2">
+         class=" cursor-pointer sm:w-20 w-10 mb-2">
 
       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="100%" height="100%"
            viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round"

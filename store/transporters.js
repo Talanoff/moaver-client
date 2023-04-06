@@ -29,7 +29,7 @@ export const useTransporters = defineStore("transporters", {
                             },
                             show: true,
                             fieldType: 'input',
-                            className: 'w-1/2'
+                            className: 'sm:w-1/2 w-full'
                         },
                         {
                             value: '',
@@ -41,7 +41,7 @@ export const useTransporters = defineStore("transporters", {
                             },
                             show: true,
                             fieldType: 'input',
-                            className: 'w-1/2'
+                            className: 'sm:w-1/2 w-full'
                         },
                         {
                             value: '',
@@ -53,7 +53,7 @@ export const useTransporters = defineStore("transporters", {
                             },
                             show: true,
                             fieldType: 'input',
-                            className: 'w-1/2'
+                            className: 'sm:w-1/2 w-full'
                         },
                         {
                             value: '',
@@ -65,7 +65,7 @@ export const useTransporters = defineStore("transporters", {
                             },
                             show: true,
                             fieldType: 'input',
-                            className: 'w-1/2'
+                            className: 'sm:w-1/2 w-full'
                         },
                         {
                             value: '',
@@ -77,7 +77,7 @@ export const useTransporters = defineStore("transporters", {
                             },
                             show: true,
                             fieldType: 'input',
-                            className: 'w-1/2'
+                            className: 'sm:w-1/2 w-full'
                         },
                         {
                             value: '',
@@ -89,7 +89,7 @@ export const useTransporters = defineStore("transporters", {
                             },
                             show: true,
                             fieldType: 'input',
-                            className: 'w-1/2'
+                            className: 'sm:w-1/2 w-full'
                         },
                     ]
                 },

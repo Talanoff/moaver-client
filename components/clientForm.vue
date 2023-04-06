@@ -3,8 +3,8 @@
     <div v-if=" store.currentStep !== store.steps.length">
       <div v-for="step in store.steps">
         <div v-if="step.id === store.currentStep" :key="step.id">
-          <h2 class="text-3xl font-bold mb-8">{{ step.id === 0 ? store.category : step.title }}</h2>
-          <div class="flex flex-wrap -m-2.5 max-h-[450px] overflow-y-auto">
+          <h2 class="sm:text-3xl text-xl font-bold sm:mb-8 mb-2">{{ step.id === 0 ? store.category : step.title }}</h2>
+          <div class="flex flex-wrap -m-2.5 sm:max-h-[450px] max-h-[350px] overflow-y-auto">
             <div v-for="field in step.fields" :key="field.id" :class="field.className">
               <component
                   class="p-2.5"

@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="flex border-b-2 pb-2">
-      <h2 class="font-semibold w-64">Category:</h2> {{ store.category }}
+    <div class="flex sm:justify-start justify-between border-b-2 pb-2">
+      <h2 class="font-semibold sm:w-64">Category:</h2> {{ store.category }}
     </div>
     <div v-for="(field,idx) in fields" :key="idx">
       <div v-if="field.name !== 'Pick file'">
-        <div v-if="field.name && field.value" class="flex border-b-2 pb-2">
+        <div v-if="field.name && field.value" class="flex sm:justify-start justify-between border-b-2 pb-2">
           <h2 class="font-semibold w-64">{{ field.name }}:</h2>
           <p>{{ field.value }}</p></div>
       </div>

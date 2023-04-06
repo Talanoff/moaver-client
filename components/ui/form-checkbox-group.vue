@@ -7,13 +7,13 @@
                        @inputEmit="()=>{setCheckbox(idx)}"/>
         <div v-else class="flex  justify-center flex-wrap">
           <form-checkbox :checked="option.checked"
-                         class="w-1/2 h-12"
+                         class="sm:w-1/2 mb-4 sm:mb-0 w-full h-12"
                          :required="option.required"
                          :title="option.name"
                          @inputEmit="()=>{setCheckbox(idx)}"/>
 
           <form-input :type="option.type" v-model="option.value" :disabled="!option.checked"
-                      class="flex items-center pl-4   text-gray-900 text-sm rounded-lg mb-0 h-12 w-1/2"/>
+                      class="flex items-center sm:pl-4 mb-4 text-gray-900 text-sm rounded-lg sm:mb-0 h-12 sm:w-1/2 w-full"/>
         </div>
       </div>
     </div>

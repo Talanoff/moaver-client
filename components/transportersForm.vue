@@ -4,8 +4,8 @@
       <div v-for="step in store.steps">
         <div v-if="step.id === store.currentStep" :key="step.id">
 
-          <h2 class="text-3xl font-bold mb-8">{{ step.id === 0 ? store.category : step.title }}</h2>
-          <div class="flex flex-wrap -m-2.5 max-h-[450px] overflow-y-auto">
+          <h2 class="sm:text-3xl text-xl font-bold sm:mb-8 mb-2">{{ step.id === 0 ? store.category : step.title }}</h2>
+          <div class="flex flex-wrap -m-2.5 sm:max-h-[450px] max-h-[350px] overflow-y-auto">
             <div v-for="(field) in step.fields" :key="field.id" class="p-2.5"
                  :class="field.className">
               <component :is="getFieldName(field.fieldType)" :id="field.id" v-model="field.value"
@@ -15,7 +15,7 @@
               />
             </div>
             <div v-if="step.add" @click="addField(step)"
-                 class="m-2.5 cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                 class="m-2.5 cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm   px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
               Add
             </div>
 

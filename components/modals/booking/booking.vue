@@ -4,7 +4,8 @@
         class="flex bg-gray-600  bg-opacity-50 items-center justify-center absolute h-screen w-screen top-0 left-0"
         @click="store.booking = false"
     />
-    <div class="relative w-1/2 m-auto absolute top-28 left-0 p-10 bg-white rounded-3xl z-20 max-w-[600px]">
+    <div
+        class="relative lg:w-1/2 sm:w-3/4 w-[90%] m-auto absolute sm:top-28 top-12 left-0 sm:p-10 p-6 bg-white rounded-3xl z-20 max-w-[600px]">
       <button
           class="absolute -top-5 -right-5 z-10 flex justify-center items-center px-3 py-3 bg-blue-900 rounded-lg text-gray-100"
           @click="store.booking = false">

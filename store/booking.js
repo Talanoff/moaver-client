@@ -13,7 +13,7 @@ export const useBooking = defineStore("booking", {
                     fields: [
                         {
                             fieldType: 'card',
-                            className: 'w-full',
+                            className: 'w-full sm:grid-cols-2 grid-cols-1',
                         },
                         {
                             value: '',
@@ -25,7 +25,7 @@ export const useBooking = defineStore("booking", {
                             },
                             show: true,
                             fieldType: 'input',
-                            className: 'w-1/2'
+                            className: 'sm:w-1/2 w-full'
                         },
                         {
                             value: '',
@@ -37,7 +37,7 @@ export const useBooking = defineStore("booking", {
                             },
                             show: true,
                             fieldType: 'input',
-                            className: 'w-1/2'
+                            className: 'sm:w-1/2 w-full'
                         },
                         {
                             value: 'home',
@@ -59,7 +59,7 @@ export const useBooking = defineStore("booking", {
                                 placeholder: 'Message',
                             },
                             fieldType: 'textarea',
-                            className: 'w-full'
+                            className: 'w-full m-2.5'
                         },
                     ]
                 },
@@ -86,7 +86,7 @@ export const useBooking = defineStore("booking", {
                                 type: 'text',
                             },
                             fieldType: 'input',
-                            className: 'w-1/2'
+                            className: 'sm:w-1/2 w-full'
                         },
                         {
                             value: 'home',
@@ -96,7 +96,7 @@ export const useBooking = defineStore("booking", {
                                 options: ['home', 'office'],
                             },
                             fieldType: 'select',
-                            className: 'w-1/2'
+                            className: 'sm:w-1/2 w-full'
                         },
                         {
                             value: '',
@@ -117,7 +117,7 @@ export const useBooking = defineStore("booking", {
                                 type: 'text',
                             },
                             fieldType: 'input',
-                            className: 'w-1/2'
+                            className: 'sm:w-1/2 w-full'
                         },
                         {
                             value: 'home',
@@ -127,7 +127,7 @@ export const useBooking = defineStore("booking", {
                                 options: ['home', 'office'],
                             },
                             fieldType: 'select',
-                            className: 'w-1/2'
+                            className: 'sm:w-1/2 w-full'
                         },
                     ]
                 },
@@ -187,7 +187,7 @@ export const useBooking = defineStore("booking", {
                                 placeholder: 'additional wishes',
                             },
                             fieldType: 'textarea',
-                            className: 'w-full'
+                            className: 'w-full m-2.5'
                         },
                         {
                             id: 2,
