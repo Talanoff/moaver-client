@@ -36,7 +36,7 @@
 </template>
 
 <script setup>
-import FooterComponent from "~/components/modals/transporters/footer-component.vue";
+import FooterComponent from "~/components/modals/login/footer-component.vue";
 import {useBooking} from "~/store/booking";
 import FormInput from "~/components/ui/form-input.vue";
 

@@ -11,6 +11,10 @@
           <li>
             <nuxt-link to="/partners" class="text-md  font-bold">BECOME A PARTNER</nuxt-link>
           </li>
+          <li  @click="store.login = !store.login">
+            <nuxt-link  class="flex items-center"><img src="images/user.png" alt="" class="mr-1 w-6 h-6">
+              <span class="cursor-pointer  text-md  font-bold ">LOGIN</span></nuxt-link >
+          </li>
         </ul>
       </div>
       <nuxt-link to="/" class="text-xl font-bold text-blue-600 mt-2">
