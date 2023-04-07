@@ -12,7 +12,7 @@
             <nuxt-link to="/partners" class="text-md  font-bold">BECOME A PARTNER</nuxt-link>
           </li>
           <li  @click="store.login = !store.login">
-            <nuxt-link  class="flex items-center"><img src="images/user.png" alt="" class="mr-1 w-6 h-6">
+            <nuxt-link  class="flex items-center"><img src="/images/user.png" alt="" class="mr-1 w-6 h-6">
               <span class="cursor-pointer  text-md  font-bold ">LOGIN</span></nuxt-link >
           </li>
         </ul>
@@ -43,7 +43,7 @@
         </li>
       </ul>
       <div class="flex items-center" @click="store.login = !store.login">
-        <img src="images/user.png" alt="" class="mr-1 w-6">
+        <img src="/images/user.png" alt="" class="mr-1 w-6">
         <div class="cursor-pointer  text-xl ">LOGIN</div>
       </div>
     </nav>
