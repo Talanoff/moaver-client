@@ -1,7 +1,7 @@
 <template>
   <header class="sm:px-10  py-10 container">
     <div id="sidemenu" class="sm:hidden">
-      <button class="sidemenu__btn" v-on:click="navOpen=!navOpen" v-bind:class="{active:navOpen}">
+      <button class="sidemenu__btn" @click="navOpen=!navOpen" v-bind:class="{active:navOpen}">
         <span class="top"></span>
         <span class="mid"></span>
         <span class="bottom"></span>
@@ -10,23 +10,39 @@
         <nav v-show="navOpen">
           <div class="sidemenu__wrapper">
             <ul class="sidemenu__list">
-              <li class="sidemenu__item">
-                <nuxt-link to="/" class="text-2xl font-bold text-blue-600 ">
+              <li class="sidemenu__item" @click="navOpen=!navOpen">
+                <nuxt-link to="/" class="text-sm font-bold text-blue-600 ">
                   MOAVER
                 </nuxt-link>
               </li>
-              <li class="sidemenu__item">
-                <nuxt-link to="/" class="text-xl font-bold">
+              <li class="sidemenu__item" @click="navOpen=!navOpen">
+                <nuxt-link to="/" class="text-sm font-bold">
                   HOME
                 </nuxt-link>
               </li>
-              <li class="sidemenu__item">
+              <li class="sidemenu__item" @click="navOpen=!navOpen">
                 <nuxt-link
                     to="/partners"
-                    class="text-xl font-bold"
+                    class="text-sm font-bold"
                 >
                   BECOME A PARTNER
                 </nuxt-link>
+              </li>
+              <li class="sidemenu__item flex justify-center" @click="navOpen=!navOpen">
+                <button
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center flex items-center"
+                    @click="store.login = !store.login">
+                  <div class="w-6 rounded-2xl mr-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="100%"
+                         height="100%" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none"
+                         stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <circle cx="12" cy="7" r="4"/>
+                      <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/>
+                    </svg>
+                  </div>
+                  <div class="cursor-pointer  text-xl ">LOGIN</div>
+                </button>
               </li>
             </ul>
           </div>
@@ -55,7 +71,15 @@
         </li>
       </ul>
       <div class="flex items-center" @click="store.login = !store.login">
-        <img src="images/user.png" alt="" class="mr-1 w-6">
+        <div class="w-6 mr-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="100%"
+               height="100%" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" fill="none"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <circle cx="12" cy="7" r="4"/>
+            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/>
+          </svg>
+        </div>
         <div class="cursor-pointer  text-xl ">LOGIN</div>
       </div>
     </nav>
