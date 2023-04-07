@@ -1,8 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Montserrat', 'sans-serif']
+      },
+
       container: {
         center: true,
         padding: {

@@ -5,7 +5,7 @@
     >
       <figure
           class="sm:h-screen h-[120vw] max-h-[32rem] -mb-24 rounded-lg overflow-hidden bg-center bg-cover"
-          style="background-image: url('images/topBg.png')"
+          style="background-image: url('/images/topBg.png')"
       />
 
       <div class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
