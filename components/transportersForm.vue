@@ -3,7 +3,7 @@
     <div v-if="store.currentStep !== store.steps.length">
       <div v-for="step in store.steps">
         <div v-if="step.id === store.currentStep"
-             class="sm:max-h-[450px] max-h-[350px] overflow-y-auto overflow-x-hidden" :key="step.id">
+             class="sm:h-[450px] h-[350px] overflow-y-auto overflow-x-hidden" :key="step.id">
 
           <h2 class="sm:text-3xl text-xl font-bold sm:mb-8 mb-2">{{ step.id === 0 ? store.category : step.title }}</h2>
           <div class="flex flex-wrap -m-2.5  ">
