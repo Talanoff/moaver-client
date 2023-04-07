@@ -131,7 +131,6 @@ export const useTransporters = defineStore("transporters", {
                     fields: [
                         {
                             id: 0,
-                            value: '',
                             attr: {
                                 required: false,
                                 options: [
