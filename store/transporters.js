@@ -6,6 +6,7 @@ export const useTransporters = defineStore("transporters", {
             steps: [
                 {
                     id: 1,
+                    title: 'Company info',
                     fields: [
                         {
                             value: '',

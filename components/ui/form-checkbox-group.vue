@@ -5,15 +5,15 @@
         <form-checkbox v-if="!option.type" :required="option.required" :checked="option.checked"
                        :title="option.name"
                        @inputEmit="()=>{setCheckbox(idx)}"/>
-        <div v-else class="flex  justify-center flex-wrap">
+        <div v-else class="flex  justify-center flex-wrap sm:mb-2">
           <form-checkbox :checked="option.checked"
                          class="sm:w-1/2 mb-4 sm:mb-0 w-full h-12"
                          :required="option.required"
                          :title="option.name"
                          @inputEmit="()=>{setCheckbox(idx)}"/>
 
-          <form-input :type="option.type" v-model="option.value" :disabled="!option.checked"
-                      class="flex items-center sm:pl-4 mb-4 text-gray-900 text-sm rounded-lg sm:mb-0 h-12 sm:w-1/2 w-full"/>
+          <form-input :type="option.type" v-model="option.value" :required="option.checked" :disabled="!option.checked"
+                      class="flex items-center sm:pl-4 mb-4 text-gray-900 text-sm rounded-lg sm:mb-0 h-12 sm:w-auto w-full"/>
         </div>
       </div>
     </div>
