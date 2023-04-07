@@ -1,25 +1,53 @@
 <template>
   <header class="sm:px-10  py-10 container">
-    <div class="burger flex justify-between sm:hidden">
-      <div class="a-header ">
-        <input type="checkbox" name="main-nav" id="main-nav" class="burger-check">
-        <label for="main-nav" class="burger menu"><span></span></label>
-        <ul>
-          <li>
-            <nuxt-link to="/" class="text-md font-bold w-full">HOME</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/partners" class="text-md  font-bold">BECOME A PARTNER</nuxt-link>
-          </li>
-          <li  @click="store.login = !store.login">
-            <nuxt-link  class="flex items-center"><img src="/images/user.png" alt="" class="mr-1 w-6 h-6">
-              <span class="cursor-pointer  text-md  font-bold ">LOGIN</span></nuxt-link >
-          </li>
-        </ul>
-      </div>
-      <nuxt-link to="/" class="text-xl font-bold text-blue-600 mt-2">
-        MOAVER
-      </nuxt-link>
+    <div id="sidemenu" class="sm:hidden">
+      <button class="sidemenu__btn" @click="navOpen=!navOpen" v-bind:class="{active:navOpen}">
+        <span class="top"></span>
+        <span class="mid"></span>
+        <span class="bottom"></span>
+      </button>
+      <transition name="translateX">
+        <nav v-show="navOpen">
+          <div class="sidemenu__wrapper">
+            <ul class="sidemenu__list">
+              <li class="sidemenu__item" @click="navOpen=!navOpen">
+                <nuxt-link to="/" class="text-sm font-bold text-blue-600 ">
+                  MOAVER
+                </nuxt-link>
+              </li>
+              <li class="sidemenu__item" @click="navOpen=!navOpen">
+                <nuxt-link to="/" class="text-sm font-bold">
+                  HOME
+                </nuxt-link>
+              </li>
+              <li class="sidemenu__item" @click="navOpen=!navOpen">
+                <nuxt-link
+                    to="/partners"
+                    class="text-sm font-bold"
+                >
+                  BECOME A PARTNER
+                </nuxt-link>
+              </li>
+              <li class="sidemenu__item flex justify-center" @click="navOpen=!navOpen">
+                <button
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center flex items-center"
+                    @click="store.login = !store.login">
+                  <div class="w-6 rounded-2xl mr-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="100%"
+                         height="100%" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none"
+                         stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <circle cx="12" cy="7" r="4"/>
+                      <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/>
+                    </svg>
+                  </div>
+                  <div class="cursor-pointer  text-xl ">LOGIN</div>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </transition>
     </div>
     <nav class="hidden sm:flex justify-between">
       <ul class="flex">
@@ -43,7 +71,15 @@
         </li>
       </ul>
       <div class="flex items-center" @click="store.login = !store.login">
-        <img src="/images/user.png" alt="" class="mr-1 w-6">
+        <div class="w-6 mr-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="100%"
+               height="100%" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" fill="none"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <circle cx="12" cy="7" r="4"/>
+            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/>
+          </svg>
+        </div>
         <div class="cursor-pointer  text-xl ">LOGIN</div>
       </div>
     </nav>
@@ -54,207 +90,107 @@
 import {useBooking} from "~/store/booking";
 
 const store = useBooking();
+const navOpen = ref(false)
 </script>
 
 <style scoped>
-
-.burger{
-
-h1,
-div,
-.boo {
-  position: relative;
-  float: left;
-  width: calc(100% - 20px);
-  text-align: center;
-  margin: 20px 0 0 0;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 400;
-  color: #333;
-}
-
-html,
-body {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-/*--------------------------------------
- Animation Magic, animations won't occur
- on IE9 and before and Opera Mini
---------------------------------------*/
-*,
-*:before,
-*:after {
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  box-sizing: border-box;
-}
-
-/*==============================================================================
- The burger icon with it's animation. Uses the checked property of a checkbox
- in order to make the animation happen as well as control the next elements
- I've used classes because of the + css selector, which will only ever animate
- the next label element. Does not work on IE8 or below and opera mini since
- they don't support the :checked selector.
-==============================================================================*/
-.burger-check {
-  display: none;
-}
-
-/*--------------------------------------
- Sets the actionable area for the burger
- including a label for usability
---------------------------------------*/
-.burger {
-  position: relative;
-  float: left;
-  margin-left: 10px;
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
-}
-
-.burger:after {
-  position: absolute;
-  bottom: 7px;
-  left: 0px;
-  width: 100%;
-  text-align: center;
-  font-size: 13px;
-}
-
-/*--------------------------------------
- Creates the look of the burger icon
- using the inner span and pseudo-elements
---------------------------------------*/
-.burger span,
-.burger span:before,
-.burger span:after {
-  position: absolute;
-  left: 10px;
-  top: 22px;
-  width: 40px;
-  height: 4px;
-  background: #333;
-  border-radius: 0.2em;
-}
-
-/* Reset the left and create the pseudo-element */
-.burger span:before,
-.burger span:after {
-  content: '';
+#sidemenu nav {
+  width: 100vw;
+  background: grey;
+  height: 100vh;
+  position: fixed;
+  top: 0;
   left: 0;
+  z-index: 99;
 }
 
-/* Top bar position */
-.burger span:before {
-  top: -8px;
-}
-
-/* Bottom bar position */
-.burger span:after {
-  top: 8px;
-}
-
-/* Get rid of more on action (IE9 or higher) */
-.burger-check:checked + .burger:after {
-  content: '';
-}
-
-/* Get rid of the middle bar on action (IE9 or higher) */
-
-.burger-check:checked + .burger span {
-  height: 0;
-  width: 0;
-}
-
-/* Moves the top and bottom bars to the middle on action (IE9 or higher) */
-.burger-check:checked + .burger span:before,
-.burger-check:checked + .burger span:after {
-  top: 6px;
-}
-
-/* Rotates the top bar on action with full browser support (IE9 or higher) */
-.burger-check:checked + .burger span:before {
-  -webkit-transform: rotate(225deg);
-  -ms-transform: rotate(225deg);
-  transform: rotate(225deg);
-}
-
-/* Rotates the bottom bar on action with full browser support (IE9 or higher) */
-.burger-check:checked + .burger span:after {
-  -webkit-transform: rotate(-225deg);
-  -ms-transform: rotate(225deg);
-  transform: rotate(-225deg);
-}
-
-/*==============================================================================
- Simple reveal (IE9 or higher)
-==============================================================================*/
-span.boo {
-  width: auto;
-  margin-top: 0;
-  line-height: 60px;
-  height: 0;
-  overflow: hidden;
-}
-
-/* Reveals Boo! (IE9 or higher) */
-#main-nav-test:checked ~ .boo {
+#sidemenu .sidemenu__btn {
+  display: block;
+  width: 50px;
   height: 50px;
+  background: grey;
+  border: none;
+  position: relative;
+  z-index: 100;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
 }
 
-/*==============================================================================
- Simple mobile menu opening and closing (IE9 or higher)
-==============================================================================*/
-.a-header {
-  position: relative;
-  float: left;
-  width: calc(100% - 20px);
-  margin: 0;
-  min-height: 50px;
-  background: none;
-  overflow: hidden;
+#sidemenu .sidemenu__btn span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  margin: auto;
+  background: white;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: all 0.4s ease;
 }
 
-.a-header ul {
-  position: relative;
-  float: left;
-  width: 100%;
+#sidemenu .sidemenu__btn span.top {
+  transform: translateY(-8px);
+}
+
+#sidemenu .sidemenu__btn span.bottom {
+  transform: translateY(8px);
+}
+
+#sidemenu .sidemenu__btn.active .top {
+  transform: rotate(-45deg);
+}
+
+#sidemenu .sidemenu__btn.active .mid {
+  transform: translateX(-20px) rotate(360deg);
+  opacity: 0;
+}
+
+#sidemenu .sidemenu__btn.active .bottom {
+  transform: rotate(45deg);
+}
+
+#sidemenu .sidemenu__wrapper {
+  padding-top: 100px;
+}
+
+#sidemenu .sidemenu__list {
+  padding-top: 50px;
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
-.a-header ul a {
-  position: relative;
-  float: left;
-  width: 100%;
-  height: 0;
-  line-height: 50px;
-  padding: 0 15px;
+#sidemenu .sidemenu__item a {
   text-decoration: none;
-  overflow: hidden;
-  color: #333;
-  text-align: left;
+  line-height: 1.6em;
+  font-size: 1.6em;
+  padding: 0.5em;
+  display: block;
+  color: white;
+  transition: 0.4s ease;
 }
 
-.a-header ul a:hover,
-.a-header ul a:active,
-.a-header ul a:focus,
-.a-header ul a:visited {
-  text-decoration: none;
-  background: #fff;
-  border-bottom-color: #08c;
+#sidemenu .sidemenu__item a:hover {
+  background: lightgrey;
+  color: dimgrey;
 }
 
-/* Animate height of 'a' element in order to reveal the menu on check (IE9 or higher) */
-#main-nav:checked ~ ul a {
-  height: 50px;
+.translateX-enter {
+  transform: translateX(-200px);
+  opacity: 0;
 }
+
+.translateX-enter-active, .translateX-leave-active {
+  transform-origin: top left 0;
+  transition: 0.2s ease;
 }
+
+.translateX-leave-to {
+  transform: translateX(-200px);
+  opacity: 0;
+}
+
 </style>
