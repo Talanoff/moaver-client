@@ -163,6 +163,7 @@ export const useBooking = defineStore("booking", {
                     fields: [
                         {
                             id: 0,
+                            title: 'Additional wishes',
                             value: '',
                             attr: {
                                 required: false,
