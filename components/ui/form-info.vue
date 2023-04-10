@@ -15,7 +15,7 @@
           <p>{{ field.value }}</p></div>
       </div>
       <div v-else>
-        <div v-if="field.name && field.url" class="flex mt-4 border-b-2 pb-2">
+        <div v-if="field.name && field.url" class="flex sm:justify-start justify-between mt-4 border-b-2 pb-2">
           <div class="sm:w-1/2 font-semibold">{{ field.name }}:</div>
           <img :src="field.url" alt=""
                class="w-32 ">
@@ -23,7 +23,7 @@
       </div>
 
     </div>
-    <div class="border-b-2 pb-2 flex sm:justify-start">
+    <div class="border-b-2 pb-2 sm:flex sm:justify-start">
       <h2 class="font-semibold sm:w-1/2">{{ store.steps[3].title }}:</h2>
       <div>
         <div v-for="test in store.steps[3].fields[0].attr.options">
@@ -31,7 +31,7 @@
         </div>
       </div>
     </div>
-    <div class="border-b-2 pb-2 flex sm:justify-start">
+    <div class="border-b-2 pb-2 sm:flex sm:justify-start">
       <h2 class="font-semibold sm:w-1/2">{{ store.steps[2].title }}:</h2>
       <div>
         <div v-for="test in store.steps[2].fields[0].attr.options">
