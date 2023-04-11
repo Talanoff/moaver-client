@@ -3,7 +3,6 @@
     <intro/>
     <about-us class="mb-16"/>
     <text-section/>
-
   </div>
 </template>
 

@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <h1 class="text-center sm:mt-16 sm:mb-16 mt-0 mb-8 text-[#0B122D] font-bold sm:text-6xl text-xl">Terms and
+    <h1 class="text-center sm:mt-16 sm:mb-16 mt-0 mb-8 text-blue-950 font-bold sm:text-6xl text-xl">Terms and
       conditions</h1>
-    <p class="text-center mb-28 text-[#9C9FA9]">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aperiam
+    <p class="text-center mb-28 text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aperiam
       blanditiis debitis dolorem, earum, enim facilis incidunt iste iure nobis numquam perspiciatis porro provident quod
       rem, repellendus totam voluptas. Ab accusamus ad animi cumque, debitis dolores earum excepturi fuga iure molestias
       obcaecati perferendis quod, repudiandae sint temporibus! Aspernatur aut consectetur cumque, eaque, eos illum iste
