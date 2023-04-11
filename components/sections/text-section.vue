@@ -1,6 +1,6 @@
 <template>
-  <section class="lg:mt-44 lg:mb-28 mt-28 mb-16  max-w-[95vw]">
-    <div class="flex sm:flex-row flex-col justify-between sm:mx-28 mx-2">
+  <section class="lg:mt-44 lg:mb-28 mt-28 mb-16  max-w-[95vw] mx-auto">
+    <div class="flex sm:flex-row flex-col justify-between ">
       <div class="sm:w-[45%] text-[#0B122D] lg:text-6xl md:text-3xl text-2xl font-bold sm:leading-relaxed sm:mb-0 mb-4">
         Voor elke route, op ieder moment, jouw vracht op de juiste plek.
       </div>

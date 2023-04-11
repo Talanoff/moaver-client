@@ -1,7 +1,7 @@
 <template>
   <section class="bg-[#F5F7FA] mt-16 py-8">
 
-    <div class="flex justify-between items-center md:flex-row flex-col-reverse  max-w-[95vw] mx-auto">
+    <div class="flex justify-between sm:items-center md:flex-row flex-col-reverse  max-w-[95vw] mx-auto">
       <img src="https://blog.advesa.com/wp-content/uploads/2019/11/about-us-page.png" class="md:w-[45%] w-full" alt="">
       <div class="sm:w-[70%] w-[90%] md:w-[45%] text-[#9C9FA9] lg:text-xl text-sm">
         <h1 class=" lg:mb-8 text-[#0B122D] md:text-left text-center  font-bold lg:text-6xl text-2xl  md:mb-4 mb-2">About

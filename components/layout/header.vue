@@ -1,5 +1,5 @@
 <template>
-  <header class="sm:px-10  py-10 container">
+  <header class="sm:px-10  py-10 px-2 container">
     <div id="sidemenu" class="sm:hidden flex justify-between items-center flex-row-reverse">
       <button class="sidemenu__btn" @click="navOpen=!navOpen" v-bind:class="{active:navOpen}">
         <span class="top"></span>
@@ -11,7 +11,7 @@
       </div>
       <transition name="translateX">
         <nav v-show="navOpen">
-          <div class="sidemenu__wrapper flex flex-col justify-between h-full">
+          <div class="sidemenu__wrapper flex flex-col overflow-auto justify-between h-full">
             <ul class="sidemenu__list">
               <li class="sidemenu__item px-5" @click="navOpen=!navOpen">
                 <nuxt-link to="/" class="text-lg py-2  font-bold">
@@ -30,7 +30,7 @@
             </ul>
             <div class="sidemenu__item flex " @click="navOpen=!navOpen">
               <div
-                  class="text-white text-sm w-auto px-5 py-2.5  flex items-center"
+                  class="text-white text-sm w-auto px-5 py-2.5 mb-12 flex items-center"
                   @click="store.login = !store.login">
                 <div class="w-6 rounded-2xl mr-2">
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="100%"
@@ -51,16 +51,16 @@
     <nav class="hidden sm:flex justify-between items-end">
       <ul class="flex items-end">
         <li class="mr-16">
-          <div class="text-2xl font-black text-blue-600 ">
+          <div class="text-3xl font-black text-blue-600 ">
             MOAVER
           </div>
         </li>
-        <li class="mr-6 hover" :class="{'activeHover': $route.path === '/'}">
+        <li class=" hover" :class="{'activeHover': $route.path === '/'}">
           <nuxt-link to="/" class="text-xl font-bold p-4">
             HOME
           </nuxt-link>
         </li>
-        <li class="mr-6 hover"
+        <li class="ml-6 hover"
             :class="{'activeHover': $route.path === '/partners'}">
           <nuxt-link
               to="/partners"
@@ -142,6 +142,11 @@ const navOpen = ref(false)
   transform: translateY(8px);
 }
 
+.active {
+  position: fixed !important;
+  right: 0;
+}
+
 #sidemenu .sidemenu__btn.active .top {
   background: white;
   transform: rotate(-45deg);
@@ -199,7 +204,6 @@ const navOpen = ref(false)
 
 .hover {
   display: inline-block;
-  margin: 0;
 }
 
 .hover:after {
