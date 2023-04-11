@@ -48,6 +48,7 @@
                 </nav>
             </transition>
         </div>
+
         <nav class="hidden sm:flex justify-between items-end">
             <ul class="flex items-end">
                 <li class="mr-16">
