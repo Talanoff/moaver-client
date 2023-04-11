@@ -11,8 +11,9 @@ export default defineNuxtConfig({
     ],
 
     googleFonts: {
+        display: 'swap',
         families: {
-            Arial: true,
+            Montserrat: [400, 500, 600],
         }
     },
 
