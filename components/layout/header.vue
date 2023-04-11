@@ -55,12 +55,12 @@
             MOAVER
           </div>
         </li>
-        <li class="mr-6 hover" :class="{'activeHover': $route.path === '/'}">
+        <li class=" hover" :class="{'activeHover': $route.path === '/'}">
           <nuxt-link to="/" class="text-xl font-bold p-4">
             HOME
           </nuxt-link>
         </li>
-        <li class="mr-6 hover"
+        <li class="ml-6 hover"
             :class="{'activeHover': $route.path === '/partners'}">
           <nuxt-link
               to="/partners"
@@ -204,7 +204,6 @@ const navOpen = ref(false)
 
 .hover {
   display: inline-block;
-  margin: 0;
 }
 
 .hover:after {
