@@ -15,7 +15,7 @@
       </svg>
     </div>
 
-    <div class="mt-1.5 w-full h-[50px] group-hover:text-slate-700 text-xl">
+    <div class="mt-1.5 w-full h-[50px] group-hover:text-slate-700 text-md">
       {{ category.name }}
     </div>
   </button>
