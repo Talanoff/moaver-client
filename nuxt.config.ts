@@ -7,8 +7,15 @@ export default defineNuxtConfig({
         '@pinia/nuxt',
         'nuxt-sanctum-auth', // https://github.com/dystcz/nuxt-sanctum-auth
         'nuxt-icons', // https://nuxt.com/modules/icons+
-        '@nuxtjs/google-fonts'
+        '@nuxtjs/google-fonts',
+        '@nuxtjs/i18n',
     ],
+
+    runtimeConfig: {
+        public: {
+            API_URL: process.env.API_URL
+        }
+    },
 
     googleFonts: {
         display: 'swap',
@@ -22,12 +29,12 @@ export default defineNuxtConfig({
             meta: [
                 {name: 'viewport', content: 'width=device-width, initial-scale=1'}
             ],
-            title: 'Moaver'
-        }
+            title: 'Moaver',
+        },
     },
 
     nuxtSanctumAuth: {
-        baseUrl: 'http://localhost:8000',
+        baseUrl: process.env.API_URL,
         endpoints: {
             csrf: '/sanctum/csrf-cookie',
             login: '/login',
@@ -40,4 +47,23 @@ export default defineNuxtConfig({
             logout: '/'
         }
     },
+
+    i18n: {
+        strategy: 'no_prefix',
+        defaultLocale: 'en',
+        lazy: true,
+        langDir: 'translations',
+        locales: [
+            { code: 'en', file: 'en.json' },
+            { code: 'nl', file: 'nl.json' },
+        ],
+        vueI18n: {
+            fallbackLocale: 'en',
+        },
+        detectBrowserLanguage: {
+            useCookie: true,
+            cookieKey: 'i18n_redirected',
+            redirectOn: 'root',
+        }
+    }
 });

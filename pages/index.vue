@@ -1,12 +1,13 @@
 <template>
-  <div>
     <intro/>
-    <about-us class="mb-16"/>
-    <text-section/>
-  </div>
+    <about-us/>
+    <booking v-if="storeBooking.showModal"/>
 </template>
-
-<script lang="ts" setup>
+<script setup lang="ts">
 import Intro from "~/components/sections/intro.vue";
-import TextSection from "~/components/sections/text-section.vue";
-import AboutUs from "~/components/sections/about-us.vue";</script>
+import AboutUs from "~/components/sections/about-us.vue";
+import Booking from "~/components/modals/booking/booking.vue";
+import { useBooking } from "~/store/booking";
+
+const storeBooking = useBooking();
+</script>

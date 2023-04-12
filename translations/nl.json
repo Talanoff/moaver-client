@@ -1,0 +1,26 @@
+{
+  "navigation": {
+    "header": {
+      "home": "thuis",
+      "partner": "een partner worden",
+      "login": "log in"
+    },
+    "footer": {
+      "terms": "Voorwaarden",
+      "policy": "Privacybeleid"
+    }
+  },
+
+  "about_us": {
+    "title": "Over ons",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda exercitationem fugiat laudantium magni quae quidem veritatis? Deleniti nobis possimus qui! Ab aliquid autem corporis deserunt distinctio fugiat natus, necessitatibus officiis perspiciatis possimus quas qui quis quod sequi, sit suscipit unde."
+  },
+
+  "footer": {
+    "intro": {
+      "title": "Voor elke route, op ieder moment, jouw vracht op de juiste plek.",
+      "description": "Fusce porta libero non feugiat placerat. Vestibulum suscript, tortor eu sollicitudin tempor, ligula nibh lobortis sapien, en efficitur justo diam vitae mauris. Suspendise et tincidunt elit. Sed sollicitudin neque justo, in molestie leo scelerisque ut. Donec urna nibh, egestas vel convallis vel, finibus sit amet eros. Aenean id tortor nec.",
+      "link": "Lees meer over ons"
+    }
+  }
+}

@@ -6,8 +6,8 @@
                 <span class="mid"></span>
                 <span class="bottom"></span>
             </button>
-            <div class="text-2xl  font-black text-blue-600">
-                MOAVER
+            <div class="text-2xl font-black text-blue-600">
+                <logo/>
             </div>
             <transition name="translateX">
                 <nav v-show="navOpen">
@@ -15,7 +15,7 @@
                         <ul class="sidemenu__list">
                             <li class="sidemenu__item px-5" @click="navOpen=!navOpen">
                                 <nuxt-link to="/" class="text-lg py-2  font-bold">
-                                    HOME
+                                    {{ $t('navigation.header.home') }}
                                 </nuxt-link>
                             </li>
                             <li class="sidemenu__item px-5" @click="navOpen=!navOpen">
@@ -23,67 +23,67 @@
                                         to="/partners"
                                         class="font-bold text-lg py-2 mb-8 "
                                 >
-                                    BECOME A PARTNER
+                                    {{ $t('navigation.header.partner') }}
                                 </nuxt-link>
                             </li>
                         </ul>
                         <div class="sidemenu__item flex " @click="navOpen=!navOpen">
-                            <div
+                            <button
                                     class="text-white text-sm w-auto px-5 py-2.5 mb-12 flex items-center"
-                                    @click="store.login = !store.login">
-                                <div class="w-6 rounded-2xl mr-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user"
-                                         width="100%"
-                                         height="100%" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none"
-                                         stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <circle cx="12" cy="7" r="4"/>
-                                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/>
+                                    @click="store.login = !store.login"
+                            >
+                                <div class="w-6 mr-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                     </svg>
                                 </div>
-                                <div class="cursor-pointer  text-xl ">LOGIN</div>
-                            </div>
+                                <div class="cursor-pointer text-xl">
+                                    {{ $t('navigation.header.login') }}
+                                </div>
+                            </button>
                         </div>
                     </div>
                 </nav>
             </transition>
         </div>
 
-        <nav class="hidden sm:flex justify-between items-end">
-            <ul class="flex items-end">
+        <nav class="hidden sm:flex justify-between items-center">
+            <ul class="flex items-end font-semibold">
                 <li class="mr-16">
                     <nuxt-link to="/" class="text-3xl font-black text-blue-600">
-                        MOAVER
+                        <logo/>
                     </nuxt-link>
                 </li>
                 <li class=" hover" :class="{'activeHover': $route.path === '/'}">
                     <nuxt-link to="/" class="font-semibold p-4">
-                        home
+                        {{ $t('navigation.header.home') }}
                     </nuxt-link>
                 </li>
                 <li class="ml-6 hover" :class="{'activeHover': $route.path === '/partners'}">
                     <nuxt-link to="/partners" class="font-semibold p-4">
-                        become a partner
+                        {{ $t('navigation.header.partner') }}
                     </nuxt-link>
                 </li>
             </ul>
 
-            <button class="flex items-center" @click="store.login = !store.login">
-                <div class="w-6 mr-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                </div>
-                <span class="font-semibold">sign in</span>
+            <locale-switcher class="ml-auto px-5"/>
+
+            <button class="inline-flex items-center font-semibold" @click="storeAuth.onModalToggle()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                {{ $t('navigation.header.login') }}
             </button>
         </nav>
     </header>
 </template>
 
 <script setup>
-import {useBooking} from "~/store/booking";
+import Logo from "~/components/layout/logo.vue";
+import LocaleSwitcher from "~/components/layout/locale-switcher.vue";
+import {useAuth} from "~/store/auth";
 
-const store = useBooking();
+const storeAuth = useAuth();
 const navOpen = ref(false)
 </script>
 

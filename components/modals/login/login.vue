@@ -10,7 +10,7 @@
         <div>
           <button
               class="absolute -top-5 -right-5 z-10 flex justify-center items-center px-3 py-3 bg-blue-900 rounded-lg text-gray-100"
-              @click="store.login = false">
+              @click="storeAuth.onModalToggle()">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor"
                  class="w-5 h-5">
@@ -38,11 +38,11 @@
 
 <script setup>
 import FooterComponent from "~/components/modals/login/footer-component.vue";
-import {useBooking} from "~/store/booking";
 import FormInput from "~/components/ui/form-input.vue";
+import {useAuth} from "~/store/auth";
 
-const {$sanctumAuth, $apiFetch} = useNuxtApp()
-const store = useBooking();
+const {$sanctumAuth, $apiFetch} = useNuxtApp();
+const storeAuth = useAuth();
 const form = ref({
   email: '',
   password: '',

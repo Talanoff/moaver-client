@@ -1,102 +1,137 @@
-import {defineStore} from "pinia";
+import { defineStore } from "pinia";
 
-export const useTransporters = defineStore("transporters", {
+export const useBooking = defineStore("booking", {
         state: () => ({
+            category: '',
+            showModal: false,
             currentStep: 0,
             steps: [
                 {
                     id: 1,
-                    title: 'Company info',
                     fields: [
+                        {
+                            fieldType: 'card',
+                            className: 'w-full sm:grid-cols-2 grid-cols-1',
+                        },
                         {
                             value: '',
                             attr: {
                                 required: false,
-                                name: 'Name transport company',
-                                type: 'text',
-                                placeholder: 'Name transport company',
+                                name: 'stuks',
+                                type: 'number',
+                                placeholder: 'stuks',
                             },
                             show: true,
                             fieldType: 'input',
+                            className: 'sm:w-1/2 w-full'
+                        },
+                        {
+                            value: '',
+                            attr: {
+                                required: false,
+                                name: 'kg',
+                                type: 'number',
+                                placeholder: 'kg',
+                            },
+                            show: true,
+                            fieldType: 'input',
+                            className: 'sm:w-1/2 w-full'
+                        },
+                        {
+                            value: 'home',
+                            attr: {
+                                required: false,
+                                name: 'What exactly do you want to send',
+                                options: ['home', 'office'],
+                            },
+                            show: false,
+                            fieldType: 'select',
                             className: 'w-full'
                         },
                         {
                             value: '',
                             attr: {
                                 required: false,
-                                name: 'house number',
-                                type: 'number',
-                                placeholder: 'house number',
-                            },
-                            show: true,
-                            fieldType: 'input',
-                            className: 'sm:w-1/2 w-full'
-                        },
-                        {
-                            value: '',
-                            attr: {
-                                required: false,
-                                name: 'postcode',
-                                type: 'number',
-                                placeholder: 'postcode',
-                            },
-                            show: true,
-                            fieldType: 'input',
-                            className: 'sm:w-1/2 w-full'
-                        },
-                        {
-                            value: '',
-                            attr: {
-                                required: false,
-                                name: 'country',
+                                name: 'Message',
                                 type: 'text',
-                                placeholder: 'country',
+                                placeholder: 'Message',
                             },
-                            show: true,
-                            fieldType: 'input',
-                            className: 'sm:w-1/2 w-full'
-                        },
-                        {
-                            value: '',
-                            attr: {
-                                required: false,
-                                name: 'street',
-                                type: 'text',
-                                placeholder: 'street',
-                            },
-                            show: true,
-                            fieldType: 'input',
-                            className: 'sm:w-1/2 w-full'
-                        },
-                        {
-                            value: '',
-                            attr: {
-                                required: false,
-                                name: 'Telephone number',
-                                type: 'number',
-                                placeholder: 'Telephone number',
-                            },
-                            show: true,
-                            fieldType: 'input',
-                            className: 'sm:w-1/2 w-full'
-                        },
-                        {
-                            value: '',
-                            attr: {
-                                required: false,
-                                name: 'E-mail address',
-                                type: 'email',
-                                placeholder: 'E-mail address',
-                            },
-                            show: true,
-                            fieldType: 'input',
-                            className: 'sm:w-1/2 w-full'
+                            fieldType: 'textarea',
+                            className: 'w-full m-2.5'
                         },
                     ]
                 },
                 {
                     id: 2,
-                    title: 'What types of transports do they provide ',
+                    title: 'Ophaaldatum',
+                    fields: [
+                        {
+                            value: '',
+                            attr: {
+                                required: false,
+                                name: 'Date From',
+                                type: 'datetime-local',
+                                placeholder: 'date'
+                            },
+                            fieldType: 'input',
+                            className: 'w-full'
+                        },
+                        {
+                            value: '',
+                            attr: {
+                                required: false,
+                                name: 'Location from',
+                                type: 'text',
+                            },
+                            fieldType: 'input',
+                            className: 'sm:w-1/2 w-full'
+                        },
+                        {
+                            value: 'home',
+                            attr: {
+                                required: false,
+                                name: 'Location type from',
+                                options: ['home', 'office'],
+                            },
+                            fieldType: 'select',
+                            className: 'sm:w-1/2 w-full'
+                        },
+                        {
+                            value: '',
+                            attr: {
+                                required: false,
+                                name: 'Date To',
+                                placeholder: 'date',
+                                type: 'datetime-local',
+                            },
+                            fieldType: 'input',
+                            className: 'w-full'
+                        },
+                        {
+                            value: '',
+                            attr: {
+                                required: false,
+                                name: 'Location to',
+                                type: 'text',
+                            },
+                            fieldType: 'input',
+                            className: 'sm:w-1/2 w-full'
+                        },
+                        {
+                            value: 'home',
+                            attr: {
+                                required: false,
+                                name: 'Location type to',
+                                options: ['home', 'office'],
+                            },
+                            fieldType: 'select',
+                            className: 'sm:w-1/2 w-full'
+                        },
+                    ]
+                },
+                {
+                    id: 3,
+                    title: 'Pick-up and delivery wishes/requirements',
                     fields: [
                         {
                             id: 0,
@@ -104,58 +139,15 @@ export const useTransporters = defineStore("transporters", {
                             attr: {
                                 required: false,
                                 options: [
-                                    {name: 'Waste materials transport', checked: false},
-                                    {name: 'Agricultural transport', checked: false},
-                                    {name: 'Car transport', checked: false},
-                                    {name: 'Construction materials transport', checked: false},
-                                    {name: 'Distribution transport', checked: false},
-                                    {name: 'Exceptional transport', checked: false},
-                                    {name: 'Intermodal freight transportInternational transport', checked: false},
-                                    {name: 'Tip-truck Courier transport', checked: false},
-                                    {name: 'Foodstuffs transport', checked: false},
-                                    {name: 'Passenger transport', checked: false},
-                                    {name: 'Floriculture transport', checked: false},
-                                    {name: 'Rail transport Tank and silo transport', checked: false},
-                                    {name: 'Movers Stores', checked: false},
-                                    {name: 'Distribution Sea container transport', checked: false},
-                                ],
-                            },
-                            fieldType: 'checkBoxGroup',
-                            className: 'w-full'
-                        },
-                    ]
-                },
-                {
-                    id: 3,
-                    title: 'How big is the fleet.',
-                    fields: [
-                        {
-                            id: 0,
-                            attr: {
-                                required: false,
-                                options: [
-                                    {name: 'Van (fossil fuel)', checked: false, type: 'number', value: ''},
-                                    {name: 'Van (electric)', checked: false, type: 'number', value: ''},
-                                    {name: 'Large bus (fossil fuel', checked: false, type: 'number', value: ''},
-                                    {name: 'Large bus (electric)', checked: false, type: 'number', value: ''},
-                                    {name: 'Truck box truck (fossil fuel)', checked: false, type: 'number', value: ''},
-                                    {name: 'Truck box truck (electric)', checked: false, type: 'number', value: ''},
-                                    {name: 'Tractor + trailer', checked: false, type: 'number', value: ''},
-                                    {name: 'Truck with crane', checked: false, type: 'number', value: ''},
-                                    {name: 'Truck with cage monkey', checked: false, type: 'number', value: ''},
-                                    {name: 'Concrete pumptrailer', checked: false, type: 'number', value: ''},
-                                    {name: 'Sailtrailer of tautliner', checked: false, type: 'number', value: ''},
-                                    {name: 'Refrigerated trailers', checked: false, type: 'number', value: ''},
-                                    {name: 'Tip trailers', checked: false, type: 'number', value: ''},
-                                    {name: 'Walking floor trailers', checked: false, type: 'number', value: ''},
-                                    {name: 'Deeploaders', checked: false, type: 'number', value: ''},
-                                    {name: 'Open trailers', checked: false, type: 'number', value: ''},
-                                    {name: 'Silo trailers', checked: false, type: 'number', value: ''},
-                                    {name: 'Closed trailers with hard box', checked: false, type: 'number', value: ''},
-                                    {name: 'Tanktrailers', checked: false, type: 'number', value: ''},
-                                    {name: 'Taxibus', checked: false, type: 'number', value: ''},
-                                    {name: 'Coach', checked: false, type: 'number', value: ''},
-
+                                    { name: 'Tail lift at pick-up', checked: false },
+                                    { name: 'Tail lift for delivery', checked: false },
+                                    { name: 'TIndoor charging', checked: false },
+                                    { name: 'Unloading inside', checked: false },
+                                    { name: 'Call before pick-up', checked: false },
+                                    { name: 'Call before delivery', checked: false },
+                                    { name: 'Appointment needed for delivery', checked: false },
+                                    { name: 'Urgent/Rush', checked: false },
+                                    { name: 'Forklift needed', checked: false },
                                 ],
                             },
                             fieldType: 'checkBoxGroup',
@@ -165,81 +157,56 @@ export const useTransporters = defineStore("transporters", {
                 },
                 {
                     id: 4,
-                    title: 'In which countries active and which regions of those countries',
-                    add: true,
-
+                    title: 'Additional wishes',
                     fields: [
                         {
-                            id: 1,
+                            id: 0,
+                            title: 'Additional wishes',
+                            value: '',
                             attr: {
-                                items: [
-                                    {
-                                        id: 1,
-                                        value: 'home',
-                                        attr: {
-                                            del: true,
-                                            required: false,
-                                            name: 'country',
-                                            options: ['home', 'office'],
-                                        }
-                                    },
-                                    {
-                                        id: 2,
-                                        value: 'home',
-                                        attr: {
-                                            del: true,
-                                            required: false,
-                                            name: 'country',
-                                            options: ['home', 'office'],
-                                        }
-                                    },
-                                ]
-
+                                required: false,
+                                options: [
+                                    { name: 'Part load', checked: false },
+                                    { name: 'Refrigerated transport', checked: false },
+                                    { name: 'Frozen transport', checked: false },
+                                    { name: 'Electric vehicle', checked: false },
+                                    { name: 'Call before pick-up', checked: false },
+                                ],
                             },
-                            fieldType: 'selectGroup',
+                            fieldType: 'checkBoxGroup',
                             className: 'w-full'
                         },
-                    ]
-                },
-
-                {
-                    id: 5,
-                    title: 'INFO',
-                    fields: [
                         {
                             id: 1,
                             value: '',
                             attr: {
                                 required: false,
-                                name: 'Chamber of Commerce number',
-                                type: 'number',
-                                placeholder: 'Chamber of Commerce number',
+                                name: 'additional wishes',
+                                type: 'text',
+                                placeholder: 'additional wishes',
                             },
-                            fieldType: 'input',
-                            className: 'w-full'
+                            fieldType: 'textarea',
+                            className: 'w-full m-2.5'
                         },
                         {
                             id: 2,
                             value: '',
                             attr: {
                                 required: false,
-                                name: 'IBAN',
-                                type: 'text',
-                                placeholder: 'IBAN',
+                                name: 'Pick file',
+                                url: ''
                             },
-                            fieldType: 'input',
+                            fieldType: 'file',
                             className: 'w-full'
                         },
+                    ]
+                },
+                {
+                    id: 5,
+                    title: 'INFO',
+                    fields: [
                         {
-                            id: 3,
-                            value: '',
-                            attr: {
-                                required: false,
-                                name: 'VAT number',
-                                type: 'number',
-                                placeholder: 'VAT number',
-                            },
-                            fieldType: 'input',
+                            fieldType: 'formInfo',
                             className: 'w-full'
                         },
                     ],
@@ -302,15 +269,40 @@ export const useTransporters = defineStore("transporters", {
                             value: '',
                             attr: {
                                 required: false,
-                                name: 'password',
-                                type: 'password',
-                                placeholder: 'password',
+                                name: 'IBAN',
+                                type: 'number',
+                                placeholder: 'IBAN',
                             },
                             fieldType: 'input',
                             className: 'w-full'
                         },
                         {
                             id: 5,
+                            attr: {
+                                title: 'do you want to register?',
+                                required: false,
+                                options: [
+                                    { name: 'do you want to register', checked: false },
+                                ],
+                            },
+                            fieldType: 'checkBoxGroup',
+                            className: 'w-full'
+                        },
+                        {
+                            id: 6,
+                            value: '',
+                            attr: {
+                                required: false,
+                                name: 'password',
+                                type: 'password',
+                                placeholder: 'password',
+                            },
+                            show: false,
+                            fieldType: 'input',
+                            className: 'w-full'
+                        },
+                        {
+                            id: 7,
                             value: '',
                             attr: {
                                 required: false,
@@ -318,15 +310,17 @@ export const useTransporters = defineStore("transporters", {
                                 type: 'repeat password',
                                 placeholder: 'password',
                             },
+                            show: false,
                             fieldType: 'input',
                             className: 'w-full'
                         },
                         {
-                            id: 6,
+                            id: 8,
                             attr: {
                                 title: 'Agree to terms?',
+                                required: false,
                                 options: [
-                                    {name: 'Agree to terms', checked: false, required: true,},
+                                    { name: 'Agree to terms', checked: false, required: true },
                                 ],
                             },
                             fieldType: 'checkBoxGroup',
@@ -373,13 +367,6 @@ export const useTransporters = defineStore("transporters", {
 
             // stepsProgress: 7,
 
-        }),
-        getters: {
-            showInput() {
-
-            }
-        },
-        watch: {},
-        actions: {},
+        })
     }
 );

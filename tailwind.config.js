@@ -17,6 +17,7 @@ module.exports = {
                 },
                 blue: {
                     ...defaultTheme.colors.blue,
+                    500: '#3875ff',
                     600: '#1a60ff',
                     950: '#0B122D'
                 }
