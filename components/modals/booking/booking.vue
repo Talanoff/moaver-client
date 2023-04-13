@@ -1,16 +1,17 @@
 <template>
     <div class="fixed top-0 w-screen h-screen">
         <div
-            class="flex bg-gray-600  bg-opacity-50 items-center justify-center absolute inset-0"
-            @click="store.toggleModal()"
+                class="flex bg-gray-600  bg-opacity-50 items-center justify-center absolute inset-0"
+                @click="store.toggleModal()"
         />
 
-        <form class="z-[999] max-w-[800px] w-[90vw] m-auto absolute inset-x-0 top-1/2 -translate-y-1/2" @submit.prevent="submit">
+        <form class="z-[999] max-w-[800px] w-[90vw] m-auto absolute inset-x-0 top-1/2 -translate-y-1/2"
+              @submit.prevent="submit">
             <div class="relative sm:p-8 p-5 bg-white rounded-3xl z-20">
                 <button
-                    type="button"
-                    class="absolute -top-5 -right-5 z-10 flex justify-center items-center px-3 py-3 bg-blue-900 rounded-lg text-gray-100"
-                    @click="store.toggleModal()"
+                        type="button"
+                        class="absolute -top-5 -right-5 z-10 flex justify-center items-center px-3 py-3 bg-blue-900 rounded-lg text-gray-100"
+                        @click="store.toggleModal()"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                          stroke="currentColor"
@@ -22,9 +23,9 @@
                 <div class="flex items-center space-x-5" v-if="store.currentStep > 1">
                     <div>
                         <button
-                            type="button"
-                            class="border-blue-600 rounded-md border-2 p-2 cursor-pointer"
-                            @click="back()"
+                                type="button"
+                                class="border-blue-600 rounded-md border-2 p-2 cursor-pointer"
+                                @click="back()"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                  stroke="currentColor" class="w-6 h-6">
@@ -52,8 +53,11 @@ import {useBooking} from "~/store/booking";
 import FooterComponent from "~/components/modals/booking/footer-component.vue";
 
 const store = useBooking();
+const api = useApi();
 
-const steps = [
+const {data: wishes} = await api.get('/wishes');
+
+const steps = ref([
     {
         id: 1,
         fields: [
@@ -182,17 +186,7 @@ const steps = [
                 id: 'wishes', // хз нужен ли
                 attrs: {
                     required: false,
-                    options: [
-                        { id: 1, name: 'Tail lift at pick-up' },
-                        { id: 2, name: 'Tail lift for delivery' },
-                        { id: 3, name: 'TIndoor charging' },
-                        { id: 4, name: 'Unloading inside' },
-                        { id: 5, name: 'Call before pick-up' },
-                        { id: 6, name: 'Call before delivery' },
-                        { id: 7, name: 'Appointment needed for delivery' },
-                        { id: 8, name: 'Urgent/Rush' },
-                        { id: 9, name: 'Forklift needed' },
-                    ],
+                    options: wishes.common,
                 },
                 controlName: 'wishes',
                 fieldType: 'checkBoxGroup',
@@ -209,13 +203,7 @@ const steps = [
                 title: 'Additional wishes',
                 attrs: {
                     required: false,
-                    options: [
-                        { id: 1, name: 'Part load' },
-                        { id: 2, name: 'Refrigerated transport' },
-                        { id: 3, name: 'Frozen transport' },
-                        { id: 4, name: 'Electric vehicle' },
-                        { id: 5, name: 'Call before pick-up' },
-                    ],
+                    options: wishes.additional,
                 },
                 controlName: 'additional_wishes',
                 fieldType: 'checkBoxGroup',
@@ -328,7 +316,7 @@ const steps = [
                     title: 'do you want to register?',
                     required: false,
                     options: [
-                        { name: 'do you want to register' },
+                        {name: 'do you want to register'},
                     ],
                 },
                 fieldType: 'checkBoxGroup',
@@ -366,7 +354,7 @@ const steps = [
                     title: 'Agree to terms?',
                     required: false,
                     options: [
-                        { name: 'Agree to terms', checked: false, required: true },
+                        {name: 'Agree to terms', checked: false, required: true},
                     ],
                 },
                 fieldType: 'checkBoxGroup',
@@ -387,10 +375,10 @@ const steps = [
         ],
 
     },
-];
+]);
 
 const submit = () => {
-    if (steps.length !== store.currentStep) {
+    if (steps.value.length !== store.currentStep) {
         if (store.currentStep === 6) {
             if (steps[5].fields[6].value === steps[5].fields[7].value && steps[5].fields[6].value !== '' || !steps[5].fields[6].show) {
                 store.currentStep++
@@ -400,7 +388,7 @@ const submit = () => {
                 alert('Password mismatch')
             }
         } else {
-            const name = steps.find(({id}) => id === store.currentStep + 1)?.title ?? '';
+            const name = steps.value.find(({id}) => id === store.currentStep + 1)?.title ?? '';
             store.setCurrentStep(name, 'increment');
         }
     } else {
@@ -410,7 +398,7 @@ const submit = () => {
 };
 
 const back = () => {
-    const name = steps.find(({id}) => id === store.currentStep - 1)?.title ?? '';
+    const name = steps.value.find(({id}) => id === store.currentStep - 1)?.title ?? '';
     store.setCurrentStep(name, 'decrement');
 }
 </script>
