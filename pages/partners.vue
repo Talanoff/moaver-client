@@ -21,7 +21,7 @@
                     class="block w-full group text-center"
             >
                 <div
-                        @click="storeTransporters.toggleModal()"
+                        @click="transportersStore.toggleModal()"
                         class="flex justify-center items-center p-5 lg:p-8 border-4 border-slate-200 text-2xl font-bold rounded-md group-hover:border-blue-600 group-hover:bg-slate-50 transition-colors duration-300">
                     Join now
                 </div>
@@ -29,12 +29,17 @@
         </div>
     </section>
 
-    <transporters v-if="storeTransporters.showModal"/>
+    <transporters v-if="transportersStore.showModal"/>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { useTransporters } from "~/store/transporters";
 import Transporters from "~/components/modals/transporters/transporters.vue";
+import { useConfig } from "~/store/config";
 
-const storeTransporters = useTransporters();
+const transportersStore = useTransporters();
+const configStore = useConfig();
+
+configStore.getCountries();
+configStore.getServices();
 </script>

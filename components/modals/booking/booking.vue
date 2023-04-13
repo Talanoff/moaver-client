@@ -2,7 +2,7 @@
     <div class="fixed top-0 w-screen h-screen">
         <div
                 class="flex bg-gray-600  bg-opacity-50 items-center justify-center absolute inset-0"
-                @click="store.toggleModal()"
+                @click="bookingStore.toggleModal()"
         />
 
         <form
@@ -13,7 +13,7 @@
                 <button
                         type="button"
                         class="absolute -top-5 -right-5 z-10 flex justify-center items-center px-3 py-3 bg-blue-900 rounded-lg text-gray-100"
-                        @click="store.toggleModal()"
+                        @click="bookingStore.toggleModal()"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                          stroke="currentColor"
@@ -22,7 +22,7 @@
                     </svg>
                 </button>
 
-                <div class="flex items-center space-x-5" v-if="store.currentStep > 1">
+                <div class="flex items-center space-x-5" v-if="bookingStore.currentStep > 1">
                     <div>
                         <button
                                 type="button"
@@ -37,8 +37,8 @@
                         </button>
                     </div>
 
-                    <h2 class="sm:text-3xl text-xl font-bold" v-if="store.currentStepName">
-                        {{ store.currentStepName }}
+                    <h2 class="sm:text-3xl text-xl font-bold" v-if="bookingStore.currentStepName">
+                        {{ bookingStore.currentStepName }}
                     </h2>
                 </div>
 
@@ -52,12 +52,13 @@
 
 <script setup>
 import {useBooking} from "~/store/booking";
+import {useConfig} from "~/store/config";
 import FooterComponent from "~/components/modals/booking/footer-component.vue";
 
-const store = useBooking();
-const api = useApi();
+const bookingStore = useBooking();
+const configStore = useConfig();
 
-const {data: wishes} = await api.get('/wishes');
+const wishes = ref(configStore.wishes)
 
 const steps = ref([
     {
@@ -79,7 +80,6 @@ const steps = ref([
                 controlName: 'pieces'
             },
             {
-                value: '',
                 attrs: {
                     required: false,
                     name: 'kg',
@@ -101,7 +101,6 @@ const steps = ref([
                 className: 'w-full'
             },
             {
-                value: '',
                 attrs: {
                     required: false,
                     name: 'Message',
@@ -118,7 +117,6 @@ const steps = ref([
         title: 'Ophaaldatum',
         fields: [
             {
-                value: '',
                 attrs: {
                     required: false,
                     name: 'Date From',
@@ -129,7 +127,6 @@ const steps = ref([
                 className: 'w-full'
             },
             {
-                value: '',
                 attrs: {
                     required: false,
                     name: 'Location from',
@@ -149,7 +146,6 @@ const steps = ref([
                 className: 'sm:w-1/2 w-full'
             },
             {
-                value: '',
                 attrs: {
                     required: false,
                     name: 'Date To',
@@ -160,7 +156,6 @@ const steps = ref([
                 className: 'w-full'
             },
             {
-                value: '',
                 attrs: {
                     required: false,
                     name: 'Location to',
@@ -189,7 +184,7 @@ const steps = ref([
                 id: 'wishes', // хз нужен ли
                 attrs: {
                     required: false,
-                    options: wishes.common,
+                    options: wishes.value.common ?? [],
                 },
                 controlName: 'wishes',
                 fieldType: 'checkBoxGroup',
@@ -206,7 +201,7 @@ const steps = ref([
                 title: 'Additional wishes',
                 attrs: {
                     required: false,
-                    options: wishes.additional,
+                    options: wishes.value.additional ?? [],
                 },
                 controlName: 'additional_wishes',
                 fieldType: 'checkBoxGroup',
@@ -214,7 +209,6 @@ const steps = ref([
             },
             {
                 id: 1,
-                value: '',
                 attrs: {
                     required: false,
                     name: 'additional wishes',
@@ -227,7 +221,6 @@ const steps = ref([
             },
             {
                 id: 2,
-                value: '',
                 attrs: {
                     required: false,
                     name: 'Pick file',
@@ -255,7 +248,6 @@ const steps = ref([
         fields: [
             {
                 id: 0,
-                value: '',
                 attrs: {
                     required: false,
                     name: 'Name',
@@ -267,7 +259,6 @@ const steps = ref([
             },
             {
                 id: 1,
-                value: '',
                 attrs: {
                     required: false,
                     name: 'Address',
@@ -279,7 +270,6 @@ const steps = ref([
             },
             {
                 id: 2,
-                value: '',
                 attrs: {
                     required: false,
                     name: 'Phone number',
@@ -291,7 +281,6 @@ const steps = ref([
             },
             {
                 id: 3,
-                value: '',
                 attrs: {
                     required: false,
                     name: 'E-mail address',
@@ -303,7 +292,6 @@ const steps = ref([
             },
             {
                 id: 4,
-                value: '',
                 attrs: {
                     required: false,
                     name: 'IBAN',
@@ -327,7 +315,6 @@ const steps = ref([
             },
             {
                 id: 6,
-                value: '',
                 attrs: {
                     required: false,
                     name: 'password',
@@ -340,7 +327,6 @@ const steps = ref([
             },
             {
                 id: 7,
-                value: '',
                 attrs: {
                     required: false,
                     name: 'repeat password',
@@ -381,18 +367,18 @@ const steps = ref([
 ]);
 
 const submit = () => {
-    if (steps.value.length !== store.currentStep) {
-        if (store.currentStep === 6) {
+    if (steps.value.length !== bookingStore.currentStep) {
+        if (bookingStore.currentStep === 6) {
             if (steps[5].fields[6].value === steps[5].fields[7].value && steps[5].fields[6].value !== '' || !steps[5].fields[6].show) {
-                store.currentStep++
+                bookingStore.currentStep++
             } else {
                 steps[5].fields[6].value = '';
                 steps[5].fields[7].value = '';
                 alert('Password mismatch')
             }
         } else {
-            const name = steps.value.find(({id}) => id === store.currentStep + 1)?.title ?? '';
-            store.setCurrentStep(name, 'increment');
+            const name = steps.value.find(({id}) => id === bookingStore.currentStep + 1)?.title ?? '';
+            bookingStore.setCurrentStep(name, 'increment');
         }
     } else {
         console.log(steps)
@@ -401,8 +387,8 @@ const submit = () => {
 };
 
 const back = () => {
-    const name = steps.value.find(({id}) => id === store.currentStep - 1)?.title ?? '';
-    store.setCurrentStep(name, 'decrement');
+    const name = steps.value.find(({id}) => id === bookingStore.currentStep - 1)?.title ?? '';
+    bookingStore.setCurrentStep(name, 'decrement');
 }
 </script>
 

@@ -1,32 +1,46 @@
 import { defineStore } from "pinia";
 
-export const useConfig = defineStore('config', {
-    state: () => ({
-        countries: [],
-        services: [],
-        vehicles: []
-    }),
-    actions: {
-        async getCountries(): Promise<void> {
-            const api = useApi();
-            const { data } = await api.get('/countries');
-            this.countries = data;
-        },
+export const useConfig = defineStore('config', () => {
+    const api = useApi();
 
-        async getServices(): Promise<void> {
-            const api = useApi();
-            const { data } = await api.get('/services');
-            this.services = data;
-        },
+    const countries = ref([]);
+    const services = ref([]);
+    const vehicles = ref([]);
+    const wishes = ref({});
 
-        async getVehicles(services: string[]): Promise<void> {
-            const api = useApi();
-            const { data } = await api.get('/vehicles', {
-                params: {
-                    services: services.join(',')
-                }
-            });
-            this.vehicles = data;
-        }
+    const getCountries = async (): Promise<void> => {
+        const { data } = await api.get('/countries');
+        countries.value = data;
+    }
+
+    const getServices = async (): Promise<void> => {
+        const { data } = await api.get('/services');
+        services.value = data;
+    }
+
+    const getVehicles = async (services: string[]): Promise<void> => {
+        const { data } = await api.get('/vehicles', {
+            params: {
+                services: services.join(',')
+            }
+        });
+
+        vehicles.value = data;
+    }
+
+    const getWishes = async (): Promise<void> => {
+        const { data } = await api.get('/wishes');
+        wishes.value = data;
+    }
+
+    return {
+        countries,
+        services,
+        vehicles,
+        wishes,
+        getCountries,
+        getServices,
+        getVehicles,
+        getWishes
     }
 });
