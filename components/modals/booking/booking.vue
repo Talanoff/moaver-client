@@ -5,8 +5,10 @@
                 @click="store.toggleModal()"
         />
 
-        <form class="z-[999] max-w-[800px] w-[90vw] m-auto absolute inset-x-0 top-1/2 -translate-y-1/2"
-              @submit.prevent="submit">
+        <form
+                class="z-[999] max-w-[800px] w-[90vw] m-auto absolute inset-x-0 top-1/2 -translate-y-1/2"
+                @submit.prevent="submit"
+        >
             <div class="relative sm:p-8 p-5 bg-white rounded-3xl z-20">
                 <button
                         type="button"
