@@ -1,16 +1,20 @@
 <template>
     <div>
-        <div v-if=" store.currentStep !== store.steps.length">
+        <div v-if="store.currentStep !== store.steps.length">
             <div v-for="step in store.steps">
                 <div
                         v-if="step.id === store.currentStep"
                         :key="step.id"
-                        class="sm:h-[450px] h-[350px] overflow-y-auto overflow-x-hidden"
+                        class="max-h-[90vh] overflow-y-auto overflow-x-hidden"
                 >
-                    <div class="flex flex-wrap -m-2.5">
-                        <div v-for="field in step.fields" :key="field.id" :class="field.className">
+                    <div class="flex flex-wrap">
+                        <div
+                            class="p-2"
+                            v-for="field in step.fields"
+                            :key="field.id"
+                            :class="field.className"
+                        >
                             <component
-                                    class="p-2.5"
                                     :is="getFieldName(field.fieldType)"
                                     :id="field.id"
                                     v-model="field.value"

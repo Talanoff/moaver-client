@@ -1,14 +1,12 @@
 <template>
     <div v-for="(option,idx) in $attrs.options" :key="option.name">
-        <div>
-            <form-checkbox
-                    v-if="!option.type"
-                    :required="option.required"
-                    :checked="option.checked"
-                    :title="option.name"
-                    @inputEmit="setCheckbox(idx)"
-            />
-        </div>
+        <form-checkbox
+            v-if="!option.type"
+            :required="option.required"
+            :checked="option.checked"
+            :title="option.name"
+            @inputEmit="setCheckbox(idx)"
+        />
     </div>
 </template>
 <script setup>

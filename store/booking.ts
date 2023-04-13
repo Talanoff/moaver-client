@@ -57,7 +57,7 @@ export const useBooking = defineStore("booking", {
                                 placeholder: 'Message',
                             },
                             fieldType: 'textarea',
-                            className: 'w-full m-2.5'
+                            className: 'w-full'
                         },
                     ]
                 },
@@ -210,7 +210,6 @@ export const useBooking = defineStore("booking", {
                             className: 'w-full'
                         },
                     ],
-
                 },
                 {
                     id: 6,

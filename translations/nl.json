@@ -22,5 +22,10 @@
       "description": "Fusce porta libero non feugiat placerat. Vestibulum suscript, tortor eu sollicitudin tempor, ligula nibh lobortis sapien, en efficitur justo diam vitae mauris. Suspendise et tincidunt elit. Sed sollicitudin neque justo, in molestie leo scelerisque ut. Donec urna nibh, egestas vel convallis vel, finibus sit amet eros. Aenean id tortor nec.",
       "link": "Lees meer over ons"
     }
+  },
+
+  "forms": {
+    "step": "Stap",
+    "of": "van"
   }
 }
