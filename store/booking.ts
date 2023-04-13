@@ -367,6 +367,29 @@ export const useBooking = defineStore("booking", {
 
             // stepsProgress: 7,
 
-        })
+        }),
+
+        getters: {
+            stepName: (state) => state.steps.find((it: {
+                id: number;
+                title?: string;
+            }) => it.id === state.currentStep)?.title ?? ''
+        },
+
+        actions: {
+            toggleModal(toState: boolean | undefined = undefined) {
+                if (toState !== undefined) {
+                    this.showModal = toState;
+                } else {
+                    this.showModal = !this.showModal;
+                }
+
+                this.currentStep = 1;
+            },
+
+            setCategory(name: string) {
+                this.category = name;
+            }
+        }
     }
 );

@@ -122,7 +122,7 @@ export const useTransporters = defineStore("transporters", {
                                 { name: 'Distribution Sea container transport', checked: false },
                             ],
                         },
-                        fieldType: 'checkBoxGroup',
+                        fieldType: 'services',
                         className: 'w-full'
                     },
                 ]

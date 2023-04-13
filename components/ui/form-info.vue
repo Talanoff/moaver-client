@@ -50,7 +50,7 @@ const fields = ref([])
 const store = useBooking()
 const setValue = () => {
   store.steps.forEach(el => el.fields.forEach((elem) => {
-    if (elem.fieldType !== 'checkBoxGroup') {
+    if (elem.fieldType !== 'services') {
       fields.value.push({name: elem.attr?.name, value: elem.value, url: elem.attr?.url})
     }
   }))

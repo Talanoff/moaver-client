@@ -2,7 +2,7 @@
     <div class="relative" v-click-outside="onClickOutside">
         <button
                 type="button"
-                class="relative w-full cursor-default rounded-md bg-white py-1.5 pr-10 text-left ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                class="relative w-full cursor-default rounded-md bg-gray-50 py-1.5 pr-10 text-left ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6"
                 aria-haspopup="listbox"
                 :aria-expanded="expanded"
                 aria-labelledby="listbox-label"

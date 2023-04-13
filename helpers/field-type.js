@@ -4,7 +4,7 @@ import formFile from "~/components/ui/form-file.vue";
 import formSelect from "~/components/ui/form-select.vue";
 import formTextarea from "~/components/ui/form-textarea.vue";
 import cardWrapper from "~/components/ui/cards/card-wrapper.vue";
-import formCheckboxGroup from "~/components/ui/form-checkbox-group.vue";
+import formCheckboxGroup from "~/components/forms/services.vue";
 import formInfo from "~/components/ui/form-info.vue";
 import locations from "~/components/forms/locations.vue";
 
@@ -22,7 +22,7 @@ export function getFieldName(type) {
             return formSelect;
         case 'textarea':
             return formTextarea;
-        case 'checkBoxGroup':
+        case 'services':
             return formCheckboxGroup;
         case 'locations':
             return locations;

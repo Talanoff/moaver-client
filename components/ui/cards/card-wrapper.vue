@@ -8,7 +8,3 @@
 
 import Card from "~/components/ui/cards/card.vue";
 </script>
-
-<style scoped>
-
-</style>
