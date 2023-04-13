@@ -1,20 +1,21 @@
 <template>
-    <div>
-        <form-select
-            class="w-20"
-            v-model="locale"
-            :options="locales"
-        />
+    <div class="flex divide-x-2 -mx-1.5">
+        <button
+                type="button"
+                v-for="lang of locales"
+                :value="lang"
+                :key="lang"
+                @click.prevent="setLocale(lang)"
+                class="px-1.5"
+                :class="{'font-bold': lang === locale}"
+        >
+            {{ lang }}
+        </button>
     </div>
 </template>
 
 <script setup>
-import FormSelect from "~/components/ui/form-select.vue";
+const {locale, setLocale} = useI18n();
 
-const { locale } = useI18n();
-
-const locales = ref([
-    {key: 'en', value: 'en'},
-    {key: 'nl', value: 'nl'},
-]);
+const locales = ref(['en', 'nl']);
 </script>
