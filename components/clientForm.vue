@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div v-if="store.currentStep !== store.steps.length">
-            <div v-for="step in store.steps">
+        <div v-if="store.currentStep !== steps.length">
+            <div v-for="step in steps">
                 <div
                         v-if="step.id === store.currentStep"
                         :key="step.id"
@@ -17,9 +17,9 @@
                             <component
                                     :is="getFieldName(field.fieldType)"
                                     :id="field.id"
-                                    v-model="field.value"
-                                    v-bind="field.attr"
-                                    v-if="field.show === true || field.show === undefined"
+                                    v-model="store.form[field.controlName][0]"
+                                    v-bind="field.attrs"
+                                    v-if="!field.hidden && store.form[field.controlName]"
                             />
                         </div>
                     </div>
@@ -37,5 +37,7 @@
 import {getFieldName} from "~/helpers/field-type";
 import {useBooking} from "~/store/booking";
 
-const store = useBooking()
+const store = useBooking();
+
+defineProps(['steps']);
 </script>

@@ -1,27 +1,39 @@
 <template>
-    <div v-for="(option,idx) in $attrs.options" :key="option.name">
+    <div >
         <form-checkbox
-            v-if="!option.type"
-            :required="option.required"
-            :checked="option.checked"
-            :title="option.name"
-            @inputEmit="setCheckbox(idx)"
+            v-for="option in $attrs.options" :key="option.id"
+                :id="`id-${option.id}`"
+                :title="option.name"
+                :value="option.id"
+                :checked="modelValue.includes(option.id)"
+                @change="setCheckbox($event, option.id)"
         />
     </div>
 </template>
 <script setup>
 import FormCheckbox from "~/components/ui/form-checkbox.vue";
-import { useBooking } from "~/store/booking";
+import {useBooking} from "~/store/booking";
 
-const props = defineProps(['id']);
+const props = defineProps({
+    id: String,
+    modelValue: Array
+});
+
+const emits = defineEmits(['update:modelValue']);
+
 const store = useBooking();
 
-const setCheckbox = (idx) => {
-    store.steps[store.currentStep - 1].fields[props.id].attr.options[idx].checked = !store.steps[store.currentStep - 1].fields[props.id].attr.options[idx].checked;
+const setCheckbox = (event, id) => {
+    if (event.target) {
+        let currentValue = [...props.modelValue];
 
-    if (store.steps[store.currentStep - 1].fields[props.id].attr.options[idx].name === 'do you want to register') {
-        store.steps[store.currentStep - 1].fields[6].show = store.steps[store.currentStep - 1].fields[props.id].attr.options[idx].checked
-        store.steps[store.currentStep - 1].fields[7].show = store.steps[store.currentStep - 1].fields[props.id].attr.options[idx].checked
+        if (!event.target.checked) {
+            currentValue = currentValue.filter(it => it !== id);
+        } else {
+            currentValue.push(id);
+        }
+
+        emits('update:modelValue', currentValue);
     }
 }
 </script>

@@ -34,16 +34,14 @@
                         </button>
                     </div>
 
-                    <h2 class="sm:text-3xl text-xl font-bold" v-if="store.stepName">
-                        {{ store.stepName }}
+                    <h2 class="sm:text-3xl text-xl font-bold" v-if="store.currentStepName">
+                        {{ store.currentStepName }}
                     </h2>
                 </div>
 
-                <client-form class="mb-8 mt-5"/>
+                <client-form :steps="steps" class="mb-8 mt-5"/>
 
-                <footer-component>
-                    {{ store.steps.length !== store.currentStep ? 'Next' : 'Submit' }}
-                </footer-component>
+                <footer-component :steps="steps"/>
             </div>
         </form>
     </div>
@@ -54,27 +52,366 @@ import {useBooking} from "~/store/booking";
 import FooterComponent from "~/components/modals/booking/footer-component.vue";
 
 const store = useBooking();
+
+const steps = [
+    {
+        id: 1,
+        fields: [
+            {
+                fieldType: 'card',
+                className: 'w-full sm:grid-cols-2 grid-cols-1',
+            },
+            {
+                attrs: {
+                    label: 'Pieces',
+                    type: 'number',
+                    placeholder: 'Pieces',
+                },
+                fieldType: 'input',
+                className: 'sm:w-1/2 w-full',
+                controlName: 'pieces'
+            },
+            {
+                value: '',
+                attrs: {
+                    required: false,
+                    name: 'kg',
+                    type: 'number',
+                    placeholder: 'kg',
+                },
+                fieldType: 'input',
+                className: 'sm:w-1/2 w-full'
+            },
+            {
+                value: 'home',
+                attrs: {
+                    required: false,
+                    name: 'What exactly do you want to send',
+                    options: ['home', 'office'],
+                },
+                hidden: true,
+                fieldType: 'select',
+                className: 'w-full'
+            },
+            {
+                value: '',
+                attrs: {
+                    required: false,
+                    name: 'Message',
+                    type: 'text',
+                    placeholder: 'Message',
+                },
+                fieldType: 'textarea',
+                className: 'w-full'
+            },
+        ]
+    },
+    {
+        id: 2,
+        title: 'Ophaaldatum',
+        fields: [
+            {
+                value: '',
+                attrs: {
+                    required: false,
+                    name: 'Date From',
+                    type: 'datetime-local',
+                    placeholder: 'date'
+                },
+                fieldType: 'input',
+                className: 'w-full'
+            },
+            {
+                value: '',
+                attrs: {
+                    required: false,
+                    name: 'Location from',
+                    type: 'text',
+                },
+                fieldType: 'input',
+                className: 'sm:w-1/2 w-full'
+            },
+            {
+                value: 'home',
+                attrs: {
+                    required: false,
+                    name: 'Location type from',
+                    options: ['home', 'office'],
+                },
+                fieldType: 'select',
+                className: 'sm:w-1/2 w-full'
+            },
+            {
+                value: '',
+                attrs: {
+                    required: false,
+                    name: 'Date To',
+                    placeholder: 'date',
+                    type: 'datetime-local',
+                },
+                fieldType: 'input',
+                className: 'w-full'
+            },
+            {
+                value: '',
+                attrs: {
+                    required: false,
+                    name: 'Location to',
+                    type: 'text',
+                },
+                fieldType: 'input',
+                className: 'sm:w-1/2 w-full'
+            },
+            {
+                value: 'home',
+                attrs: {
+                    required: false,
+                    name: 'Location type to',
+                    options: ['home', 'office'],
+                },
+                fieldType: 'select',
+                className: 'sm:w-1/2 w-full'
+            },
+        ]
+    },
+    {
+        id: 3,
+        title: 'Pick-up and delivery wishes/requirements',
+        fields: [
+            {
+                id: 'wishes', // хз нужен ли
+                attrs: {
+                    required: false,
+                    options: [
+                        { id: 1, name: 'Tail lift at pick-up' },
+                        { id: 2, name: 'Tail lift for delivery' },
+                        { id: 3, name: 'TIndoor charging' },
+                        { id: 4, name: 'Unloading inside' },
+                        { id: 5, name: 'Call before pick-up' },
+                        { id: 6, name: 'Call before delivery' },
+                        { id: 7, name: 'Appointment needed for delivery' },
+                        { id: 8, name: 'Urgent/Rush' },
+                        { id: 9, name: 'Forklift needed' },
+                    ],
+                },
+                controlName: 'wishes',
+                fieldType: 'checkBoxGroup',
+                className: 'w-full'
+            },
+        ]
+    },
+    {
+        id: 4,
+        title: 'Additional wishes',
+        fields: [
+            {
+                id: 'additional_wishes',
+                title: 'Additional wishes',
+                attrs: {
+                    required: false,
+                    options: [
+                        { id: 1, name: 'Part load' },
+                        { id: 2, name: 'Refrigerated transport' },
+                        { id: 3, name: 'Frozen transport' },
+                        { id: 4, name: 'Electric vehicle' },
+                        { id: 5, name: 'Call before pick-up' },
+                    ],
+                },
+                controlName: 'additional_wishes',
+                fieldType: 'checkBoxGroup',
+                className: 'w-full'
+            },
+            {
+                id: 1,
+                value: '',
+                attrs: {
+                    required: false,
+                    name: 'additional wishes',
+                    type: 'text',
+                    placeholder: 'additional wishes',
+                },
+                controlName: 'additional_wishes_notes',
+                fieldType: 'textarea',
+                className: 'w-full m-2.5'
+            },
+            {
+                id: 2,
+                value: '',
+                attrs: {
+                    required: false,
+                    name: 'Pick file',
+                    url: ''
+                },
+                controlName: 'additional_wishes_attachment',
+                fieldType: 'file',
+                className: 'w-full'
+            },
+        ]
+    },
+    {
+        id: 5,
+        title: 'INFO',
+        fields: [
+            {
+                fieldType: 'formInfo',
+                className: 'w-full'
+            },
+        ],
+    },
+    {
+        id: 6,
+        title: 'Personal info',
+        fields: [
+            {
+                id: 0,
+                value: '',
+                attrs: {
+                    required: false,
+                    name: 'Name',
+                    type: 'text',
+                    placeholder: 'your name',
+                },
+                fieldType: 'input',
+                className: 'w-full'
+            },
+            {
+                id: 1,
+                value: '',
+                attrs: {
+                    required: false,
+                    name: 'Address',
+                    type: 'text',
+                    placeholder: 'your address',
+                },
+                fieldType: 'input',
+                className: 'w-full'
+            },
+            {
+                id: 2,
+                value: '',
+                attrs: {
+                    required: false,
+                    name: 'Phone number',
+                    type: 'text',
+                    placeholder: 'Phone number',
+                },
+                fieldType: 'input',
+                className: 'w-full'
+            },
+            {
+                id: 3,
+                value: '',
+                attrs: {
+                    required: false,
+                    name: 'E-mail address',
+                    type: 'email',
+                    placeholder: 'E-mail address',
+                },
+                fieldType: 'input',
+                className: 'w-full'
+            },
+            {
+                id: 4,
+                value: '',
+                attrs: {
+                    required: false,
+                    name: 'IBAN',
+                    type: 'number',
+                    placeholder: 'IBAN',
+                },
+                fieldType: 'input',
+                className: 'w-full'
+            },
+            {
+                id: 5,
+                attrs: {
+                    title: 'do you want to register?',
+                    required: false,
+                    options: [
+                        { name: 'do you want to register' },
+                    ],
+                },
+                fieldType: 'checkBoxGroup',
+                className: 'w-full'
+            },
+            {
+                id: 6,
+                value: '',
+                attrs: {
+                    required: false,
+                    name: 'password',
+                    type: 'password',
+                    placeholder: 'password',
+                },
+                hidden: true,
+                fieldType: 'input',
+                className: 'w-full'
+            },
+            {
+                id: 7,
+                value: '',
+                attrs: {
+                    required: false,
+                    name: 'repeat password',
+                    type: 'repeat password',
+                    placeholder: 'password',
+                },
+                hidden: true,
+                fieldType: 'input',
+                className: 'w-full'
+            },
+            {
+                id: 8,
+                attrs: {
+                    title: 'Agree to terms?',
+                    required: false,
+                    options: [
+                        { name: 'Agree to terms', checked: false, required: true },
+                    ],
+                },
+                fieldType: 'checkBoxGroup',
+                className: 'w-full'
+            },
+        ],
+
+
+    },
+    {
+        id: 7,
+        title: 'INFO',
+        fields: [
+            {
+                fieldType: 'formInfo',
+                className: 'w-full'
+            },
+        ],
+
+    },
+];
+
 const submit = () => {
-    if (store.steps.length !== store.currentStep) {
+    if (steps.length !== store.currentStep) {
         if (store.currentStep === 6) {
-            if (store.steps[5].fields[6].value === store.steps[5].fields[7].value && store.steps[5].fields[6].value !== '' || !store.steps[5].fields[6].show) {
+            if (steps[5].fields[6].value === steps[5].fields[7].value && steps[5].fields[6].value !== '' || !steps[5].fields[6].show) {
                 store.currentStep++
             } else {
-                store.steps[5].fields[6].value = '';
-                store.steps[5].fields[7].value = '';
+                steps[5].fields[6].value = '';
+                steps[5].fields[7].value = '';
                 alert('Password mismatch')
             }
         } else {
-            store.currentStep++
+            const name = steps.find(({id}) => id === store.currentStep + 1)?.title ?? '';
+            store.setCurrentStep(name, 'increment');
         }
     } else {
-        console.log(store.steps)
+        console.log(steps)
     }
 
 };
+
 const back = () => {
-    store.currentStep = store.currentStep - 1
-    console.log(store.currentStep)
+    const name = steps.find(({id}) => id === store.currentStep - 1)?.title ?? '';
+    store.setCurrentStep(name, 'decrement');
 }
 </script>
 

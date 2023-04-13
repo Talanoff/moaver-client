@@ -1,29 +1,30 @@
 <template>
     <div class="flex items-center pl-4 border border-gray-300 text-gray-900 text-sm rounded-lg mb-2">
         <input
-            :id="props.title"
-            type="checkbox"
-            @input="$emit('inputEmit')"
-               :checked="props.checked"
-               :required="props.required"
-               class="appearance-none w-4 h-4 bg-gray-100 border-gray-300 rounded checked:bg-blue-500 focus:ring-blue-500 focus:ring-2 focus:ring-offset-2"
+                :id="title"
+                type="checkbox"
+                :checked="checked"
+                :value="value"
+                :required="required"
+                class="appearance-none w-4 h-4 bg-gray-100 border-gray-300 rounded checked:bg-blue-500 focus:ring-blue-500 focus:ring-2 focus:ring-offset-2"
+                @change="$emit('change', $event.target.value)"
         >
         <label
-                :for="props.title"
+                :for="title"
                 class="w-full py-4 ml-2 text-sm font-medium text-gray-900 cursor-pointer"
         >
-            {{ props.title }}
+            {{ title }}
         </label>
     </div>
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
+    value: String | Number,
     title: String,
     checked: Boolean,
     required: Boolean,
-})
-defineEmits(['inputEmit'])
+});
 </script>
 
 <style scoped>
