@@ -64,6 +64,7 @@ const steps = ref([
             {
                 fieldType: 'card',
                 className: 'w-full sm:grid-cols-2 grid-cols-1',
+                controlName: 'category'
             },
             {
                 attrs: {
