@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-import { required } from "@vuelidate/validators";
 
 type CurrentState = {
     showModal: boolean;
@@ -43,7 +42,7 @@ export const useBooking = defineStore("booking", {
 
             form: {
                 category: [null],
-                pieces: [null, [{ required }]],
+                pieces: [null, ['required']],
                 // ....
                 wishes: [[]],
                 additional_wishes: [[]],
