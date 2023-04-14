@@ -1,73 +1,28 @@
 <template>
-    <div class="container">
-        <h1 class="text-center sm:mt-16 sm:mb-16 mt-0 mb-8 text-blue-950 font-bold sm:text-6xl text-xl">Terms and
-            conditions</h1>
-        <p class="text-center mb-28 text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi
-            aperiam
-            blanditiis debitis dolorem, earum, enim facilis incidunt iste iure nobis numquam perspiciatis porro
-            provident quod
-            rem, repellendus totam voluptas. Ab accusamus ad animi cumque, debitis dolores earum excepturi fuga iure
-            molestias
-            obcaecati perferendis quod, repudiandae sint temporibus! Aspernatur aut consectetur cumque, eaque, eos illum
-            iste
-            laboriosam magnam nulla provident qui quibusdam quis reprehenderit sit, temporibus? Assumenda culpa dolore
-            eius
-            eligendi hic, officia voluptate voluptates. Ab accusamus adipisci alias amet animi architecto aspernatur
-            cupiditate delectus ipsa ipsum iure iusto laborum magnam magni maxime molestiae molestias nesciunt nisi
-            nobis
-            nulla perspiciatis possimus provident quas, quasi quibusdam quis repellendus sapiente sequi sit sunt, vel
-            veritatis vitae voluptates! Aliquam assumenda autem blanditiis corporis culpa deleniti dolor doloremque ea,
-            eaque
-            eos, est excepturi fuga hic illo impedit incidunt magni nesciunt nobis officia pariatur perferendis
-            perspiciatis
-            porro quis quisquam quos rem repellat rerum sed similique soluta ullam ut vel veritatis vitae voluptatem
-            voluptates voluptatum? Accusantium adipisci amet animi asperiores aut deserunt, dicta ducimus enim ex fugit
-            id,
-            inventore ipsum iste iure magnam magni molestiae nam necessitatibus nemo neque obcaecati, odit quae quaerat
-            quas
-            quia quis quod repellat repellendus repudiandae rerum saepe sit sunt tenetur ut veniam vitae voluptatem. Ab
-            animi
-            at, consectetur deserunt dolorem eum expedita hic laudantium libero nobis officia praesentium rem
-            repudiandae
-            rerum voluptatibus. Architecto consequuntur dignissimos ducimus eos harum, hic itaque labore laborum
-            mollitia nemo
-            nihil obcaecati perspiciatis placeat reiciendis saepe veniam voluptate? Ab, accusamus alias amet beatae
-            culpa
-            dolorem dolorum eaque, earum impedit ipsum laudantium minima molestias nulla numquam odio omnis sapiente
-            similique
-            sit vitae voluptatibus. Et fugiat necessitatibus, nobis omnis quod ullam voluptatibus. Alias consectetur
-            delectus
-            deleniti dolore et illo impedit ipsum itaque iusto natus, perferendis perspiciatis porro, praesentium
-            quibusdam,
-            rem sed vel veritatis. Consequatur cum ducimus est eum, ex illum impedit inventore, nihil nobis, pariatur
-            perspiciatis quasi quo ratione tempora veniam vero voluptatem! A consectetur consequuntur cupiditate,
-            deleniti
-            dicta enim esse fugiat, in molestiae nihil praesentium quaerat quis rem. A consequuntur dolorum eaque earum
-            illum
-            iure maxime nesciunt nihil quo sed? Adipisci aspernatur consectetur culpa facilis, in incidunt itaque nam
-            obcaecati omnis porro, provident quaerat quisquam quo ratione, veniam? Accusamus, cum cupiditate delectus
-            dignissimos eius fugiat inventore officiis saepe voluptate voluptatibus. Blanditiis commodi est fuga illo,
-            nostrum
-            nulla quis repudiandae sunt suscipit. Accusamus cum excepturi minus odit sapiente soluta. Accusantium
-            aperiam
-            autem commodi cumque deserunt eos excepturi facere illum ipsum iste iusto maiores minima nemo neque nostrum
-            optio
-            pariatur, perspiciatis quae quam qui quisquam quod ratione similique sint tempore veniam voluptate. Corporis
-            cupiditate enim eum ex facilis fuga in molestiae natus nemo non, obcaecati officia officiis quaerat quas
-            quis
-            repudiandae rerum sit! Ad adipisci atque aut cupiditate debitis dignissimos doloremque error fuga illum nisi
-            numquam perferendis, quasi quos veniam voluptatem? Architecto cum dolorem esse hic nemo nulla obcaecati
-            pariatur
-            reprehenderit, temporibus totam. Error expedita fugiat inventore itaque molestias natus sint sunt tempore
-            vero.
-            Accusantium adipisci corporis enim est incidunt ipsam libero magni neque omnis perferendis, porro quas quod
-            suscipit vero.</p>
-    </div>
+    <skeleton-loader v-if="loading"/>
+    <base-template v-else :title="page.title" :content="page.content"/>
 </template>
 
 <script setup>
+import BaseTemplate from "~/components/ui/pages/base-template.vue";
+import SkeletonLoader from "~/components/ui/pages/skeleton-loader.vue";
+
+const api = useApi();
+const loading = ref(true);
+const page = ref({});
+const { locale } = useI18n();
+
+const { data } = await api.get('pages/1');
+page.value = data;
+loading.value = false;
+
+watch(locale, (value) => {
+    loading.value = true;
+
+    api.get('pages/1', {
+        headers: { 'X-Locale': value }
+    })
+        .then(({ data }) => page.value = data)
+        .finally(() => loading.value = false);
+});
 </script>
-
-<style scoped>
-
-</style>
