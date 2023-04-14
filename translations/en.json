@@ -33,6 +33,13 @@
   "forms": {
     "step": "Step",
     "of": "of"
+  },
+
+  "categories":{
+      "one":"one package",
+      "many": "many packages",
+      "pallets": "Pallet(s)",
+      "various": "Various goods"
   }
 }
 
