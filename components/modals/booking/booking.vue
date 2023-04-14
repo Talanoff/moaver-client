@@ -1,57 +1,23 @@
 <template>
-    <div class="fixed top-0 w-screen h-screen">
-        <div
-                class="flex bg-gray-600  bg-opacity-50 items-center justify-center absolute inset-0"
-                @click="bookingStore.toggleModal()"
-        />
-
-        <form
-                class="z-[999] max-w-[800px] w-[90vw] m-auto absolute inset-x-0 top-1/2 -translate-y-1/2"
-                @submit.prevent="submit"
-        >
-            <div class="relative sm:p-8 p-5 bg-white rounded-3xl z-20">
-                <button
-                        type="button"
-                        class="absolute -top-5 -right-5 z-10 flex justify-center items-center px-3 py-3 bg-blue-900 rounded-lg text-gray-100"
-                        @click="bookingStore.toggleModal()"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                         stroke="currentColor"
-                         class="w-5 h-5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
-                </button>
-
-                <div class="flex items-center space-x-5" v-if="bookingStore.currentStep > 1">
-                    <div>
-                        <button
-                                type="button"
-                                class="border-blue-600 rounded-md border-2 p-2 cursor-pointer"
-                                @click="back()"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                 stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                      d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"/>
-                            </svg>
-                        </button>
-                    </div>
-
-                    <h2 class="sm:text-3xl text-xl font-bold" v-if="bookingStore.currentStepName">
-                        {{ bookingStore.currentStepName }}
-                    </h2>
-                </div>
-
-                <client-form :steps="steps" class="mb-8 mt-5"/>
-
-                <footer-component :steps="steps"/>
-            </div>
+    <modal
+            :title="bookingStore.currentStepName"
+            :show-back-button="bookingStore.currentStep > 1"
+            @back="back"
+            @close="bookingStore.toggleModal(false)"
+    >
+        <form @submit.prevent="submit">
+            <client-form :steps="steps"/>
+            <footer-component
+                :total-steps="steps.length"
+                :current-step="bookingStore.currentStep"
+            />
         </form>
-    </div>
+    </modal>
 </template>
 
 <script setup>
 import FooterComponent from "~/components/modals/booking/footer-component.vue";
+import Modal from "~/components/modals/modal.vue";
 import { useBooking } from "~/store/booking";
 import { useConfig } from "~/store/config";
 
@@ -383,8 +349,7 @@ const submit = () => {
     } else {
         console.log(steps)
     }
-
-};
+}
 
 const back = () => {
     const name = steps.value.find(({ id }) => id === bookingStore.currentStep - 1)?.title ?? '';

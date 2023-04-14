@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="mb-8 mt-5">
         <div v-if="store.currentStep !== steps.length">
             <div v-for="step in steps">
                 <div

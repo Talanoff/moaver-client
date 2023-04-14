@@ -1,26 +1,29 @@
 <template>
-    <footer class="flex justify-between items-center mt-8">
-        <div class="w-1/2 sm:w-1/4">
-            <h2>Step {{ store.currentStep }} van {{ store.steps.length }} </h2>
+    <footer class="flex justify-between items-center mt-8 px-2">
+        <div class="sm:w-1/3 w-1/2">
+            <h2>
+                {{ $t('forms.step') }}
+                {{ currentStep }}
+                {{ $t('forms.of') }}
+                {{ totalSteps }}
+            </h2>
             <div class="w-full bg-gray-200 rounded-full h-2.5">
                 <div :style="{width}" class="bg-blue-600 h-2.5 rounded-full"></div>
             </div>
         </div>
         <button
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center"
-                type="submit"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center"
+            type="submit"
         >
-            <slot/>
+            {{ totalSteps !== currentStep ? 'Next' : 'Submit' }}
         </button>
     </footer>
 </template>
 
 <script setup>
-import { useTransporters } from "~/store/transporters";
-
-const store = useTransporters();
+const props = defineProps(['totalSteps', 'currentStep']);
 
 const width = computed(() => {
-    return ((store.currentStep / store.steps.length) * 100) + '%'
+    return ((props.currentStep / props.totalSteps) * 100) + '%'
 });
 </script>

@@ -39,7 +39,6 @@ export const useBooking = defineStore("booking", {
                     name: 'Various goods'
                 }
             ],
-
             form: {
                 category: [null],
                 pieces: [null, ['required']],

@@ -1,62 +1,390 @@
 <template>
-    <div class="fixed top-0 w-screen h-screen">
-        <form
-                class="flex justify-center items-center z-[999] w-screen h-screen"
-                @keypress.enter="storeTransporters.onNextStep()"
-                @submit.prevent="storeTransporters.onNextStep()"
-        >
-            <div
-                    class="flex bg-gray-600  bg-opacity-50 items-center justify-center absolute h-screen w-screen top-0 left-0"
-                    @click="storeTransporters.showModal = false"
-            />
-
-            <div class="relative lg:w-1/2 sm:w-3/4 w-[90%] m-auto left-0 p-10 bg-white rounded-3xl z-20 max-w-[600px]">
-                <div class="mb-2.5">
-                    <button
-                            type="button"
-                            class="absolute -top-5 -right-5 z-10 flex justify-center items-center px-3 py-3 bg-blue-900 rounded-lg text-gray-100"
-                            @click="storeTransporters.showModal = false">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor"
-                             class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                        </svg>
-                    </button>
-
-                    <button
-                            type="button"
-                            class="border-blue-600 p-2 rounded-md border-2 w-10 cursor-pointer"
-                            v-if="storeTransporters.currentStep > 1"
-                            @click="back()">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"/>
-                        </svg>
-                    </button>
-                </div>
-
-                <transporters-form/>
-
-                <footer-component>
-                    {{ storeTransporters.steps.length !== storeTransporters.currentStep ? 'Next' : 'Submit' }}
-                </footer-component>
-            </div>
-
+    <modal
+        :title="storeTransporters.currentStepName"
+        :show-back-button="storeTransporters.currentStep > 1"
+        @back="back"
+        @close="storeTransporters.toggleModal(false)"
+    >
+        <form @submit.prevent="submit">
+        <transporters-form :steps="steps"/>
+        <footer-component
+            :total-steps="steps.length"
+            :current-step="storeTransporters.currentStep"
+        />
         </form>
-    </div>
+    </modal>
 </template>
 
 <script setup>
 import FooterComponent from "~/components/modals/transporters/footer-component.vue";
 import TransportersForm from "~/components/transportersForm.vue";
 import { useTransporters } from "~/store/transporters";
+import Modal from "~/components/modals/modal.vue";
 
 const storeTransporters = useTransporters();
 
+const steps = ref([
+    {
+        id: 1,
+        title: 'Company info',
+        fields: [
+            {
+                value: '',
+                attr: {
+                    required: false,
+                    name: 'Name transport company',
+                    type: 'text',
+                    placeholder: 'Name transport company',
+                },
+                show: true,
+                fieldType: 'input',
+                className: 'w-full'
+            },
+            {
+                value: '',
+                attr: {
+                    required: false,
+                    name: 'house number',
+                    type: 'number',
+                    placeholder: 'house number',
+                },
+                show: true,
+                fieldType: 'input',
+                className: 'sm:w-1/2 w-full'
+            },
+            {
+                value: '',
+                attr: {
+                    required: false,
+                    name: 'postcode',
+                    type: 'number',
+                    placeholder: 'postcode',
+                },
+                show: true,
+                fieldType: 'input',
+                className: 'sm:w-1/2 w-full'
+            },
+            {
+                value: '',
+                attr: {
+                    required: false,
+                    name: 'country',
+                    type: 'text',
+                    placeholder: 'country',
+                },
+                show: true,
+                fieldType: 'input',
+                className: 'sm:w-1/2 w-full'
+            },
+            {
+                value: '',
+                attr: {
+                    required: false,
+                    name: 'street',
+                    type: 'text',
+                    placeholder: 'street',
+                },
+                show: true,
+                fieldType: 'input',
+                className: 'sm:w-1/2 w-full'
+            },
+            {
+                value: '',
+                attr: {
+                    required: false,
+                    name: 'Telephone number',
+                    type: 'number',
+                    placeholder: 'Telephone number',
+                },
+                show: true,
+                fieldType: 'input',
+                className: 'sm:w-1/2 w-full'
+            },
+            {
+                value: '',
+                attr: {
+                    required: false,
+                    name: 'E-mail address',
+                    type: 'email',
+                    placeholder: 'E-mail address',
+                },
+                show: true,
+                fieldType: 'input',
+                className: 'sm:w-1/2 w-full'
+            },
+        ]
+    },
+    {
+        id: 2,
+        title: 'What types of transports do they provide ',
+        fields: [
+            {
+                id: 0,
+                value: '',
+                attr: {
+                    required: false,
+                    options: [
+                        { name: 'Waste materials transport', checked: false },
+                        { name: 'Agricultural transport', checked: false },
+                        { name: 'Car transport', checked: false },
+                        { name: 'Construction materials transport', checked: false },
+                        { name: 'Distribution transport', checked: false },
+                        { name: 'Exceptional transport', checked: false },
+                        { name: 'Intermodal freight transportInternational transport', checked: false },
+                        { name: 'Tip-truck Courier transport', checked: false },
+                        { name: 'Foodstuffs transport', checked: false },
+                        { name: 'Passenger transport', checked: false },
+                        { name: 'Floriculture transport', checked: false },
+                        { name: 'Rail transport Tank and silo transport', checked: false },
+                        { name: 'Movers Stores', checked: false },
+                        { name: 'Distribution Sea container transport', checked: false },
+                    ],
+                },
+                fieldType: 'services',
+                className: 'w-full'
+            },
+        ]
+    },
+    {
+        id: 3,
+        title: 'How big is the fleet.',
+        fields: [
+            {
+                id: 0,
+                attr: {
+                    required: false,
+                    options: [
+                        { name: 'Van (fossil fuel)', checked: false, type: 'number', value: '' },
+                        { name: 'Van (electric)', checked: false, type: 'number', value: '' },
+                        { name: 'Large bus (fossil fuel', checked: false, type: 'number', value: '' },
+                        { name: 'Large bus (electric)', checked: false, type: 'number', value: '' },
+                        { name: 'Truck box truck (fossil fuel)', checked: false, type: 'number', value: '' },
+                        { name: 'Truck box truck (electric)', checked: false, type: 'number', value: '' },
+                        { name: 'Tractor + trailer', checked: false, type: 'number', value: '' },
+                        { name: 'Truck with crane', checked: false, type: 'number', value: '' },
+                        { name: 'Truck with cage monkey', checked: false, type: 'number', value: '' },
+                        { name: 'Concrete pumptrailer', checked: false, type: 'number', value: '' },
+                        { name: 'Sailtrailer of tautliner', checked: false, type: 'number', value: '' },
+                        { name: 'Refrigerated trailers', checked: false, type: 'number', value: '' },
+                        { name: 'Tip trailers', checked: false, type: 'number', value: '' },
+                        { name: 'Walking floor trailers', checked: false, type: 'number', value: '' },
+                        { name: 'Deeploaders', checked: false, type: 'number', value: '' },
+                        { name: 'Open trailers', checked: false, type: 'number', value: '' },
+                        { name: 'Silo trailers', checked: false, type: 'number', value: '' },
+                        { name: 'Closed trailers with hard box', checked: false, type: 'number', value: '' },
+                        { name: 'Tanktrailers', checked: false, type: 'number', value: '' },
+                        { name: 'Taxibus', checked: false, type: 'number', value: '' },
+                        { name: 'Coach', checked: false, type: 'number', value: '' },
+
+                    ],
+                },
+                fieldType: 'checkBoxGroup',
+                className: 'w-full'
+            },
+        ]
+    },
+    {
+        id: 4,
+        title: 'In which countries active and which regions of those countries',
+        fields: [
+            {
+                id: 1,
+                attr: {
+                    items: [
+                        {
+                            id: 1,
+                            value: '',
+                            attr: {
+                                del: true,
+                                required: false,
+                                name: 'country',
+                            },
+                            options: [],
+                        },
+                        {
+                            id: 2,
+                            value: '',
+                            attr: {
+                                del: true,
+                                required: false,
+                                name: 'country',
+                            },
+                            options: [],
+                        },
+                    ]
+                },
+                fieldType: 'locations',
+                className: 'w-full'
+            },
+        ]
+    },
+    {
+        id: 5,
+        title: 'INFO',
+        fields: [
+            {
+                id: 1,
+                value: '',
+                attr: {
+                    required: false,
+                    name: 'Chamber of Commerce number',
+                    type: 'number',
+                    placeholder: 'Chamber of Commerce number',
+                },
+                fieldType: 'input',
+                className: 'w-full'
+            },
+            {
+                id: 2,
+                value: '',
+                attr: {
+                    required: false,
+                    name: 'IBAN',
+                    type: 'text',
+                    placeholder: 'IBAN',
+                },
+                fieldType: 'input',
+                className: 'w-full'
+            },
+            {
+                id: 3,
+                value: '',
+                attr: {
+                    required: false,
+                    name: 'VAT number',
+                    type: 'number',
+                    placeholder: 'VAT number',
+                },
+                fieldType: 'input',
+                className: 'w-full'
+            },
+        ],
+
+    },
+    {
+        id: 6,
+        title: 'Personal info',
+        fields: [
+            {
+                id: 0,
+                value: '',
+                attr: {
+                    required: false,
+                    name: 'Name',
+                    type: 'text',
+                    placeholder: 'your name',
+                },
+                fieldType: 'input',
+                className: 'w-full'
+            },
+            {
+                id: 1,
+                value: '',
+                attr: {
+                    required: false,
+                    name: 'Address',
+                    type: 'text',
+                    placeholder: 'your address',
+                },
+                fieldType: 'input',
+                className: 'w-full'
+            },
+            {
+                id: 2,
+                value: '',
+                attr: {
+                    required: false,
+                    name: 'Phone number',
+                    type: 'text',
+                    placeholder: 'Phone number',
+                },
+                fieldType: 'input',
+                className: 'w-full'
+            },
+            {
+                id: 3,
+                value: '',
+                attr: {
+                    required: false,
+                    name: 'E-mail address',
+                    type: 'email',
+                    placeholder: 'E-mail address',
+                },
+                fieldType: 'input',
+                className: 'w-full'
+            },
+            {
+                id: 4,
+                value: '',
+                attr: {
+                    required: false,
+                    name: 'password',
+                    type: 'password',
+                    placeholder: 'password',
+                },
+                fieldType: 'input',
+                className: 'w-full'
+            },
+            {
+                id: 5,
+                value: '',
+                attr: {
+                    required: false,
+                    name: 'repeat password',
+                    type: 'repeat password',
+                    placeholder: 'password',
+                },
+                fieldType: 'input',
+                className: 'w-full'
+            },
+            {
+                id: 6,
+                attr: {
+                    title: 'Agree to terms?',
+                    options: [
+                        { name: 'Agree to terms', checked: false, required: true, },
+                    ],
+                },
+                fieldType: 'checkBoxGroup',
+                className: 'w-full'
+            },
+        ],
+    },
+    {
+        id: 7,
+        title: 'INFO',
+        fields: [
+            {
+                fieldType: 'formInfo',
+                className: 'w-full'
+            },
+        ],
+
+    },
+]);
+
+const submit = () => {
+    if (steps.value.length !== storeTransporters.currentStep) {
+        if (storeTransporters.currentStep === 6) {
+            if (steps[5].fields[6].value === steps[5].fields[7].value && steps[5].fields[6].value !== '' || !steps[5].fields[6].show) {
+                storeTransporters.currentStep++
+            } else {
+                steps[5].fields[6].value = '';
+                steps[5].fields[7].value = '';
+                alert('Password mismatch')
+            }
+        } else {
+            const name = steps.value.find(({ id }) => id === storeTransporters.currentStep + 1)?.title ?? '';
+            storeTransporters.setCurrentStep(name, 'increment');
+        }
+    } else {
+        console.log(steps)
+    }
+}
+
 const back = () => {
-    storeTransporters.currentStep = storeTransporters.currentStep - 1
-    console.log(storeTransporters.currentStep)
+    const name = steps.value.find(({ id }) => id === storeTransporters.currentStep - 1)?.title ?? '';
+    storeTransporters.setCurrentStep(name, 'decrement');
 }
 </script>
 
