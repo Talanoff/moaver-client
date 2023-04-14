@@ -20,9 +20,9 @@
     </div>
 
     <button
-        type="button"
-        @click.prevent="onAdd()"
-        class="m-2.5 cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+            type="button"
+            @click.prevent="onAdd()"
+            class="m-2.5 cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
     >
         Add
     </button>
@@ -30,7 +30,7 @@
 
 <script setup>
 import FormSelect from "~/components/ui/form-select.vue";
-import {useTransporters} from "~/store/transporters";
+import { useTransporters } from "~/store/transporters";
 
 const storeTransporters = useTransporters()
 const props = defineProps(['id']);

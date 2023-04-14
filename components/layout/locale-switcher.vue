@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-const {locale, setLocale} = useI18n();
+const { locale, setLocale } = useI18n();
 
 const locales = ref(['en', 'nl']);
 </script>

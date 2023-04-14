@@ -25,8 +25,8 @@
 <script setup>
 import FormCheckbox from "~/components/ui/form-checkbox.vue";
 import FormInput from "~/components/ui/form-input.vue";
-import {useTransporters} from "~/store/transporters";
-import {useConfig} from "~/store/config";
+import { useTransporters } from "~/store/transporters";
+import { useConfig } from "~/store/config";
 
 const transportersStore = useTransporters();
 const configStore = useConfig();

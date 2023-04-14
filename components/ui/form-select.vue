@@ -69,7 +69,7 @@ const emits = defineEmits(['update:modelValue'])
 
 const expanded = ref<boolean>(false);
 const currentValue = computed(() => {
-    return props.options?.find(({key}) => props.modelValue === key)?.value ?? 'Select an option'; // TODO translate
+    return props.options?.find(({ key }) => props.modelValue === key)?.value ?? 'Select an option'; // TODO translate
 });
 
 const onSelect = (option) => {

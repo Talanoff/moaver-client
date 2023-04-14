@@ -13,7 +13,7 @@
 import AppHeader from '@/components/layout/header.vue';
 import AppFooter from '@/components/layout/footer.vue';
 import Login from "~/components/modals/login/login.vue";
-import {useAuth} from "~/store/auth";
+import { useAuth } from "~/store/auth";
 
 const storeAuth = useAuth();
 </script>

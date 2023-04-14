@@ -1,7 +1,7 @@
 <template>
-    <div >
+    <div>
         <form-checkbox
-            v-for="option in $attrs.options" :key="option.id"
+                v-for="option in $attrs.options" :key="option.id"
                 :id="`id-${option.id}`"
                 :title="option.name"
                 :value="option.id"
@@ -12,7 +12,7 @@
 </template>
 <script setup>
 import FormCheckbox from "~/components/ui/form-checkbox.vue";
-import {useBooking} from "~/store/booking";
+import { useBooking } from "~/store/booking";
 
 const props = defineProps({
     id: String,

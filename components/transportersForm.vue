@@ -40,9 +40,9 @@
 </template>
 
 <script setup>
-import {getFieldName} from "~/helpers/field-type";
-import {useConfig} from "~/store/config";
-import {useTransporters} from "~/store/transporters";
+import { getFieldName } from "~/helpers/field-type";
+import { useConfig } from "~/store/config";
+import { useTransporters } from "~/store/transporters";
 
 const transporterStore = useTransporters();
 const configStore = useConfig();

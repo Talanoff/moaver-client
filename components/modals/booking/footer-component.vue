@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-import {useBooking} from "~/store/booking";
+import { useBooking } from "~/store/booking";
 
 const store = useBooking();
 

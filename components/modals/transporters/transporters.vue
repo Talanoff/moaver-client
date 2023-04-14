@@ -50,7 +50,7 @@
 <script setup>
 import FooterComponent from "~/components/modals/transporters/footer-component.vue";
 import TransportersForm from "~/components/transportersForm.vue";
-import {useTransporters} from "~/store/transporters";
+import { useTransporters } from "~/store/transporters";
 
 const storeTransporters = useTransporters();
 

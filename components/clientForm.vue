@@ -9,10 +9,10 @@
                 >
                     <div class="flex flex-wrap">
                         <div
-                            class="p-2"
-                            v-for="field in step.fields"
-                            :key="field.id"
-                            :class="field.className"
+                                class="p-2"
+                                v-for="field in step.fields"
+                                :key="field.id"
+                                :class="field.className"
                         >
                             <component
                                     :is="getFieldName(field.fieldType)"
@@ -34,8 +34,8 @@
 </template>
 
 <script setup>
-import {getFieldName} from "~/helpers/field-type";
-import {useBooking} from "~/store/booking";
+import { getFieldName } from "~/helpers/field-type";
+import { useBooking } from "~/store/booking";
 
 const store = useBooking();
 

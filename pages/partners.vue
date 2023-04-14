@@ -33,8 +33,8 @@
 </template>
 
 <script setup>
-import { useTransporters } from "~/store/transporters";
 import Transporters from "~/components/modals/transporters/transporters.vue";
+import { useTransporters } from "~/store/transporters";
 import { useConfig } from "~/store/config";
 
 const transportersStore = useTransporters();

@@ -1,3 +1,3 @@
 <template>
-  <div>MOAVER</div>
+    <div>MOAVER</div>
 </template>

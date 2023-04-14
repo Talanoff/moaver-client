@@ -16,7 +16,8 @@
 </template>
 
 <script setup>
-import {useTransporters} from "~/store/transporters";
+import { useTransporters } from "~/store/transporters";
+
 const store = useTransporters();
 
 const width = computed(() => {
