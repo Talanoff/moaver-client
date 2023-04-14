@@ -30,8 +30,7 @@ const steps = ref([
         title: 'Company info',
         fields: [
             {
-                value: '',
-                attr: {
+                attrs: {
                     required: false,
                     name: 'Name transport company',
                     type: 'text',
@@ -42,8 +41,7 @@ const steps = ref([
                 className: 'w-full'
             },
             {
-                value: '',
-                attr: {
+                attrs: {
                     required: false,
                     name: 'house number',
                     type: 'number',
@@ -54,8 +52,7 @@ const steps = ref([
                 className: 'sm:w-1/2 w-full'
             },
             {
-                value: '',
-                attr: {
+                attrs: {
                     required: false,
                     name: 'postcode',
                     type: 'number',
@@ -66,8 +63,7 @@ const steps = ref([
                 className: 'sm:w-1/2 w-full'
             },
             {
-                value: '',
-                attr: {
+                attrs: {
                     required: false,
                     name: 'country',
                     type: 'text',
@@ -78,8 +74,7 @@ const steps = ref([
                 className: 'sm:w-1/2 w-full'
             },
             {
-                value: '',
-                attr: {
+                attrs: {
                     required: false,
                     name: 'street',
                     type: 'text',
@@ -90,8 +85,7 @@ const steps = ref([
                 className: 'sm:w-1/2 w-full'
             },
             {
-                value: '',
-                attr: {
+                attrs: {
                     required: false,
                     name: 'Telephone number',
                     type: 'number',
@@ -102,8 +96,7 @@ const steps = ref([
                 className: 'sm:w-1/2 w-full'
             },
             {
-                value: '',
-                attr: {
+                attrs: {
                     required: false,
                     name: 'E-mail address',
                     type: 'email',
@@ -121,8 +114,7 @@ const steps = ref([
         fields: [
             {
                 id: 0,
-                value: '',
-                attr: {
+                attrs: {
                     required: false,
                     options: [
                         { name: 'Waste materials transport', checked: false },
@@ -152,7 +144,7 @@ const steps = ref([
         fields: [
             {
                 id: 0,
-                attr: {
+                attrs: {
                     required: false,
                     options: [
                         { name: 'Van (fossil fuel)', checked: false, type: 'number', value: '' },
@@ -190,12 +182,11 @@ const steps = ref([
         fields: [
             {
                 id: 1,
-                attr: {
+                attrs: {
                     items: [
                         {
                             id: 1,
-                            value: '',
-                            attr: {
+                            attrs: {
                                 del: true,
                                 required: false,
                                 name: 'country',
@@ -204,8 +195,7 @@ const steps = ref([
                         },
                         {
                             id: 2,
-                            value: '',
-                            attr: {
+                            attrs: {
                                 del: true,
                                 required: false,
                                 name: 'country',
@@ -225,8 +215,7 @@ const steps = ref([
         fields: [
             {
                 id: 1,
-                value: '',
-                attr: {
+                attrs: {
                     required: false,
                     name: 'Chamber of Commerce number',
                     type: 'number',
@@ -237,8 +226,7 @@ const steps = ref([
             },
             {
                 id: 2,
-                value: '',
-                attr: {
+                attrs: {
                     required: false,
                     name: 'IBAN',
                     type: 'text',
@@ -249,8 +237,7 @@ const steps = ref([
             },
             {
                 id: 3,
-                value: '',
-                attr: {
+                attrs: {
                     required: false,
                     name: 'VAT number',
                     type: 'number',
@@ -268,8 +255,7 @@ const steps = ref([
         fields: [
             {
                 id: 0,
-                value: '',
-                attr: {
+                attrs: {
                     required: false,
                     name: 'Name',
                     type: 'text',
@@ -280,8 +266,7 @@ const steps = ref([
             },
             {
                 id: 1,
-                value: '',
-                attr: {
+                attrs: {
                     required: false,
                     name: 'Address',
                     type: 'text',
@@ -292,8 +277,7 @@ const steps = ref([
             },
             {
                 id: 2,
-                value: '',
-                attr: {
+                attrs: {
                     required: false,
                     name: 'Phone number',
                     type: 'text',
@@ -304,8 +288,7 @@ const steps = ref([
             },
             {
                 id: 3,
-                value: '',
-                attr: {
+                attrs: {
                     required: false,
                     name: 'E-mail address',
                     type: 'email',
@@ -316,8 +299,7 @@ const steps = ref([
             },
             {
                 id: 4,
-                value: '',
-                attr: {
+                attrs: {
                     required: false,
                     name: 'password',
                     type: 'password',
@@ -328,8 +310,7 @@ const steps = ref([
             },
             {
                 id: 5,
-                value: '',
-                attr: {
+                attrs: {
                     required: false,
                     name: 'repeat password',
                     type: 'repeat password',
@@ -340,7 +321,7 @@ const steps = ref([
             },
             {
                 id: 6,
-                attr: {
+                attrs: {
                     title: 'Agree to terms?',
                     options: [
                         { name: 'Agree to terms', checked: false, required: true, },

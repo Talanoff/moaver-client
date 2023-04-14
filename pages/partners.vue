@@ -8,10 +8,11 @@
 
             <div class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
                 <h1 class="sm:text-left text-center text-white font-bold text-3xl sm:text-[5rem] leading-normal mb-4">
-                    Wat wil je
-                    vervoeren?</h1>
-                <p class="sm:text-left text-center text-white sm:text-2xl text-xl">Vind jouw vervoere, zonder
-                    omwegen</p>
+                    Wat wil je vervoeren?
+                </h1>
+                <p class="sm:text-left text-center text-white sm:text-2xl text-xl">
+                    Vind jouw vervoere, zonder omwegen
+                </p>
             </div>
         </div>
 
@@ -19,10 +20,9 @@
             <button
                     type="button"
                     class="block w-full group text-center"
+                    @click="transportersStore.toggleModal()"
             >
-                <div
-                        @click="transportersStore.toggleModal()"
-                        class="flex justify-center items-center p-5 lg:p-8 border-4 border-slate-200 text-2xl font-bold rounded-md group-hover:border-blue-600 group-hover:bg-slate-50 transition-colors duration-300">
+                <div class="flex justify-center items-center p-5 lg:p-8 border-4 border-slate-200 text-2xl font-bold rounded-md group-hover:border-blue-600 group-hover:bg-slate-50 transition-colors duration-300">
                     Join now
                 </div>
             </button>
