@@ -1,5 +1,6 @@
 <template>
     <modal
+        v-if="storeTransporters.showModal"
         :title="storeTransporters.currentStepName"
         :show-back-button="storeTransporters.currentStep > 1"
         @back="back"

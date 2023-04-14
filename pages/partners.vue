@@ -1,5 +1,5 @@
 <template>
-    <section class="container sm:mb-56 mb-12 max-w-[95vw]">
+    <section class="container mb-12">
         <div class="relative">
             <figure
                     class="sm:h-screen h-[120vw] max-h-[65vh] -mb-24 rounded-lg overflow-hidden bg-center bg-cover"
@@ -29,7 +29,7 @@
         </div>
     </section>
 
-    <transporters v-if="transportersStore.showModal"/>
+    <transporters/>
 </template>
 
 <script setup>

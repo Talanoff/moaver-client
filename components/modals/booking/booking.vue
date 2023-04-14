@@ -1,5 +1,6 @@
 <template>
     <modal
+            v-if="bookingStore.showModal"
             :title="bookingStore.currentStepName"
             :show-back-button="bookingStore.currentStep > 1"
             @back="back"
@@ -8,8 +9,8 @@
         <form @submit.prevent="submit">
             <client-form :steps="steps"/>
             <footer-component
-                :total-steps="steps.length"
-                :current-step="bookingStore.currentStep"
+                    :total-steps="steps.length"
+                    :current-step="bookingStore.currentStep"
             />
         </form>
     </modal>
