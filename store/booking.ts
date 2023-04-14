@@ -42,6 +42,10 @@ export const useBooking = defineStore("booking", {
             form: {
                 category: [null],
                 pieces: [null, ['required']],
+                kg: [null, ['kg']],
+                message: [null, ['message']],
+                dateFrom: [null, ['Date From']],
+                locationFrom: [null, ['Location from']],
                 // ....
                 wishes: [[]],
                 additional_wishes: [[]],

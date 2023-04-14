@@ -1,9 +1,9 @@
 {
   "navigation": {
     "header": {
-      "home": "home",
-      "partner": "become a partner",
-      "login": "login"
+      "home": "Home",
+      "partner": "Become a partner",
+      "login": "Log in"
     },
     "footer": {
       "terms": "Terms and Conditions",
@@ -16,7 +16,8 @@
   },
   "partners_hero_banner": {
     "title": "What do you want to transport?",
-    "description": "Find your transport, without detours"
+    "description": "Find your transport, without detours",
+    "button": "Join now"
   },
   "about_us": {
     "title": "About Us",
@@ -29,17 +30,21 @@
       "link": "Read more about us"
     }
   },
-
   "forms": {
     "step": "Step",
-    "of": "of"
-  },
+    "of": "of",
+    "Pieces": "Pieces",
+    "Kg": "Kg",
+    "Message": "Message",
+    "Date From": "Date From",
+    "Location from": "Location From"
 
-  "categories":{
-      "one":"one package",
-      "many": "many packages",
-      "pallets": "Pallet(s)",
-      "various": "Various goods"
+  },
+  "categories": {
+    "one": "One package",
+    "many": "Many packages",
+    "pallets": "Pallet(s)",
+    "various": "Various goods"
   }
 }
 

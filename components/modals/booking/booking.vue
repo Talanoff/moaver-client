@@ -48,13 +48,13 @@ const steps = ref([
             },
             {
                 attrs: {
-                    required: false,
-                    name: 'kg',
+                    label: 'Kg',
                     type: 'number',
-                    placeholder: 'kg',
+                    placeholder: 'Kg',
                 },
                 fieldType: 'input',
-                className: 'sm:w-1/2 w-full'
+                className: 'sm:w-1/2 w-full',
+                controlName: 'kg'
             },
             {
                 value: 'home',
@@ -67,15 +67,16 @@ const steps = ref([
                 fieldType: 'select',
                 className: 'w-full'
             },
+            // TODO: -add logic for select
             {
                 attrs: {
-                    required: false,
-                    name: 'Message',
+                    label: 'Message',
                     type: 'text',
                     placeholder: 'Message',
                 },
                 fieldType: 'textarea',
-                className: 'w-full'
+                className: 'w-full',
+                controlName: 'message',
             },
         ]
     },
@@ -85,22 +86,23 @@ const steps = ref([
         fields: [
             {
                 attrs: {
-                    required: false,
-                    name: 'Date From',
+                    label: 'Date From',
                     type: 'datetime-local',
                     placeholder: 'date'
                 },
                 fieldType: 'input',
-                className: 'w-full'
+                className: 'w-full',
+                controlName: 'dateFrom'
             },
             {
                 attrs: {
-                    required: false,
-                    name: 'Location from',
+                    label: 'Location from',
                     type: 'text',
+                    placeholder: 'Location from'
                 },
                 fieldType: 'input',
-                className: 'sm:w-1/2 w-full'
+                className: 'w-full',
+                controlName: 'locationFrom'
             },
             {
                 value: 'home',

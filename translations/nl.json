@@ -1,9 +1,9 @@
 {
   "navigation": {
     "header": {
-      "home": "thuis",
-      "partner": "een partner worden",
-      "login": "log in"
+      "home": "Thuis",
+      "partner": "Een partner worden",
+      "login": "Log in"
     },
     "footer": {
       "terms": "Voorwaarden",
@@ -15,8 +15,9 @@
     "description": "Vind jouw vervoere, zonder omwegen"
   },
   "partners_hero_banner": {
-    "title": " Wat wil je vervoeren?",
-    "description": "Vind jouw vervoere, zonder omwegen"
+    "title": "Wat wil je vervoeren?",
+    "description": "Vind jouw vervoere, zonder omwegen",
+    "button": "Doe nu mee"
   },
 
   "about_us": {
@@ -34,11 +35,16 @@
 
   "forms": {
     "step": "Stap",
-    "of": "van"
+    "of": "van",
+    "Pieces": "Vissen",
+    "Kg": "Kg",
+    "Message": "Bericht",
+    "Date From": "Datum vanaf",
+    "Location from": "Locatie van"
   },
 
   "categories":{
-    "one":"een pakket",
+    "one":"Een pakket",
     "many": "Veel pakket",
     "pallets": "Pallet(s)",
     "various": "Diverse goederen"
