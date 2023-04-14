@@ -12,9 +12,12 @@ const loading = ref(true);
 const page = ref({});
 const { locale } = useI18n();
 
-const { data } = await api.get('pages/1');
-page.value = data;
-loading.value = false;
+try {
+    const { data } = await api.get('pages/1');
+    page.value = data;
+} finally {
+    loading.value = false;
+}
 
 watch(locale, (value) => {
     loading.value = true;
