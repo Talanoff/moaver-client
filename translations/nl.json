@@ -40,7 +40,11 @@
     "Kg": "Kg",
     "Message": "Bericht",
     "Date From": "Datum vanaf",
-    "Location from": "Locatie van"
+    "Location from": "Locatie van",
+    "Location type from": "Locatietype van",
+    "Date To": "Datum naar",
+    "Location to": "Locatie naar",
+    "Location type from": "Locatietype naar"
   },
 
   "categories":{

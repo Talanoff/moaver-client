@@ -19,8 +19,8 @@
 <script setup>
 import FooterComponent from "~/components/modals/booking/footer-component.vue";
 import Modal from "~/components/modals/modal.vue";
-import { useBooking } from "~/store/booking";
-import { useConfig } from "~/store/config";
+import {useBooking} from "~/store/booking";
+import {useConfig} from "~/store/config";
 
 const bookingStore = useBooking();
 const configStore = useConfig();
@@ -105,43 +105,50 @@ const steps = ref([
                 controlName: 'locationFrom'
             },
             {
-                value: 'home',
                 attrs: {
-                    required: false,
-                    name: 'Location type from',
-                    options: ['home', 'office'],
+                    label: 'Location type from',
+                    options: [
+                        {key: 'home', value: 'home'},
+                        {key: 'ofice', value: 'ofice'},
+                        {key: 'test', value: 'test'},
+                    ],
                 },
                 fieldType: 'select',
-                className: 'sm:w-1/2 w-full'
+                className: 'w-full',
+                controlName: 'selectLocationFrom'
             },
             {
                 attrs: {
-                    required: false,
-                    name: 'Date To',
-                    placeholder: 'date',
+                    label: 'Date To',
                     type: 'datetime-local',
+                    placeholder: 'date'
                 },
                 fieldType: 'input',
-                className: 'w-full'
+                className: 'w-full',
+                controlName: 'dateTo'
             },
             {
                 attrs: {
-                    required: false,
-                    name: 'Location to',
+                    label: 'Location to',
                     type: 'text',
+                    placeholder: 'Location to'
                 },
                 fieldType: 'input',
-                className: 'sm:w-1/2 w-full'
+                className: 'w-full',
+                controlName: 'locationTo'
             },
             {
-                value: 'home',
                 attrs: {
-                    required: false,
-                    name: 'Location type to',
-                    options: ['home', 'office'],
+                    label: 'Location type to',
+                    options: [
+                        {key: 'home', value: 'home'},
+                        {key: 'ofice', value: 'ofice'},
+                        {key: 'test', value: 'test'},
+                    ],
                 },
                 fieldType: 'select',
-                className: 'sm:w-1/2 w-full'
+                className: 'w-full',
+                controlName: 'selectLocationTo'
             },
         ]
     },
@@ -276,7 +283,7 @@ const steps = ref([
                     title: 'do you want to register?',
                     required: false,
                     options: [
-                        { name: 'do you want to register' },
+                        {name: 'do you want to register'},
                     ],
                 },
                 fieldType: 'checkBoxGroup',
@@ -312,7 +319,7 @@ const steps = ref([
                     title: 'Agree to terms?',
                     required: false,
                     options: [
-                        { name: 'Agree to terms', checked: false, required: true },
+                        {name: 'Agree to terms', checked: false, required: true},
                     ],
                 },
                 fieldType: 'checkBoxGroup',
@@ -346,7 +353,7 @@ const submit = () => {
                 alert('Password mismatch')
             }
         } else {
-            const name = steps.value.find(({ id }) => id === bookingStore.currentStep + 1)?.title ?? '';
+            const name = steps.value.find(({id}) => id === bookingStore.currentStep + 1)?.title ?? '';
             bookingStore.setCurrentStep(name, 'increment');
         }
     } else {
@@ -355,7 +362,7 @@ const submit = () => {
 }
 
 const back = () => {
-    const name = steps.value.find(({ id }) => id === bookingStore.currentStep - 1)?.title ?? '';
+    const name = steps.value.find(({id}) => id === bookingStore.currentStep - 1)?.title ?? '';
     bookingStore.setCurrentStep(name, 'decrement');
 }
 </script>

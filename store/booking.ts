@@ -46,6 +46,10 @@ export const useBooking = defineStore("booking", {
                 message: [null, ['message']],
                 dateFrom: [null, ['Date From']],
                 locationFrom: [null, ['Location from']],
+                selectLocationFrom: [null, ['Location type from']],
+                dateTo: [null, ['Date To']],
+                locationTo: [null, ['Location to']],
+                selectLocationTo: [null, ['Location type to']],
                 // ....
                 wishes: [[]],
                 additional_wishes: [[]],

@@ -37,8 +37,11 @@
     "Kg": "Kg",
     "Message": "Message",
     "Date From": "Date From",
-    "Location from": "Location From"
-
+    "Location from": "Location From",
+    "Location type from": "Location type from",
+    "Date To": "Date To",
+    "Location to": "Location to",
+    "Location type to": "Location type to"
   },
   "categories": {
     "one": "One package",
