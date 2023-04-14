@@ -10,7 +10,14 @@
       "policy": "Privacybeleid"
     }
   },
-
+  "home_hero_banner": {
+    "title": " Wat wil je vervoeren?",
+    "description": "Vind jouw vervoere, zonder omwegen"
+  },
+  "partners_hero_banner": {
+    "title": " Wat wil je vervoeren?",
+    "description": "Vind jouw vervoere, zonder omwegen"
+  },
   "about_us": {
     "title": "Over ons",
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda exercitationem fugiat laudantium magni quae quidem veritatis? Deleniti nobis possimus qui! Ab aliquid autem corporis deserunt distinctio fugiat natus, necessitatibus officiis perspiciatis possimus quas qui quis quod sequi, sit suscipit unde."
