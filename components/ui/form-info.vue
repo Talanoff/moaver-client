@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="flex sm:justify-start justify-between border-b-2 pb-2">
-            <h2 class="font-semibold sm:sm:w-1/2">Category:</h2> {{ category }}
+            <h2 class="font-semibold sm:sm:w-1/2">Category:</h2> {{ store.form.category[0] }}
         </div>
         <div v-for="(field,idx) in fields" :key="idx">
             <div v-if="field.name !== 'Pick file'">
@@ -23,21 +23,25 @@
             </div>
 
         </div>
-        <div class="border-b-2 pb-2 sm:flex sm:justify-start">
+        <div class="border-b-2 pb-2 sm:flex sm:justify-start" v-if="additional_wishes.length>0 || store.form.additional_wishes_notes[0] !== null || store.form.additional_wishes_attachment[0].url">
 
-            <h2 class="font-semibold sm:w-1/2">{{ steps[3].title }}:</h2>
+            <h2 class="font-semibold sm:w-1/2" >{{ steps[3].title }}:</h2>
             <div>
                 <div v-for="field in additional_wishes" :key="field.id">
                     <div>-{{ field.name }}</div>
                 </div>
+                <div>
+                    <div v-if="store.form.additional_wishes_notes[0] !== null">-{{ store.form.additional_wishes_notes[0] }}</div>
+                        <img :src="store.form.additional_wishes_attachment[0].url" class="w-52"/>
+                </div>
             </div>
         </div>
-        <div class="border-b-2 pb-2 sm:flex sm:justify-start">
+        <div class="border-b-2 pb-2 sm:flex sm:justify-start" v-if="wishes.length > 0">
             <h2 class="font-semibold sm:w-1/2">{{ steps[2].title }}:</h2>
-            <div>
-                <div v-for="test in wishes">
+            <div >
+                <div v-for="item in wishes" :key="item.id">
                     <div>
-                        {{test.name}}
+                        {{item.name}}
 
                     </div>
                 </div>

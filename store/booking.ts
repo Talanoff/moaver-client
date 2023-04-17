@@ -55,7 +55,7 @@ export const useBooking = defineStore("booking", {
                 wishes: [[]],
                 additional_wishes: [[]],
                 additional_wishes_notes:[null, 'Additional wishes notes'],
-                additional_wishes_attachment:[null, 'additional_wishes_attachment'],
+                additional_wishes_attachment:['', 'additional_wishes_attachment'],
                 name:[null, 'name'],
                 address:[null, 'address'],
                 phone_number:[null, 'phone_number'],
