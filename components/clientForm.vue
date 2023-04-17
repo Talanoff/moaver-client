@@ -17,6 +17,7 @@
                             <component
                                     :is="getFieldName(field.fieldType)"
                                     :id="field.id"
+                                    :steps="steps"
                                     v-model="store.form[field.controlName][0]"
                                     v-bind="field.attrs"
                                     v-if="!field.hidden && store.form[field.controlName]"

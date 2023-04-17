@@ -17,7 +17,6 @@ const props = defineProps(['id']);
 const store = useBooking()
 const setFile = (event) => {
     if (event) {
-        console.log(store.steps[store.currentStep - 1].fields[props.id].value)
         store.steps[store.currentStep - 1].fields[props.id].value = event.target.files[0]
         store.steps[store.currentStep - 1].fields[props.id].attr.url = URL.createObjectURL(event.target.files[0])
     }

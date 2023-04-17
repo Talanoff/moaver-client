@@ -11,5 +11,5 @@ import { useConfig } from "~/store/config";
 
 const configStore = useConfig();
 
-configStore.getWishes();
+await configStore.getWishes();
 </script>

@@ -50,9 +50,20 @@ export const useBooking = defineStore("booking", {
                 dateTo: [null, ['Date To']],
                 locationTo: [null, ['Location to']],
                 selectLocationTo: [null, ['Location type to']],
+                info: [null, ['info']],
                 // ....
                 wishes: [[]],
                 additional_wishes: [[]],
+                additional_wishes_notes:[null, 'Additional wishes notes'],
+                additional_wishes_attachment:[null, 'additional_wishes_attachment'],
+                name:[null, 'name'],
+                address:[null, 'address'],
+                phone_number:[null, 'phone_number'],
+                mail_address:[null, 'mail_address'],
+                iban:[null, 'iban'],
+                password:[null, 'password'],
+                repeat_password:[null, 'repeat_password'],
+                register_checkbox:[null, 'register_checkbox'],
             }
         }),
 

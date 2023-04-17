@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import useApi from "~/composables/use-api";
 
 export const useConfig = defineStore('config', () => {
     const api = useApi();

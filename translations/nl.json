@@ -44,7 +44,13 @@
     "Location type from": "Locatietype van",
     "Date To": "Datum naar",
     "Location to": "Locatie naar",
-    "Location type from": "Locatietype naar"
+    "Location type from": "Locatietype naar",
+    "additional wishes": "aanvullende wensen",
+    "Name": "Naam",
+    "Address": "Adres",
+    "Phone number": "Telefoonnummer",
+    "E-mail address": "E-mailadres",
+    "IBAN": "IBAN",
   },
 
   "categories":{

@@ -41,7 +41,13 @@
     "Location type from": "Location type from",
     "Date To": "Date To",
     "Location to": "Location to",
-    "Location type to": "Location type to"
+    "Location type to": "Location type to",
+    "additional wishes": "additional wishes",
+    "Name": "Name",
+    "Address": "Address",
+    "Phone number": "Phone number",
+    "E-mail address": "E-mail address",
+    "IBAN": "IBAN",
   },
   "categories": {
     "one": "One package",

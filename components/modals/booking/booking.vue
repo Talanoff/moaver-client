@@ -26,7 +26,6 @@ const bookingStore = useBooking();
 const configStore = useConfig();
 
 const wishes = ref(configStore.wishes)
-
 const steps = ref([
     {
         id: 1,
@@ -186,8 +185,7 @@ const steps = ref([
             {
                 id: 1,
                 attrs: {
-                    required: false,
-                    name: 'additional wishes',
+                    label: 'additional wishes',
                     type: 'text',
                     placeholder: 'additional wishes',
                 },
@@ -198,8 +196,7 @@ const steps = ref([
             {
                 id: 2,
                 attrs: {
-                    required: false,
-                    name: 'Pick file',
+                    label: 'Pick file',
                     url: ''
                 },
                 controlName: 'additional_wishes_attachment',
@@ -214,6 +211,7 @@ const steps = ref([
         fields: [
             {
                 fieldType: 'formInfo',
+                controlName: 'info',
                 className: 'w-full'
             },
         ],
@@ -223,108 +221,112 @@ const steps = ref([
         title: 'Personal info',
         fields: [
             {
-                id: 0,
                 attrs: {
-                    required: false,
-                    name: 'Name',
+                    label: 'Name',
                     type: 'text',
-                    placeholder: 'your name',
+                    placeholder: 'Your name',
                 },
                 fieldType: 'input',
-                className: 'w-full'
+                className: 'w-full',
+                controlName: 'name'
             },
             {
-                id: 1,
                 attrs: {
-                    required: false,
-                    name: 'Address',
+                    label: 'Address',
                     type: 'text',
-                    placeholder: 'your address',
+                    placeholder: 'Your address',
                 },
                 fieldType: 'input',
-                className: 'w-full'
+                className: 'w-full',
+                controlName: 'address'
             },
             {
-                id: 2,
                 attrs: {
-                    required: false,
-                    name: 'Phone number',
-                    type: 'text',
+                    label: 'Phone number',
+                    type: 'number',
                     placeholder: 'Phone number',
                 },
                 fieldType: 'input',
-                className: 'w-full'
+                className: 'w-full',
+                controlName: 'phone_number'
             },
             {
-                id: 3,
                 attrs: {
-                    required: false,
-                    name: 'E-mail address',
+                    label: 'E-mail address',
                     type: 'email',
                     placeholder: 'E-mail address',
                 },
                 fieldType: 'input',
-                className: 'w-full'
+                className: 'w-full',
+                controlName: 'mail_address'
             },
             {
-                id: 4,
                 attrs: {
-                    required: false,
-                    name: 'IBAN',
+                    label: 'IBAN',
                     type: 'number',
                     placeholder: 'IBAN',
                 },
                 fieldType: 'input',
-                className: 'w-full'
+                className: 'w-full',
+                controlName: 'iban'
             },
+            // {
+            //     title: 'do you want to register?',
+            //     attrs: {
+            //         required: false,
+            //         options: [
+            //                         {id: 1, name: 'do you want to register'},
+            //         ],
+            //     },
+            //     controlName: 'register_checkbox',
+            //     fieldType: 'checkBoxGroup',
+            //     className: 'w-full'
+            // },
+            // {
+            //     attrs: {
+            //         title: 'do you want to register?',
+            //         required: false,
+            //         options: [
+            //             {name: 'do you want to register'},
+            //         ],
+            //     },
+            //     fieldType: 'checkBoxGroup',
+            //     className: 'w-full'
+            // },
             {
-                id: 5,
                 attrs: {
-                    title: 'do you want to register?',
-                    required: false,
-                    options: [
-                        {name: 'do you want to register'},
-                    ],
-                },
-                fieldType: 'checkBoxGroup',
-                className: 'w-full'
-            },
-            {
-                id: 6,
-                attrs: {
-                    required: false,
-                    name: 'password',
+                    label: 'password',
                     type: 'password',
                     placeholder: 'password',
                 },
                 hidden: true,
                 fieldType: 'input',
-                className: 'w-full'
+                className: 'w-full',
+                controlName: 'password'
             },
             {
-                id: 7,
                 attrs: {
-                    required: false,
-                    name: 'repeat password',
+                    label: 'repeat password',
                     type: 'repeat password',
                     placeholder: 'password',
                 },
                 hidden: true,
                 fieldType: 'input',
-                className: 'w-full'
+                className: 'w-full',
+                controlName: 'repeat_password'
             },
-            {
-                id: 8,
-                attrs: {
-                    title: 'Agree to terms?',
-                    required: false,
-                    options: [
-                        {name: 'Agree to terms', checked: false, required: true},
-                    ],
-                },
-                fieldType: 'checkBoxGroup',
-                className: 'w-full'
-            },
+            // {
+            //     id: 8,
+            //     attrs: {
+            //         title: 'Agree to terms?',
+            //         required: false,
+            //         options: [
+            //             {name: 'Agree to terms', checked: false, required: true},
+            //         ],
+            //     },
+            //     fieldType: 'checkBoxGroup',
+            //     className: 'w-full'
+            // },
         ],
 
 
