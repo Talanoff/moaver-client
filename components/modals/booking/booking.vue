@@ -270,29 +270,16 @@ const steps = ref([
                 className: 'w-full',
                 controlName: 'iban'
             },
-            // {
-            //     title: 'do you want to register?',
-            //     attrs: {
-            //         required: false,
-            //         options: [
-            //                         {id: 1, name: 'do you want to register'},
-            //         ],
-            //     },
-            //     controlName: 'register_checkbox',
-            //     fieldType: 'checkBoxGroup',
-            //     className: 'w-full'
-            // },
-            // {
-            //     attrs: {
-            //         title: 'do you want to register?',
-            //         required: false,
-            //         options: [
-            //             {name: 'do you want to register'},
-            //         ],
-            //     },
-            //     fieldType: 'checkBoxGroup',
-            //     className: 'w-full'
-            // },
+            {
+                id: 'wishes', // хз нужен ли
+                attrs: {
+                    required: false,
+                    options: [{name: 'do you want to register', id: 1}],
+                },
+                controlName: 'register_checkbox',
+                fieldType: 'checkBoxGroup',
+                className: 'w-full'
+            },
             {
                 attrs: {
                     label: 'password',
@@ -315,18 +302,16 @@ const steps = ref([
                 className: 'w-full',
                 controlName: 'repeat_password'
             },
-            // {
-            //     id: 8,
-            //     attrs: {
-            //         title: 'Agree to terms?',
-            //         required: false,
-            //         options: [
-            //             {name: 'Agree to terms', checked: false, required: true},
-            //         ],
-            //     },
-            //     fieldType: 'checkBoxGroup',
-            //     className: 'w-full'
-            // },
+            {
+                id: 'wishes', // хз нужен ли
+                attrs: {
+                    required: false,
+                    options: [{name: 'Agree to terms', id: 2}],
+                },
+                controlName: 'agree_to_terms',
+                fieldType: 'checkBoxGroup',
+                className: 'w-full'
+            },
         ],
 
 
@@ -347,6 +332,10 @@ const steps = ref([
 const submit = () => {
     if (steps.value.length !== bookingStore.currentStep) {
         if (bookingStore.currentStep === 6) {
+            console.log(bookingStore.form.register_checkbox[0] == 1)
+            console.log(bookingStore.form.agree_to_terms[0] == 2)
+            console.log(steps.value[5].fields[6])
+
             if (steps[5].fields[6].value === steps[5].fields[7].value && steps[5].fields[6].value !== '' || !steps[5].fields[6].show) {
                 bookingStore.currentStep++
             } else {
