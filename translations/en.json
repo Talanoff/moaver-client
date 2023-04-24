@@ -54,7 +54,13 @@
     "thank": "Thank you for your assignment! We'll get to work for you right away.",
     "Name transport company": "Name transport company",
     "house number": "house number",
-    "postcode": "postcode"
+    "postcode": "postcode",
+    "country": "country",
+    "street": "street",
+    "Telephone number": "Telephone number",
+    "E-mail address": "E-mail address",
+    "Chamber of Commerce number": "Chamber of Commerce number",
+    "VAT number": "VAT number"
   },
   "categories": {
     "one": "One package",

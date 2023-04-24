@@ -30,7 +30,6 @@
 
         <h2 class="text-xl font-bold mt-4" v-else>
             {{ $t(`forms.thank`) }}
-
         </h2>
     </div>
 </template>

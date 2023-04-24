@@ -54,7 +54,13 @@
     "thank": "Bedankt voor je bestelling! Wij gaan direct voor u aan de slag.",
     "Name transport company": "Naam transportbedrijf",
     "house number": "huisnummer",
-    "postcode": "postcode"
+    "postcode": "postcode",
+    "counrty": "land",
+    "street": "straat",
+    "Telephone number": "Telefoon nummer",
+    "E-mail address": "E-mailadres",
+    "Chamber of Commerce number": "Kamer van koophandelnummer",
+    "VAT number": "VAT nummer"
   },
   "categories": {
     "one": "Een pakket",

@@ -344,7 +344,6 @@ watch(() => form, (currentValue) => {
         steps.value[0].fields[2].hidden = currentValue.value.category[0] === "Various goods"
         steps.value[5].fields[6].hidden = currentValue.value.register_checkbox[0][0] !== 1
         steps.value[5].fields[7].hidden = currentValue.value.register_checkbox[0][0] !== 1
-        console.log(form.value.password)
     },
     {deep: true}
 );
