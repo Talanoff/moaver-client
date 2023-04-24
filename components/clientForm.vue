@@ -29,14 +29,15 @@
         </div>
 
         <h2 class="text-xl font-bold mt-4" v-else>
-            Thank you for your assignment! We'll get to work for you right away.
+            {{ $t(`forms.thank`) }}
+
         </h2>
     </div>
 </template>
 
 <script setup>
-import { getFieldName } from "~/helpers/field-type";
-import { useBooking } from "~/store/booking";
+import {getFieldName} from "~/helpers/field-type";
+import {useBooking} from "~/store/booking";
 
 const store = useBooking();
 

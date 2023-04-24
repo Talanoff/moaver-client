@@ -19,12 +19,10 @@
     "description": "Vind jouw vervoere, zonder omwegen",
     "button": "Doe nu mee"
   },
-
   "about_us": {
     "title": "Over ons",
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda exercitationem fugiat laudantium magni quae quidem veritatis? Deleniti nobis possimus qui! Ab aliquid autem corporis deserunt distinctio fugiat natus, necessitatibus officiis perspiciatis possimus quas qui quis quod sequi, sit suscipit unde."
   },
-
   "footer": {
     "intro": {
       "title": "Voor elke route, op ieder moment, jouw vracht op de juiste plek.",
@@ -32,7 +30,6 @@
       "link": "Lees meer over ons"
     }
   },
-
   "forms": {
     "step": "Stap",
     "of": "van",
@@ -51,11 +48,16 @@
     "Phone number": "Telefoonnummer",
     "E-mail address": "E-mailadres",
     "IBAN": "IBAN",
-    "upload_photo": "Upload foto"
+    "upload_photo": "Upload foto",
+    "password": "wachtwoord",
+    "repeat password": "herhaal wachtwoord",
+    "thank": "Bedankt voor je bestelling! Wij gaan direct voor u aan de slag.",
+    "Name transport company": "Naam transportbedrijf",
+    "house number": "huisnummer",
+    "postcode": "postcode"
   },
-
-  "categories":{
-    "one":"Een pakket",
+  "categories": {
+    "one": "Een pakket",
     "many": "Veel pakket",
     "pallets": "Pallet(s)",
     "various": "Diverse goederen"

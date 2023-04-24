@@ -41,6 +41,7 @@ export const useBooking = defineStore("booking", {
             ],
             form: {
                 category: [null],
+                selectCategory: [null, ['selectCategory']],
                 pieces: [null, ['required']],
                 kg: [null, ['kg']],
                 message: [null, ['message']],

@@ -1,28 +1,34 @@
 <template>
     <modal
-        v-if="storeTransporters.showModal"
-        :title="storeTransporters.currentStepName"
-        :show-back-button="storeTransporters.currentStep > 1"
-        @back="back"
-        @close="storeTransporters.toggleModal(false)"
+            v-if="storeTransporters.showModal"
+            :title="storeTransporters.currentStepName"
+            :show-back-button="storeTransporters.currentStep > 1"
+            @back="back"
+            @close="storeTransporters.toggleModal(false)"
     >
         <form @submit.prevent="submit">
-        <transporters-form :steps="steps"/>
-        <footer-component
-            :total-steps="steps.length"
-            :current-step="storeTransporters.currentStep"
-        />
+            <transporters-form :steps="steps"/>
+            <footer-component
+                    :total-steps="steps.length"
+                    :current-step="storeTransporters.currentStep"
+            />
         </form>
     </modal>
 </template>
 
 <script setup>
 import FooterComponent from "~/components/modals/transporters/footer-component.vue";
-import TransportersForm from "~/components/transportersForm.vue";
-import { useTransporters } from "~/store/transporters";
 import Modal from "~/components/modals/modal.vue";
+import TransportersForm from "~/components/transportersForm.vue";
+import {useTransporters} from "~/store/transporters";
+import {useConfig} from "~/store/config";
+import {storeToRefs} from 'pinia'
 
 const storeTransporters = useTransporters();
+const configStore = useConfig()
+
+const {form: form} = storeToRefs(storeTransporters)
+const wishes = ref(configStore.wishes)
 
 const steps = ref([
     {
@@ -31,36 +37,36 @@ const steps = ref([
         fields: [
             {
                 attrs: {
-                    required: false,
-                    name: 'Name transport company',
+                    label: 'Name transport company',
                     type: 'text',
                     placeholder: 'Name transport company',
                 },
                 show: true,
                 fieldType: 'input',
-                className: 'w-full'
+                className: 'w-full',
+                controlName: 'companyName'
             },
             {
                 attrs: {
-                    required: false,
-                    name: 'house number',
+                    label: 'house number',
                     type: 'number',
                     placeholder: 'house number',
                 },
                 show: true,
                 fieldType: 'input',
-                className: 'sm:w-1/2 w-full'
+                className: 'sm:w-1/2 w-full',
+                controlName: 'houseNumber'
             },
             {
                 attrs: {
-                    required: false,
-                    name: 'postcode',
+                    label: 'postcode',
                     type: 'number',
                     placeholder: 'postcode',
                 },
                 show: true,
                 fieldType: 'input',
-                className: 'sm:w-1/2 w-full'
+                className: 'sm:w-1/2 w-full',
+                controlName: 'postcode'
             },
             {
                 attrs: {
@@ -117,20 +123,20 @@ const steps = ref([
                 attrs: {
                     required: false,
                     options: [
-                        { name: 'Waste materials transport', checked: false },
-                        { name: 'Agricultural transport', checked: false },
-                        { name: 'Car transport', checked: false },
-                        { name: 'Construction materials transport', checked: false },
-                        { name: 'Distribution transport', checked: false },
-                        { name: 'Exceptional transport', checked: false },
-                        { name: 'Intermodal freight transportInternational transport', checked: false },
-                        { name: 'Tip-truck Courier transport', checked: false },
-                        { name: 'Foodstuffs transport', checked: false },
-                        { name: 'Passenger transport', checked: false },
-                        { name: 'Floriculture transport', checked: false },
-                        { name: 'Rail transport Tank and silo transport', checked: false },
-                        { name: 'Movers Stores', checked: false },
-                        { name: 'Distribution Sea container transport', checked: false },
+                        {name: 'Waste materials transport', checked: false},
+                        {name: 'Agricultural transport', checked: false},
+                        {name: 'Car transport', checked: false},
+                        {name: 'Construction materials transport', checked: false},
+                        {name: 'Distribution transport', checked: false},
+                        {name: 'Exceptional transport', checked: false},
+                        {name: 'Intermodal freight transportInternational transport', checked: false},
+                        {name: 'Tip-truck Courier transport', checked: false},
+                        {name: 'Foodstuffs transport', checked: false},
+                        {name: 'Passenger transport', checked: false},
+                        {name: 'Floriculture transport', checked: false},
+                        {name: 'Rail transport Tank and silo transport', checked: false},
+                        {name: 'Movers Stores', checked: false},
+                        {name: 'Distribution Sea container transport', checked: false},
                     ],
                 },
                 fieldType: 'services',
@@ -147,27 +153,27 @@ const steps = ref([
                 attrs: {
                     required: false,
                     options: [
-                        { name: 'Van (fossil fuel)', checked: false, type: 'number', value: '' },
-                        { name: 'Van (electric)', checked: false, type: 'number', value: '' },
-                        { name: 'Large bus (fossil fuel', checked: false, type: 'number', value: '' },
-                        { name: 'Large bus (electric)', checked: false, type: 'number', value: '' },
-                        { name: 'Truck box truck (fossil fuel)', checked: false, type: 'number', value: '' },
-                        { name: 'Truck box truck (electric)', checked: false, type: 'number', value: '' },
-                        { name: 'Tractor + trailer', checked: false, type: 'number', value: '' },
-                        { name: 'Truck with crane', checked: false, type: 'number', value: '' },
-                        { name: 'Truck with cage monkey', checked: false, type: 'number', value: '' },
-                        { name: 'Concrete pumptrailer', checked: false, type: 'number', value: '' },
-                        { name: 'Sailtrailer of tautliner', checked: false, type: 'number', value: '' },
-                        { name: 'Refrigerated trailers', checked: false, type: 'number', value: '' },
-                        { name: 'Tip trailers', checked: false, type: 'number', value: '' },
-                        { name: 'Walking floor trailers', checked: false, type: 'number', value: '' },
-                        { name: 'Deeploaders', checked: false, type: 'number', value: '' },
-                        { name: 'Open trailers', checked: false, type: 'number', value: '' },
-                        { name: 'Silo trailers', checked: false, type: 'number', value: '' },
-                        { name: 'Closed trailers with hard box', checked: false, type: 'number', value: '' },
-                        { name: 'Tanktrailers', checked: false, type: 'number', value: '' },
-                        { name: 'Taxibus', checked: false, type: 'number', value: '' },
-                        { name: 'Coach', checked: false, type: 'number', value: '' },
+                        {name: 'Van (fossil fuel)', checked: false, type: 'number', value: ''},
+                        {name: 'Van (electric)', checked: false, type: 'number', value: ''},
+                        {name: 'Large bus (fossil fuel', checked: false, type: 'number', value: ''},
+                        {name: 'Large bus (electric)', checked: false, type: 'number', value: ''},
+                        {name: 'Truck box truck (fossil fuel)', checked: false, type: 'number', value: ''},
+                        {name: 'Truck box truck (electric)', checked: false, type: 'number', value: ''},
+                        {name: 'Tractor + trailer', checked: false, type: 'number', value: ''},
+                        {name: 'Truck with crane', checked: false, type: 'number', value: ''},
+                        {name: 'Truck with cage monkey', checked: false, type: 'number', value: ''},
+                        {name: 'Concrete pumptrailer', checked: false, type: 'number', value: ''},
+                        {name: 'Sailtrailer of tautliner', checked: false, type: 'number', value: ''},
+                        {name: 'Refrigerated trailers', checked: false, type: 'number', value: ''},
+                        {name: 'Tip trailers', checked: false, type: 'number', value: ''},
+                        {name: 'Walking floor trailers', checked: false, type: 'number', value: ''},
+                        {name: 'Deeploaders', checked: false, type: 'number', value: ''},
+                        {name: 'Open trailers', checked: false, type: 'number', value: ''},
+                        {name: 'Silo trailers', checked: false, type: 'number', value: ''},
+                        {name: 'Closed trailers with hard box', checked: false, type: 'number', value: ''},
+                        {name: 'Tanktrailers', checked: false, type: 'number', value: ''},
+                        {name: 'Taxibus', checked: false, type: 'number', value: ''},
+                        {name: 'Coach', checked: false, type: 'number', value: ''},
 
                     ],
                 },
@@ -324,7 +330,7 @@ const steps = ref([
                 attrs: {
                     title: 'Agree to terms?',
                     options: [
-                        { name: 'Agree to terms', checked: false, required: true, },
+                        {name: 'Agree to terms', checked: false, required: true,},
                     ],
                 },
                 fieldType: 'checkBoxGroup',
@@ -356,7 +362,7 @@ const submit = () => {
                 alert('Password mismatch')
             }
         } else {
-            const name = steps.value.find(({ id }) => id === storeTransporters.currentStep + 1)?.title ?? '';
+            const name = steps.value.find(({id}) => id === storeTransporters.currentStep + 1)?.title ?? '';
             storeTransporters.setCurrentStep(name, 'increment');
         }
     } else {
@@ -365,7 +371,7 @@ const submit = () => {
 }
 
 const back = () => {
-    const name = steps.value.find(({ id }) => id === storeTransporters.currentStep - 1)?.title ?? '';
+    const name = steps.value.find(({id}) => id === storeTransporters.currentStep - 1)?.title ?? '';
     storeTransporters.setCurrentStep(name, 'decrement');
 }
 </script>

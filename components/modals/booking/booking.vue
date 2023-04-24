@@ -21,10 +21,12 @@ import FooterComponent from "~/components/modals/booking/footer-component.vue";
 import Modal from "~/components/modals/modal.vue";
 import {useBooking} from "~/store/booking";
 import {useConfig} from "~/store/config";
+import {storeToRefs} from 'pinia'
 
 const bookingStore = useBooking();
 const configStore = useConfig();
 
+const {form: form} = storeToRefs(bookingStore)
 const wishes = ref(configStore.wishes)
 const steps = ref([
     {
@@ -41,6 +43,7 @@ const steps = ref([
                     type: 'number',
                     placeholder: 'Pieces',
                 },
+                hidden: false,
                 fieldType: 'input',
                 className: 'sm:w-1/2 w-full',
                 controlName: 'pieces'
@@ -60,13 +63,20 @@ const steps = ref([
                 attrs: {
                     required: false,
                     name: 'What exactly do you want to send',
-                    options: ['home', 'office'],
+                    options: [
+                        {key: 'home', value: 'home'},
+                        {key: 'ofice', value: 'ofice'},
+                        {key: 'test', value: 'test'},
+                    ],
                 },
-                hidden: true,
+                hidden: false,
                 fieldType: 'select',
+                controlName: 'selectCategory',
                 className: 'w-full'
             },
+
             // TODO: -add logic for select
+
             {
                 attrs: {
                     label: 'Message',
@@ -328,19 +338,24 @@ const steps = ref([
 
     },
 ]);
-
+watch(() => form, (currentValue) => {
+        steps.value[0].fields[3].hidden = currentValue.value.category[0] !== "Various goods"
+        steps.value[0].fields[1].hidden = currentValue.value.category[0] === "Various goods"
+        steps.value[0].fields[2].hidden = currentValue.value.category[0] === "Various goods"
+        steps.value[5].fields[6].hidden = currentValue.value.register_checkbox[0][0] !== 1
+        steps.value[5].fields[7].hidden = currentValue.value.register_checkbox[0][0] !== 1
+        console.log(form.value.password)
+    },
+    {deep: true}
+);
 const submit = () => {
     if (steps.value.length !== bookingStore.currentStep) {
         if (bookingStore.currentStep === 6) {
-            console.log(bookingStore.form.register_checkbox[0] == 1)
-            console.log(bookingStore.form.agree_to_terms[0] == 2)
-            console.log(steps.value[5].fields[6])
-
-            if (steps[5].fields[6].value === steps[5].fields[7].value && steps[5].fields[6].value !== '' || !steps[5].fields[6].show) {
+            if (form.value.password[0] === form.value.repeat_password[0] && form.value.password[0] !== '') {
                 bookingStore.currentStep++
             } else {
-                steps[5].fields[6].value = '';
-                steps[5].fields[7].value = '';
+                form.value.password[0] = '';
+                form.value.repeat_password[0] = '';
                 alert('Password mismatch')
             }
         } else {

@@ -48,7 +48,13 @@
     "Phone number": "Phone number",
     "E-mail address": "E-mail address",
     "IBAN": "IBAN",
-    "upload_photo": "Upload photo"
+    "upload_photo": "Upload photo",
+    "password": "password",
+    "repeat password": "repeat password",
+    "thank": "Thank you for your assignment! We'll get to work for you right away.",
+    "Name transport company": "Name transport company",
+    "house number": "house number",
+    "postcode": "postcode"
   },
   "categories": {
     "one": "One package",
