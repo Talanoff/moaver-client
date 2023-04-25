@@ -5,7 +5,7 @@
                 <div
                         v-if="step.id === store.currentStep"
                         :key="step.id"
-                        class="max-h-[90vh] overflow-y-auto overflow-x-hidden"
+                        class="max-h-[60vh] overflow-y-auto overflow-x-hidden"
                 >
                     <div class="flex flex-wrap">
                         <div

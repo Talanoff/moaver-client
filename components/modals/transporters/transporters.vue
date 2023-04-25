@@ -135,12 +135,44 @@ const steps = ref([
                 },
                 fieldType: 'services',
                 className: 'w-full',
-                controlName: "typesTransport"
+                controlName: "services"
             },
+
         ]
     },
     {
         id: 3,
+        title: 'What types of transports do they provide ',
+        fields: [
+            {
+                id: 0,
+                attrs: {
+                    required: false,
+                    options: [
+                        {name: 'Waste materials transport', checked: false},
+                        {name: 'Agricultural transport', checked: false},
+                        {name: 'Car transport', checked: false},
+                        {name: 'Construction materials transport', checked: false},
+                        {name: 'Distribution transport', checked: false},
+                        {name: 'Exceptional transport', checked: false},
+                        {name: 'Intermodal freight transportInternational transport', checked: false},
+                        {name: 'Tip-truck Courier transport', checked: false},
+                        {name: 'Foodstuffs transport', checked: false},
+                        {name: 'Passenger transport', checked: false},
+                        {name: 'Floriculture transport', checked: false},
+                        {name: 'Rail transport Tank and silo transport', checked: false},
+                        {name: 'Movers Stores', checked: false},
+                        {name: 'Distribution Sea container transport', checked: false},
+                    ],
+                },
+                fieldType: 'serviceQuantity',
+                className: 'w-full',
+                controlName: "serviceQuantity"
+            },
+        ]
+    },
+    {
+        id: 4,
         title: 'How big is the fleet.',
         fields: [
             {
@@ -177,7 +209,7 @@ const steps = ref([
         ]
     },
     {
-        id: 4,
+        id: 5,
         title: 'In which countries active and which regions of those countries',
         fields: [
             {
@@ -211,7 +243,7 @@ const steps = ref([
         ]
     },
     {
-        id: 5,
+        id: 6,
         title: 'INFO',
         fields: [
             {
@@ -251,7 +283,7 @@ const steps = ref([
 
     },
     {
-        id: 6,
+        id: 7,
         title: 'Personal info',
         fields: [
             {
@@ -336,7 +368,7 @@ const steps = ref([
         ],
     },
     {
-        id: 7,
+        id: 8,
         title: 'INFO',
         fields: [
             {
