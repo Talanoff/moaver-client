@@ -225,15 +225,7 @@ const steps = ref([
                             },
                             options: countries,
                         },
-                        {
-                            id: 2,
-                            attrs: {
-                                del: true,
-                                required: false,
-                                name: 'country',
-                            },
-                            options: [],
-                        },
+
                     ]
                 },
                 fieldType: 'locations',
@@ -382,7 +374,7 @@ const steps = ref([
 
 const submit = () => {
     if (steps.value.length !== storeTransporters.currentStep) {
-        if (storeTransporters.currentStep === 6) {
+        if (storeTransporters.currentStep === 7) {
             if (form.value.password[0] === form.value.repeat_password[0] && form.value.password[0] !== '') {
                 storeTransporters.currentStep++
             } else {
