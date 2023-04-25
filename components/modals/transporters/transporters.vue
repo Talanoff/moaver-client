@@ -283,7 +283,7 @@ const steps = ref([
                 attrs: {
                     label: 'Name',
                     type: 'text',
-                    placeholder: 'your name',
+                    placeholder: 'Name',
                 },
                 fieldType: 'input',
                 className: 'w-full',
@@ -294,7 +294,7 @@ const steps = ref([
                 attrs: {
                     label: 'Address',
                     type: 'text',
-                    placeholder: 'your address',
+                    placeholder: 'Address',
                 },
                 fieldType: 'input',
                 className: 'w-full',

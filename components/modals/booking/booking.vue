@@ -41,7 +41,7 @@ const steps = ref([
                 attrs: {
                     label: 'Pieces',
                     type: 'number',
-                    placeholder: 'Pieces',
+                    name: 'Pieces',
                 },
                 hidden: false,
                 fieldType: 'input',
@@ -52,7 +52,7 @@ const steps = ref([
                 attrs: {
                     label: 'Kg',
                     type: 'number',
-                    placeholder: 'Kg',
+                    name: 'Kg',
                 },
                 fieldType: 'input',
                 className: 'sm:w-1/2 w-full',
@@ -234,7 +234,7 @@ const steps = ref([
                 attrs: {
                     label: 'Name',
                     type: 'text',
-                    placeholder: 'Your name',
+                    placeholder: 'Name',
                 },
                 fieldType: 'input',
                 className: 'w-full',
@@ -244,7 +244,7 @@ const steps = ref([
                 attrs: {
                     label: 'Address',
                     type: 'text',
-                    placeholder: 'Your address',
+                    placeholder: 'Address',
                 },
                 fieldType: 'input',
                 className: 'w-full',
