@@ -36,7 +36,6 @@
                     role="option"
                     v-for="option in options"
             >
-
                 <button
                         type="button"
                         :value="option.key"
@@ -69,16 +68,19 @@ const props = defineProps<{
     }[];
 }>();
 
-const emits = defineEmits(['update:modelValue'])
+const emits = defineEmits(['update:modelValue']);
 
 const expanded = ref<boolean>(false);
+
 const currentValue = computed(() => {
-    return props.options?.find(({key}) => props.modelValue === key)?.value ?? 'Select an option'; // TODO translate
+    return props.options?.find(({ key }) => props.modelValue === key)?.value ?? 'Select an option'; // TODO translate
 });
 
-const onSelect = (option) => {
+const onSelect = (option: {
+    key: string;
+    value: string | number | null;
+}) => {
     emits('update:modelValue', option.key);
-    console.log(option.key)
     expanded.value = !expanded.value;
 }
 

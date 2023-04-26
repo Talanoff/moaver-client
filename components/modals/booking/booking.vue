@@ -288,7 +288,7 @@ const steps = ref([
                     required: false,
                     options: [{name: 'do you want to register', id: 1}],
                 },
-                controlName: 'register_checkbox',
+                controlName: 'registerCheckbox',
                 fieldType: 'checkBoxGroup',
                 className: 'w-full'
             },
@@ -312,7 +312,7 @@ const steps = ref([
                 hidden: true,
                 fieldType: 'input',
                 className: 'w-full',
-                controlName: 'repeat_password'
+                controlName: 'repeatPassword'
             },
             {
                 id: 'wishes', // хз нужен ли
@@ -320,7 +320,7 @@ const steps = ref([
                     required: false,
                     options: [{name: 'Agree to terms', id: 2}],
                 },
-                controlName: 'agree_to_terms',
+                controlName: 'agreeToTerms',
                 fieldType: 'checkBoxGroup',
                 className: 'w-full'
             },
@@ -352,8 +352,8 @@ watch(() => form, (currentValue) => {
         }
 
         steps.value[0].fields[2].hidden = currentValue.value.category[0] === "Various goods"
-        steps.value[5].fields[6].hidden = currentValue.value.register_checkbox[0][0] !== 1
-        steps.value[5].fields[7].hidden = currentValue.value.register_checkbox[0][0] !== 1
+        steps.value[5].fields[6].hidden = currentValue.value.registerCheckbox[0][0] !== 1
+        steps.value[5].fields[7].hidden = currentValue.value.registerCheckbox[0][0] !== 1
         console.log(form)
     },
     {deep: true}
@@ -361,11 +361,11 @@ watch(() => form, (currentValue) => {
 const submit = () => {
     if (steps.value.length !== bookingStore.currentStep) {
         if (bookingStore.currentStep === 6) {
-            if (form.value.password[0] === form.value.repeat_password[0] && form.value.password[0] !== '') {
+            if (form.value.password[0] === form.value.repeatPassword[0] && form.value.password[0] !== '') {
                 bookingStore.currentStep++
             } else {
                 form.value.password[0] = '';
-                form.value.repeat_password[0] = '';
+                form.value.repeatPassword[0] = '';
                 alert('Password mismatch')
             }
         } else {

@@ -1,16 +1,16 @@
 <template>
     <modal
-            v-if="storeTransporters.showModal"
-            :title="storeTransporters.currentStepName"
-            :show-back-button="storeTransporters.currentStep > 1"
+            v-if="transporterStore.showModal"
+            :title="transporterStore.currentStepName"
+            :show-back-button="transporterStore.currentStep > 1"
             @back="back"
-            @close="storeTransporters.toggleModal(false)"
+            @close="transporterStore.toggleModal(false)"
     >
         <form @submit.prevent="submit">
             <transporters-form :steps="steps"/>
             <footer-component
                     :total-steps="steps.length"
-                    :current-step="storeTransporters.currentStep"
+                    :current-step="transporterStore.currentStep"
             />
         </form>
     </modal>
@@ -20,14 +20,15 @@
 import FooterComponent from "~/components/modals/transporters/footer-component.vue";
 import Modal from "~/components/modals/modal.vue";
 import TransportersForm from "~/components/transportersForm.vue";
-import {useTransporters} from "~/store/transporters";
-import {useConfig} from "~/store/config";
-import {storeToRefs} from 'pinia'
+import { useTransporters } from "~/store/transporters";
+import { useConfig } from "~/store/config";
+import { storeToRefs } from 'pinia'
 
-const storeTransporters = useTransporters();
+const transporterStore = useTransporters();
 const configStore = useConfig()
+const api = useApi()
 
-const {form: form} = storeToRefs(storeTransporters)
+const { form: form } = storeToRefs(transporterStore)
 const countries = ref(configStore.countries)
 
 const steps = ref([
@@ -117,20 +118,20 @@ const steps = ref([
                 attrs: {
                     required: false,
                     options: [
-                        {name: 'Waste materials transport', checked: false},
-                        {name: 'Agricultural transport', checked: false},
-                        {name: 'Car transport', checked: false},
-                        {name: 'Construction materials transport', checked: false},
-                        {name: 'Distribution transport', checked: false},
-                        {name: 'Exceptional transport', checked: false},
-                        {name: 'Intermodal freight transportInternational transport', checked: false},
-                        {name: 'Tip-truck Courier transport', checked: false},
-                        {name: 'Foodstuffs transport', checked: false},
-                        {name: 'Passenger transport', checked: false},
-                        {name: 'Floriculture transport', checked: false},
-                        {name: 'Rail transport Tank and silo transport', checked: false},
-                        {name: 'Movers Stores', checked: false},
-                        {name: 'Distribution Sea container transport', checked: false},
+                        { name: 'Waste materials transport', checked: false },
+                        { name: 'Agricultural transport', checked: false },
+                        { name: 'Car transport', checked: false },
+                        { name: 'Construction materials transport', checked: false },
+                        { name: 'Distribution transport', checked: false },
+                        { name: 'Exceptional transport', checked: false },
+                        { name: 'Intermodal freight transportInternational transport', checked: false },
+                        { name: 'Tip-truck Courier transport', checked: false },
+                        { name: 'Foodstuffs transport', checked: false },
+                        { name: 'Passenger transport', checked: false },
+                        { name: 'Floriculture transport', checked: false },
+                        { name: 'Rail transport Tank and silo transport', checked: false },
+                        { name: 'Movers Stores', checked: false },
+                        { name: 'Distribution Sea container transport', checked: false },
                     ],
                 },
                 fieldType: 'services',
@@ -149,20 +150,20 @@ const steps = ref([
                 attrs: {
                     required: false,
                     options: [
-                        {name: 'Waste materials transport', checked: false},
-                        {name: 'Agricultural transport', checked: false},
-                        {name: 'Car transport', checked: false},
-                        {name: 'Construction materials transport', checked: false},
-                        {name: 'Distribution transport', checked: false},
-                        {name: 'Exceptional transport', checked: false},
-                        {name: 'Intermodal freight transportInternational transport', checked: false},
-                        {name: 'Tip-truck Courier transport', checked: false},
-                        {name: 'Foodstuffs transport', checked: false},
-                        {name: 'Passenger transport', checked: false},
-                        {name: 'Floriculture transport', checked: false},
-                        {name: 'Rail transport Tank and silo transport', checked: false},
-                        {name: 'Movers Stores', checked: false},
-                        {name: 'Distribution Sea container transport', checked: false},
+                        { name: 'Waste materials transport', checked: false },
+                        { name: 'Agricultural transport', checked: false },
+                        { name: 'Car transport', checked: false },
+                        { name: 'Construction materials transport', checked: false },
+                        { name: 'Distribution transport', checked: false },
+                        { name: 'Exceptional transport', checked: false },
+                        { name: 'Intermodal freight transportInternational transport', checked: false },
+                        { name: 'Tip-truck Courier transport', checked: false },
+                        { name: 'Foodstuffs transport', checked: false },
+                        { name: 'Passenger transport', checked: false },
+                        { name: 'Floriculture transport', checked: false },
+                        { name: 'Rail transport Tank and silo transport', checked: false },
+                        { name: 'Movers Stores', checked: false },
+                        { name: 'Distribution Sea container transport', checked: false },
                     ],
                 },
                 fieldType: 'serviceQuantity',
@@ -258,7 +259,7 @@ const steps = ref([
                 },
                 fieldType: 'input',
                 className: 'w-full',
-                controlName: 'IBAN'
+                controlName: 'iban'
             },
             {
                 id: 3,
@@ -269,7 +270,7 @@ const steps = ref([
                 },
                 fieldType: 'input',
                 className: 'w-full',
-                controlName: 'VAT'
+                controlName: 'vat'
             },
         ],
 
@@ -342,7 +343,7 @@ const steps = ref([
                 },
                 fieldType: 'input',
                 className: 'w-full',
-                controlName: 'repeat_password'
+                controlName: 'repeatPassword'
             },
             {
                 id: 6,
@@ -350,12 +351,12 @@ const steps = ref([
                     title: 'Agree to terms?',
                     options: [
 
-                        {name: 'Agree to terms', id: 1,},
+                        { name: 'Agree to terms', id: 1, },
                     ],
                 },
                 fieldType: 'checkBoxGroup',
                 className: 'w-full',
-                controlName: 'agree_to_terms'
+                controlName: 'agreeToTerms'
             },
         ],
     },
@@ -373,27 +374,27 @@ const steps = ref([
 ]);
 
 const submit = () => {
-    if (steps.value.length !== storeTransporters.currentStep) {
-        if (storeTransporters.currentStep === 7) {
-            if (form.value.password[0] === form.value.repeat_password[0] && form.value.password[0] !== '') {
-                storeTransporters.currentStep++
+    if (steps.value.length !== transporterStore.currentStep) {
+        if (transporterStore.currentStep === 7) {
+            if (form.value.password[0] === form.value.repeatPassword[0] && form.value.password[0] !== '') {
+                transporterStore.currentStep++
             } else {
                 form.value.password[0] = '';
-                form.value.repeat_password[0] = '';
+                form.value.repeatPassword[0] = '';
                 alert('Password mismatch')
             }
         } else {
-            const name = steps.value.find(({id}) => id === storeTransporters.currentStep + 1)?.title ?? '';
-            storeTransporters.setCurrentStep(name, 'increment');
+            const name = steps.value.find(({ id }) => id === transporterStore.currentStep + 1)?.title ?? '';
+            transporterStore.setCurrentStep(name, 'increment');
         }
     } else {
-        console.log(steps)
+        api.post('questionnaire/company', transporterStore.form)
     }
 }
 
 const back = () => {
-    const name = steps.value.find(({id}) => id === storeTransporters.currentStep - 1)?.title ?? '';
-    storeTransporters.setCurrentStep(name, 'decrement');
+    const name = steps.value.find(({ id }) => id === transporterStore.currentStep - 1)?.title ?? '';
+    transporterStore.setCurrentStep(name, 'decrement');
 }
 </script>
 

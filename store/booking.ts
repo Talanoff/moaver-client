@@ -62,10 +62,10 @@ export const useBooking = defineStore("booking", {
                 phone_number:[null, 'phone_number'],
                 mail_address:[null, 'mail_address'],
                 iban:[null, 'iban'],
-                password:[null, 'password'],
-                repeat_password:[null, 'repeat_password'],
-                register_checkbox:[[]],
-                agree_to_terms:[[]],
+                password:[null, ['required']],
+                repeatPassword:[null, ['required', 'password']],
+                registerCheckbox:[[]],
+                agreeToTerms:[[]],
             }
         }),
 
