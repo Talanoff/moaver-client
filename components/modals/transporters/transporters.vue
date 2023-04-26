@@ -171,45 +171,45 @@ const steps = ref([
             },
         ]
     },
+    // {
+    //     id: 4,
+    //     title: 'How big is the fleet.',
+    //     fields: [
+    //         {
+    //             id: 0,
+    //             attrs: {
+    //                 options: [
+    //                     {id: 0, name: 'Van (fossil fuel)'},
+    //                     {id: 1, name: 'Van (electric)'},
+    //                     {id: 2, name: 'Large bus (fossil fuel'},
+    //                     {id: 3, name: 'Large bus (electric)'},
+    //                     {id: 4, name: 'Truck box truck (fossil fuel)'},
+    //                     {id: 5, name: 'Truck box truck (electric)'},
+    //                     {id: 6, name: 'Tractor + trailer'},
+    //                     {id: 7, name: 'Truck with crane'},
+    //                     {id: 8, name: 'Truck with cage monkey'},
+    //                     {id: 9, name: 'Concrete pumptrailer'},
+    //                     {id: 10, name: 'Sailtrailer of tautliner'},
+    //                     {id: 11, name: 'Refrigerated trailers'},
+    //                     {id: 12, name: 'Tip trailers'},
+    //                     {id: 13, name: 'Walking floor trailers'},
+    //                     {id: 14, name: 'Deeploaders'},
+    //                     {id: 15, name: 'Open trailers'},
+    //                     {id: 16, name: 'Silo trailers'},
+    //                     {id: 17, name: 'Closed trailers with hard box'},
+    //                     {id: 18, name: 'Tanktrailers'},
+    //                     {id: 19, name: 'Taxibus'},
+    //                     {id: 20, name: 'Coach'},
+    //                 ],
+    //             },
+    //             fieldType: 'checkBoxGroup',
+    //             className: 'w-full',
+    //             controlName: "quantities"
+    //         },
+    //     ]
+    // },
     {
         id: 4,
-        title: 'How big is the fleet.',
-        fields: [
-            {
-                id: 0,
-                attrs: {
-                    options: [
-                        {id: 0, name: 'Van (fossil fuel)'},
-                        {id: 1, name: 'Van (electric)'},
-                        {id: 2, name: 'Large bus (fossil fuel'},
-                        {id: 3, name: 'Large bus (electric)'},
-                        {id: 4, name: 'Truck box truck (fossil fuel)'},
-                        {id: 5, name: 'Truck box truck (electric)'},
-                        {id: 6, name: 'Tractor + trailer'},
-                        {id: 7, name: 'Truck with crane'},
-                        {id: 8, name: 'Truck with cage monkey'},
-                        {id: 9, name: 'Concrete pumptrailer'},
-                        {id: 10, name: 'Sailtrailer of tautliner'},
-                        {id: 11, name: 'Refrigerated trailers'},
-                        {id: 12, name: 'Tip trailers'},
-                        {id: 13, name: 'Walking floor trailers'},
-                        {id: 14, name: 'Deeploaders'},
-                        {id: 15, name: 'Open trailers'},
-                        {id: 16, name: 'Silo trailers'},
-                        {id: 17, name: 'Closed trailers with hard box'},
-                        {id: 18, name: 'Tanktrailers'},
-                        {id: 19, name: 'Taxibus'},
-                        {id: 20, name: 'Coach'},
-                    ],
-                },
-                fieldType: 'checkBoxGroup',
-                className: 'w-full',
-                controlName: "quantities"
-            },
-        ]
-    },
-    {
-        id: 5,
         title: 'In which countries active and which regions of those countries',
         fields: [
             {
@@ -235,7 +235,7 @@ const steps = ref([
         ]
     },
     {
-        id: 6,
+        id: 5,
         title: 'INFO',
         fields: [
             {
@@ -275,7 +275,7 @@ const steps = ref([
 
     },
     {
-        id: 7,
+        id: 6,
         title: 'Personal info',
         fields: [
             {
@@ -360,7 +360,7 @@ const steps = ref([
         ],
     },
     {
-        id: 8,
+        id: 7,
         title: 'INFO',
         fields: [
             {
