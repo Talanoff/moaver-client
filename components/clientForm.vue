@@ -5,7 +5,7 @@
                 <div
                         v-if="step.id === store.currentStep"
                         :key="step.id"
-                        class="max-h-[90vh] overflow-y-auto overflow-x-hidden"
+                        class="max-h-[60vh] overflow-y-auto overflow-x-hidden"
                 >
                     <div class="flex flex-wrap">
                         <div
@@ -17,6 +17,7 @@
                             <component
                                     :is="getFieldName(field.fieldType)"
                                     :id="field.id"
+                                    :steps="steps"
                                     v-model="store.form[field.controlName][0]"
                                     v-bind="field.attrs"
                                     v-if="!field.hidden && store.form[field.controlName]"
@@ -28,14 +29,14 @@
         </div>
 
         <h2 class="text-xl font-bold mt-4" v-else>
-            Thank you for your assignment! We'll get to work for you right away.
+            {{ $t(`forms.thank`) }}
         </h2>
     </div>
 </template>
 
 <script setup>
-import { getFieldName } from "~/helpers/field-type";
-import { useBooking } from "~/store/booking";
+import {getFieldName} from "~/helpers/field-type";
+import {useBooking} from "~/store/booking";
 
 const store = useBooking();
 

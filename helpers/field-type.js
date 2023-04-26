@@ -8,6 +8,7 @@ import services from "~/components/forms/services.vue";
 import formInfo from "~/components/ui/form-info.vue";
 import locations from "~/components/forms/locations.vue";
 import formCheckboxGroup from "~/components/ui/form-checkbox-group.vue";
+import serviceQuantity from "~/components/forms/serviceQuantity.vue";
 
 export function getFieldName(type) {
     switch (type) {
@@ -25,6 +26,8 @@ export function getFieldName(type) {
             return formTextarea;
         case 'services':
             return services;
+        case 'serviceQuantity':
+            return serviceQuantity;
         case 'locations':
             return locations;
         case 'checkBoxGroup':

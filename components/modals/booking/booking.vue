@@ -19,14 +19,15 @@
 <script setup>
 import FooterComponent from "~/components/modals/booking/footer-component.vue";
 import Modal from "~/components/modals/modal.vue";
-import { useBooking } from "~/store/booking";
-import { useConfig } from "~/store/config";
+import {useBooking} from "~/store/booking";
+import {useConfig} from "~/store/config";
+import {storeToRefs} from 'pinia'
 
 const bookingStore = useBooking();
 const configStore = useConfig();
 
+const {form: form} = storeToRefs(bookingStore)
 const wishes = ref(configStore.wishes)
-
 const steps = ref([
     {
         id: 1,
@@ -40,42 +41,53 @@ const steps = ref([
                 attrs: {
                     label: 'Pieces',
                     type: 'number',
-                    placeholder: 'Pieces',
+                    name: 'Pieces',
+                    placeholder: '1',
+                    disabled: false,
                 },
+                hidden: false,
                 fieldType: 'input',
                 className: 'sm:w-1/2 w-full',
                 controlName: 'pieces'
             },
             {
                 attrs: {
-                    required: false,
-                    name: 'kg',
+                    label: 'Kg',
                     type: 'number',
-                    placeholder: 'kg',
+                    name: 'Kg',
                 },
                 fieldType: 'input',
-                className: 'sm:w-1/2 w-full'
+                className: 'sm:w-1/2 w-full',
+                controlName: 'kg'
             },
             {
                 value: 'home',
                 attrs: {
                     required: false,
                     name: 'What exactly do you want to send',
-                    options: ['home', 'office'],
+                    options: [
+                        {key: 'home', value: 'home'},
+                        {key: 'ofice', value: 'ofice'},
+                        {key: 'test', value: 'test'},
+                    ],
                 },
-                hidden: true,
+                hidden: false,
                 fieldType: 'select',
+                controlName: 'selectCategory',
                 className: 'w-full'
             },
+
+            // TODO: -add logic for select
+
             {
                 attrs: {
-                    required: false,
-                    name: 'Message',
+                    label: 'Message',
                     type: 'text',
                     placeholder: 'Message',
                 },
                 fieldType: 'textarea',
-                className: 'w-full'
+                className: 'w-full',
+                controlName: 'message',
             },
         ]
     },
@@ -85,61 +97,69 @@ const steps = ref([
         fields: [
             {
                 attrs: {
-                    required: false,
-                    name: 'Date From',
+                    label: 'Date From',
                     type: 'datetime-local',
                     placeholder: 'date'
                 },
                 fieldType: 'input',
-                className: 'w-full'
+                className: 'w-full',
+                controlName: 'dateFrom'
             },
             {
                 attrs: {
-                    required: false,
-                    name: 'Location from',
+                    label: 'Location from',
                     type: 'text',
+                    placeholder: 'Location from'
                 },
                 fieldType: 'input',
-                className: 'sm:w-1/2 w-full'
+                className: 'w-full',
+                controlName: 'locationFrom'
             },
             {
-                value: 'home',
                 attrs: {
-                    required: false,
-                    name: 'Location type from',
-                    options: ['home', 'office'],
+                    label: 'Location type from',
+                    options: [
+                        {key: 'home', value: 'home'},
+                        {key: 'ofice', value: 'ofice'},
+                        {key: 'test', value: 'test'},
+                    ],
                 },
                 fieldType: 'select',
-                className: 'sm:w-1/2 w-full'
+                className: 'w-full',
+                controlName: 'selectLocationFrom'
             },
             {
                 attrs: {
-                    required: false,
-                    name: 'Date To',
-                    placeholder: 'date',
+                    label: 'Date To',
                     type: 'datetime-local',
+                    placeholder: 'date'
                 },
                 fieldType: 'input',
-                className: 'w-full'
+                className: 'w-full',
+                controlName: 'dateTo'
             },
             {
                 attrs: {
-                    required: false,
-                    name: 'Location to',
+                    label: 'Location to',
                     type: 'text',
+                    placeholder: 'Location to'
                 },
                 fieldType: 'input',
-                className: 'sm:w-1/2 w-full'
+                className: 'w-full',
+                controlName: 'locationTo'
             },
             {
-                value: 'home',
                 attrs: {
-                    required: false,
-                    name: 'Location type to',
-                    options: ['home', 'office'],
+                    label: 'Location type to',
+                    options: [
+                        {key: 'home', value: 'home'},
+                        {key: 'ofice', value: 'ofice'},
+                        {key: 'test', value: 'test'},
+                    ],
                 },
                 fieldType: 'select',
-                className: 'sm:w-1/2 w-full'
+                className: 'w-full',
+                controlName: 'selectLocationTo'
             },
         ]
     },
@@ -177,8 +197,7 @@ const steps = ref([
             {
                 id: 1,
                 attrs: {
-                    required: false,
-                    name: 'additional wishes',
+                    label: 'additional wishes',
                     type: 'text',
                     placeholder: 'additional wishes',
                 },
@@ -189,8 +208,7 @@ const steps = ref([
             {
                 id: 2,
                 attrs: {
-                    required: false,
-                    name: 'Pick file',
+                    label: 'Pick file',
                     url: ''
                 },
                 controlName: 'additional_wishes_attachment',
@@ -205,6 +223,7 @@ const steps = ref([
         fields: [
             {
                 fieldType: 'formInfo',
+                controlName: 'info',
                 className: 'w-full'
             },
         ],
@@ -214,105 +233,94 @@ const steps = ref([
         title: 'Personal info',
         fields: [
             {
-                id: 0,
                 attrs: {
-                    required: false,
-                    name: 'Name',
+                    label: 'Name',
                     type: 'text',
-                    placeholder: 'your name',
+                    placeholder: 'Name',
                 },
                 fieldType: 'input',
-                className: 'w-full'
+                className: 'w-full',
+                controlName: 'name'
             },
             {
-                id: 1,
                 attrs: {
-                    required: false,
-                    name: 'Address',
+                    label: 'Address',
                     type: 'text',
-                    placeholder: 'your address',
+                    placeholder: 'Address',
                 },
                 fieldType: 'input',
-                className: 'w-full'
+                className: 'w-full',
+                controlName: 'address'
             },
             {
-                id: 2,
                 attrs: {
-                    required: false,
-                    name: 'Phone number',
-                    type: 'text',
+                    label: 'Phone number',
+                    type: 'number',
                     placeholder: 'Phone number',
                 },
                 fieldType: 'input',
-                className: 'w-full'
+                className: 'w-full',
+                controlName: 'phone_number'
             },
             {
-                id: 3,
                 attrs: {
-                    required: false,
-                    name: 'E-mail address',
+                    label: 'E-mail address',
                     type: 'email',
                     placeholder: 'E-mail address',
                 },
                 fieldType: 'input',
-                className: 'w-full'
+                className: 'w-full',
+                controlName: 'mail_address'
             },
             {
-                id: 4,
                 attrs: {
-                    required: false,
-                    name: 'IBAN',
+                    label: 'IBAN',
                     type: 'number',
                     placeholder: 'IBAN',
                 },
                 fieldType: 'input',
-                className: 'w-full'
+                className: 'w-full',
+                controlName: 'iban'
             },
             {
-                id: 5,
+                id: 'wishes', // хз нужен ли
                 attrs: {
-                    title: 'do you want to register?',
                     required: false,
-                    options: [
-                        { name: 'do you want to register' },
-                    ],
+                    options: [{name: 'do you want to register', id: 1}],
                 },
+                controlName: 'register_checkbox',
                 fieldType: 'checkBoxGroup',
                 className: 'w-full'
             },
             {
-                id: 6,
                 attrs: {
-                    required: false,
-                    name: 'password',
+                    label: 'password',
                     type: 'password',
                     placeholder: 'password',
                 },
                 hidden: true,
                 fieldType: 'input',
-                className: 'w-full'
+                className: 'w-full',
+                controlName: 'password'
             },
             {
-                id: 7,
                 attrs: {
-                    required: false,
-                    name: 'repeat password',
+                    label: 'repeat password',
                     type: 'repeat password',
                     placeholder: 'password',
                 },
                 hidden: true,
                 fieldType: 'input',
-                className: 'w-full'
+                className: 'w-full',
+                controlName: 'repeat_password'
             },
             {
-                id: 8,
+                id: 'wishes', // хз нужен ли
                 attrs: {
-                    title: 'Agree to terms?',
                     required: false,
-                    options: [
-                        { name: 'Agree to terms', checked: false, required: true },
-                    ],
+                    options: [{name: 'Agree to terms', id: 2}],
                 },
+                controlName: 'agree_to_terms',
                 fieldType: 'checkBoxGroup',
                 className: 'w-full'
             },
@@ -332,19 +340,36 @@ const steps = ref([
 
     },
 ]);
+watch(() => form, (currentValue) => {
+        steps.value[0].fields[3].hidden = currentValue.value.category[0] !== "Various goods"
+        steps.value[0].fields[1].hidden = currentValue.value.category[0] === "Various goods"
+        if (currentValue.value.category[0] === "One package") {
+            steps.value[0].fields[1].attrs.placeholder = 1
+            steps.value[0].fields[1].attrs.disabled = true
+        } else {
+            steps.value[0].fields[1].attrs.placeholder = ''
+            steps.value[0].fields[1].attrs.disabled = false
+        }
 
+        steps.value[0].fields[2].hidden = currentValue.value.category[0] === "Various goods"
+        steps.value[5].fields[6].hidden = currentValue.value.register_checkbox[0][0] !== 1
+        steps.value[5].fields[7].hidden = currentValue.value.register_checkbox[0][0] !== 1
+        console.log(form)
+    },
+    {deep: true}
+);
 const submit = () => {
     if (steps.value.length !== bookingStore.currentStep) {
         if (bookingStore.currentStep === 6) {
-            if (steps[5].fields[6].value === steps[5].fields[7].value && steps[5].fields[6].value !== '' || !steps[5].fields[6].show) {
+            if (form.value.password[0] === form.value.repeat_password[0] && form.value.password[0] !== '') {
                 bookingStore.currentStep++
             } else {
-                steps[5].fields[6].value = '';
-                steps[5].fields[7].value = '';
+                form.value.password[0] = '';
+                form.value.repeat_password[0] = '';
                 alert('Password mismatch')
             }
         } else {
-            const name = steps.value.find(({ id }) => id === bookingStore.currentStep + 1)?.title ?? '';
+            const name = steps.value.find(({id}) => id === bookingStore.currentStep + 1)?.title ?? '';
             bookingStore.setCurrentStep(name, 'increment');
         }
     } else {
@@ -353,7 +378,7 @@ const submit = () => {
 }
 
 const back = () => {
-    const name = steps.value.find(({ id }) => id === bookingStore.currentStep - 1)?.title ?? '';
+    const name = steps.value.find(({id}) => id === bookingStore.currentStep - 1)?.title ?? '';
     bookingStore.setCurrentStep(name, 'decrement');
 }
 </script>

@@ -1,21 +1,28 @@
 {
   "navigation": {
     "header": {
-      "home": "home",
-      "partner": "become a partner",
-      "login": "login"
+      "home": "Home",
+      "partner": "Become a partner",
+      "login": "Log in"
     },
     "footer": {
       "terms": "Terms and Conditions",
       "policy": "Privacy Policy"
     }
   },
-
+  "home_hero_banner": {
+    "title": "What do you want to transport?",
+    "description": "Find your transport, without detours"
+  },
+  "partners_hero_banner": {
+    "title": "What do you want to transport?",
+    "description": "Find your transport, without detours",
+    "button": "Join now"
+  },
   "about_us": {
     "title": "About Us",
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda exercitationem fugiat laudantium magni quae quidem veritatis? Deleniti nobis possimus qui! Ab aliquid autem corporis deserunt distinctio fugiat natus, necessitatibus officiis perspiciatis possimus quas qui quis quod sequi, sit suscipit unde."
   },
-
   "footer": {
     "intro": {
       "title": "For every route, at any time, your cargo in the right place.",
@@ -23,10 +30,44 @@
       "link": "Read more about us"
     }
   },
-
   "forms": {
     "step": "Step",
-    "of": "of"
+    "of": "of",
+    "Pieces": "Pieces",
+    "Kg": "Kg",
+    "Message": "Message",
+    "Date From": "Date From",
+    "Location from": "Location From",
+    "Location type from": "Location type from",
+    "Date To": "Date To",
+    "Location to": "Location to",
+    "Location type to": "Location type to",
+    "additional wishes": "additional wishes",
+    "Name": "Name",
+    "Address": "Address",
+    "Phone number": "Phone number",
+    "E-mail address": "E-mail address",
+    "IBAN": "IBAN",
+    "upload_photo": "Upload photo",
+    "password": "password",
+    "repeat password": "repeat password",
+    "thank": "Thank you for your assignment! We'll get to work for you right away.",
+    "Name transport company": "Name transport company",
+    "house number": "house number",
+    "postcode": "postcode",
+    "country": "country",
+    "street": "street",
+    "Telephone number": "Telephone number",
+    "E-mail address": "E-mail address",
+    "Chamber of Commerce number": "Chamber of Commerce number",
+    "VAT number": "VAT number",
+    "1": "1"
+  },
+  "categories": {
+    "one": "One package",
+    "many": "Many packages",
+    "pallets": "Pallet(s)",
+    "various": "Various goods"
   }
 }
 

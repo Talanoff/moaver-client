@@ -1,8 +1,11 @@
 <template>
     <div class="relative" v-click-outside="onClickOutside">
+        <label class="block mb-2 text-sm  text-gray-900  font-bold" v-if="$attrs.label">
+            {{ $t(`forms.${$attrs.label}`) }}
+        </label>
         <button
                 type="button"
-                class="relative w-full cursor-default rounded-md bg-gray-50 py-1.5 pr-10 text-left ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                class="relative w-full cursor-default rounded-md bg-gray-50 py-2 pr-10 text-left ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6"
                 aria-haspopup="listbox"
                 :aria-expanded="expanded"
                 aria-labelledby="listbox-label"
@@ -33,6 +36,7 @@
                     role="option"
                     v-for="option in options"
             >
+
                 <button
                         type="button"
                         :value="option.key"
@@ -69,11 +73,12 @@ const emits = defineEmits(['update:modelValue'])
 
 const expanded = ref<boolean>(false);
 const currentValue = computed(() => {
-    return props.options?.find(({ key }) => props.modelValue === key)?.value ?? 'Select an option'; // TODO translate
+    return props.options?.find(({key}) => props.modelValue === key)?.value ?? 'Select an option'; // TODO translate
 });
 
 const onSelect = (option) => {
     emits('update:modelValue', option.key);
+    console.log(option.key)
     expanded.value = !expanded.value;
 }
 

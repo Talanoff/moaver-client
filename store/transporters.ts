@@ -1,5 +1,5 @@
-import { defineStore } from "pinia";
-import { useConfig } from "~/store/config";
+import {defineStore} from "pinia";
+import {useConfig} from "~/store/config";
 
 type CurrentState = {
     showModal: boolean;
@@ -13,7 +13,28 @@ export const useTransporters = defineStore("transporters", {
         showModal: false,
         currentStep: 1,
         currentStepName: '',
-        form: {}
+        form: {
+            companyName: [null, ['required']],
+            houseNumber: [null, ['required']],
+            postcode: [null, ['required']],
+            country: [null, ['required']],
+            street: [null, ['required']],
+            phone: [null, ['required']],
+            email: [null, ['required']],
+            services: [[]],
+            serviceQuantity: [],
+            quantities: [[]],
+            commerceNumber: [null, ['required']],
+            IBAN: [null, ['required']],
+            VAT: [null, ['required']],
+            locations: [null, ['required']],
+            name: [null, ['required']],
+            address: [null, ['required']],
+            phoneNumber: [null, ['required']],
+            password: [null, ['required']],
+            repeat_password: [null, 'repeat_password'],
+            agree_to_terms: [[]],
+        }
     }),
 
     getters: {
