@@ -60,7 +60,8 @@
     "Telephone number": "Telephone number",
     "E-mail address": "E-mail address",
     "Chamber of Commerce number": "Chamber of Commerce number",
-    "VAT number": "VAT number"
+    "VAT number": "VAT number",
+    "1": "1"
   },
   "categories": {
     "one": "One package",

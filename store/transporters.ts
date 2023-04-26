@@ -31,7 +31,6 @@ export const useTransporters = defineStore("transporters", {
             name: [null, ['required']],
             address: [null, ['required']],
             phoneNumber: [null, ['required']],
-            email: [null, ['required']],
             password: [null, ['required']],
             repeat_password: [null, 'repeat_password'],
             agree_to_terms: [[]],

@@ -42,6 +42,8 @@ const steps = ref([
                     label: 'Pieces',
                     type: 'number',
                     name: 'Pieces',
+                    placeholder: '1',
+                    disabled: false,
                 },
                 hidden: false,
                 fieldType: 'input',
@@ -341,9 +343,18 @@ const steps = ref([
 watch(() => form, (currentValue) => {
         steps.value[0].fields[3].hidden = currentValue.value.category[0] !== "Various goods"
         steps.value[0].fields[1].hidden = currentValue.value.category[0] === "Various goods"
+        if (currentValue.value.category[0] === "One package") {
+            steps.value[0].fields[1].attrs.placeholder = 1
+            steps.value[0].fields[1].attrs.disabled = true
+        } else {
+            steps.value[0].fields[1].attrs.placeholder = ''
+            steps.value[0].fields[1].attrs.disabled = false
+        }
+
         steps.value[0].fields[2].hidden = currentValue.value.category[0] === "Various goods"
         steps.value[5].fields[6].hidden = currentValue.value.register_checkbox[0][0] !== 1
         steps.value[5].fields[7].hidden = currentValue.value.register_checkbox[0][0] !== 1
+        console.log(form)
     },
     {deep: true}
 );
