@@ -1,6 +1,6 @@
 import {defineStore} from "pinia";
 import {useConfig} from "~/store/config";
-import { KeyValue } from "~/types/forms";
+import {KeyValue} from "~/types/forms";
 
 type CurrentState = {
     showModal: boolean;
@@ -22,8 +22,8 @@ export const useTransporters = defineStore("transporters", {
             street: [null, ['required']],
             phone: [null, ['required']],
             email: [null, ['required']],
-            services: [[]],
-            serviceQuantity: [],
+            services: [[], ['required']],
+            serviceQuantity: [null, ['required']],
             quantities: [[]],
             commerceNumber: [null, ['required']],
             iban: [null, ['required']],
@@ -34,7 +34,7 @@ export const useTransporters = defineStore("transporters", {
             phoneNumber: [null, ['required']], // ???
             password: [null, ['required']],
             repeatPassword: [null, ['required', 'password']],
-            agreeToTerms: [false],
+            agreeToTerms: [[], ['required']],
         }
     }),
 
@@ -56,7 +56,19 @@ export const useTransporters = defineStore("transporters", {
                 country,
                 street,
                 phone,
-                email
+                email,
+                services,
+                serviceQuantity,
+                commerceNumber,
+                iban,
+                vat,
+                name,
+                address,
+                phoneNumber,
+                password,
+                repeatPassword,
+                agreeToTerms
+
             } = this.form;
 
             switch (this.currentStep) {
@@ -72,6 +84,35 @@ export const useTransporters = defineStore("transporters", {
                     ]
                         .filter((it: any[]) => it[1].includes('required'))
                         .every((it) => !!it[0]);
+                case 2:
+                    return [
+                        services
+                    ]
+                        .filter((it: any[]) => it[1].includes('required'))
+                        .every((it) => it[0].length > 0);
+                case 3:
+                    return true
+                case 4:
+                    return true
+                case 5:
+                    return [
+                        commerceNumber,
+                        iban,
+                        vat
+                    ]
+                        .filter((it: any[]) => it[1].includes('required'))
+                        .every((it) => !!it[0]);
+                case 6:
+                    return [
+                        name,
+                        address,
+                        phoneNumber,
+                        password,
+                        repeatPassword,
+                        agreeToTerms
+                    ]
+                        .filter((it: any[]) => it[1].includes('required'))
+                        .every((it) => !!it[0] || it[0] !== null ? it[0].length > 0 : false);
                 default:
                     return true;
             }

@@ -20,13 +20,13 @@
 import FooterComponent from "~/components/modals/transporters/footer-component.vue";
 import Modal from "~/components/modals/modal.vue";
 import TransportersForm from "~/components/transportersForm.vue";
-import { useTransporters } from "~/store/transporters";
-import { storeToRefs } from 'pinia'
+import {useTransporters} from "~/store/transporters";
+import {storeToRefs} from 'pinia'
 
 const transporterStore = useTransporters();
 const api = useApi()
 
-const { form } = storeToRefs(transporterStore);
+const {form} = storeToRefs(transporterStore);
 
 const steps = ref([
     {
@@ -114,22 +114,6 @@ const steps = ref([
                 id: 0,
                 attrs: {
                     required: false,
-                    options: [
-                        { name: 'Waste materials transport', checked: false },
-                        { name: 'Agricultural transport', checked: false },
-                        { name: 'Car transport', checked: false },
-                        { name: 'Construction materials transport', checked: false },
-                        { name: 'Distribution transport', checked: false },
-                        { name: 'Exceptional transport', checked: false },
-                        { name: 'Intermodal freight transportInternational transport', checked: false },
-                        { name: 'Tip-truck Courier transport', checked: false },
-                        { name: 'Foodstuffs transport', checked: false },
-                        { name: 'Passenger transport', checked: false },
-                        { name: 'Floriculture transport', checked: false },
-                        { name: 'Rail transport Tank and silo transport', checked: false },
-                        { name: 'Movers Stores', checked: false },
-                        { name: 'Distribution Sea container transport', checked: false },
-                    ],
                 },
                 fieldType: 'services',
                 className: 'w-full',
@@ -147,20 +131,20 @@ const steps = ref([
                 attrs: {
                     required: false,
                     options: [
-                        { name: 'Waste materials transport', checked: false },
-                        { name: 'Agricultural transport', checked: false },
-                        { name: 'Car transport', checked: false },
-                        { name: 'Construction materials transport', checked: false },
-                        { name: 'Distribution transport', checked: false },
-                        { name: 'Exceptional transport', checked: false },
-                        { name: 'Intermodal freight transportInternational transport', checked: false },
-                        { name: 'Tip-truck Courier transport', checked: false },
-                        { name: 'Foodstuffs transport', checked: false },
-                        { name: 'Passenger transport', checked: false },
-                        { name: 'Floriculture transport', checked: false },
-                        { name: 'Rail transport Tank and silo transport', checked: false },
-                        { name: 'Movers Stores', checked: false },
-                        { name: 'Distribution Sea container transport', checked: false },
+                        {name: 'Waste materials transport', checked: false},
+                        {name: 'Agricultural transport', checked: false},
+                        {name: 'Car transport', checked: false},
+                        {name: 'Construction materials transport', checked: false},
+                        {name: 'Distribution transport', checked: false},
+                        {name: 'Exceptional transport', checked: false},
+                        {name: 'Intermodal freight transportInternational transport', checked: false},
+                        {name: 'Tip-truck Courier transport', checked: false},
+                        {name: 'Foodstuffs transport', checked: false},
+                        {name: 'Passenger transport', checked: false},
+                        {name: 'Floriculture transport', checked: false},
+                        {name: 'Rail transport Tank and silo transport', checked: false},
+                        {name: 'Movers Stores', checked: false},
+                        {name: 'Distribution Sea container transport', checked: false},
                     ],
                 },
                 fieldType: 'serviceQuantity',
@@ -347,8 +331,7 @@ const steps = ref([
                 attrs: {
                     title: 'Agree to terms?',
                     options: [
-
-                        { name: 'Agree to terms', id: 1, },
+                        {name: 'Agree to terms', id: 1,},
                     ],
                 },
                 fieldType: 'checkBoxGroup',
@@ -382,7 +365,7 @@ const submit = () => {
                 alert('Password mismatch')
             }
         } else {
-            const name = steps.value.find(({ id }) => id === transporterStore.currentStep + 1)?.title ?? '';
+            const name = steps.value.find(({id}) => id === transporterStore.currentStep + 1)?.title ?? '';
             transporterStore.setCurrentStep(name, 'increment');
         }
     } else {
@@ -403,7 +386,7 @@ const submit = () => {
 }
 
 const back = () => {
-    const name = steps.value.find(({ id }) => id === transporterStore.currentStep - 1)?.title ?? '';
+    const name = steps.value.find(({id}) => id === transporterStore.currentStep - 1)?.title ?? '';
     transporterStore.setCurrentStep(name, 'decrement');
 }
 </script>
