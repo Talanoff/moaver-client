@@ -20,15 +20,16 @@
                     class="block w-full group text-center"
             >
                 <div
-                        @click="transportersStore.toggleModal()"
-                        class="flex justify-center items-center p-5 lg:p-8 border-4 border-slate-200 text-2xl font-bold rounded-md group-hover:border-blue-600 group-hover:bg-slate-50 transition-colors duration-300">
+                        @click="transporterStore.toggleModal()"
+                        class="flex justify-center items-center p-5 lg:p-8 border-4 border-slate-200 text-2xl font-bold rounded-md group-hover:border-blue-600 group-hover:bg-slate-50 transition-colors duration-300"
+                >
                     {{$t('partners_hero_banner.button')}}
                 </div>
             </button>
         </div>
     </section>
 
-    <transporters/>
+    <transporters v-if="transporterStore.showModal"/>
 </template>
 
 <script setup>
@@ -36,7 +37,7 @@ import Transporters from "~/components/modals/transporters/transporters.vue";
 import { useTransporters } from "~/store/transporters";
 import { useConfig } from "~/store/config";
 
-const transportersStore = useTransporters();
+const transporterStore = useTransporters();
 const configStore = useConfig();
 
 configStore.getCountries();

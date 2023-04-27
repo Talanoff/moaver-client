@@ -1,6 +1,5 @@
 <template>
     <modal
-            v-if="transporterStore.showModal"
             :title="transporterStore.currentStepName"
             :show-back-button="transporterStore.currentStep > 1"
             @back="back"
@@ -11,6 +10,7 @@
             <footer-component
                     :total-steps="steps.length"
                     :current-step="transporterStore.currentStep"
+                    :loading="loading.value"
             />
         </form>
     </modal>
@@ -21,15 +21,12 @@ import FooterComponent from "~/components/modals/transporters/footer-component.v
 import Modal from "~/components/modals/modal.vue";
 import TransportersForm from "~/components/transportersForm.vue";
 import { useTransporters } from "~/store/transporters";
-import { useConfig } from "~/store/config";
 import { storeToRefs } from 'pinia'
 
 const transporterStore = useTransporters();
-const configStore = useConfig()
 const api = useApi()
 
-const { form: form } = storeToRefs(transporterStore)
-const countries = ref(configStore.countries)
+const { form } = storeToRefs(transporterStore);
 
 const steps = ref([
     {
@@ -64,18 +61,18 @@ const steps = ref([
                 },
                 fieldType: 'input',
                 className: 'sm:w-1/2 w-full',
-                controlName: 'postcode'
+                controlName: 'postCode'
             },
             {
                 attrs: {
                     label: 'country',
                     type: 'text',
                     placeholder: 'country',
+                    options: transporterStore.countries,
                 },
-                fieldType: 'input',
+                fieldType: 'select',
                 className: 'sm:w-1/2 w-full',
-                controlName: 'country'
-
+                controlName: 'country',
             },
             {
                 attrs: {
@@ -224,7 +221,7 @@ const steps = ref([
                                 required: false,
                                 name: 'country',
                             },
-                            options: countries,
+                            options: transporterStore.countries,
                         },
 
                     ]
@@ -372,6 +369,7 @@ const steps = ref([
 
     },
 ]);
+const loading = ref(false);
 
 const submit = () => {
     if (steps.value.length !== transporterStore.currentStep) {
@@ -388,7 +386,19 @@ const submit = () => {
             transporterStore.setCurrentStep(name, 'increment');
         }
     } else {
-        api.post('questionnaire/company', transporterStore.form)
+        loading.value = true;
+        const formData = transporterStore.form;
+
+        api.post('questionnaire/vendor', Object.keys(formData).reduce((acc, it) => ({
+            ...acc,
+            [it]: formData[it][0] ?? null
+        }), {})).then(() => {
+            // TODO notify about success. clear form.
+        }).catch((reason) => {
+            // TODO notify about error. show validation errors.
+        }).finally(() => {
+            loading.value = false;
+        });
     }
 }
 

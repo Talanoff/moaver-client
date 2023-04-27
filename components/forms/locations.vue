@@ -17,8 +17,6 @@
                 </svg>
             </div>
         </div>
-
-
     </div>
 
     <button
@@ -32,23 +30,23 @@
 
 <script setup>
 import FormSelect from "~/components/ui/form-select.vue";
-import {useTransporters} from "~/store/transporters";
-import {useConfig} from "~/store/config";
+import { useTransporters } from "~/store/transporters";
+import { useConfig } from "~/store/config";
 import FormInput from "~/components/ui/form-input.vue";
 
-const storeTransporters = useTransporters()
+const storeTransporters = useTransporters();
 const configStore = useConfig();
 const items = ref([{
     country: '',
     city: '',
-}])
-const options = ref([])
+}]);
+const options = ref(
+    configStore.countries.map(({ id, name }) => ({ key: id, value: name }))
+);
 const onRemove = (idx) => {
     items.value.splice(idx, 1)
 }
-configStore.countries.forEach((el) => {
-    options.value.push({key: el.id, value: el.name})
-})
+
 const onAdd = () => {
     items.value.push({
         country: '',
@@ -57,6 +55,5 @@ const onAdd = () => {
 }
 onUnmounted(() => {
     storeTransporters.form.locations = items.value
-    console.log(storeTransporters.form)
 })
 </script>

@@ -68,7 +68,7 @@ const props = defineProps<{
     }[];
 }>();
 
-const emits = defineEmits(['update:modelValue']);
+const emits = defineEmits(['update:model-value']);
 
 const expanded = ref<boolean>(false);
 
@@ -80,7 +80,7 @@ const onSelect = (option: {
     key: string;
     value: string | number | null;
 }) => {
-    emits('update:modelValue', option.key);
+    emits('update:model-value', option.key);
     expanded.value = !expanded.value;
 }
 

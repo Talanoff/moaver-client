@@ -1,5 +1,6 @@
 import {defineStore} from "pinia";
 import {useConfig} from "~/store/config";
+import { KeyValue } from "~/types/forms";
 
 type CurrentState = {
     showModal: boolean;
@@ -16,7 +17,7 @@ export const useTransporters = defineStore("transporters", {
         form: {
             companyName: [null, ['required']],
             houseNumber: [null, ['required']],
-            postcode: [null, ['required']],
+            postCode: [null, ['required']],
             country: [null, ['required']],
             street: [null, ['required']],
             phone: [null, ['required']],
@@ -30,7 +31,7 @@ export const useTransporters = defineStore("transporters", {
             locations: [null, ['required']],
             name: [null, ['required']],
             address: [null, ['required']],
-            phoneNumber: [null, ['required']],
+            phoneNumber: [null, ['required']], // ???
             password: [null, ['required']],
             repeatPassword: [null, ['required', 'password']],
             agreeToTerms: [false],
@@ -38,13 +39,42 @@ export const useTransporters = defineStore("transporters", {
     }),
 
     getters: {
-        countries() {
+        countries(): KeyValue[] {
             const config = useConfig();
 
-            return config.countries.map((it: { id: number; name: string; }) => ({
+            return config.countries.map((it: { id: number; name: string; }): KeyValue => ({
                 key: it.id,
                 value: it.name
             }));
+        },
+
+        nextStepAvailable(): boolean {
+            const {
+                companyName,
+                houseNumber,
+                postCode,
+                country,
+                street,
+                phone,
+                email
+            } = this.form;
+
+            switch (this.currentStep) {
+                case 1:
+                    return [
+                        companyName,
+                        houseNumber,
+                        postCode,
+                        country,
+                        street,
+                        phone,
+                        email
+                    ]
+                        .filter((it: any[]) => it[1].includes('required'))
+                        .every((it) => !!it[0]);
+                default:
+                    return true;
+            }
         }
     },
 
