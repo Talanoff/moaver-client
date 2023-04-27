@@ -30,8 +30,8 @@
 
 <script setup>
 import FormSelect from "~/components/ui/form-select.vue";
-import { useTransporters } from "~/store/transporters";
-import { useConfig } from "~/store/config";
+import {useTransporters} from "~/store/transporters";
+import {useConfig} from "~/store/config";
 import FormInput from "~/components/ui/form-input.vue";
 
 const storeTransporters = useTransporters();
@@ -41,7 +41,7 @@ const items = ref([{
     city: '',
 }]);
 const options = ref(
-    configStore.countries.map(({ id, name }) => ({ key: id, value: name }))
+    configStore.countries.map(({id, name}) => ({key: id, value: name}))
 );
 const onRemove = (idx) => {
     items.value.splice(idx, 1)
@@ -53,7 +53,9 @@ const onAdd = () => {
         city: '',
     })
 }
-onUnmounted(() => {
-    storeTransporters.form.locations = items.value
-})
+watch(() => items, (val) => {
+        storeTransporters.form.locations[0] = val.value
+    },
+    {deep: true}
+);
 </script>

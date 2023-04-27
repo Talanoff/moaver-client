@@ -28,7 +28,7 @@ export const useTransporters = defineStore("transporters", {
             commerceNumber: [null, ['required']],
             iban: [null, ['required']],
             vat: [null, ['required']],
-            locations: [null, ['required']],
+            locations: [[], ['required']],
             name: [null, ['required']],
             address: [null, ['required']],
             phoneNumber: [null, ['required']], // ???
@@ -67,7 +67,8 @@ export const useTransporters = defineStore("transporters", {
                 phoneNumber,
                 password,
                 repeatPassword,
-                agreeToTerms
+                agreeToTerms,
+                locations
 
             } = this.form;
 
@@ -91,9 +92,21 @@ export const useTransporters = defineStore("transporters", {
                         .filter((it: any[]) => it[1].includes('required'))
                         .every((it) => it[0].length > 0);
                 case 3:
-                    return true
+                    return [
+                        serviceQuantity
+                    ]
+                        .filter((it: any[]) => it[1].includes('required'))
+                        .every((it) => {
+                            return it[0] !== null ? Object.values(it[0][0]).every((item) => typeof item === "string") : ''
+                        });
                 case 4:
-                    return true
+                    return [
+                        locations
+                    ]
+                        .filter((it: any[]) => it[1].includes('required'))
+                        .every((it) => {
+                            return it[0].length > 0 ? it[0].every((element: any) => element.counry !== '' && element.city !== '') : ''
+                        });
                 case 5:
                     return [
                         commerceNumber,

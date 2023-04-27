@@ -393,8 +393,6 @@ const submit = () => {
             const name = steps.value.find(({id}) => id === bookingStore.currentStep + 1)?.title ?? '';
             bookingStore.setCurrentStep(name, 'increment');
         }
-    } else {
-        console.log(steps)
     }
 }
 
