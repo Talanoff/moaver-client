@@ -350,11 +350,32 @@ watch(() => form, (currentValue) => {
             steps.value[0].fields[1].attrs.placeholder = ''
             steps.value[0].fields[1].attrs.disabled = false
         }
-
-        steps.value[0].fields[2].hidden = currentValue.value.category[0] === "Various goods"
-        steps.value[5].fields[6].hidden = currentValue.value.registerCheckbox[0][0] !== 1
-        steps.value[5].fields[7].hidden = currentValue.value.registerCheckbox[0][0] !== 1
-        console.log(form)
+        if (currentValue.value.category[0] === "Various goods") {
+            steps.value[0].fields[2].hidden = true
+            form.value.pieces[0] = 1
+            form.value.pieces[1] = []
+            form.value.kg[0] = null
+            form.value.kg[1] = []
+            form.value.selectCategory[1] = ['required']
+        } else {
+            steps.value[0].fields[2].hidden = false
+            form.value.pieces[1] = ["required"]
+            form.value.kg[1] = ["required"]
+            form.value.selectCategory[1] = []
+        }
+        if (currentValue.value.registerCheckbox[0][0] !== 1) {
+            steps.value[5].fields[6].hidden = true
+            steps.value[5].fields[7].hidden = true
+            form.value.password[0] = null
+            form.value.password[1] = []
+            form.value.repeatPassword[0] = null
+            form.value.repeatPassword[1] = []
+        } else {
+            steps.value[5].fields[6].hidden = false
+            steps.value[5].fields[7].hidden = false
+            form.value.password[1] = ["required"]
+            form.value.repeatPassword[1] = ["required"]
+        }
     },
     {deep: true}
 );
