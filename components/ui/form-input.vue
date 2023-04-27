@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="relative">
         <label class="block mb-2 text-sm  text-gray-900  font-bold" v-if="$attrs.label">
             {{ $t(`forms.${$attrs.label}`) }}
         </label>
@@ -19,7 +19,6 @@
             </div>
         </div>
     </div>
-
 </template>
 <script setup>
 defineProps([
