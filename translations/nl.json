@@ -80,7 +80,15 @@
     "Agree to terms": "Akkoord met de voorwaarden",
     "Passenger Car": "Personenwagen",
     "Tip-truck Courier": "Kiepwagen Koerier",
-    "Foodstuffs": "Voedingsmiddelen"
+    "Foodstuffs": "Voedingsmiddelen",
+    "Company info": "Bedrijfsinfo",
+    "What types of transports do they provide": "Welke soorten transporten bieden ze aan",
+    "In which countries active and which regions of those countries": "In welke landen actief en welke regio's van die landen",
+    "INFO": "INFO",
+    "Personal info": "Persoonlijke informatie",
+    "Collection date": "Collection date",
+    "Pick-up and delivery wishes/requirements": "Ophaal- en bezorgwensen/eisen",
+    "Additional wishes": "Aanvullende wensen"
   },
   "categories": {
     "one": "Een pakket",

@@ -98,7 +98,7 @@ const steps = ref([
     },
     {
         id: 2,
-        title: 'Ophaaldatum',
+        title: 'Collection date',
         fields: [
             {
                 attrs: {

@@ -108,7 +108,7 @@ const steps = ref([
     },
     {
         id: 2,
-        title: 'What types of transports do they provide ',
+        title: 'What types of transports do they provide',
         fields: [
             {
                 id: 0,
@@ -124,7 +124,7 @@ const steps = ref([
     },
     {
         id: 3,
-        title: 'What types of transports do they provide ',
+        title: 'What types of transports do they provide',
         fields: [
             {
                 id: 0,
@@ -342,7 +342,6 @@ const steps = ref([
     },
     {
         id: 7,
-        title: 'INFO',
         fields: [
             {
                 fieldType: 'formInfo',
@@ -353,6 +352,10 @@ const steps = ref([
     },
 ]);
 const loading = ref(false);
+if (transporterStore.currentStep === 1) {
+    const name = steps.value.find(({id}) => id === 1)?.title ?? '';
+    transporterStore.currentStepName = name;
+}
 
 const submit = () => {
     if (steps.value.length !== transporterStore.currentStep) {

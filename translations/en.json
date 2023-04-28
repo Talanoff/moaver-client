@@ -80,7 +80,15 @@
     "Agree to terms": "Agree to terms",
     "Passenger Car": "Passenger Car",
     "Tip-truck Courier": "Tip-truck Courier",
-    "Foodstuffs": "Foodstuffs"
+    "Foodstuffs": "Foodstuffs",
+    "Company info": "Company info",
+    "What types of transports do they provide": "What types of transports do they provide",
+    "In which countries active and which regions of those countries": "In which countries active and which regions of those countries",
+    "INFO": "INFO",
+    "Personal info": "Personal info",
+    "Collection date": "Collection date",
+    "Pick-up and delivery wishes/requirements": "Pick-up and delivery wishes/requirements",
+    "Additional wishes": "Additional wishes"
   },
   "categories": {
     "one": "One package",
