@@ -40,7 +40,9 @@ const steps = ref([
             {
                 attrs: {
                     label: 'Pieces',
-                    type: 'number',
+                    type: 'text',
+                    number: true,
+                    maxlength: '4',
                     name: 'Pieces',
                     placeholder: '1',
                     disabled: false,
@@ -53,7 +55,9 @@ const steps = ref([
             {
                 attrs: {
                     label: 'Kg',
-                    type: 'number',
+                    type: 'text',
+                    number: true,
+                    maxlength: '5',
                     name: 'Kg',
                 },
                 fieldType: 'input',
@@ -84,6 +88,7 @@ const steps = ref([
                     label: 'Message',
                     type: 'text',
                     placeholder: 'Message',
+                    maxlength: '400',
                 },
                 fieldType: 'textarea',
                 className: 'w-full',
@@ -109,6 +114,7 @@ const steps = ref([
                 attrs: {
                     label: 'Location from',
                     type: 'text',
+                    maxlength: 50,
                     placeholder: 'Location from'
                 },
                 fieldType: 'input',
@@ -142,6 +148,7 @@ const steps = ref([
                 attrs: {
                     label: 'Location to',
                     type: 'text',
+                    maxlength: 50,
                     placeholder: 'Location to'
                 },
                 fieldType: 'input',
@@ -200,6 +207,7 @@ const steps = ref([
                     label: 'additional wishes',
                     type: 'text',
                     placeholder: 'additional wishes',
+                    maxlength: 400,
                 },
                 controlName: 'additional_wishes_notes',
                 fieldType: 'textarea',
@@ -237,6 +245,7 @@ const steps = ref([
                     label: 'Name',
                     type: 'text',
                     placeholder: 'Name',
+                    maxlength: 16,
                 },
                 fieldType: 'input',
                 className: 'w-full',
@@ -246,6 +255,7 @@ const steps = ref([
                 attrs: {
                     label: 'Address',
                     type: 'text',
+                    maxlength: 100,
                     placeholder: 'Address',
                 },
                 fieldType: 'input',
@@ -255,7 +265,9 @@ const steps = ref([
             {
                 attrs: {
                     label: 'Phone number',
-                    type: 'number',
+                    type: 'text',
+                    number: true,
+                    maxlength: '15',
                     placeholder: 'Phone number',
                 },
                 fieldType: 'input',
@@ -265,6 +277,7 @@ const steps = ref([
             {
                 attrs: {
                     label: 'E-mail address',
+                    maxlength: '50',
                     type: 'email',
                     placeholder: 'E-mail address',
                 },
@@ -275,7 +288,8 @@ const steps = ref([
             {
                 attrs: {
                     label: 'IBAN',
-                    type: 'number',
+                    type: 'text',
+                    maxlength: '34',
                     placeholder: 'IBAN',
                 },
                 fieldType: 'input',
@@ -296,6 +310,7 @@ const steps = ref([
                 attrs: {
                     label: 'password',
                     type: 'password',
+                    maxlength: '50',
                     placeholder: 'password',
                 },
                 hidden: true,
@@ -307,6 +322,7 @@ const steps = ref([
                 attrs: {
                     label: 'repeat password',
                     type: 'repeat password',
+                    maxlength: '50',
                     placeholder: 'password',
                 },
                 hidden: true,
