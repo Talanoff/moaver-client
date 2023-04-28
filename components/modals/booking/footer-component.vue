@@ -12,7 +12,7 @@
             </div>
         </div>
         <x-button :disabled="! bookingStore.nextStepAvailable" theme="primary">
-            {{ totalSteps !== currentStep ? 'Next' : 'Submit' }}
+            {{ totalSteps !== currentStep ? $t('forms.next') : $t('forms.submit') }}
         </x-button>
     </footer>
 </template>
