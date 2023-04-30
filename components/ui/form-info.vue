@@ -49,27 +49,6 @@
             <p>{{ store.form.selectLocationTo[0] }}</p>
         </div>
     </div>
-  <!--        <div v-for="(field,idx) in fields" :key="idx">-->
-  <!--            <div v-if="field.name !== 'Pick file'">-->
-  <!--                <div v-if="field.name && field.value" class="flex sm:justify-start justify-between border-b-2 pb-2">-->
-  <!--                    <h2 class="font-semibold sm:w-1/2">{{ field.name }}:</h2>-->
-  <!--                    <p>{{ field.value }}</p></div>-->
-  <!--            </div>-->
-  <!--            <div v-if="field.name !== 'Pick file'">-->
-  <!--                <div v-if="field.name && field.value" class="flex sm:justify-start justify-between border-b-2 pb-2">-->
-  <!--                    <h2 class="font-semibold sm:w-1/2">{{ field.name }}:</h2>-->
-  <!--                    <p>{{ field.value }}</p></div>-->
-  <!--            </div>-->
-  <!--            <div v-else>-->
-  <!--                <div v-if="store.form.additional_wishes_attachment[0].url"-->
-  <!--                     class="flex sm:justify-start justify-between mt-4 border-b-2 pb-2">-->
-  <!--                    <div class="sm:w-1/2 font-semibold">{{ field.name }}:</div>-->
-  <!--                    <img :src="field.url" alt=""-->
-  <!--                         class="w-32 ">-->
-  <!--                </div>-->
-  <!--            </div>-->
-
-  <!--        </div>-->
     <div class="border-b-2 pb-2 sm:flex sm:justify-start"
          v-if="additional_wishes.length>0 || store.form.additional_wishes_notes[0] !== null || store.form.additional_wishes_attachment[0].url">
 
