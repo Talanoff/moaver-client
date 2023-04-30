@@ -293,19 +293,19 @@ const steps = ref([
                 className: 'w-full',
                 controlName: 'phoneNumber'
             },
+            // {
+            //     id: 3,
+            //     attrs: {
+            //         label: 'E-mail address',
+            //         type: 'email',
+            //         placeholder: 'E-mail address',
+            //     },
+            //     fieldType: 'input',
+            //     className: 'w-full',
+            //     controlName: 'email'
+            // },
             {
                 id: 3,
-                attrs: {
-                    label: 'E-mail address',
-                    type: 'email',
-                    placeholder: 'E-mail address',
-                },
-                fieldType: 'input',
-                className: 'w-full',
-                controlName: 'email'
-            },
-            {
-                id: 4,
                 attrs: {
                     label: 'password',
                     type: 'password',
@@ -316,7 +316,7 @@ const steps = ref([
                 controlName: 'password'
             },
             {
-                id: 5,
+                id: 4,
                 attrs: {
                     label: 'repeat password',
                     type: 'repeat password',
@@ -327,7 +327,7 @@ const steps = ref([
                 controlName: 'repeatPassword'
             },
             {
-                id: 6,
+                id: 5,
                 attrs: {
                     title: 'Agree to terms?',
                     options: [
@@ -359,7 +359,7 @@ if (transporterStore.currentStep === 1) {
 
 const submit = () => {
     if (steps.value.length !== transporterStore.currentStep) {
-        if (transporterStore.currentStep === 7) {
+        if (transporterStore.currentStep === 6) {
             if (form.value.password[0] === form.value.repeatPassword[0] && form.value.password[0] !== '') {
                 transporterStore.currentStep++
             } else {

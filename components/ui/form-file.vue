@@ -1,7 +1,7 @@
 <template>
     <div>
         <img :src="store.form.additional_wishes_attachment[0] ? store.form.additional_wishes_attachment[0][0].url  :''"
-             class="max-w-[100px] max-h-[100px]" alt="">
+             class="max-w-[20rem] max-h-[20rem]" alt="">
         <label class="block mb-2 text-sm font-medium text-gray-900 " for="file_input">
             {{ $t(`forms.upload_photo`) }}</label>
         <input @change="setFile($event)"

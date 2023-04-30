@@ -378,6 +378,7 @@ watch(() => form, (currentValue) => {
             form.value.pieces[1] = ["required"]
             form.value.kg[1] = ["required"]
             form.value.selectCategory[1] = []
+            form.value.selectCategory[0] = null
         }
         if (currentValue.value.registerCheckbox[0][0] !== 1) {
             steps.value[5].fields[6].hidden = true

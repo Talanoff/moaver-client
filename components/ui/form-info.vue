@@ -74,16 +74,16 @@
          v-if="additional_wishes.length>0 || store.form.additional_wishes_notes[0] !== null || store.form.additional_wishes_attachment[0].url">
 
         <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.${steps[3].title}`) }}:</h2>
-        <div>
+        <div class="w-1/2">
             <div v-for="field in additional_wishes" :key="field.name">
                 <div>{{ $t(`forms.${field.name}`) }}</div>
             </div>
-  
+
         </div>
     </div>
     <div class="border-b-2 pb-2 sm:flex sm:justify-start" v-if="wishes.length > 0">
         <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.${steps[3].title}`) }}:</h2>
-        <div>
+        <div class="w-1/2">
             <div v-for="item in wishes" :key="item.id">
                 <div>
                     {{ $t(`forms.${item.name}`) }}
