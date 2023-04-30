@@ -3,7 +3,8 @@
     "header": {
       "home": "Home",
       "partner": "Become a partner",
-      "login": "Log in"
+      "login": "Log in",
+      "Sign in": "Sign in"
     },
     "footer": {
       "terms": "Terms and Conditions",
@@ -46,7 +47,6 @@
     "Name": "Name",
     "Address": "Address",
     "Phone number": "Phone number",
-    "E-mail address": "E-mail address",
     "IBAN": "IBAN",
     "upload_photo": "Upload photo",
     "password": "password",
@@ -88,13 +88,14 @@
     "Personal info": "Personal info",
     "Collection date": "Collection date",
     "Pick-up and delivery wishes/requirements": "Pick-up and delivery wishes/requirements",
-    "Additional wishes": "Additional wishes"
+    "Additional wishes": "Additional wishes",
+    "email": 'email'
   },
   "categories": {
-    "one": "One package",
-    "many": "Many packages",
-    "pallets": "Pallet(s)",
-    "various": "Various goods"
+    "One package": "One package",
+    "Many packages": "Many packages",
+    "Pallet(s)": "Pallet(s)",
+    "Various goods": "Various goods"
   }
 }
 

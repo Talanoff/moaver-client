@@ -11,13 +11,17 @@ export const useConfig = defineStore('config', () => {
     const wishes = ref({});
     const mainStore = useMain();
     const getCountries = async (): Promise<void> => {
+        mainStore.loader = true
         const {data} = await api.get('/countries');
         countries.value = data;
+        mainStore.loader = false
     }
 
     const getServices = async (): Promise<void> => {
+        mainStore.loader = true
         const {data} = await api.get('/services');
         services.value = data;
+        mainStore.loader = false
     }
 
     const getVehicles = async (services: string[]): Promise<void> => {
@@ -32,8 +36,10 @@ export const useConfig = defineStore('config', () => {
     }
 
     const getWishes = async (): Promise<void> => {
+        mainStore.loader = true
         const {data} = await api.get('/wishes');
         wishes.value = data;
+        mainStore.loader = false
     }
 
     return {

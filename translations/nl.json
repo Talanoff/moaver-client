@@ -3,7 +3,8 @@
     "header": {
       "home": "Thuis",
       "partner": "Een partner worden",
-      "login": "Log in"
+      "login": "Log in",
+      "Sign in": "Aanmelden"
     },
     "footer": {
       "terms": "Voorwaarden",
@@ -41,12 +42,11 @@
     "Location type from": "Locatietype van",
     "Date To": "Datum naar",
     "Location to": "Locatie naar",
-    "Location type from": "Locatietype naar",
+    "Location type to": "Locatietype naar",
     "additional wishes": "aanvullende wensen",
     "Name": "Naam",
     "Address": "Adres",
     "Phone number": "Telefoonnummer",
-    "E-mail address": "E-mailadres",
     "IBAN": "IBAN",
     "upload_photo": "Upload foto",
     "password": "wachtwoord",
@@ -88,12 +88,13 @@
     "Personal info": "Persoonlijke informatie",
     "Collection date": "Collection date",
     "Pick-up and delivery wishes/requirements": "Ophaal- en bezorgwensen/eisen",
-    "Additional wishes": "Aanvullende wensen"
+    "Additional wishes": "Aanvullende wensen",
+    "email": "e-mailen"
   },
   "categories": {
-    "one": "Een pakket",
-    "many": "Veel pakket",
-    "pallets": "Pallet(s)",
-    "various": "Diverse goederen"
+    "One package": "Een pakket",
+    "Many packages": "Veel pakket",
+    "Pallet(s)": "Pallet(s)",
+    "Various goods": "Diverse goederen"
   }
 }
