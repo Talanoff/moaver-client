@@ -1,10 +1,9 @@
 <template>
     <div class="mb-8 mt-5">
         <div v-if="store.currentStep !== steps.length">
-            <div v-for="step in steps">
+            <div v-for="step in steps" :key="step.id">
                 <div
                         v-if="step.id === store.currentStep"
-                        :key="step.id"
                         class="max-h-[60vh] overflow-y-auto overflow-x-hidden"
                 >
                     <div class="flex flex-wrap">

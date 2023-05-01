@@ -1,6 +1,6 @@
 <template>
     <button
-            :type="type"
+            :type="type ?? 'submit'"
             :disabled="disabled"
             class="focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center transition-colors duration-300"
             :class="color"
@@ -13,7 +13,7 @@
 type Theme = 'primary' | 'secondary'
 
 const props = defineProps<{
-    type: 'submit' | 'button' | 'cancel';
+    type?: 'submit' | 'button' | 'cancel';
     disabled: boolean;
     theme: Theme
 }>();
