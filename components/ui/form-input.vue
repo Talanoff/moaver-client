@@ -16,7 +16,9 @@
             >
 
             <div class="absolute right-6 text-color-gray">
-                {{ $attrs.name }}
+
+                {{ $t(`forms.${$attrs.name}`) }}
+
             </div>
         </div>
     </div>
