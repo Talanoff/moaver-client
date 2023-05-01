@@ -12,13 +12,13 @@
             </div>
         </div>
         <x-button :disabled="! transporterStore.nextStepAvailable" theme="primary">
-            {{ totalSteps !== currentStep ? 'Next' : 'Submit' }}
+            {{ totalSteps !== currentStep ? $t('forms.next') : $t('forms.submit') }}
         </x-button>
     </footer>
 </template>
 
 <script setup>
-import { useTransporters } from "~/store/transporters";
+import {useTransporters} from "~/store/transporters";
 import XButton from "~/components/ui/x-button.vue";
 
 const props = defineProps(['totalSteps', 'currentStep', 'loading']);

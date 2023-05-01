@@ -20,10 +20,12 @@
                 </div>
                 <form @submit.prevent="submit">
                     <h2 class="text-xl font-bold mt-4 mb-4">
-                        Sign in
+                        {{ $t(`navigation.header.Sign in`) }}
                     </h2>
-                    <form-input class="mb-4" v-model="form.email"
-                                v-bind="{type: 'email', placeholder:'email', required:true, name:'email'}"/>
+                    <div class="mb-4">
+                        <form-input v-model="form.email"
+                                    v-bind="{type: 'email', placeholder:'email', required:true, name:'email'}"/>
+                    </div>
                     <form-input v-model="form.password"
                                 v-bind="{type: 'password', placeholder:'password', required:true, name:'password'}"/>
                     <footer-component>Sign in
@@ -39,9 +41,9 @@
 <script setup>
 import FooterComponent from "~/components/modals/login/footer-component.vue";
 import FormInput from "~/components/ui/form-input.vue";
-import { useAuth } from "~/store/auth";
+import {useAuth} from "~/store/auth";
 
-const { $sanctumAuth, $apiFetch } = useNuxtApp();
+const {$sanctumAuth, $apiFetch} = useNuxtApp();
 const storeAuth = useAuth();
 const form = ref({
     email: '',

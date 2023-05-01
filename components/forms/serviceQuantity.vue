@@ -10,8 +10,8 @@
                 </p>
                 <p class="w-1/2">
                     <form-input v-bind="{type:'number'}"
-                                :modelValue="transportersStore.form.serviceQuantity[val]? transportersStore.form.serviceQuantity[val][0].quantity :''"
-                                v-model="item.quantity"/>
+                                :modelValue="transportersStore.form.serviceQuantity[0][0][val]"
+                                v-model="transportersStore.form.serviceQuantity[0][0][val]"/>
                 </p>
 
             </div>
@@ -28,9 +28,11 @@ const transportersStore = useTransporters()
 const configStore = useConfig();
 
 configStore.getVehicles(transportersStore.form.services[0])
-onUnmounted(() => {
-    transportersStore.form.serviceQuantity = configStore.vehicles
-})
+watch(() => configStore.vehicles, (val) => {
+        transportersStore.form.serviceQuantity[0] = [{...configStore.vehicles}]
+    },
+    {deep: true}
+);
 </script>
 <style scoped>
 

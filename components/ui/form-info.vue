@@ -1,57 +1,92 @@
 <template>
     <div>
         <div class="flex sm:justify-start justify-between border-b-2 pb-2">
-            <h2 class="font-semibold sm:sm:w-1/2">Category:</h2> {{ store.form.category[0] }}
+            <h2 class="font-semibold sm:sm:w-1/2">Category:</h2> {{ $t(`categories.${store.form.category[0]}`) }}
+
         </div>
-        <div v-for="(field,idx) in fields" :key="idx">
-            <div v-if="field.name !== 'Pick file'">
-                <div v-if="field.name && field.value" class="flex sm:justify-start justify-between border-b-2 pb-2">
-                    <h2 class="font-semibold sm:w-1/2">{{ field.name }}:</h2>
-                    <p>{{ field.value }}</p></div>
-            </div>
-            <div v-if="field.name !== 'Pick file'">
-                <div v-if="field.name && field.value" class="flex sm:justify-start justify-between border-b-2 pb-2">
-                    <h2 class="font-semibold sm:w-1/2">{{ field.name }}:</h2>
-                    <p>{{ field.value }}</p></div>
-            </div>
-            <div v-else>
-                <div v-if="field.name && field.url" class="flex sm:justify-start justify-between mt-4 border-b-2 pb-2">
-                    <div class="sm:w-1/2 font-semibold">{{ field.name }}:</div>
-                    <img :src="field.url" alt=""
-                         class="w-32 ">
-                </div>
+        <div class="flex sm:justify-start justify-between border-b-2 pb-2">
+            <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.Pieces`) }}:</h2>
+            <p>{{ store.form.pieces[0] }}</p>
+        </div>
+        <div class="flex sm:justify-start justify-between border-b-2 pb-2" v-if="store.form.selectCategory[0] !== null">
+            <h2 class="font-semibold sm:w-1/2">Dispatch type:</h2>
+            <p>{{ store.form.selectCategory[0] }}</p>
+        </div>
+        <div class="flex sm:justify-start justify-between border-b-2 pb-2" v-if="store.form.kg[0] !== null">
+            <h2 class="font-semibold sm:w-1/2">Kg:</h2>
+            <p>{{ store.form.kg[0] }}</p>
+        </div>
+        <div class="flex sm:justify-start justify-between border-b-2 pb-2" v-if="store.form.message[0] !== null">
+            <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.Message`) }}:</h2>
+            <p>{{ store.form.message[0] }}</p>
+        </div>
+        <div class="flex sm:justify-start justify-between border-b-2 pb-2" v-if="store.form.dateFrom[0] !== null">
+            <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.Date From`) }}:</h2>
+            <p>{{ store.form.dateFrom[0] }}</p>
+        </div>
+        <div class="flex sm:justify-start justify-between border-b-2 pb-2" v-if="store.form.locationFrom[0] !== null">
+            <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.Location from`) }}</h2>
+            <p>{{ store.form.locationFrom[0] }}</p>
+        </div>
+        <div class="flex sm:justify-start justify-between border-b-2 pb-2"
+             v-if="store.form.selectLocationFrom[0] !== null">
+            <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.Location type from`) }}</h2>
+            <p>{{ store.form.selectLocationFrom[0] }}</p>
+        </div>
+        <div class="flex sm:justify-start justify-between border-b-2 pb-2"
+             v-if="store.form.dateTo[0] !== null">
+            <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.Date To`) }}:</h2>
+            <p>{{ store.form.dateTo[0] }}</p>
+        </div>
+        <div class="flex sm:justify-start justify-between border-b-2 pb-2"
+             v-if="store.form.locationTo[0] !== null">
+            <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.Location to`) }}:</h2>
+            <p>{{ store.form.locationTo[0] }}</p>
+        </div>
+        <div class="flex sm:justify-start justify-between border-b-2 pb-2"
+             v-if="store.form.selectLocationTo[0] !== null">
+            <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.Location type to`) }}:</h2>
+            <p>{{ store.form.selectLocationTo[0] }}</p>
+        </div>
+    </div>
+    <div class="border-b-2 pb-2 sm:flex sm:justify-start"
+         v-if="additional_wishes.length>0 || store.form.additional_wishes_notes[0] !== null || store.form.additional_wishes_attachment[0].url">
+
+        <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.${steps[3].title}`) }}:</h2>
+        <div class="w-1/2">
+            <div v-for="field in additional_wishes" :key="field.name">
+                <div>{{ $t(`forms.${field.name}`) }}</div>
             </div>
 
         </div>
-        <div class="border-b-2 pb-2 sm:flex sm:justify-start" v-if="additional_wishes.length>0 || store.form.additional_wishes_notes[0] !== null || store.form.additional_wishes_attachment[0].url">
-
-            <h2 class="font-semibold sm:w-1/2" >{{ steps[3].title }}:</h2>
-            <div>
-                <div v-for="field in additional_wishes" :key="field.id">
-                    <div>-{{ field.name }}</div>
-                </div>
+    </div>
+    <div class="border-b-2 pb-2 sm:flex sm:justify-start" v-if="wishes.length > 0">
+        <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.${steps[3].title}`) }}:</h2>
+        <div class="w-1/2">
+            <div v-for="item in wishes" :key="item.id">
                 <div>
-                    <div v-if="store.form.additional_wishes_notes[0] !== null">-{{ store.form.additional_wishes_notes[0] }}</div>
-                        <img :src="store.form.additional_wishes_attachment[0].url" class="w-52"/>
-                </div>
-            </div>
-        </div>
-        <div class="border-b-2 pb-2 sm:flex sm:justify-start" v-if="wishes.length > 0">
-            <h2 class="font-semibold sm:w-1/2">{{ steps[2].title }}:</h2>
-            <div >
-                <div v-for="item in wishes" :key="item.id">
-                    <div>
-                        {{item.name}}
+                    {{ $t(`forms.${item.name}`) }}
 
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="sm:flex sm:justify-start justify-between border-b-2 pb-2"
+         v-if="store.form.additional_wishes_notes[0] !== null">
+        <h2 class="font-semibold sm:w-1/2">Additional wishes notes:</h2>
+        <p>{{ store.form.additional_wishes_notes[0] }}</p>
+    </div>
+    <div class="sm:flex sm:justify-start justify-between border-b-2 pb-2"
+         v-if="store.form.additional_wishes_attachment[0] !== null">
+        <h2 class="font-semibold sm:w-1/2">Sending photo</h2>
+        <img class="sm:w-[20rem]" :src="store.form.additional_wishes_attachment[0][0].url" alt="">
+    </div>
+
 </template>
 
 <script setup>
-import { useBooking } from "~/store/booking";
+import {useBooking} from "~/store/booking";
+
 const props = defineProps({
     steps: []
 })
@@ -63,25 +98,25 @@ const store = useBooking()
 const setValue = () => {
     props.steps.forEach(el => el.fields.forEach((elem) => {
         if (elem.fieldType !== 'services') {
-            fields.value.push({ name: elem.attrs?.name, value: elem.value, url: elem.attrs?.url })
+            fields.value.push({name: elem.attrs?.name, value: elem.value, url: elem.attrs?.url})
         }
     }))
 }
-const setWishes = ()=>{
-    store.form.additional_wishes.forEach((el)=>{
-        props.steps[3].fields[0].attrs.options.forEach((field)=>{
-            el.forEach((id)=>{
-                if(field.id === id){
+const setWishes = () => {
+    store.form.additional_wishes.forEach((el) => {
+        props.steps[3].fields[0].attrs.options.forEach((field) => {
+            el.forEach((id) => {
+                if (field.id === id) {
                     additional_wishes.value.push(field)
                 }
             })
 
         })
     })
-    store.form.wishes.forEach((el)=>{
-        props.steps[2].fields[0].attrs.options.forEach((field)=>{
-            el.forEach((id)=>{
-                if(field.id === id){
+    store.form.wishes.forEach((el) => {
+        props.steps[2].fields[0].attrs.options.forEach((field) => {
+            el.forEach((id) => {
+                if (field.id === id) {
                     wishes.value.push(field)
                 }
             })

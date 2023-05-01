@@ -40,7 +40,9 @@ const steps = ref([
             {
                 attrs: {
                     label: 'Pieces',
-                    type: 'number',
+                    type: 'text',
+                    number: true,
+                    maxlength: '4',
                     name: 'Pieces',
                     placeholder: '1',
                     disabled: false,
@@ -53,7 +55,9 @@ const steps = ref([
             {
                 attrs: {
                     label: 'Kg',
-                    type: 'number',
+                    type: 'text',
+                    number: true,
+                    maxlength: '5',
                     name: 'Kg',
                 },
                 fieldType: 'input',
@@ -84,6 +88,7 @@ const steps = ref([
                     label: 'Message',
                     type: 'text',
                     placeholder: 'Message',
+                    maxlength: '400',
                 },
                 fieldType: 'textarea',
                 className: 'w-full',
@@ -93,7 +98,7 @@ const steps = ref([
     },
     {
         id: 2,
-        title: 'Ophaaldatum',
+        title: 'Collection date',
         fields: [
             {
                 attrs: {
@@ -109,6 +114,7 @@ const steps = ref([
                 attrs: {
                     label: 'Location from',
                     type: 'text',
+                    maxlength: 50,
                     placeholder: 'Location from'
                 },
                 fieldType: 'input',
@@ -142,6 +148,7 @@ const steps = ref([
                 attrs: {
                     label: 'Location to',
                     type: 'text',
+                    maxlength: 50,
                     placeholder: 'Location to'
                 },
                 fieldType: 'input',
@@ -200,6 +207,7 @@ const steps = ref([
                     label: 'additional wishes',
                     type: 'text',
                     placeholder: 'additional wishes',
+                    maxlength: 400,
                 },
                 controlName: 'additional_wishes_notes',
                 fieldType: 'textarea',
@@ -237,6 +245,7 @@ const steps = ref([
                     label: 'Name',
                     type: 'text',
                     placeholder: 'Name',
+                    maxlength: 16,
                 },
                 fieldType: 'input',
                 className: 'w-full',
@@ -246,6 +255,7 @@ const steps = ref([
                 attrs: {
                     label: 'Address',
                     type: 'text',
+                    maxlength: 100,
                     placeholder: 'Address',
                 },
                 fieldType: 'input',
@@ -255,7 +265,9 @@ const steps = ref([
             {
                 attrs: {
                     label: 'Phone number',
-                    type: 'number',
+                    type: 'text',
+                    number: true,
+                    maxlength: '15',
                     placeholder: 'Phone number',
                 },
                 fieldType: 'input',
@@ -265,6 +277,7 @@ const steps = ref([
             {
                 attrs: {
                     label: 'E-mail address',
+                    maxlength: '50',
                     type: 'email',
                     placeholder: 'E-mail address',
                 },
@@ -275,7 +288,8 @@ const steps = ref([
             {
                 attrs: {
                     label: 'IBAN',
-                    type: 'number',
+                    type: 'text',
+                    maxlength: '34',
                     placeholder: 'IBAN',
                 },
                 fieldType: 'input',
@@ -296,6 +310,7 @@ const steps = ref([
                 attrs: {
                     label: 'password',
                     type: 'password',
+                    maxlength: '50',
                     placeholder: 'password',
                 },
                 hidden: true,
@@ -307,6 +322,7 @@ const steps = ref([
                 attrs: {
                     label: 'repeat password',
                     type: 'repeat password',
+                    maxlength: '50',
                     placeholder: 'password',
                 },
                 hidden: true,
@@ -350,11 +366,33 @@ watch(() => form, (currentValue) => {
             steps.value[0].fields[1].attrs.placeholder = ''
             steps.value[0].fields[1].attrs.disabled = false
         }
-
-        steps.value[0].fields[2].hidden = currentValue.value.category[0] === "Various goods"
-        steps.value[5].fields[6].hidden = currentValue.value.registerCheckbox[0][0] !== 1
-        steps.value[5].fields[7].hidden = currentValue.value.registerCheckbox[0][0] !== 1
-        console.log(form)
+        if (currentValue.value.category[0] === "Various goods") {
+            steps.value[0].fields[2].hidden = true
+            form.value.pieces[0] = 1
+            form.value.pieces[1] = []
+            form.value.kg[0] = null
+            form.value.kg[1] = []
+            form.value.selectCategory[1] = ['required']
+        } else {
+            steps.value[0].fields[2].hidden = false
+            form.value.pieces[1] = ["required"]
+            form.value.kg[1] = ["required"]
+            form.value.selectCategory[1] = []
+            form.value.selectCategory[0] = null
+        }
+        if (currentValue.value.registerCheckbox[0][0] !== 1) {
+            steps.value[5].fields[6].hidden = true
+            steps.value[5].fields[7].hidden = true
+            form.value.password[0] = null
+            form.value.password[1] = []
+            form.value.repeatPassword[0] = null
+            form.value.repeatPassword[1] = []
+        } else {
+            steps.value[5].fields[6].hidden = false
+            steps.value[5].fields[7].hidden = false
+            form.value.password[1] = ["required"]
+            form.value.repeatPassword[1] = ["required"]
+        }
     },
     {deep: true}
 );
@@ -372,8 +410,6 @@ const submit = () => {
             const name = steps.value.find(({id}) => id === bookingStore.currentStep + 1)?.title ?? '';
             bookingStore.setCurrentStep(name, 'increment');
         }
-    } else {
-        console.log(steps)
     }
 }
 

@@ -3,7 +3,8 @@
     "header": {
       "home": "Home",
       "partner": "Become a partner",
-      "login": "Log in"
+      "login": "Log in",
+      "Sign in": "Sign in"
     },
     "footer": {
       "terms": "Terms and Conditions",
@@ -46,7 +47,6 @@
     "Name": "Name",
     "Address": "Address",
     "Phone number": "Phone number",
-    "E-mail address": "E-mail address",
     "IBAN": "IBAN",
     "upload_photo": "Upload photo",
     "password": "password",
@@ -61,13 +61,41 @@
     "E-mail address": "E-mail address",
     "Chamber of Commerce number": "Chamber of Commerce number",
     "VAT number": "VAT number",
-    "1": "1"
+    "1": "1",
+    "next": "Next",
+    "submit": "Submit",
+    "Tail lift at pick-upTail lift for delivery": "Tail lift at pick-upTail lift for delivery",
+    "Indoor charging": "Indoor charging",
+    "Unloading inside": "Unloading inside",
+    "Call before pick-up": "Call before pick-up",
+    "Call before delivery": "Call before delivery",
+    "Appointment needed for delivery": "Appointment needed for delivery",
+    "Urgent/Rush": "Urgent/Rush",
+    "Forklift needed": "Forklift needed",
+    "Part load": "Part load",
+    "Refrigerated transport": "Refrigerated transport",
+    "Frozen transport": "Frozen transport",
+    "Electric vehicle": "Electric vehicle",
+    "do you want to register": "do you want to register",
+    "Agree to terms": "Agree to terms",
+    "Passenger Car": "Passenger Car",
+    "Tip-truck Courier": "Tip-truck Courier",
+    "Foodstuffs": "Foodstuffs",
+    "Company info": "Company info",
+    "What types of transports do they provide": "What types of transports do they provide",
+    "In which countries active and which regions of those countries": "In which countries active and which regions of those countries",
+    "INFO": "INFO",
+    "Personal info": "Personal info",
+    "Collection date": "Collection date",
+    "Pick-up and delivery wishes/requirements": "Pick-up and delivery wishes/requirements",
+    "Additional wishes": "Additional wishes",
+    "email": 'email'
   },
   "categories": {
-    "one": "One package",
-    "many": "Many packages",
-    "pallets": "Pallet(s)",
-    "various": "Various goods"
+    "One package": "One package",
+    "Many packages": "Many packages",
+    "Pallet(s)": "Pallet(s)",
+    "Various goods": "Various goods"
   }
 }
 

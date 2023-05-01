@@ -24,13 +24,13 @@
                  stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
             </svg>
-            {{ $t(`categories.${category.id}`) }}
+            {{ $t(`categories.${category.name}`) }}
         </div>
     </button>
 </template>
 
 <script setup>
-import { useBooking } from "~/store/booking";
+import {useBooking} from "~/store/booking";
 
 const store = useBooking();
 

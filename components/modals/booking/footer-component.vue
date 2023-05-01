@@ -11,18 +11,18 @@
                 <div :style="{width}" class="bg-blue-600 h-2.5 rounded-full"></div>
             </div>
         </div>
-        <button
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center"
-                type="submit"
-        >
-            {{ totalSteps !== currentStep ? 'Next' : 'Submit' }}
-        </button>
+        <x-button :disabled="! bookingStore.nextStepAvailable" theme="primary">
+            {{ totalSteps !== currentStep ? $t('forms.next') : $t('forms.submit') }}
+        </x-button>
     </footer>
 </template>
 
 <script setup>
-const props = defineProps(['totalSteps', 'currentStep']);
+import XButton from "~/components/ui/x-button.vue";
+import {useBooking} from "~/store/booking";
 
+const props = defineProps(['totalSteps', 'currentStep']);
+const bookingStore = useBooking()
 const width = computed(() => {
     return ((props.currentStep / props.totalSteps) * 100) + '%'
 });

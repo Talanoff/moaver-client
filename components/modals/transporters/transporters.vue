@@ -20,13 +20,13 @@
 import FooterComponent from "~/components/modals/transporters/footer-component.vue";
 import Modal from "~/components/modals/modal.vue";
 import TransportersForm from "~/components/transportersForm.vue";
-import { useTransporters } from "~/store/transporters";
-import { storeToRefs } from 'pinia'
+import {useTransporters} from "~/store/transporters";
+import {storeToRefs} from 'pinia'
 
 const transporterStore = useTransporters();
 const api = useApi()
 
-const { form } = storeToRefs(transporterStore);
+const {form} = storeToRefs(transporterStore);
 
 const steps = ref([
     {
@@ -108,28 +108,12 @@ const steps = ref([
     },
     {
         id: 2,
-        title: 'What types of transports do they provide ',
+        title: 'What types of transports do they provide',
         fields: [
             {
                 id: 0,
                 attrs: {
                     required: false,
-                    options: [
-                        { name: 'Waste materials transport', checked: false },
-                        { name: 'Agricultural transport', checked: false },
-                        { name: 'Car transport', checked: false },
-                        { name: 'Construction materials transport', checked: false },
-                        { name: 'Distribution transport', checked: false },
-                        { name: 'Exceptional transport', checked: false },
-                        { name: 'Intermodal freight transportInternational transport', checked: false },
-                        { name: 'Tip-truck Courier transport', checked: false },
-                        { name: 'Foodstuffs transport', checked: false },
-                        { name: 'Passenger transport', checked: false },
-                        { name: 'Floriculture transport', checked: false },
-                        { name: 'Rail transport Tank and silo transport', checked: false },
-                        { name: 'Movers Stores', checked: false },
-                        { name: 'Distribution Sea container transport', checked: false },
-                    ],
                 },
                 fieldType: 'services',
                 className: 'w-full',
@@ -140,27 +124,27 @@ const steps = ref([
     },
     {
         id: 3,
-        title: 'What types of transports do they provide ',
+        title: 'What types of transports do they provide',
         fields: [
             {
                 id: 0,
                 attrs: {
                     required: false,
                     options: [
-                        { name: 'Waste materials transport', checked: false },
-                        { name: 'Agricultural transport', checked: false },
-                        { name: 'Car transport', checked: false },
-                        { name: 'Construction materials transport', checked: false },
-                        { name: 'Distribution transport', checked: false },
-                        { name: 'Exceptional transport', checked: false },
-                        { name: 'Intermodal freight transportInternational transport', checked: false },
-                        { name: 'Tip-truck Courier transport', checked: false },
-                        { name: 'Foodstuffs transport', checked: false },
-                        { name: 'Passenger transport', checked: false },
-                        { name: 'Floriculture transport', checked: false },
-                        { name: 'Rail transport Tank and silo transport', checked: false },
-                        { name: 'Movers Stores', checked: false },
-                        { name: 'Distribution Sea container transport', checked: false },
+                        {name: 'Waste materials transport', checked: false},
+                        {name: 'Agricultural transport', checked: false},
+                        {name: 'Car transport', checked: false},
+                        {name: 'Construction materials transport', checked: false},
+                        {name: 'Distribution transport', checked: false},
+                        {name: 'Exceptional transport', checked: false},
+                        {name: 'Intermodal freight transportInternational transport', checked: false},
+                        {name: 'Tip-truck Courier transport', checked: false},
+                        {name: 'Foodstuffs transport', checked: false},
+                        {name: 'Passenger transport', checked: false},
+                        {name: 'Floriculture transport', checked: false},
+                        {name: 'Rail transport Tank and silo transport', checked: false},
+                        {name: 'Movers Stores', checked: false},
+                        {name: 'Distribution Sea container transport', checked: false},
                     ],
                 },
                 fieldType: 'serviceQuantity',
@@ -309,19 +293,19 @@ const steps = ref([
                 className: 'w-full',
                 controlName: 'phoneNumber'
             },
+            // {
+            //     id: 3,
+            //     attrs: {
+            //         label: 'E-mail address',
+            //         type: 'email',
+            //         placeholder: 'E-mail address',
+            //     },
+            //     fieldType: 'input',
+            //     className: 'w-full',
+            //     controlName: 'email'
+            // },
             {
                 id: 3,
-                attrs: {
-                    label: 'E-mail address',
-                    type: 'email',
-                    placeholder: 'E-mail address',
-                },
-                fieldType: 'input',
-                className: 'w-full',
-                controlName: 'email'
-            },
-            {
-                id: 4,
                 attrs: {
                     label: 'password',
                     type: 'password',
@@ -332,7 +316,7 @@ const steps = ref([
                 controlName: 'password'
             },
             {
-                id: 5,
+                id: 4,
                 attrs: {
                     label: 'repeat password',
                     type: 'repeat password',
@@ -343,12 +327,11 @@ const steps = ref([
                 controlName: 'repeatPassword'
             },
             {
-                id: 6,
+                id: 5,
                 attrs: {
                     title: 'Agree to terms?',
                     options: [
-
-                        { name: 'Agree to terms', id: 1, },
+                        {name: 'Agree to terms', id: 1,},
                     ],
                 },
                 fieldType: 'checkBoxGroup',
@@ -359,7 +342,6 @@ const steps = ref([
     },
     {
         id: 7,
-        title: 'INFO',
         fields: [
             {
                 fieldType: 'formInfo',
@@ -370,10 +352,14 @@ const steps = ref([
     },
 ]);
 const loading = ref(false);
+if (transporterStore.currentStep === 1) {
+    const name = steps.value.find(({id}) => id === 1)?.title ?? '';
+    transporterStore.currentStepName = name;
+}
 
 const submit = () => {
     if (steps.value.length !== transporterStore.currentStep) {
-        if (transporterStore.currentStep === 7) {
+        if (transporterStore.currentStep === 6) {
             if (form.value.password[0] === form.value.repeatPassword[0] && form.value.password[0] !== '') {
                 transporterStore.currentStep++
             } else {
@@ -382,7 +368,7 @@ const submit = () => {
                 alert('Password mismatch')
             }
         } else {
-            const name = steps.value.find(({ id }) => id === transporterStore.currentStep + 1)?.title ?? '';
+            const name = steps.value.find(({id}) => id === transporterStore.currentStep + 1)?.title ?? '';
             transporterStore.setCurrentStep(name, 'increment');
         }
     } else {
@@ -403,7 +389,7 @@ const submit = () => {
 }
 
 const back = () => {
-    const name = steps.value.find(({ id }) => id === transporterStore.currentStep - 1)?.title ?? '';
+    const name = steps.value.find(({id}) => id === transporterStore.currentStep - 1)?.title ?? '';
     transporterStore.setCurrentStep(name, 'decrement');
 }
 </script>
