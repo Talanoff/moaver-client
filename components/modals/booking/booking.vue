@@ -356,22 +356,26 @@ const steps = ref([
 
     },
 ]);
+const api = useApi()
 watch(() => form.value.category[0], () => {
         steps.value[0].fields[3].hidden = form.value.category[0] !== "Various goods"
-        steps.value[0].fields[1].hidden = form.value.category[0] === "Various goods"
+        // steps.value[0].fields[1].hidden = form.value.category[0] === "Various goods"
         if (form.value.category[0] === "One package") {
             steps.value[0].fields[1].attrs.placeholder = 1
             steps.value[0].fields[1].attrs.disabled = true
             steps.value[0].fields[1].attrs.name = 'Piece'
+            steps.value[0].fields[1].attrs.label = 'Piece'
         } else if (form.value.category[0] === "Pallet(s)") {
             steps.value[0].fields[1].attrs.name = 'Pallets'
+            steps.value[0].fields[1].attrs.label = 'Pallets'
         } else {
             steps.value[0].fields[1].attrs.name = 'Pieces'
+            steps.value[0].fields[1].attrs.label = 'Pieces'
             steps.value[0].fields[1].attrs.placeholder = ''
             steps.value[0].fields[1].attrs.disabled = false
         }
         if (form.value.category[0] === "Various goods") {
-            steps.value[0].fields[2].hidden = true
+            // steps.value[0].fields[2].hidden = true
             form.value.pieces[0] = 1
             form.value.pieces[1] = []
             form.value.kg[0] = null
@@ -403,7 +407,7 @@ watch(() => form.value.registerCheckbox[0][0], () => {
     },
 );
 const submit = () => {
-    if (steps.value.length !== bookingStore.currentStep) {
+    if (steps.value.length - 1 !== bookingStore.currentStep) {
         if (bookingStore.currentStep === 6) {
             if (form.value.password[0] === form.value.repeatPassword[0] && form.value.password[0] !== '') {
                 bookingStore.currentStep++
@@ -416,11 +420,25 @@ const submit = () => {
             const name = steps.value.find(({id}) => id === bookingStore.currentStep + 1)?.title ?? '';
             bookingStore.setCurrentStep(name, 'increment');
         }
+    } else {
+        const formData = bookingStore.form;
+
+        api.post('questionnaire/vendor', Object.keys(formData).reduce((acc, it) => ({
+            ...acc,
+            [it]: formData[it][0] ?? null
+        }), {})).then(() => {
+            // TODO notify about success. clear form.
+        }).catch((reason) => {
+            // TODO notify about error. show validation errors.
+        }).finally(() => {
+        });
+        bookingStore.currentStep++
     }
 }
 
 const back = () => {
     const name = steps.value.find(({id}) => id === bookingStore.currentStep - 1)?.title ?? '';
+
     bookingStore.setCurrentStep(name, 'decrement');
 }
 </script>
