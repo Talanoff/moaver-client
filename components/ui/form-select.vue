@@ -25,7 +25,7 @@
 
         <ul
                 v-if="expanded"
-                class="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+                class="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm border-2"
                 tabindex="-1"
                 role="listbox"
                 aria-labelledby="listbox-label"
@@ -73,7 +73,7 @@ const emits = defineEmits(['update:model-value']);
 const expanded = ref<boolean>(false);
 
 const currentValue = computed(() => {
-    return props.options?.find(({ key }) => props.modelValue === key)?.value ?? 'Select an option'; // TODO translate
+    return props.options?.find(({key}) => props.modelValue === key)?.value ?? 'Select an option'; // TODO translate
 });
 
 const onSelect = (option: {

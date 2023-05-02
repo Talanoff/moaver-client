@@ -46,7 +46,7 @@ const steps = ref([
             {
                 attrs: {
                     label: 'house number',
-                    type: 'number',
+                    type: 'text',
                     placeholder: 'house number',
                 },
                 fieldType: 'input',
@@ -87,7 +87,8 @@ const steps = ref([
             {
                 attrs: {
                     label: 'Telephone number',
-                    type: 'number',
+                    type: 'text',
+                    number: true,
                     placeholder: 'Telephone number',
                 },
                 fieldType: 'input',
@@ -128,25 +129,7 @@ const steps = ref([
         fields: [
             {
                 id: 0,
-                attrs: {
-                    required: false,
-                    options: [
-                        {name: 'Waste materials transport', checked: false},
-                        {name: 'Agricultural transport', checked: false},
-                        {name: 'Car transport', checked: false},
-                        {name: 'Construction materials transport', checked: false},
-                        {name: 'Distribution transport', checked: false},
-                        {name: 'Exceptional transport', checked: false},
-                        {name: 'Intermodal freight transportInternational transport', checked: false},
-                        {name: 'Tip-truck Courier transport', checked: false},
-                        {name: 'Foodstuffs transport', checked: false},
-                        {name: 'Passenger transport', checked: false},
-                        {name: 'Floriculture transport', checked: false},
-                        {name: 'Rail transport Tank and silo transport', checked: false},
-                        {name: 'Movers Stores', checked: false},
-                        {name: 'Distribution Sea container transport', checked: false},
-                    ],
-                },
+
                 fieldType: 'serviceQuantity',
                 className: 'w-full',
                 controlName: "serviceQuantity"
@@ -224,7 +207,7 @@ const steps = ref([
                 id: 1,
                 attrs: {
                     label: 'Chamber of Commerce number',
-                    type: 'number',
+                    type: 'text',
                     placeholder: 'Chamber of Commerce number',
                 },
                 fieldType: 'input',
@@ -246,7 +229,7 @@ const steps = ref([
                 id: 3,
                 attrs: {
                     label: 'VAT number',
-                    type: 'number',
+                    type: 'text',
                     placeholder: 'VAT number',
                 },
                 fieldType: 'input',
@@ -287,6 +270,7 @@ const steps = ref([
                 attrs: {
                     label: 'Phone number',
                     type: 'text',
+                    number: true,
                     placeholder: 'Phone number',
                 },
                 fieldType: 'input',
