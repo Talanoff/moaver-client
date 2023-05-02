@@ -12,6 +12,7 @@
                                 v-for="field in step.fields"
                                 :key="field.id"
                                 :class="field.className"
+                                v-show="!field.hidden && store.form[field.controlName]"
                         >
                             <component
                                     :is="getFieldName(field.fieldType)"
