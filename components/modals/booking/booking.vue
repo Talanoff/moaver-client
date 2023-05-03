@@ -2,6 +2,7 @@
     <modal
             v-if="bookingStore.showModal"
             :title="bookingStore.currentStepName"
+            :show-title="steps.length !== bookingStore.currentStep"
             :show-back-button="bookingStore.currentStep > 1"
             @back="back"
             @close="bookingStore.toggleModal(false)"
