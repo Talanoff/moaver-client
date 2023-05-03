@@ -56,7 +56,8 @@ const steps = ref([
             {
                 attrs: {
                     label: 'postcode',
-                    type: 'number',
+                    type: 'text',
+                    number: true,
                     placeholder: 'postcode',
                 },
                 fieldType: 'input',
