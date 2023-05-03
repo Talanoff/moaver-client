@@ -1,25 +1,25 @@
 <template>
-    <div>
+    <div class="mb-8 mt-5">
         <div v-if="transportersStore.currentStep !== steps.length">
             <div v-for="step in steps">
                 <div
-                    v-if="step.id === transportersStore.currentStep"
-                    :key="step.id"
-                    class="max-h-[60vh] overflow-y-auto overflow-x-hidden"
+                        v-if="step.id === transportersStore.currentStep"
+                        :key="step.id"
+                        class="max-h-[60vh] overflow-y-auto overflow-x-hidden"
                 >
                     <div class="flex flex-wrap">
                         <div
-                            class="p-2"
-                            v-for="field in step.fields"
-                            :key="field.id"
-                            :class="field.className"
+                                class="p-2"
+                                v-for="field in step.fields"
+                                :key="field.id"
+                                :class="field.className"
                         >
                             <component
-                                :is="getFieldName(field.fieldType)"
-                                :id="field.id"
-                                v-model="transportersStore.form[field.controlName][0]"
-                                v-bind="field.attrs"
-                                v-if="!field.hidden && transportersStore.form[field.controlName]"
+                                    :is="getFieldName(field.fieldType)"
+                                    :id="field.id"
+                                    v-model="transportersStore.form[field.controlName][0]"
+                                    v-bind="field.attrs"
+                                    v-if="!field.hidden && transportersStore.form[field.controlName]"
                             />
                         </div>
                     </div>
@@ -36,8 +36,8 @@
 </template>
 
 <script setup>
-import { getFieldName } from "~/helpers/field-type";
-import { useTransporters } from "~/store/transporters";
+import {getFieldName} from "~/helpers/field-type";
+import {useTransporters} from "~/store/transporters";
 
 defineProps(['steps']);
 

@@ -1,6 +1,7 @@
 <template>
     <modal
             :title="transporterStore.currentStepName"
+            :show-title="steps.length !== transporterStore.currentStep"
             :show-back-button="transporterStore.currentStep > 1"
             @back="back"
             @close="transporterStore.toggleModal(false)"

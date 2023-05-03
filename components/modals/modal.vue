@@ -20,7 +20,7 @@
                 </button>
 
                 <div class="flex items-center space-x-5">
-                    <div v-if="showBackButton">
+                    <div v-if="showBackButton && showTitle">
                         <button
                                 type="button"
                                 class="border-gray-300 hover:border-blue-600 rounded-md border-2 p-2 transition-colors duration-300"
