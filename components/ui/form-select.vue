@@ -12,7 +12,8 @@
                 @click.prevent="expanded = !expanded"
         >
                 <span class="flex items-center">
-                  <span class="ml-3 block truncate">{{ currentValue }}</span>
+                  <input type="text" class="ml-3 block truncate find-input bg-gray-50" :placeholder="currentValue"
+                         v-model="search">
                 </span>
             <span class="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
                 <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -25,7 +26,7 @@
 
         <ul
                 v-if="expanded"
-                class="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+                class="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm border-2"
                 tabindex="-1"
                 role="listbox"
                 aria-labelledby="listbox-label"
@@ -34,7 +35,7 @@
                     class="text-gray-900 relative cursor-default select-none py-2 pr-9"
                     id="listbox-option-0"
                     role="option"
-                    v-for="option in options"
+                    v-for="option in filterCounties"
             >
                 <button
                         type="button"
@@ -71,16 +72,19 @@ const props = defineProps<{
 const emits = defineEmits(['update:model-value']);
 
 const expanded = ref<boolean>(false);
-
+const search = ref<string>('')
 const currentValue = computed(() => {
-    return props.options?.find(({ key }) => props.modelValue === key)?.value ?? 'Select an option'; // TODO translate
+    return props.options?.find(({key}) => props.modelValue === key)?.value ?? 'Select an option'; // TODO translate
 });
-
+const filterCounties = computed(() => {
+    return props.options?.filter(item => item.value.toLowerCase().indexOf(search.value.toLowerCase()) !== -1)
+})
 const onSelect = (option: {
     key: string;
     value: string | number | null;
 }) => {
     emits('update:model-value', option.key);
+    search.value = option.value;
     expanded.value = !expanded.value;
 }
 
@@ -88,3 +92,10 @@ const onClickOutside = () => {
     expanded.value = false;
 }
 </script>
+<style scoped>
+.find-input {
+    width: 100%;
+    border: none;
+    outline: none;
+}
+</style>

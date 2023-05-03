@@ -35,6 +35,8 @@
     "step": "Step",
     "of": "of",
     "Pieces": "Pieces",
+    "Piece": "Piece",
+    "Pallets": "Pallets",
     "Kg": "Kg",
     "Message": "Message",
     "Date From": "Date From",
@@ -89,7 +91,8 @@
     "Collection date": "Collection date",
     "Pick-up and delivery wishes/requirements": "Pick-up and delivery wishes/requirements",
     "Additional wishes": "Additional wishes",
-    "email": 'email'
+    "email": 'email',
+    "quantity": 'quantity'
   },
   "categories": {
     "One package": "One package",

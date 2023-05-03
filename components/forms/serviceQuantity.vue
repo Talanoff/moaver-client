@@ -9,7 +9,7 @@
                     {{ item.name }}
                 </p>
                 <p class="w-1/2">
-                    <form-input v-bind="{type:'number'}"
+                    <form-input v-bind="{type:'number', placeholder:'quantity', min:1}"
                                 :modelValue="transportersStore.form.serviceQuantity[0][0][val]"
                                 v-model="transportersStore.form.serviceQuantity[0][0][val]"/>
                 </p>

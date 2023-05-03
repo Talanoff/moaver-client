@@ -50,7 +50,7 @@
         </div>
     </div>
     <div class="border-b-2 pb-2 sm:flex sm:justify-start"
-         v-if="additional_wishes.length>0 || store.form.additional_wishes_notes[0] !== null || store.form.additional_wishes_attachment[0].url">
+         v-if="additional_wishes.length>0 || store.form.additional_wishes_notes[0] !== null || store.form.additional_wishes_notes[0] !== null? store.form.additional_wishes_attachment[0].url: ''">
 
         <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.${steps[3].title}`) }}:</h2>
         <div class="w-1/2">
@@ -77,7 +77,7 @@
         <p>{{ store.form.additional_wishes_notes[0] }}</p>
     </div>
     <div class="sm:flex sm:justify-start justify-between border-b-2 pb-2"
-         v-if="store.form.additional_wishes_attachment[0] !== null">
+         v-if=" store.form.additional_wishes_attachment[0] !== null ? store.form.additional_wishes_attachment[0][0].url: false">
         <h2 class="font-semibold sm:w-1/2">Sending photo</h2>
         <img class="sm:w-[20rem]" :src="store.form.additional_wishes_attachment[0][0].url" alt="">
     </div>

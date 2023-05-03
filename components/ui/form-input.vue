@@ -29,7 +29,7 @@ defineProps([
 ]);
 const onlyNumber = ($event) => {
     let keyCode = ($event.keyCode ? $event.keyCode : $event.which);
-    if ((keyCode < 48 || keyCode > 57) && keyCode !== 46) { // 46 is dot
+    if ((keyCode < 48 || keyCode > 57) && keyCode !== 43 && keyCode !== 40 && keyCode !== 41) {
         $event.preventDefault();
     }
 }

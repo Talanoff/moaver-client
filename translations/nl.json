@@ -35,6 +35,8 @@
     "step": "Stap",
     "of": "van",
     "Pieces": "Vissen",
+    "Piece": "Deel",
+    "Pallets": "Pallets",
     "Kg": "Kg",
     "Message": "Bericht",
     "Date From": "Datum vanaf",
@@ -89,7 +91,8 @@
     "Collection date": "Collection date",
     "Pick-up and delivery wishes/requirements": "Ophaal- en bezorgwensen/eisen",
     "Additional wishes": "Aanvullende wensen",
-    "email": "e-mailen"
+    "email": "e-mailen",
+    "quantity": 'hoeveelheid'
   },
   "categories": {
     "One package": "Een pakket",

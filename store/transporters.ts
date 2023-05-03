@@ -105,7 +105,16 @@ export const useTransporters = defineStore("transporters", {
                     ]
                         .filter((it: any[]) => it[1].includes('required'))
                         .every((it) => {
-                            return it[0].length > 0 ? it[0].every((element: any) => element.counry !== '' && element.city !== '') : ''
+                            console.log(it)
+                            return it[0].length > 0 ? it[0].every((element: any) => {
+                                if (element.country !== '' && element.city !== '') {
+                                    console.log(element)
+                                    return true
+                                } else {
+                                    return false
+                                }
+
+                            }) : ''
                         });
                 case 5:
                     return [
