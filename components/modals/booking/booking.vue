@@ -7,7 +7,10 @@
             @close="bookingStore.toggleModal(false)"
     >
         <form @submit.prevent="submit">
+
             <client-form :steps="steps"/>
+
+
             <footer-component
                     :total-steps="steps.length"
                     :current-step="bookingStore.currentStep"
@@ -138,6 +141,7 @@ const steps = ref([
                 attrs: {
                     label: 'Date To',
                     type: 'datetime-local',
+                    min: '',
                     placeholder: 'date'
                 },
                 fieldType: 'input',
@@ -404,6 +408,11 @@ watch(() => form.value.registerCheckbox[0][0], () => {
             form.value.password[1] = ["required"]
             form.value.repeatPassword[1] = ["required"]
         }
+    },
+);
+watch(() => form.value.dateFrom[0], () => {
+        console.log(steps.value[1])
+        steps.value[1].fields[3].attrs.min = form.value.dateFrom[0]
     },
 );
 const submit = () => {
