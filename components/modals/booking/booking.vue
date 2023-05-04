@@ -2,6 +2,7 @@
     <modal
             v-if="bookingStore.showModal"
             :title="bookingStore.currentStepName"
+            :show-title="steps.length !== bookingStore.currentStep"
             :show-back-button="bookingStore.currentStep > 1"
             @back="back"
             @close="bookingStore.toggleModal(false)"
@@ -31,6 +32,15 @@ const configStore = useConfig();
 
 const {form: form} = storeToRefs(bookingStore)
 const wishes = ref(configStore.wishes)
+
+const fullTime = computed(() => {
+    const year = new Date().getFullYear()
+    const month = new Date().getMonth()
+    const day = new Date().getDay()
+    let time = new Date().toLocaleTimeString()
+    time = time.substring(0, time.length - 3)
+    return `${year + '-0' + (+month + 1) + '-0' + day + 'T' + time}`
+})
 const steps = ref([
     {
         id: 1,
@@ -107,6 +117,7 @@ const steps = ref([
                 attrs: {
                     label: 'Date From',
                     type: 'datetime-local',
+                    min: fullTime.value,
                     placeholder: 'date'
                 },
                 fieldType: 'input',
@@ -249,7 +260,7 @@ const steps = ref([
                     label: 'Name',
                     type: 'text',
                     placeholder: 'Name',
-                    maxlength: 16,
+                    maxlength: '16',
                 },
                 fieldType: 'input',
                 className: 'w-full',
@@ -361,6 +372,7 @@ const steps = ref([
     },
 ]);
 const api = useApi()
+console.log(steps.value[1].fields[0].attrs)
 watch(() => form.value.category[0], () => {
         steps.value[0].fields[3].hidden = form.value.category[0] !== "Various goods"
         // steps.value[0].fields[1].hidden = form.value.category[0] === "Various goods"
@@ -411,7 +423,7 @@ watch(() => form.value.registerCheckbox[0][0], () => {
     },
 );
 watch(() => form.value.dateFrom[0], () => {
-        console.log(steps.value[1])
+        console.log(form.value.dateFrom[0])
         steps.value[1].fields[3].attrs.min = form.value.dateFrom[0]
     },
 );

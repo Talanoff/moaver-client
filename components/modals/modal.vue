@@ -20,7 +20,7 @@
                 </button>
 
                 <div class="flex items-center space-x-5">
-                    <div v-if="showBackButton">
+                    <div v-if="showBackButton && showTitle">
                         <button
                                 type="button"
                                 class="border-gray-300 hover:border-blue-600 rounded-md border-2 p-2 transition-colors duration-300"
@@ -33,8 +33,7 @@
                             </svg>
                         </button>
                     </div>
-
-                    <h2 class="sm:text-3xl text-xl font-bold" v-if="title">
+                    <h2 class="sm:text-3xl text-xl font-bold" v-if="title && showTitle">
                         {{ $t(`forms.${title}`) }}
                     </h2>
                 </div>
@@ -46,6 +45,6 @@
 </template>
 
 <script setup>
-defineProps(['title', 'showBackButton']);
+defineProps(['title', 'showBackButton', 'showTitle']);
 defineEmits(['back', 'close'])
 </script>

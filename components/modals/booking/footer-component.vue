@@ -1,5 +1,5 @@
 <template>
-    <footer class="flex justify-between items-center mt-8 px-2">
+    <footer class="flex justify-between items-center mt-8 px-2" v-if="totalSteps  !== currentStep">
         <div class="sm:w-1/3 w-1/2">
             <h2>
                 {{ $t('forms.step') }}
