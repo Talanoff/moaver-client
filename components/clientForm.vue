@@ -49,16 +49,16 @@ defineProps(['steps']);
 .customScroll::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #F5F5F5;
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 .customScroll::-webkit-scrollbar {
-    width: 10px;
+    width: 3px;
     background-color: #F5F5F5;
 }
 
 .customScroll::-webkit-scrollbar-thumb {
-    border-radius: 10px;
+    border-radius: 15px;
     background-image: -webkit-gradient(linear,
     left bottom,
     left top,

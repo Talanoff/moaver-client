@@ -1,5 +1,5 @@
 <template>
-    <modal
+    <Modal
             v-if="bookingStore.showModal"
             :title="bookingStore.currentStepName"
             :show-title="steps.length !== bookingStore.currentStep"
@@ -17,7 +17,7 @@
                     :current-step="bookingStore.currentStep"
             />
         </form>
-    </modal>
+    </Modal>
 </template>
 
 <script setup>
@@ -117,7 +117,7 @@ const steps = ref([
                 attrs: {
                     label: 'Date From',
                     type: 'datetime-local',
-                    min: fullTime.value,
+                    min: new Date(),
                     placeholder: 'date'
                 },
                 fieldType: 'input',
@@ -152,7 +152,7 @@ const steps = ref([
                 attrs: {
                     label: 'Date To',
                     type: 'datetime-local',
-                    min: '',
+                    min: form.value.dateTo[0],
                     placeholder: 'date'
                 },
                 fieldType: 'input',
