@@ -5,7 +5,7 @@
                 <div
                         v-if="step.id === transportersStore.currentStep"
                         :key="step.id"
-                        class="max-h-[60vh] overflow-y-auto overflow-x-hidden"
+                        class="max-h-[60vh] overflow-y customScroll overflow-x-hidden"
                 >
                     <div class="flex flex-wrap">
                         <div
