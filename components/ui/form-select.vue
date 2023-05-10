@@ -4,6 +4,7 @@
             {{ $t(`forms.${$attrs.label}`) }}
         </label>
         <button
+                :disabled="$attrs.disabled"
                 type="button"
                 class="relative w-full cursor-default rounded-md bg-gray-50 py-2 pr-10 text-left ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6"
                 aria-haspopup="listbox"
@@ -12,7 +13,8 @@
                 @click.prevent="expanded = !expanded"
         >
                 <span class="flex items-center">
-                  <input type="text" class="ml-3 block truncate find-input bg-gray-50" :placeholder="currentValue"
+                  <input type="text" class="ml-3 block truncate find-input bg-gray-50" :disabled="$attrs.disabled"
+                         :placeholder="currentValue"
                          v-model="search">
                 </span>
             <span class="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">

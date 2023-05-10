@@ -58,7 +58,6 @@ const steps = ref([
                 attrs: {
                     label: 'postcode',
                     type: 'text',
-                    number: true,
                     placeholder: 'postcode',
                 },
                 fieldType: 'input',
@@ -69,6 +68,7 @@ const steps = ref([
                 attrs: {
                     label: 'country',
                     type: 'text',
+                    disabled: true,
                     placeholder: 'country',
                     options: transporterStore.countries,
                 },
