@@ -281,17 +281,6 @@ const steps = ref([
             {
                 id: 3,
                 attrs: {
-                    label: 'email',
-                    type: 'email',
-                    placeholder: 'example@email.com',
-                },
-                fieldType: 'input',
-                className: 'w-full',
-                controlName: 'email'
-            },
-            {
-                id: 3,
-                attrs: {
                     label: 'password',
                     type: 'password',
                     placeholder: '******',
