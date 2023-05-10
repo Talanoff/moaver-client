@@ -1,6 +1,7 @@
 import {defineStore} from "pinia";
 import {useConfig} from "~/store/config";
 import {KeyValue} from "~/types/forms";
+import {th} from "date-fns/locale";
 
 type CurrentState = {
     showModal: boolean;
@@ -18,7 +19,7 @@ export const useTransporters = defineStore("transporters", {
             companyName: [null, ['required']],
             houseNumber: [null, ['required']],
             postCode: [null, ['required']],
-            country: [null, ['required']],
+            country: [124, ['required']],
             street: [null, ['required']],
             phone: [null, ['required']],
             email: [null, ['required']],
@@ -70,7 +71,6 @@ export const useTransporters = defineStore("transporters", {
                 agreeToTerms,
                 locations
             } = this.form;
-
             switch (this.currentStep) {
                 case 1:
                     return [

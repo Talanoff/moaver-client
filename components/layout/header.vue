@@ -85,7 +85,7 @@
 <script setup>
 import Logo from "~/components/layout/logo.vue";
 import LocaleSwitcher from "~/components/layout/locale-switcher.vue";
-import { useAuth } from "~/store/auth";
+import {useAuth} from "~/store/auth";
 
 const storeAuth = useAuth();
 const navOpen = ref(false)
@@ -99,17 +99,17 @@ const navOpen = ref(false)
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 99;
+    z-index: 9;
 }
 
 #sidemenu .sidemenu__btn {
     display: block;
     width: 50px;
-    height: 50px;
+    height: 0px;
     /*background: grey;*/
     border: none;
     position: relative;
-    z-index: 100;
+    z-index: 10;
     appearance: none;
     cursor: pointer;
     outline: none;

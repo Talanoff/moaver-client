@@ -7,6 +7,7 @@
                 :id="`id-${option.id}`"
                 :name="option.name"
                 :value="option.id"
+                :wishes="$attrs.wishes"
                 :checked="modelValue.includes(option.id)"
                 @change="setCheckbox($event, option.id)"
         />
@@ -14,7 +15,7 @@
 </template>
 <script setup>
 import FormCheckbox from "~/components/ui/form-checkbox.vue";
-import { useBooking } from "~/store/booking";
+import {useBooking} from "~/store/booking";
 
 const props = defineProps({
     id: String,

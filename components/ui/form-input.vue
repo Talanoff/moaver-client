@@ -3,7 +3,7 @@
         <label class="block mb-2 text-sm text-gray-900 font-bold" v-if="$attrs.label">
             {{ $t(`forms.${$attrs.label}`) }}
         </label>
-        <div class="relative flex items-center">
+        <div class="relative flex items-center" v-if="$attrs.type !== 'datetime-local'">
             <input
                     v-bind="$attrs"
                     :value="modelValue"
@@ -18,14 +18,27 @@
                 {{ $t(`forms.${$attrs.name}`) }}
             </div>
         </div>
+        <div v-else class="relative flex items-center">
+            <VueDatePicker :month-change-on-scroll="false" position="left" :model-value="date"
+                           v-bind="$attrs"
+                           @update:model-value="setDate"
+                           :min-date="$attrs.min"></VueDatePicker>
+        </div>
     </div>
 </template>
 <script setup>
+import VueDatePicker from "@vuepic/vue-datepicker";
+import '@vuepic/vue-datepicker/dist/main.css'
+
+const setDate = (value) => {
+    date.value = value;
+}
 defineProps([
     'modelValue',
     'disabled',
     'required',
 ]);
+const date = ref();
 const onlyNumber = ($event) => {
     let keyCode = ($event.keyCode ? $event.keyCode : $event.which);
     if ((keyCode < 48 || keyCode > 57) && keyCode !== 43 && keyCode !== 40 && keyCode !== 41) {
