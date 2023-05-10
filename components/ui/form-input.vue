@@ -20,7 +20,8 @@
             </div>
         </div>
         <div v-else class="relative flex items-center">
-            <VueDatePicker :month-change-on-scroll="false" position="left" :model-value="date" v-bind="$attrs"
+            <VueDatePicker :month-change-on-scroll="false" position="left" :model-value="date"
+                           v-bind="$attrs"
                            @update:model-value="setDate"
                            :min-date="$attrs.min"></VueDatePicker>
         </div>

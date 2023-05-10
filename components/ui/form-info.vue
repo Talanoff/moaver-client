@@ -22,7 +22,7 @@
         </div>
         <div class="flex sm:justify-start justify-between border-b-2 pb-2" v-if="store.form.dateFrom[0] !== null">
             <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.Date From`) }}:</h2>
-            <p>{{ dateFrom }}</p>
+            <p>{{ dateFrom() }}</p>
         </div>
         <div class="flex sm:justify-start justify-between border-b-2 pb-2" v-if="store.form.locationFrom[0] !== null">
             <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.Location from`) }}</h2>
@@ -36,7 +36,7 @@
         <div class="flex sm:justify-start justify-between border-b-2 pb-2"
              v-if="store.form.dateTo[0] !== null">
             <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.Date To`) }}:</h2>
-            <p>{{ dateTo }}</p>
+            <p>{{ dateTo() }}</p>
         </div>
         <div class="flex sm:justify-start justify-between border-b-2 pb-2"
              v-if="store.form.locationTo[0] !== null">
@@ -103,28 +103,29 @@ const setValue = () => {
         }
     }))
 }
-const dateFrom = computed(() => {
+const dateFrom = () => {
     let date = ''
     let parse = Date.parse(store.form.dateFrom[0])
     let year = new Date(parse).getFullYear()
-    let month = String(new Date(parse).getMonth() + 1)
-    let day = String(new Date(parse).getDay())
+    let month = String(new Date(parse).getUTCMonth() + 1)
+    let day = new Date(parse).getUTCDate()
     let hours = new Date(parse).getHours()
     let minutes = new Date(parse).getMinutes()
-    date = year + '/' + (month.length === 1 ? '0' + month : month) + "/" + (day.length === 1 ? '0' + day : day) + " " + hours + ":" + minutes
+    date = year + '/' + (month.length === 1 ? '0' + month : month) + "/" + day + " " + hours + ":" + minutes
+    console.log(parse)
     return date
-})
-const dateTo = computed(() => {
+}
+const dateTo = () => {
     let date = ''
     let parse = Date.parse(store.form.dateTo[0])
     let year = new Date(parse).getFullYear()
     let month = String(new Date(parse).getMonth() + 1)
-    let day = String(new Date(parse).getDay())
+    let day = new Date(parse).getUTCDate()
     let hours = new Date(parse).getHours()
     let minutes = new Date(parse).getMinutes()
-    date = year + '/' + (month.length === 1 ? '0' + month : month) + "/" + (day.length === 1 ? '0' + day : day) + " " + hours + ":" + minutes
+    date = year + '/' + (month.length === 1 ? '0' + month : month) + "/" + day + " " + hours + ":" + minutes
     return date
-})
+}
 const setWishes = () => {
     store.form.additional_wishes.forEach((el) => {
         props.steps[3].fields[0].attrs.options.forEach((field) => {
