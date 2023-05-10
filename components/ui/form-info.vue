@@ -112,7 +112,6 @@ const dateFrom = () => {
     let hours = new Date(parse).getHours()
     let minutes = new Date(parse).getMinutes()
     date = year + '/' + (month.length === 1 ? '0' + month : month) + "/" + day + " " + hours + ":" + minutes
-    console.log(parse)
     return date
 }
 const dateTo = () => {
