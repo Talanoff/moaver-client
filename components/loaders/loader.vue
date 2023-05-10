@@ -1,61 +1,23 @@
 <template>
-    <div class="lds-ring">
-
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
+    <svg
+            viewBox="0 0 38 38"
+            xmlns="http://www.w3.org/2000/svg"
+            stroke="currentColor"
+    >
+        <g fill="none" fill-rule="evenodd">
+            <g transform="translate(1 1)" stroke-width="2">
+                <circle stroke-opacity=".5" cx="18" cy="18" r="18"/>
+                <path d="M36 18c0-9.94-8.06-18-18-18">
+                    <animateTransform
+                            attributeName="transform"
+                            type="rotate"
+                            from="0 18 18"
+                            to="360 18 18"
+                            dur="1s"
+                            repeatCount="indefinite"
+                    />
+                </path>
+            </g>
+        </g>
+    </svg>
 </template>
-
-<script setup>
-
-</script>
-<style>
-.lds-ring {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-}
-
-.lds-ring div {
-    box-sizing: border-box;
-    display: block;
-    position: absolute;
-
-    width: 64px;
-    height: 64px;
-    margin: 8px;
-    border: 8px solid #888888;
-    border-radius: 50%;
-    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #888888 transparent transparent transparent;
-}
-
-.lds-ring div:nth-child(1) {
-    animation-delay: -0.45s;
-}
-
-.lds-ring div:nth-child(2) {
-    animation-delay: -0.3s;
-}
-
-.lds-ring div:nth-child(3) {
-    animation-delay: -0.15s;
-}
-
-@keyframes lds-ring {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-</style>

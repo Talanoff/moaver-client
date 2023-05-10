@@ -35,7 +35,7 @@ export const useTransporters = defineStore("transporters", {
             phoneNumber: [null, ['required']], // ???
             password: [null, ['required']],
             repeatPassword: [null, ['required', 'password']],
-            agreeToTerms: [[], ['required']],
+            agreeToTerms: [false, ['required']],
         }
     }),
 
@@ -70,7 +70,6 @@ export const useTransporters = defineStore("transporters", {
                 repeatPassword,
                 agreeToTerms,
                 locations
-
             } = this.form;
             switch (this.currentStep) {
                 case 1:
@@ -105,15 +104,8 @@ export const useTransporters = defineStore("transporters", {
                     ]
                         .filter((it: any[]) => it[1].includes('required'))
                         .every((it) => {
-                            console.log(it)
                             return it[0].length > 0 ? it[0].every((element: any) => {
-                                if (element.country !== '' && element.city !== '') {
-                                    console.log(element)
-                                    return true
-                                } else {
-                                    return false
-                                }
-
+                                return element.country !== '' && element.city !== '';
                             }) : ''
                         });
                 case 5:
@@ -134,7 +126,7 @@ export const useTransporters = defineStore("transporters", {
                         agreeToTerms
                     ]
                         .filter((it: any[]) => it[1].includes('required'))
-                        .every((it) => !!it[0] || it[0] !== null ? it[0].length > 0 : false);
+                        .every((it) => !!it[0] && it[0]);
                 default:
                     return true;
             }

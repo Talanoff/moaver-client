@@ -19,7 +19,7 @@
 
 <script setup>
 import XButton from "~/components/ui/x-button.vue";
-import {useBooking} from "~/store/booking";
+import { useBooking } from "~/store/booking";
 
 const props = defineProps(['totalSteps', 'currentStep']);
 const bookingStore = useBooking()

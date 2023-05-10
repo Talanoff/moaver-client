@@ -1,11 +1,11 @@
 <template>
     <div class="mb-8 mt-5">
-        <div v-if="transportersStore.currentStep !== steps.length">
+        <div v-if="currentStep !== steps.length">
             <div v-for="step in steps">
                 <div
-                        v-if="step.id === transportersStore.currentStep"
+                        v-if="step.id === currentStep"
                         :key="step.id"
-                        class="max-h-[60vh] overflow-y customScroll overflow-x-hidden"
+                        class="max-h-[60vh] overflow-y overflow-x-hidden custom-scroll"
                 >
                     <div class="flex flex-wrap">
                         <div
@@ -17,9 +17,8 @@
                             <component
                                     :is="getFieldName(field.fieldType)"
                                     :id="field.id"
-                                    v-model="transportersStore.form[field.controlName][0]"
                                     v-bind="field.attrs"
-                                    v-if="!field.hidden && transportersStore.form[field.controlName]"
+                                    v-model="form[field.controlName][0]"
                             />
                         </div>
                     </div>
@@ -36,10 +35,11 @@
 </template>
 
 <script setup>
-import {getFieldName} from "~/helpers/field-type";
-import {useTransporters} from "~/store/transporters";
+import { getFieldName } from "~/helpers/field-type";
+import { useTransporters } from "~/store/transporters";
+import { storeToRefs } from "pinia";
 
 defineProps(['steps']);
 
-const transportersStore = useTransporters();
+const { form, currentStep } = storeToRefs(useTransporters());
 </script>

@@ -13,6 +13,7 @@ import serviceQuantity from "~/components/forms/serviceQuantity.vue";
 export function getFieldName(type) {
     switch (type) {
         case 'input':
+        case 'password':
             return formInput;
         case 'checkbox':
             return formCheckbox;

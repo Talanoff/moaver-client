@@ -11,6 +11,10 @@ export default defineNuxtConfig({
         '@nuxtjs/i18n',
     ],
 
+    css: [
+        '@/assets/css/app.css',
+    ],
+
     runtimeConfig: {
         public: {
             API_URL: process.env.API_URL

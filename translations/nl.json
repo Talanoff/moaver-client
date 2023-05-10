@@ -51,8 +51,8 @@
     "Phone number": "Telefoonnummer",
     "IBAN": "IBAN",
     "upload_photo": "Upload foto",
-    "password": "wachtwoord",
-    "repeat password": "herhaal wachtwoord",
+    "password": "Wachtwoord",
+    "repeatPassword": "Herhaal wachtwoord",
     "thank": "Bedankt voor je bestelling! Wij gaan direct voor u aan de slag.",
     "Name transport company": "Naam transportbedrijf",
     "house number": "huisnummer",
@@ -72,7 +72,7 @@
     "Frozen transport": "Bevroren vervoer",
     "Electric vehicle": "Electrisch voertuig",
     "do you want to register": "wil je je inschrijven",
-    "Agree to terms": "Akkoord met de voorwaarden",
+    "agreeToTerms": "Akkoord met de voorwaarden?",
     "Passenger Car": "Personenwagen",
     "Tip-truck Courier": "Kiepwagen Koerier",
     "Foodstuffs": "Voedingsmiddelen",
@@ -85,7 +85,7 @@
     "Pick-up and delivery wishes/requirements": "Ophaal- en bezorgwensen/eisen",
     "Additional wishes": "Aanvullende wensen",
     "email": "e-mailen",
-    "quantity": 'hoeveelheid'
+    "quantity": "hoeveelheid"
   },
   "categories": {
     "One package": "Een pakket",

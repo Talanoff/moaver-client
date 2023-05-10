@@ -3,22 +3,19 @@
     <about-us/>
     <booking/>
 </template>
-<script setup lang="ts">
+<script setup>
 import Intro from "~/components/sections/intro.vue";
 import AboutUs from "~/components/sections/about-us.vue";
 import Booking from "~/components/modals/booking/booking.vue";
-import {useConfig} from "~/store/config";
+import { useConfig } from "~/store/config";
 
-const configStore = useConfig();
-
-await configStore.getWishes();
+await useConfig().getWishes();
 </script>
 <style>
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    margin: 0;
 }
 
 .dp__action_select {

@@ -4,8 +4,7 @@
             <div v-for="step in steps" :key="step.id">
                 <div
                         v-if="step.id === store.currentStep"
-                        class="max-h-[60vh] overflow-y overflow-x-hidden customScroll"
-
+                        class="max-h-[60vh] overflow-y overflow-x-hidden custom-scroll"
                 >
                     <div class="flex flex-wrap">
                         <div
@@ -36,14 +35,10 @@
 </template>
 
 <script setup>
-import {getFieldName} from "~/helpers/field-type";
-import {useBooking} from "~/store/booking";
+import { getFieldName } from "~/helpers/field-type";
+import { useBooking } from "~/store/booking";
 
 const store = useBooking();
 
 defineProps(['steps']);
 </script>
-<style>
-
-
-</style>

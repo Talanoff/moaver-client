@@ -1,6 +1,6 @@
 <template>
     <div class="relative">
-        <label class="block mb-2 text-sm  text-gray-900  font-bold" v-if="$attrs.label">
+        <label class="block mb-2 text-sm text-gray-900 font-bold" v-if="$attrs.label">
             {{ $t(`forms.${$attrs.label}`) }}
         </label>
         <div class="relative flex items-center" v-if="$attrs.type !== 'datetime-local'">
@@ -9,8 +9,7 @@
                     :value="modelValue"
                     :disabled="disabled"
                     :required="required"
-                    @keypress="$attrs.number ? onlyNumber($event) :''"
-                    :placeholder="$attrs.placeholder ? $t('forms.' + $attrs.placeholder): ''"
+                    @keypress="$attrs.number ? onlyNumber($event) : ''"
                     class="appearance-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                     @input="$emit('update:modelValue', $event.target.value)"
             >
@@ -49,39 +48,23 @@ const onlyNumber = ($event) => {
 </script>
 <style scoped>
 input[type="datetime-local"] {
-
     position: relative;
-
 }
 
-
 input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-
     position: absolute;
-
     top: 0;
-
     left: 0;
-
     right: 0;
-
     bottom: 0;
-
     width: auto;
-
     height: auto;
     color: transparent;
-
     background: transparent;
-
-
 }
 
 input[type="datetime-local"]::-webkit-inner-spin-button,
 input[type="datetime-local"]::-webkit-clear-button {
-
     z-index: 1;
-
 }
-
 </style>

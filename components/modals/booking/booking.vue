@@ -4,14 +4,11 @@
             :title="bookingStore.currentStepName"
             :show-title="steps.length !== bookingStore.currentStep"
             :show-back-button="bookingStore.currentStep > 1"
-            @back="back"
             @close="bookingStore.toggleModal(false)"
+            @back="back"
     >
         <form @submit.prevent="submit">
-
             <client-form :steps="steps"/>
-
-
             <footer-component
                     :total-steps="steps.length"
                     :current-step="bookingStore.currentStep"
@@ -23,15 +20,15 @@
 <script setup>
 import FooterComponent from "~/components/modals/booking/footer-component.vue";
 import Modal from "~/components/modals/modal.vue";
-import {useBooking} from "~/store/booking";
-import {useConfig} from "~/store/config";
-import {storeToRefs} from 'pinia'
+import { useBooking } from "~/store/booking";
+import { useConfig } from "~/store/config";
+import { storeToRefs } from "pinia";
 
 const bookingStore = useBooking();
 const configStore = useConfig();
 
-const {form: form} = storeToRefs(bookingStore)
-const wishes = ref(configStore.wishes)
+const { form } = storeToRefs(bookingStore);
+const wishes = ref(configStore.wishes);
 
 const fullTime = computed(() => {
     const year = new Date().getFullYear()
@@ -40,7 +37,8 @@ const fullTime = computed(() => {
     let time = new Date().toLocaleTimeString()
     time = time.substring(0, time.length - 3)
     return `${year + '-0' + (+month + 1) + '-0' + day + 'T' + time}`
-})
+});
+
 const steps = ref([
     {
         id: 1,
@@ -83,9 +81,9 @@ const steps = ref([
                     required: false,
                     name: 'What exactly do you want to send',
                     options: [
-                        {key: 'home', value: 'home'},
-                        {key: 'ofice', value: 'ofice'},
-                        {key: 'test', value: 'test'},
+                        { key: 'home', value: 'home' },
+                        { key: 'ofice', value: 'ofice' },
+                        { key: 'test', value: 'test' },
                     ],
                 },
                 hidden: false,
@@ -139,9 +137,9 @@ const steps = ref([
                 attrs: {
                     label: 'Location type from',
                     options: [
-                        {key: 'home', value: 'home'},
-                        {key: 'ofice', value: 'ofice'},
-                        {key: 'test', value: 'test'},
+                        { key: 'home', value: 'home' },
+                        { key: 'ofice', value: 'ofice' },
+                        { key: 'test', value: 'test' },
                     ],
                 },
                 fieldType: 'select',
@@ -174,9 +172,9 @@ const steps = ref([
                 attrs: {
                     label: 'Location type to',
                     options: [
-                        {key: 'home', value: 'home'},
-                        {key: 'ofice', value: 'ofice'},
-                        {key: 'test', value: 'test'},
+                        { key: 'home', value: 'home' },
+                        { key: 'ofice', value: 'ofice' },
+                        { key: 'test', value: 'test' },
                     ],
                 },
                 fieldType: 'select',
@@ -316,7 +314,7 @@ const steps = ref([
                 id: 'wishes', // хз нужен ли
                 attrs: {
                     required: false,
-                    options: [{name: 'do you want to register', id: 1}],
+                    options: [{ name: 'do you want to register', id: 1 }],
                 },
                 controlName: 'registerCheckbox',
                 fieldType: 'checkBoxGroup',
@@ -350,15 +348,13 @@ const steps = ref([
                 id: 'wishes', // хз нужен ли
                 attrs: {
                     required: false,
-                    options: [{name: 'Agree to terms', id: 2}],
+                    options: [{ name: 'Agree to terms', id: 2 }],
                 },
                 controlName: 'agreeToTerms',
                 fieldType: 'checkBoxGroup',
                 className: 'w-full'
             },
         ],
-
-
     },
     {
         id: 7,
@@ -372,11 +368,11 @@ const steps = ref([
 
     },
 ]);
-const api = useApi()
-console.log(steps.value[1].fields[0].attrs)
+const api = useApi();
+
 watch(() => form.value.category[0], () => {
         steps.value[0].fields[3].hidden = form.value.category[0] !== "Various goods"
-        // steps.value[0].fields[1].hidden = form.value.category[0] === "Various goods"
+
         if (form.value.category[0] === "One package") {
             steps.value[0].fields[1].attrs.placeholder = 1
             steps.value[0].fields[1].attrs.disabled = true
@@ -407,6 +403,7 @@ watch(() => form.value.category[0], () => {
         }
     },
 );
+
 watch(() => form.value.registerCheckbox[0][0], () => {
         if (form.value.registerCheckbox[0][0] !== 1) {
             steps.value[5].fields[6].hidden = true
@@ -423,11 +420,9 @@ watch(() => form.value.registerCheckbox[0][0], () => {
         }
     },
 );
-watch(() => form.value.dateFrom[0], () => {
-        console.log(form.value.dateFrom[0])
-        steps.value[1].fields[3].attrs.min = form.value.dateFrom[0]
-    },
-);
+
+watch(() => form.value.dateFrom[0], () => steps.value[1].fields[3].attrs.min = form.value.dateFrom[0]);
+
 const submit = () => {
     if (steps.value.length - 1 !== bookingStore.currentStep) {
         if (bookingStore.currentStep === 6) {
@@ -439,7 +434,7 @@ const submit = () => {
                 alert('Password mismatch')
             }
         } else {
-            const name = steps.value.find(({id}) => id === bookingStore.currentStep + 1)?.title ?? '';
+            const name = steps.value.find(({ id }) => id === bookingStore.currentStep + 1)?.title ?? '';
             bookingStore.setCurrentStep(name, 'increment');
         }
     } else {
@@ -459,8 +454,7 @@ const submit = () => {
 }
 
 const back = () => {
-    const name = steps.value.find(({id}) => id === bookingStore.currentStep - 1)?.title ?? '';
-
+    const name = steps.value.find(({ id }) => id === bookingStore.currentStep - 1)?.title ?? '';
     bookingStore.setCurrentStep(name, 'decrement');
 }
 </script>
