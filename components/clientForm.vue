@@ -39,5 +39,6 @@ import { getFieldName } from "~/helpers/field-type";
 import { useBooking } from "~/store/booking";
 
 const store = useBooking();
+
 defineProps(['steps']);
 </script>

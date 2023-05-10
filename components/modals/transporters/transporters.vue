@@ -70,6 +70,7 @@ const steps = ref([
                     label: 'Country',
                     type: 'text',
                     placeholder: 'Country',
+                    disabled: true,
                     options: transporterStore.countries,
                 },
                 fieldType: 'select',
@@ -279,7 +280,7 @@ const steps = ref([
                 controlName: 'phoneNumber'
             },
             {
-                id: 3,
+                id: 2,
                 attrs: {
                     label: 'email',
                     type: 'email',

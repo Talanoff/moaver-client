@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed top-0 w-screen h-screen">
+    <div class="fixed top-0 w-screen h-screen z-20">
         <div
                 class="flex bg-gray-600  bg-opacity-50 items-center justify-center absolute inset-0"
                 @click="$emit('close')"

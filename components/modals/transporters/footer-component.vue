@@ -5,13 +5,13 @@
                 {{ $t('forms.step') }}
                 {{ currentStep }}
                 {{ $t('forms.of') }}
-                {{ totalSteps }}
+                {{ totalSteps - 1 }}
             </h2>
             <div class="w-full bg-gray-200 rounded-full h-2.5">
                 <div :style="{width}" class="bg-blue-600 h-2.5 rounded-full"/>
             </div>
         </div>
-        <x-button :disabled="! transporterStore.nextStepAvailable" theme="primary">
+        <x-button :disabled="!transporterStore.nextStepAvailable" theme="primary">
             {{ totalSteps - 1 !== currentStep ? $t('forms.next') : $t('forms.submit') }}
         </x-button>
     </footer>
@@ -25,6 +25,6 @@ const props = defineProps(['totalSteps', 'currentStep', 'loading']);
 const transporterStore = useTransporters();
 
 const width = computed(() => {
-    return ((props.currentStep / props.totalSteps) * 100) + '%'
+    return ((props.currentStep / (props.totalSteps - 1)) * 100) + '%'
 });
 </script>

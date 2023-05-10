@@ -10,11 +10,13 @@
                 aria-haspopup="listbox"
                 :aria-expanded="expanded"
                 aria-labelledby="listbox-label"
+                :disabled="$attrs.disabled"
                 @click.prevent="onToggle"
         >
             <input
                     class="ml-3 block truncate find-input bg-gray-50"
                     :placeholder="currentValue"
+                    :disabled="$attrs.disabled"
                     v-model="search">
             <div class="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
                 <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
