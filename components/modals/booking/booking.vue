@@ -193,6 +193,7 @@ const steps = ref([
                 id: 'wishes', // хз нужен ли
                 attrs: {
                     required: false,
+                    wishes: true,
                     options: wishes.value.common ?? [],
                 },
                 controlName: 'wishes',

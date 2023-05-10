@@ -55,7 +55,7 @@
         <div class="w-1/2">
             <div v-for="item in wishes" :key="item.id">
                 <div>
-                    {{ $t(`forms.${item.name}`) }}
+                    {{ item.name }}
 
                 </div>
             </div>

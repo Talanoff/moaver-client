@@ -13,7 +13,7 @@
                 :for="title"
                 class="w-full py-4 ml-2 text-sm font-medium text-gray-900 cursor-pointer"
         >
-            {{ $t(`forms.${title}`) }}
+            {{ wishes ? title : $t(`forms.${title}`) }}
         </label>
     </div>
 </template>
@@ -24,6 +24,7 @@ defineProps({
     title: String,
     checked: Boolean,
     required: Boolean,
+    wishes: Boolean
 });
 </script>
 
