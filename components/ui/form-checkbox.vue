@@ -1,30 +1,57 @@
 <template>
-    <div class="flex items-center pl-4 border border-gray-300 text-gray-900 text-sm rounded-lg mb-2">
+    <div class="flex items-center">
         <input
-                :id="title"
-                type="checkbox"
-                :checked="checked"
-                :value="value"
-                :required="required"
-                class="appearance-none w-4 h-4 bg-gray-100 border-gray-300 rounded checked:bg-blue-500 focus:ring-blue-500 focus:ring-2 focus:ring-offset-2"
-                @change="$emit('change', $event.target.value)"
+            :id="id"
+            type="checkbox"
+            :checked="isChecked"
+            :value="value"
+            @change="updateInput"
+            class="appearance-none w-4 h-4 bg-gray-100 border-gray-300 rounded checked:bg-blue-500 focus:ring-blue-500 focus:ring-2 focus:ring-offset-2"
         >
         <label
-                :for="title"
+                :for="id"
                 class="w-full py-4 ml-2 text-sm font-medium text-gray-900 cursor-pointer"
         >
-            {{ $t(`forms.${title}`) }}
+            {{ label }}
         </label>
     </div>
 </template>
 
-<script setup>
-defineProps({
-    value: String | Number,
-    title: String,
-    checked: Boolean,
-    required: Boolean,
-});
+<script>
+export default {
+    props: {
+        id: { type: String },
+        value: { type: String },
+        modelValue: { default: "" },
+        label: { type: String, required: true },
+        trueValue: { default: true },
+        falseValue: { default: false }
+    },
+    computed: {
+        isChecked() {
+            if (this.modelValue instanceof Array) {
+                return this.modelValue.includes(this.value)
+            }
+            return this.modelValue === this.trueValue
+        }
+    },
+    methods: {
+        updateInput(event) {
+            let isChecked = event.target.checked
+            if (this.modelValue instanceof Array) {
+                let newValue = [...this.modelValue]
+                if (isChecked) {
+                    newValue.push(this.value)
+                } else {
+                    newValue.splice(newValue.indexOf(this.value), 1)
+                }
+                this.$emit('update:modelValue', newValue)
+            } else {
+                this.$emit('update:modelValue', isChecked ? this.trueValue : this.falseValue)
+            }
+        }
+    }
+}
 </script>
 
 <style scoped>

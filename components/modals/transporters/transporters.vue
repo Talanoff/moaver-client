@@ -11,7 +11,7 @@
             <footer-component
                     :total-steps="steps.length"
                     :current-step="transporterStore.currentStep"
-                    :loading="loading.value"
+                    :loading="loading"
             />
         </form>
     </modal>
@@ -21,13 +21,13 @@
 import FooterComponent from "~/components/modals/transporters/footer-component.vue";
 import Modal from "~/components/modals/modal.vue";
 import TransportersForm from "~/components/transportersForm.vue";
-import {useTransporters} from "~/store/transporters";
-import {storeToRefs} from 'pinia'
+import { useTransporters } from "~/store/transporters";
+import { storeToRefs } from 'pinia'
 
 const transporterStore = useTransporters();
 const api = useApi()
 
-const {form} = storeToRefs(transporterStore);
+const { form } = storeToRefs(transporterStore);
 
 const steps = ref([
     {
@@ -46,9 +46,9 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'house number',
+                    label: 'House number',
                     type: 'text',
-                    placeholder: 'house number',
+                    placeholder: 'House number',
                 },
                 fieldType: 'input',
                 className: 'sm:w-1/2 w-full',
@@ -56,10 +56,10 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'postcode',
+                    label: 'Postcode',
                     type: 'text',
                     number: true,
-                    placeholder: 'postcode',
+                    placeholder: 'Postcode',
                 },
                 fieldType: 'input',
                 className: 'sm:w-1/2 w-full',
@@ -67,9 +67,9 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'country',
+                    label: 'Country',
                     type: 'text',
-                    placeholder: 'country',
+                    placeholder: 'Country',
                     options: transporterStore.countries,
                 },
                 fieldType: 'select',
@@ -78,9 +78,9 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'street',
+                    label: 'Street',
                     type: 'text',
-                    placeholder: 'street',
+                    placeholder: 'Street',
                 },
                 fieldType: 'input',
                 className: 'sm:w-1/2 w-full',
@@ -88,10 +88,10 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'Telephone number',
+                    label: 'Phone number',
                     type: 'text',
                     number: true,
-                    placeholder: 'Telephone number',
+                    placeholder: 'Phone number',
                 },
                 fieldType: 'input',
                 className: 'sm:w-1/2 w-full',
@@ -122,7 +122,6 @@ const steps = ref([
                 className: 'w-full',
                 controlName: "services"
             },
-
         ]
     },
     {
@@ -250,7 +249,7 @@ const steps = ref([
                 attrs: {
                     label: 'Name',
                     type: 'text',
-                    placeholder: 'Name',
+                    placeholder: '',
                 },
                 fieldType: 'input',
                 className: 'w-full',
@@ -261,7 +260,7 @@ const steps = ref([
                 attrs: {
                     label: 'Address',
                     type: 'text',
-                    placeholder: 'Address',
+                    placeholder: '',
                 },
                 fieldType: 'input',
                 className: 'w-full',
@@ -273,54 +272,52 @@ const steps = ref([
                     label: 'Phone number',
                     type: 'text',
                     number: true,
-                    placeholder: 'Phone number',
+                    placeholder: '+',
                 },
                 fieldType: 'input',
                 className: 'w-full',
                 controlName: 'phoneNumber'
             },
-            // {
-            //     id: 3,
-            //     attrs: {
-            //         label: 'E-mail address',
-            //         type: 'email',
-            //         placeholder: 'E-mail address',
-            //     },
-            //     fieldType: 'input',
-            //     className: 'w-full',
-            //     controlName: 'email'
-            // },
+            {
+                id: 3,
+                attrs: {
+                    label: 'email',
+                    type: 'email',
+                    placeholder: 'example@email.com',
+                },
+                fieldType: 'input',
+                className: 'w-full',
+                controlName: 'email'
+            },
             {
                 id: 3,
                 attrs: {
                     label: 'password',
                     type: 'password',
-                    placeholder: 'password',
+                    placeholder: '******',
                 },
-                fieldType: 'input',
+                fieldType: 'password',
                 className: 'w-full',
                 controlName: 'password'
             },
             {
                 id: 4,
                 attrs: {
-                    label: 'repeat password',
-                    type: 'repeat password',
-                    placeholder: 'password',
+                    label: 'repeatPassword',
+                    type: 'password',
+                    placeholder: '******',
                 },
-                fieldType: 'input',
+                fieldType: 'password',
                 className: 'w-full',
                 controlName: 'repeatPassword'
             },
             {
                 id: 5,
                 attrs: {
-                    title: 'Agree to terms?',
-                    options: [
-                        {name: 'Agree to terms', id: 1,},
-                    ],
+                    id: 'agree_to_terms',
+                    label: 'Agree to terms?',
                 },
-                fieldType: 'checkBoxGroup',
+                fieldType: 'checkbox',
                 className: 'w-full',
                 controlName: 'agreeToTerms'
             },
@@ -334,37 +331,32 @@ const steps = ref([
                 className: 'w-full'
             },
         ],
-
     },
 ]);
 const loading = ref(false);
+
 if (transporterStore.currentStep === 1) {
-    const name = steps.value.find(({id}) => id === 1)?.title ?? '';
-    transporterStore.currentStepName = name;
+    transporterStore.currentStepName = steps.value.find(({ id }) => id === 1)?.title ?? '';
 }
 
 const submit = () => {
-    if (steps.value.length !== transporterStore.currentStep) {
-        if (transporterStore.currentStep === 6) {
-            if (form.value.password[0] === form.value.repeatPassword[0] && form.value.password[0] !== '') {
-                transporterStore.currentStep++
-            } else {
-                form.value.password[0] = '';
-                form.value.repeatPassword[0] = '';
-                alert('Password mismatch')
-            }
-        } else {
-            const name = steps.value.find(({id}) => id === transporterStore.currentStep + 1)?.title ?? '';
-            transporterStore.setCurrentStep(name, 'increment');
-        }
+    if (steps.value.length - 1 !== transporterStore.currentStep) {
+        const name = steps.value.find(({ id }) => id === transporterStore.currentStep + 1)?.title ?? '';
+        transporterStore.setCurrentStep(name, 'increment');
     } else {
-        loading.value = true;
-        const formData = transporterStore.form;
+        if (form.value.password[0] !== form.value.repeatPassword[0]) {
+            // TODO error handling
+        }
 
-        api.post('questionnaire/vendor', Object.keys(formData).reduce((acc, it) => ({
+        loading.value = true;
+        const formData = Object.keys(transporterStore.form).reduce((acc, it) => ({
             ...acc,
-            [it]: formData[it][0] ?? null
-        }), {})).then(() => {
+            [it]: transporterStore.form[it][0] ?? null
+        }), {});
+
+        console.log(formData)
+
+        api.post('questionnaire/vendor', formData).then(() => {
             // TODO notify about success. clear form.
         }).catch((reason) => {
             // TODO notify about error. show validation errors.
@@ -375,9 +367,7 @@ const submit = () => {
 }
 
 const back = () => {
-    const name = steps.value.find(({id}) => id === transporterStore.currentStep - 1)?.title ?? '';
+    const name = steps.value.find(({ id }) => id === transporterStore.currentStep - 1)?.title ?? '';
     transporterStore.setCurrentStep(name, 'decrement');
 }
 </script>
-
-<style scoped></style>

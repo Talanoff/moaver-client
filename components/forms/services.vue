@@ -1,23 +1,20 @@
 <template>
-    <div>
-        <div v-for="(option) in configStore.services" :key="option.id">
-            <div class="flex flex-wrap sm:mb-2">
-                <form-checkbox
-                        class="mb-4 sm:mb-0 w-full h-12"
-                        :id="`id-${option.id}`"
-                        :title="option.name"
-                        :value="option.id"
-                        :checked="modelValue.includes(option.id)"
-                        @change="setCheckbox($event, option.id)"
-                />
-            </div>
+    <div v-for="(option) in configStore.services" :key="option.id">
+        <div class="pl-4 border border-gray-300 text-gray-900 text-sm rounded-lg mb-2">
+            <form-checkbox
+                    :id="`service-${option.id}`"
+                    :label="option.name"
+                    :value="option.id"
+                    :checked="modelValue.includes(option.id)"
+                    @change="setCheckbox($event, option.id)"
+            />
         </div>
     </div>
 </template>
 
 <script setup>
 import FormCheckbox from "~/components/ui/form-checkbox.vue";
-import {useConfig} from "~/store/config";
+import { useConfig } from "~/store/config";
 
 const configStore = useConfig();
 
@@ -36,6 +33,7 @@ const setCheckbox = (event, id) => {
         } else {
             currentValue.push(id);
         }
+
         emits('update:modelValue', currentValue);
     }
 }

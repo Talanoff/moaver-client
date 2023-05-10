@@ -6,7 +6,6 @@
         </main>
         <app-footer/>
         <login v-if="storeAuth.showModal"/>
-        <loader v-if="initialized && mainStore.loader"/>
     </div>
 </template>
 
@@ -14,16 +13,7 @@
 import AppHeader from '@/components/layout/header.vue';
 import AppFooter from '@/components/layout/footer.vue';
 import Login from "~/components/modals/login/login.vue";
-import {useAuth} from "~/store/auth";
-import Loader from "~/components/loaders/loader.vue";
-import {useMain} from "~/store/main";
+import { useAuth } from "~/store/auth";
 
-const initialized = ref(false);
-
-const mainStore = useMain()
 const storeAuth = useAuth();
-
-onMounted(() => {
-    initialized.value = true;
-})
 </script>
