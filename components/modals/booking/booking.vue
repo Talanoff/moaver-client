@@ -68,7 +68,6 @@ const steps = ref([
                 controlName: 'weight'
             },
             {
-                value: 'home',
                 attrs: {
                     required: false,
                     name: 'What exactly do you want to send',
@@ -278,7 +277,7 @@ const steps = ref([
                 },
                 fieldType: 'input',
                 className: 'w-full',
-                controlName: 'phone_number'
+                controlName: 'personalPhone'
             },
             {
                 attrs: {
@@ -289,7 +288,7 @@ const steps = ref([
                 },
                 fieldType: 'input',
                 className: 'w-full',
-                controlName: 'mail_address'
+                controlName: 'personalEmail'
             },
             {
                 attrs: {
@@ -337,7 +336,6 @@ const steps = ref([
                 controlName: 'confirmPassword'
             },
             {
-                id: 'wishes', // хз нужен ли
                 attrs: {
                     required: false,
                     options: [{ name: 'Agree to terms', id: 2 }],
@@ -363,14 +361,14 @@ const steps = ref([
 const api = useApi();
 
 watch(() => form.value.category[0], () => {
-        steps.value[0].fields[3].hidden = form.value.category[0] !== "Various goods"
+        steps.value[0].fields[3].hidden = form.value.category[0] !== "various"
 
-        if (form.value.category[0] === "One package") {
+        if (form.value.category[0] === "one") {
             steps.value[0].fields[1].attrs.placeholder = 1
             steps.value[0].fields[1].attrs.disabled = true
             steps.value[0].fields[1].attrs.name = 'Piece'
             steps.value[0].fields[1].attrs.label = 'Piece'
-        } else if (form.value.category[0] === "Pallet(s)") {
+        } else if (form.value.category[0] === "pallets") {
             steps.value[0].fields[1].attrs.name = 'Pallets'
             steps.value[0].fields[1].attrs.label = 'Pallets'
         } else {
@@ -379,7 +377,8 @@ watch(() => form.value.category[0], () => {
             steps.value[0].fields[1].attrs.placeholder = ''
             steps.value[0].fields[1].attrs.disabled = false
         }
-        if (form.value.category[0] === "Various goods") {
+
+        if (form.value.category[0] === "various") {
             // steps.value[0].fields[2].hidden = true
             form.value.pieces[0] = 1
             form.value.pieces[1] = []

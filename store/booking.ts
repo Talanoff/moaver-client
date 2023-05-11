@@ -61,8 +61,8 @@ export const useBooking = defineStore("booking", {
                 additionalWishesAttachment: [null, []],
                 name: [null, 'required'],
                 address: [null, 'required'],
-                phone_number: [null, 'required'],
-                mail_address: [null, 'required'],
+                personalPhone: [null, 'required'],
+                personalEmail: [null, 'required'],
                 iban: [null, 'required'],
                 password: [null, []],
                 confirmPassword: [null, ['password']],
@@ -90,8 +90,8 @@ export const useBooking = defineStore("booking", {
                     additionalWishesAttachment,
                     name,
                     address,
-                    phone_number,
-                    mail_address,
+                    personalPhone,
+                    personalEmail,
                     iban,
                     password,
                     confirmPassword,
@@ -101,7 +101,6 @@ export const useBooking = defineStore("booking", {
 
                 switch (this.currentStep) {
                     case 1:
-                        /////////////ПОД ВОПРОСОМ
                         return [
                             category,
                             goods,
@@ -142,8 +141,8 @@ export const useBooking = defineStore("booking", {
                         return [
                             name,
                             address,
-                            phone_number,
-                            mail_address,
+                            personalPhone,
+                            personalEmail,
                             iban,
                             password,
                             confirmPassword,
