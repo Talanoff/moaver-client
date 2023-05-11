@@ -46,27 +46,6 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'House number',
-                    type: 'text',
-                    placeholder: 'House number',
-                },
-                fieldType: 'input',
-                className: 'sm:w-1/2 w-full',
-                controlName: 'houseNumber'
-            },
-            {
-                attrs: {
-                    label: 'Postcode',
-                    type: 'text',
-                    number: true,
-                    placeholder: 'Postcode',
-                },
-                fieldType: 'input',
-                className: 'sm:w-1/2 w-full',
-                controlName: 'postCode'
-            },
-            {
-                attrs: {
                     label: 'Country',
                     type: 'text',
                     placeholder: 'Country',
@@ -89,9 +68,28 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'Phone number',
+                    label: 'House number',
                     type: 'text',
-                    number: true,
+                    placeholder: 'House number',
+                },
+                fieldType: 'input',
+                className: 'sm:w-1/2 w-full',
+                controlName: 'houseNumber'
+            },
+            {
+                attrs: {
+                    label: 'Postcode',
+                    type: 'text',
+                    placeholder: 'Postcode',
+                },
+                fieldType: 'input',
+                className: 'sm:w-1/2 w-full',
+                controlName: 'postCode'
+            },
+            {
+                attrs: {
+                    label: 'Phone number',
+                    type: 'tel',
                     placeholder: 'Phone number',
                 },
                 fieldType: 'input',
@@ -132,9 +130,9 @@ const steps = ref([
             {
                 id: 0,
 
-                fieldType: 'serviceQuantity',
+                fieldType: 'vehicles',
                 className: 'w-full',
-                controlName: "serviceQuantity"
+                controlName: "vehicles"
             },
         ]
     },
@@ -239,7 +237,6 @@ const steps = ref([
                 controlName: 'vat'
             },
         ],
-
     },
     {
         id: 6,
@@ -259,17 +256,6 @@ const steps = ref([
             {
                 id: 1,
                 attrs: {
-                    label: 'Address',
-                    type: 'text',
-                    placeholder: '',
-                },
-                fieldType: 'input',
-                className: 'w-full',
-                controlName: "address",
-            },
-            {
-                id: 2,
-                attrs: {
                     label: 'Phone number',
                     type: 'text',
                     number: true,
@@ -277,10 +263,21 @@ const steps = ref([
                 },
                 fieldType: 'input',
                 className: 'w-full',
-                controlName: 'phoneNumber'
+                controlName: 'personalPhone'
             },
             {
                 id: 2,
+                attrs: {
+                    label: 'E-mail address',
+                    type: 'email',
+                    placeholder: 'E-mail address',
+                },
+                fieldType: 'input',
+                className: 'w-full',
+                controlName: 'personalEmail'
+            },
+            {
+                id: 3,
                 attrs: {
                     label: 'password',
                     type: 'password',
@@ -299,7 +296,7 @@ const steps = ref([
                 },
                 fieldType: 'password',
                 className: 'w-full',
-                controlName: 'repeatPassword'
+                controlName: 'confirmPassword'
             },
             {
                 id: 5,
@@ -334,17 +331,13 @@ const submit = () => {
         const name = steps.value.find(({ id }) => id === transporterStore.currentStep + 1)?.title ?? '';
         transporterStore.setCurrentStep(name, 'increment');
     } else {
-        if (form.value.password[0] !== form.value.repeatPassword[0]) {
-            // TODO error handling
-        }
-
         loading.value = true;
-        const formData = Object.keys(transporterStore.form).reduce((acc, it) => ({
+        const { confirmPassword, ...formData } = Object.keys(transporterStore.form).reduce((acc, it) => ({
             ...acc,
             [it]: transporterStore.form[it][0] ?? null
         }), {});
 
-        console.log(formData)
+        formData.password_confirmation = confirmPassword;
 
         api.post('questionnaire/vendor', formData).then(() => {
             // TODO notify about success. clear form.

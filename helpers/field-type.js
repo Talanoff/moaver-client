@@ -1,4 +1,5 @@
 import formInput from "~/components/ui/form-input.vue";
+import formDatepicker from "~/components/ui/form-datepicker.vue";
 import formCheckbox from "~/components/ui/form-checkbox.vue";
 import formFile from "~/components/ui/form-file.vue";
 import formSelect from "~/components/ui/form-select.vue";
@@ -15,6 +16,8 @@ export function getFieldName(type) {
         case 'input':
         case 'password':
             return formInput;
+        case 'dateTime':
+            return formDatepicker;
         case 'checkbox':
             return formCheckbox;
         case 'file':
@@ -27,7 +30,7 @@ export function getFieldName(type) {
             return formTextarea;
         case 'services':
             return services;
-        case 'serviceQuantity':
+        case 'vehicles':
             return serviceQuantity;
         case 'locations':
             return locations;

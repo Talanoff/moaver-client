@@ -17,7 +17,8 @@
                     class="ml-3 block truncate find-input bg-gray-50"
                     :placeholder="currentValue"
                     :disabled="$attrs.disabled"
-                    v-model="search">
+                    v-model="search"
+            />
             <div class="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
                 <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd"
@@ -30,7 +31,7 @@
         <teleport to="body">
             <ul
                     v-if="expanded"
-                    class="fixed mt-1 max-h-56 overflow-auto rounded-md bg-white py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm border-1"
+                    class="fixed z-50 mt-1 max-h-56 overflow-auto rounded-md bg-white py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm border-1"
                     tabindex="-1"
                     role="listbox"
                     aria-labelledby="listbox-label"

@@ -1,7 +1,6 @@
-import {defineStore} from "pinia";
-import {useConfig} from "~/store/config";
-import {KeyValue} from "~/types/forms";
-import {th} from "date-fns/locale";
+import { defineStore } from "pinia";
+import { useConfig } from "~/store/config";
+import { KeyValue } from "~/types/forms";
 
 type CurrentState = {
     showModal: boolean;
@@ -24,17 +23,16 @@ export const useTransporters = defineStore("transporters", {
             phone: [null, ['required']],
             email: [null, ['required']],
             services: [[], ['required']],
-            serviceQuantity: [null, ['required']],
-            quantities: [[]],
+            vehicles: [{}, ['required']],
             commerceNumber: [null, ['required']],
             iban: [null, ['required']],
             vat: [null, ['required']],
             locations: [[], ['required']],
             name: [null, ['required']],
-            address: [null, ['required']],
-            phoneNumber: [null, ['required']], // ???
+            personalPhone: [null, ['required']],
+            personalEmail: [null, ['required']],
             password: [null, ['required']],
-            repeatPassword: [null, ['required', 'password']],
+            confirmPassword: [null, ['required', 'password']],
             agreeToTerms: [false, ['required']],
         }
     }),
@@ -43,7 +41,10 @@ export const useTransporters = defineStore("transporters", {
         countries(): KeyValue[] {
             const config = useConfig();
 
-            return config.countries.map((it: { id: number; name: string; }): KeyValue => ({
+            return config.countries.map((it: {
+                id: number;
+                name: string;
+            }): KeyValue => ({
                 key: it.id,
                 value: it.name
             }));
@@ -59,18 +60,19 @@ export const useTransporters = defineStore("transporters", {
                 phone,
                 email,
                 services,
-                serviceQuantity,
+                vehicles,
                 commerceNumber,
                 iban,
                 vat,
                 name,
-                address,
-                phoneNumber,
+                personalPhone,
+                personalEmail,
                 password,
-                repeatPassword,
+                confirmPassword,
                 agreeToTerms,
                 locations
             } = this.form;
+
             switch (this.currentStep) {
                 case 1:
                     return [
@@ -92,11 +94,11 @@ export const useTransporters = defineStore("transporters", {
                         .every((it) => it[0].length > 0);
                 case 3:
                     return [
-                        serviceQuantity
+                        vehicles
                     ]
                         .filter((it: any[]) => it[1].includes('required'))
                         .every((it) => {
-                            return it[0] !== null ? Object.values(it[0][0]).every((item) => typeof item === "string") : ''
+                            return !!it[0]
                         });
                 case 4:
                     return [
@@ -119,10 +121,10 @@ export const useTransporters = defineStore("transporters", {
                 case 6:
                     return [
                         name,
-                        address,
-                        phoneNumber,
+                        personalPhone,
+                        personalEmail,
                         password,
-                        repeatPassword,
+                        confirmPassword,
                         agreeToTerms
                     ]
                         .filter((it: any[]) => it[1].includes('required'))

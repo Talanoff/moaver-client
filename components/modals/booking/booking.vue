@@ -118,7 +118,7 @@ const steps = ref([
                     min: new Date(),
                     placeholder: 'date'
                 },
-                fieldType: 'input',
+                fieldType: 'dateTime',
                 className: 'w-full ',
                 controlName: 'dateFrom'
             },
@@ -153,7 +153,7 @@ const steps = ref([
                     min: form.value.dateTo[0],
                     placeholder: 'date'
                 },
-                fieldType: 'input',
+                fieldType: 'dateTime',
                 className: 'w-full',
                 controlName: 'dateTo'
             },

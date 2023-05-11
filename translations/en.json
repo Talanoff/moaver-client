@@ -85,7 +85,8 @@
     "Pick-up and delivery wishes/requirements": "Pick-up and delivery wishes/requirements",
     "Additional wishes": "Additional wishes",
     "email": "email",
-    "quantity": "quantity"
+    "quantity": "quantity",
+    "addLocation": "Add more"
   },
   "categories": {
     "One package": "One package",

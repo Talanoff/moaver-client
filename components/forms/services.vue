@@ -5,7 +5,7 @@
                     :id="`service-${option.id}`"
                     :label="option.name"
                     :value="option.id"
-                    :checked="modelValue.includes(option.id)"
+                    :model-value="modelValue.includes(option.id)"
                     @change="setCheckbox($event, option.id)"
             />
         </div>
@@ -38,6 +38,4 @@ const setCheckbox = (event, id) => {
     }
 }
 </script>
-<style scoped>
 
-</style>

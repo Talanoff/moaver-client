@@ -21,20 +21,22 @@
         </div>
     </div>
 
-    <button
+    <div class="mt-5">
+        <button
             type="button"
             @click.prevent="onAdd()"
-            class="m-2.5 cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-    >
-        Add
-    </button>
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        >
+            {{ $t('forms.addLocation') }}
+        </button>
+    </div>
 </template>
 
 <script setup>
 import FormSelect from "~/components/ui/form-select.vue";
+import FormInput from "~/components/ui/form-input.vue";
 import { useTransporters } from "~/store/transporters";
 import { useConfig } from "~/store/config";
-import FormInput from "~/components/ui/form-input.vue";
 
 const storeTransporters = useTransporters();
 const configStore = useConfig();
