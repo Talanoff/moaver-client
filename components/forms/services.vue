@@ -1,6 +1,6 @@
 <template>
     <div v-for="(option) in configStore.services" :key="option.id">
-        <div class="pl-4 border border-gray-300 text-gray-900 text-sm rounded-lg mb-2">
+        <div class="pl-4 border border-slate-300 text-slate-900 text-sm rounded-lg mb-2">
             <form-checkbox
                     :id="`service-${option.id}`"
                     :label="option.name"

@@ -1,24 +1,25 @@
 <template>
-    <Modal
-            v-if="bookingStore.showModal"
-            :title="bookingStore.currentStepName"
-            :show-title="steps.length !== bookingStore.currentStep"
-            :show-back-button="bookingStore.currentStep > 1"
+    <modal
+            v-if="showModal"
+            :title="currentStepName"
+            :show-title="steps.length !== currentStep"
+            :show-back-button="currentStep > 1"
             @close="bookingStore.toggleModal(false)"
             @back="back"
     >
         <form @submit.prevent="submit">
-            <client-form :steps="steps"/>
-            <footer-component
+            <booking-form :steps="steps"/>
+            <modal-footer
                     :total-steps="steps.length"
-                    :current-step="bookingStore.currentStep"
+                    :current-step="currentStep"
             />
         </form>
-    </Modal>
+    </modal>
 </template>
 
 <script setup>
-import FooterComponent from "~/components/modals/booking/footer-component.vue";
+import ModalFooter from "~/components/modals/booking/footer.vue";
+import BookingForm from './form.vue'
 import Modal from "~/components/modals/modal.vue";
 import { useBooking } from "~/store/booking";
 import { useConfig } from "~/store/config";
@@ -27,17 +28,8 @@ import { storeToRefs } from "pinia";
 const bookingStore = useBooking();
 const configStore = useConfig();
 
-const { form } = storeToRefs(bookingStore);
+const { form, showModal, currentStepName, currentStep } = storeToRefs(bookingStore);
 const wishes = ref(configStore.wishes);
-
-const fullTime = computed(() => {
-    const year = new Date().getFullYear()
-    const month = new Date().getMonth()
-    const day = new Date().getDay()
-    let time = new Date().toLocaleTimeString()
-    time = time.substring(0, time.length - 3)
-    return `${year + '-0' + (+month + 1) + '-0' + day + 'T' + time}`
-});
 
 const steps = ref([
     {
@@ -73,7 +65,7 @@ const steps = ref([
                 },
                 fieldType: 'input',
                 className: 'sm:w-1/2 w-full',
-                controlName: 'kg'
+                controlName: 'weight'
             },
             {
                 value: 'home',
@@ -88,7 +80,7 @@ const steps = ref([
                 },
                 hidden: false,
                 fieldType: 'select',
-                controlName: 'selectCategory',
+                controlName: 'goods',
                 className: 'w-full'
             },
 
@@ -205,13 +197,13 @@ const steps = ref([
         title: 'Additional wishes',
         fields: [
             {
-                id: 'additional_wishes',
+                id: 'additionalWishes',
                 title: 'Additional wishes',
                 attrs: {
                     required: false,
                     options: wishes.value.additional ?? [],
                 },
-                controlName: 'additional_wishes',
+                controlName: 'additionalWishes',
                 fieldType: 'checkBoxGroup',
                 className: 'w-full'
             },
@@ -223,7 +215,7 @@ const steps = ref([
                     placeholder: 'additional wishes',
                     maxlength: 400,
                 },
-                controlName: 'additional_wishes_notes',
+                controlName: 'additionalWishesNotes',
                 fieldType: 'textarea',
                 className: 'w-full m-2.5'
             },
@@ -233,7 +225,7 @@ const steps = ref([
                     label: 'Pick file',
                     url: ''
                 },
-                controlName: 'additional_wishes_attachment',
+                controlName: 'additionalWishesAttachment',
                 fieldType: 'file',
                 className: 'w-full'
             },
@@ -342,7 +334,7 @@ const steps = ref([
                 hidden: true,
                 fieldType: 'input',
                 className: 'w-full',
-                controlName: 'repeatPassword'
+                controlName: 'confirmPassword'
             },
             {
                 id: 'wishes', // хз нужен ли
@@ -391,15 +383,15 @@ watch(() => form.value.category[0], () => {
             // steps.value[0].fields[2].hidden = true
             form.value.pieces[0] = 1
             form.value.pieces[1] = []
-            form.value.kg[0] = null
-            form.value.kg[1] = []
-            form.value.selectCategory[1] = ['required']
+            form.value.weight[0] = null
+            form.value.weight[1] = []
+            form.value.goods[1] = ['required']
         } else {
             steps.value[0].fields[2].hidden = false
             form.value.pieces[1] = ["required"]
-            form.value.kg[1] = ["required"]
-            form.value.selectCategory[1] = []
-            form.value.selectCategory[0] = null
+            form.value.weight[1] = ["required"]
+            form.value.goods[1] = []
+            form.value.goods[0] = null
         }
     },
 );
@@ -410,13 +402,13 @@ watch(() => form.value.registerCheckbox[0][0], () => {
             steps.value[5].fields[7].hidden = true
             form.value.password[0] = null
             form.value.password[1] = []
-            form.value.repeatPassword[0] = null
-            form.value.repeatPassword[1] = []
+            form.value.confirmPassword[0] = null
+            form.value.confirmPassword[1] = []
         } else {
             steps.value[5].fields[6].hidden = false
             steps.value[5].fields[7].hidden = false
             form.value.password[1] = ["required"]
-            form.value.repeatPassword[1] = ["required"]
+            form.value.confirmPassword[1] = ["required"]
         }
     },
 );
@@ -425,31 +417,22 @@ watch(() => form.value.dateFrom[0], () => steps.value[1].fields[3].attrs.min = f
 
 const submit = () => {
     if (steps.value.length - 1 !== bookingStore.currentStep) {
-        if (bookingStore.currentStep === 6) {
-            if (form.value.password[0] === form.value.repeatPassword[0] && form.value.password[0] !== '') {
-                bookingStore.currentStep++
-            } else {
-                form.value.password[0] = '';
-                form.value.repeatPassword[0] = '';
-                alert('Password mismatch')
-            }
-        } else {
-            const name = steps.value.find(({ id }) => id === bookingStore.currentStep + 1)?.title ?? '';
-            bookingStore.setCurrentStep(name, 'increment');
-        }
+        const name = steps.value.find(({ id }) => id === bookingStore.currentStep + 1)?.title ?? '';
+        bookingStore.setCurrentStep(name, 'increment');
     } else {
-        const formData = bookingStore.form;
-
-        api.post('questionnaire/vendor', Object.keys(formData).reduce((acc, it) => ({
+        const { confirmPassword, ...formData } = Object.keys(bookingStore.form).reduce((acc, it) => ({
             ...acc,
-            [it]: formData[it][0] ?? null
-        }), {})).then(() => {
+            [it]: bookingStore.form[it][0] ?? null
+        }), {});
+
+        formData.password_confirmation = confirmPassword;
+
+        api.post('questionnaire/vendor', formData).then(() => {
             // TODO notify about success. clear form.
         }).catch((reason) => {
             // TODO notify about error. show validation errors.
         }).finally(() => {
         });
-        bookingStore.currentStep++
     }
 }
 
@@ -458,5 +441,3 @@ const back = () => {
     bookingStore.setCurrentStep(name, 'decrement');
 }
 </script>
-
-<style scoped></style>

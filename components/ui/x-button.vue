@@ -21,9 +21,9 @@ const props = defineProps<{
 const color = computed(() => {
     switch (props.theme) {
         case 'primary':
-            return 'text-white bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 disabled:bg-gray-400';
+            return 'text-white bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 disabled:bg-slate-400';
         default:
-            return 'text-gray-800 bg-gray-200 hover:bg-gray-100 focus:ring-gray-50/50 disabled:bg-gray-100';
+            return 'text-slate-800 bg-slate-200 hover:bg-slate-100 focus:ring-slate-100/50 disabled:bg-slate-100';
     }
 })
 </script>

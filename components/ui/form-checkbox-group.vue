@@ -1,16 +1,19 @@
 <template>
-    <div
-        v-for="option in $attrs.options"
-        :key="option.id"
-    >
-        <form-checkbox
+    <div class="space-y-2.5">
+        <div
+            class="rounded-lg border border-slate-200 p-3.5"
+            v-for="option in $attrs.options"
+            :key="option.id"
+        >
+            <form-checkbox
                 :id="`id-${option.id}`"
-                :name="option.name"
+                :label="option.name"
                 :value="option.id"
                 :wishes="$attrs.wishes"
                 :checked="modelValue.includes(option.id)"
                 @change="setCheckbox($event, option.id)"
-        />
+            />
+        </div>
     </div>
 </template>
 <script setup>

@@ -2,19 +2,18 @@
     <div>
         <div class="flex sm:justify-start justify-between border-b-2 pb-2">
             <h2 class="font-semibold sm:sm:w-1/2">Category:</h2> {{ $t(`categories.${store.form.category[0]}`) }}
-
         </div>
         <div class="flex sm:justify-start justify-between border-b-2 pb-2">
             <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.Pieces`) }}:</h2>
             <p>{{ store.form.pieces[0] }}</p>
         </div>
-        <div class="flex sm:justify-start justify-between border-b-2 pb-2" v-if="store.form.selectCategory[0] !== null">
+        <div class="flex sm:justify-start justify-between border-b-2 pb-2" v-if="store.form.goods[0] !== null">
             <h2 class="font-semibold sm:w-1/2">Dispatch type:</h2>
-            <p>{{ store.form.selectCategory[0] }}</p>
+            <p>{{ store.form.goods[0] }}</p>
         </div>
-        <div class="flex sm:justify-start justify-between border-b-2 pb-2" v-if="store.form.kg[0] !== null">
+        <div class="flex sm:justify-start justify-between border-b-2 pb-2" v-if="store.form.weight[0] !== null">
             <h2 class="font-semibold sm:w-1/2">Kg:</h2>
-            <p>{{ store.form.kg[0] }}</p>
+            <p>{{ store.form.weight[0] }}</p>
         </div>
         <div class="flex sm:justify-start justify-between border-b-2 pb-2" v-if="store.form.message[0] !== null">
             <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.Message`) }}:</h2>
@@ -54,33 +53,29 @@
         <h2 class="font-semibold sm:w-1/2">{{ $t('forms.Pick-up and delivery wishes/requirements') }}:</h2>
         <div class="w-1/2">
             <div v-for="item in wishes" :key="item.id">
-                <div>
-                    {{ item.name }}
-
-                </div>
+                <div>{{ item.name }}</div>
             </div>
         </div>
     </div>
-    <div class="border-b-2 pb-2 sm:flex sm:justify-start"
-         v-if="additional_wishes.length>0 || store.form.additional_wishes_notes[0] !== null ">
+<!--    <div class="border-b-2 pb-2 sm:flex sm:justify-start"-->
+<!--         v-if="additionalWishes.length>0 || store.form.additionalWishesNotes[0] !== null">-->
 
-        <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.${steps[3].title}`) }}:</h2>
-        <div class="w-1/2">
-            <div v-for="field in additional_wishes" :key="field.name">
-                <div>{{ $t(`forms.${field.name}`) }}</div>
-            </div>
-
-        </div>
-    </div>
+<!--        <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.${steps[3].title}`) }}:</h2>-->
+<!--        <div class="w-1/2">-->
+<!--            <div v-for="field in additionalWishes" :key="field.name">-->
+<!--                <div>{{ $t(`forms.${field.name}`) }}</div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
     <div class="sm:flex sm:justify-start justify-between border-b-2 pb-2"
-         v-if="store.form.additional_wishes_notes[0] !== null">
+         v-if="store.form.additionalWishesNotes[0] !== null">
         <h2 class="font-semibold sm:w-1/2">Additional wishes notes:</h2>
-        <p>{{ store.form.additional_wishes_notes[0] }}</p>
+        <p>{{ store.form.additionalWishesNotes[0] }}</p>
     </div>
     <div class="sm:flex sm:justify-start justify-between border-b-2 pb-2"
-         v-if=" store.form.additional_wishes_attachment[0] !== null ? store.form.additional_wishes_attachment[0][0].url: false">
+         v-if="store.form.additionalWishesAttachment[0] !== null ? store.form.additionalWishesAttachment[0][0].url : false">
         <h2 class="font-semibold sm:w-1/2">Sending photo</h2>
-        <img class="sm:w-[20rem]" :src="store.form.additional_wishes_attachment[0][0].url" alt="">
+        <img class="sm:w-[20rem]" :src="store.form.additionalWishesAttachment[0][0].url" alt="">
     </div>
 
 </template>
@@ -93,7 +88,7 @@ const props = defineProps({
 })
 const value = ref([])
 const fields = ref([])
-const additional_wishes = ref([])
+const additionalWishes = ref([])
 const wishes = ref([])
 const store = useBooking()
 const setValue = () => {
@@ -126,11 +121,11 @@ const dateTo = () => {
     return date
 }
 const setWishes = () => {
-    store.form.additional_wishes.forEach((el) => {
+    store.form.additionalWishes.forEach((el) => {
         props.steps[3].fields[0].attrs.options.forEach((field) => {
             el.forEach((id) => {
                 if (field.id === id) {
-                    additional_wishes.value.push(field)
+                    additionalWishes.value.push(field)
                 }
             })
 

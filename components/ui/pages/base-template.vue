@@ -4,7 +4,7 @@
             {{ title ?? '' }}
         </h1>
         <section
-            class="text-gray-600 space-y-5 max-w-4xl mx-auto typography"
+            class="text-slate-600 space-y-5 max-w-4xl mx-auto typography"
             v-html="content ?? ''"
         />
     </div>

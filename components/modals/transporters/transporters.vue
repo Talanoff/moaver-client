@@ -7,8 +7,8 @@
             @close="transporterStore.toggleModal(false)"
     >
         <form @submit.prevent="submit">
-            <transporters-form :steps="steps"/>
-            <footer-component
+            <register-form :steps="steps"/>
+            <modal-footer
                     :total-steps="steps.length"
                     :current-step="transporterStore.currentStep"
                     :loading="loading"
@@ -18,12 +18,13 @@
 </template>
 
 <script setup>
-import FooterComponent from "~/components/modals/transporters/footer-component.vue";
+import ModalFooter from "~/components/modals/transporters/footer.vue";
+import RegisterForm from "~/components/modals/transporters/form.vue";
 import Modal from "~/components/modals/modal.vue";
-import TransportersForm from "~/components/transportersForm.vue";
 import { useTransporters } from "~/store/transporters";
 import { storeToRefs } from 'pinia'
 
+const router = useRouter();
 const transporterStore = useTransporters();
 const api = useApi()
 
@@ -294,7 +295,7 @@ const steps = ref([
             {
                 id: 4,
                 attrs: {
-                    label: 'repeatPassword',
+                    label: 'confirmPassword',
                     type: 'password',
                     placeholder: '******',
                 },
@@ -344,7 +345,10 @@ const submit = () => {
         formData.password_confirmation = confirmPassword;
 
         api.post('questionnaire/vendor', formData).then(() => {
-            // TODO notify about success. clear form.
+            router.push({
+                path: '/thank-you',
+                query: { action: 'register' }
+            });
         }).catch((reason) => {
             // TODO notify about error. show validation errors.
         }).finally(() => {

@@ -7,11 +7,11 @@
 
             <div class="space-y-2">
                 <div
-                        class="flex border border-gray-100 rounded-md"
+                        class="flex border border-slate-100 rounded-md"
                         v-for="vehicle in vehicles[service.id]"
                         :key="vehicle.id"
                 >
-                    <div class="w-auto flex-1 rounded-l-md text-sm px-2 bg-gray-50 flex flex-col justify-center">
+                    <div class="w-auto flex-1 rounded-l-md text-sm px-2 bg-slate-100 flex flex-col justify-center">
                         {{ vehicle.name }}
                     </div>
                     <div class="w-14">

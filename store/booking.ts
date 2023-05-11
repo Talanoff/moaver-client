@@ -43,9 +43,9 @@ export const useBooking = defineStore("booking", {
             ],
             form: {
                 category: [null, ['required']],
-                selectCategory: [null, []],
+                goods: [null, []],
                 pieces: [1, ['required']],
-                kg: [null, ['required']],
+                weight: [null, ['required']],
                 message: [null, []],
                 dateFrom: [null, ['required']],
                 locationFrom: [null, ['required']],
@@ -56,16 +56,16 @@ export const useBooking = defineStore("booking", {
                 info: [null, ['info']],
                 // ....
                 wishes: [[], ['required']],
-                additional_wishes: [[], []],
-                additional_wishes_notes: [null, []],
-                additional_wishes_attachment: [null, []],
+                additionalWishes: [[], []],
+                additionalWishesNotes: [null, []],
+                additionalWishesAttachment: [null, []],
                 name: [null, 'required'],
                 address: [null, 'required'],
                 phone_number: [null, 'required'],
                 mail_address: [null, 'required'],
                 iban: [null, 'required'],
                 password: [null, []],
-                repeatPassword: [null, ['password']],
+                confirmPassword: [null, ['password']],
                 registerCheckbox: [[], []],
                 agreeToTerms: [[], ['required']],
             }
@@ -74,9 +74,9 @@ export const useBooking = defineStore("booking", {
             nextStepAvailable(): boolean {
                 const {
                     category,
-                    selectCategory,
+                    goods,
                     pieces,
-                    kg,
+                    weight,
                     message,
                     dateFrom,
                     locationFrom,
@@ -85,16 +85,16 @@ export const useBooking = defineStore("booking", {
                     locationTo,
                     selectLocationTo,
                     wishes,
-                    additional_wishes,
-                    additional_wishes_notes,
-                    additional_wishes_attachment,
+                    additionalWishes,
+                    additionalWishesNotes,
+                    additionalWishesAttachment,
                     name,
                     address,
                     phone_number,
                     mail_address,
                     iban,
                     password,
-                    repeatPassword,
+                    confirmPassword,
                     registerCheckbox,
                     agreeToTerms
                 } = this.form;
@@ -104,9 +104,9 @@ export const useBooking = defineStore("booking", {
                         /////////////ПОД ВОПРОСОМ
                         return [
                             category,
-                            selectCategory,
+                            goods,
                             pieces,
-                            kg,
+                            weight,
                             message
                         ]
                             .filter((it: any[]) => it[1].includes('required'))
@@ -130,9 +130,9 @@ export const useBooking = defineStore("booking", {
                             .every((it) => it[0].length > 0);
                     case 4:
                         return [
-                            additional_wishes,
-                            additional_wishes_notes,
-                            additional_wishes_attachment
+                            additionalWishes,
+                            additionalWishesNotes,
+                            additionalWishesAttachment
                         ]
                             .filter((it: any[]) => it[1].includes('required'))
                             .every((it) => !!it[0] || it[0] !== null ? it[0].length > 0 : false);
@@ -146,7 +146,7 @@ export const useBooking = defineStore("booking", {
                             mail_address,
                             iban,
                             password,
-                            repeatPassword,
+                            confirmPassword,
                             registerCheckbox,
                             agreeToTerms
                         ]

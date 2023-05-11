@@ -1,6 +1,6 @@
 <template>
-    <div class="relative">
-        <label class="block mb-2 text-sm text-gray-900 font-bold" v-if="$attrs.label">
+    <div class="relative text-slate-900">
+        <label class="block mb-2 text-sm font-bold" v-if="$attrs.label">
             {{ $t(`forms.${$attrs.label}`) }}
         </label>
         <div class="relative flex items-center">
@@ -10,11 +10,11 @@
                     :disabled="disabled"
                     :required="required"
                     @keypress="$attrs.number ? onlyNumber($event) : ''"
-                    class="appearance-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    class="appearance-none block w-full px-3.5 bg-slate-100 h-12 border-none text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                     @input="$emit('update:modelValue', $event.target.value)"
             >
 
-            <div class="absolute right-6 text-color-gray" v-if="$attrs.name">
+            <div class="absolute right-3.5 text-slate-1000 text-sm" v-if="$attrs.name">
                 {{ $t(`forms.${$attrs.name}`) }}
             </div>
         </div>

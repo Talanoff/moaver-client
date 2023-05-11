@@ -6,11 +6,11 @@
             :checked="isChecked"
             :value="value"
             @change="updateInput"
-            class="appearance-none w-4 h-4 bg-gray-100 border-gray-300 rounded checked:bg-blue-500 focus:ring-blue-500 focus:ring-2 focus:ring-offset-2"
+            class="appearance-none w-4 h-4 bg-slate-100 border-slate-300 rounded checked:bg-blue-500 focus:ring-blue-500 focus:ring-2 focus:ring-offset-2"
         >
         <label
                 :for="id"
-                class="w-full py-4 ml-2 text-sm font-medium text-gray-900 cursor-pointer"
+                class="w-full ml-2 text-sm font-medium text-slate-900 cursor-pointer"
         >
             {{ label }}
         </label>

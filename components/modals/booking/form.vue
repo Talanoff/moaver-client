@@ -8,16 +8,15 @@
                 >
                     <div class="flex flex-wrap">
                         <div
-                                class="p-2"
-                                v-for="field in step.fields"
-                                :key="field.id"
+                                class="p-2.5"
+                                v-for="(field, index) in step.fields"
+                                :key="`field-${index}`"
                                 :class="field.className"
                                 v-show="!field.hidden && store.form[field.controlName]"
                         >
                             <component
                                     :is="getFieldName(field.fieldType)"
-                                    :id="field.id"
-                                    :steps="steps"
+                                    :id="field.controlName"
                                     v-model="store.form[field.controlName][0]"
                                     v-bind="field.attrs"
                                     v-if="!field.hidden && store.form[field.controlName]"

@@ -1,7 +1,7 @@
 <template>
     <div class="fixed top-0 w-screen h-screen z-20">
         <div
-                class="flex bg-gray-600  bg-opacity-50 items-center justify-center absolute inset-0"
+                class="flex bg-slate-600  bg-opacity-50 items-center justify-center absolute inset-0"
                 @click="$emit('close')"
         />
 
@@ -9,7 +9,7 @@
             <div class="relative sm:p-8 p-5 bg-white rounded-3xl z-20">
                 <button
                         type="button"
-                        class="absolute -top-5 -right-5 z-10 flex justify-center items-center px-3 py-3 bg-blue-900 rounded-lg text-gray-100"
+                        class="absolute -top-5 -right-5 z-10 flex justify-center items-center px-3 py-3 bg-blue-900 rounded-lg text-slate-100"
                         @click="$emit('close')"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -23,7 +23,7 @@
                     <div v-if="showBackButton && showTitle">
                         <button
                                 type="button"
-                                class="border-gray-300 hover:border-blue-600 rounded-md border-2 p-2 transition-colors duration-300"
+                                class="border-slate-300 hover:border-blue-600 rounded-md border-2 p-2 transition-colors duration-300"
                                 @click.prevent="$emit('back')"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

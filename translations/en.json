@@ -52,7 +52,7 @@
     "IBAN": "IBAN",
     "upload_photo": "Upload photo",
     "password": "Password",
-    "repeatPassword": "Repeat password",
+    "confirmPassword": "Repeat password",
     "thank": "Thank you for your assignment! We'll get to work for you right away.",
     "Name transport company": "Name transport company",
     "House number": "House number",
@@ -94,6 +94,12 @@
     "Many packages": "Many packages",
     "Pallet(s)": "Pallet(s)",
     "Various goods": "Various goods"
+  },
+  "messages": {
+    "thankYou": "Thank you!",
+    "register": {
+      "headline": "Your registration has been completed."
+    }
   }
 }
 

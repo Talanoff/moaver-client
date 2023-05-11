@@ -1,12 +1,12 @@
 <template>
     <div class="relative" v-click-outside="onClickOutside">
-        <label class="block mb-2 text-sm  text-gray-900  font-bold" v-if="$attrs.label">
+        <label class="block mb-2 text-sm  text-slate-900  font-bold" v-if="$attrs.label">
             {{ $t(`forms.${$attrs.label}`) }}
         </label>
         <button
                 ref="button"
                 type="button"
-                class="relative w-full cursor-default rounded-md bg-gray-50 py-2 pr-10 text-left ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                class="relative w-full cursor-default rounded-md text-sm bg-slate-100 h-12 pr-10 text-left focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                 aria-haspopup="listbox"
                 :aria-expanded="expanded"
                 aria-labelledby="listbox-label"
@@ -14,13 +14,14 @@
                 @click.prevent="onToggle"
         >
             <input
-                    class="ml-3 block truncate find-input bg-gray-50"
+                    class="ml-3 block truncate find-input bg-slate-100"
                     :placeholder="currentValue"
                     :disabled="$attrs.disabled"
+                    @focusout="search = ''"
                     v-model="search"
             />
             <div class="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <svg class="h-5 w-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd"
                           d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
                           clip-rule="evenodd"/>
@@ -38,7 +39,7 @@
                     :style="listPosition"
             >
                 <li
-                        class="text-gray-900 relative cursor-default select-none py-2 pr-9"
+                        class="text-slate-900 relative cursor-default select-none py-2 pr-9"
                         id="listbox-option-0"
                         role="option"
                         v-for="option in filterCounties"

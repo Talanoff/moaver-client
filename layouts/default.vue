@@ -1,7 +1,7 @@
 <template>
     <div class="min-h-screen flex flex-col">
         <app-header/>
-        <main role="main" class="flex-1">
+        <main role="main" class="flex-1 flex flex-col">
             <slot/>
         </main>
         <app-footer/>

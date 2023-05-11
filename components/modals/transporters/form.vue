@@ -9,7 +9,7 @@
                 >
                     <div class="flex flex-wrap">
                         <div
-                                class="p-2"
+                                class="p-2.5"
                                 v-for="(field, index) in step.fields"
                                 :key="`field-${index}`"
                                 :class="field.className ?? ''"
@@ -23,7 +23,7 @@
                             />
 
                             <div class="my-2.5" v-else>
-                                <hr class="border-gray-200"/>
+                                <hr class="border-slate-200"/>
                             </div>
                         </div>
                     </div>
