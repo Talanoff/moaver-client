@@ -7,7 +7,7 @@
                     :options="options"
                     class="w-1/2"
             />
-            <form-input class="w-1/2" v-model="item.city"/>
+            <form-input class="w-1/2" v-model="item.location"/>
             <div
                     @click="onRemove(idx)"
                     class="text-red-500 hover:text-red-600 transition-colors duration-300 cursor-pointer sm:w-20 w-10"
@@ -42,7 +42,7 @@ const storeTransporters = useTransporters();
 const configStore = useConfig();
 const items = ref([{
     country: '',
-    city: '',
+    location: '',
 }]);
 const options = ref(
     configStore.countries.map(({ id, name }) => ({ key: id, value: name }))
@@ -54,7 +54,7 @@ const onRemove = (idx) => {
 const onAdd = () => {
     items.value.push({
         country: '',
-        city: '',
+        location: '',
     })
 }
 watch(() => items, (val) => {

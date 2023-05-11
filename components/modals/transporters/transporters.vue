@@ -42,13 +42,13 @@ const steps = ref([
                 },
                 fieldType: 'input',
                 className: 'w-full',
-                controlName: 'companyName'
+                controlName: 'companyName',
             },
             {
                 attrs: {
-                    label: 'Country',
+                    label: 'country',
                     type: 'text',
-                    placeholder: 'Country',
+                    placeholder: 'country',
                     disabled: true,
                     options: transporterStore.countries,
                 },
@@ -58,23 +58,23 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'Street',
+                    label: 'location',
                     type: 'text',
-                    placeholder: 'Street',
+                    placeholder: '',
                 },
                 fieldType: 'input',
                 className: 'sm:w-1/2 w-full',
-                controlName: 'street'
+                controlName: 'location'
             },
             {
                 attrs: {
-                    label: 'House number',
+                    label: 'address',
                     type: 'text',
-                    placeholder: 'House number',
+                    placeholder: 'address',
                 },
-                fieldType: 'input',
-                className: 'sm:w-1/2 w-full',
-                controlName: 'houseNumber'
+                fieldType: 'textarea',
+                className: 'w-full',
+                controlName: 'address'
             },
             {
                 attrs: {
@@ -83,8 +83,12 @@ const steps = ref([
                     placeholder: 'Postcode',
                 },
                 fieldType: 'input',
-                className: 'sm:w-1/2 w-full',
+                className: 'w-48',
                 controlName: 'postCode'
+            },
+            {
+                fieldType: 'delimiter',
+                className: 'w-full'
             },
             {
                 attrs: {

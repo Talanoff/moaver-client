@@ -51,7 +51,7 @@ export const useConfig = defineStore('config', () => {
                     ...vacc,
                     [v.id]: {
                         key: v.id,
-                        value: control ? control[v.id] : null
+                        value: control ? control[v.id]['value'] : null
                     }
                 }),
                 {}

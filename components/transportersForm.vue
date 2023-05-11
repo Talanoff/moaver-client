@@ -10,16 +10,21 @@
                     <div class="flex flex-wrap">
                         <div
                                 class="p-2"
-                                v-for="field in step.fields"
-                                :key="field.id"
-                                :class="field.className"
+                                v-for="(field, index) in step.fields"
+                                :key="`field-${index}`"
+                                :class="field.className ?? ''"
                         >
                             <component
+                                    v-if="field.fieldType !== 'delimiter'"
                                     :is="getFieldName(field.fieldType)"
-                                    :id="field.id"
+                                    :id="field.controlName"
                                     v-bind="field.attrs"
                                     v-model="form[field.controlName][0]"
                             />
+
+                            <div class="my-2.5" v-else>
+                                <hr class="border-gray-200"/>
+                            </div>
                         </div>
                     </div>
                 </div>

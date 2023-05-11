@@ -16,10 +16,10 @@ export const useTransporters = defineStore("transporters", {
         currentStepName: '',
         form: {
             companyName: [null, ['required']],
-            houseNumber: [null, ['required']],
             postCode: [null, ['required']],
             country: [124, ['required']],
-            street: [null, ['required']],
+            location: [null, ['required']],
+            address: [null, ['required']],
             phone: [null, ['required']],
             email: [null, ['required']],
             services: [[], ['required']],
@@ -53,10 +53,10 @@ export const useTransporters = defineStore("transporters", {
         nextStepAvailable(): boolean {
             const {
                 companyName,
-                houseNumber,
                 postCode,
                 country,
-                street,
+                location,
+                address,
                 phone,
                 email,
                 services,
@@ -77,10 +77,10 @@ export const useTransporters = defineStore("transporters", {
                 case 1:
                     return [
                         companyName,
-                        houseNumber,
+                        location,
                         postCode,
                         country,
-                        street,
+                        address,
                         phone,
                         email
                     ]
