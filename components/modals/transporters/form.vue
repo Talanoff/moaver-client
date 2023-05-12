@@ -1,40 +1,32 @@
 <template>
     <div class="mb-8 mt-5">
-        <div v-if="currentStep !== steps.length">
-            <div v-for="step in steps">
-                <div
-                        v-if="step.id === currentStep"
-                        :key="step.id"
-                        class="max-h-[60vh] overflow-y overflow-x-hidden custom-scroll"
-                >
-                    <div class="flex flex-wrap">
-                        <div
-                                class="p-2.5"
-                                v-for="(field, index) in step.fields"
-                                :key="`field-${index}`"
-                                :class="field.className ?? ''"
-                        >
-                            <component
-                                    v-if="field.fieldType !== 'delimiter'"
-                                    :is="getFieldName(field.fieldType)"
-                                    :id="field.controlName"
-                                    v-bind="field.attrs"
-                                    v-model="form[field.controlName][0]"
-                            />
+        <div v-for="step in steps">
+            <div
+                v-if="step.id === currentStep"
+                :key="step.id"
+                class="max-h-[60vh] overflow-y overflow-x-hidden custom-scroll"
+            >
+                <div class="flex flex-wrap">
+                    <div
+                        class="p-2.5"
+                        v-for="(field, index) in step.fields"
+                        :key="`field-${index}`"
+                        :class="field.className ?? ''"
+                    >
+                        <component
+                            v-if="field.fieldType !== 'delimiter'"
+                            :is="getFieldName(field.fieldType)"
+                            :id="field.controlName"
+                            v-bind="field.attrs"
+                            v-model="form[field.controlName][0]"
+                        />
 
-                            <div class="my-2.5" v-else>
-                                <hr class="border-slate-200"/>
-                            </div>
+                        <div class="my-2.5" v-else>
+                            <hr class="border-slate-200"/>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div v-else>
-            <h2 class="text-xl font-bold mt-4">
-                {{ $t(`forms.thank`) }}
-            </h2>
         </div>
     </div>
 </template>

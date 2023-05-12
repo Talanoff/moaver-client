@@ -4,10 +4,10 @@
             :title="currentStepName"
             :show-title="steps.length !== currentStep"
             :show-back-button="currentStep > 1"
-            @close="bookingStore.toggleModal(false)"
-            @back="back"
+            @close="onClose"
+            @back="onBack"
     >
-        <form @submit.prevent="submit">
+        <form @submit.prevent="onSubmit">
             <booking-form :steps="steps"/>
             <modal-footer
                     :total-steps="steps.length"
@@ -25,6 +25,7 @@ import { useBooking } from "~/store/booking";
 import { useConfig } from "~/store/config";
 import { storeToRefs } from "pinia";
 
+const router = useRouter();
 const bookingStore = useBooking();
 const configStore = useConfig();
 
@@ -42,7 +43,7 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'Pieces',
+                    label: 'pieces',
                     type: 'text',
                     number: true,
                     maxlength: '4',
@@ -359,27 +360,29 @@ const steps = ref([
 ]);
 const api = useApi();
 
-watch(() => form.value.category[0], () => {
-        steps.value[0].fields[3].hidden = form.value.category[0] !== "various"
+watch(() => form.value.category[0], (value) => {
+        steps.value[0].fields[3].hidden = value !== "various"
 
-        if (form.value.category[0] === "one") {
+        if (value === "one") {
             steps.value[0].fields[1].attrs.placeholder = 1
             steps.value[0].fields[1].attrs.disabled = true
-            steps.value[0].fields[1].attrs.name = 'Piece'
-            steps.value[0].fields[1].attrs.label = 'Piece'
-        } else if (form.value.category[0] === "pallets") {
-            steps.value[0].fields[1].attrs.name = 'Pallets'
-            steps.value[0].fields[1].attrs.label = 'Pallets'
+            steps.value[0].fields[1].attrs.name = 'piece'
+            steps.value[0].fields[1].attrs.label = 'piece'
+        } else if (value === "pallets") {
+            steps.value[0].fields[1].attrs.name = 'pallets'
+            steps.value[0].fields[1].attrs.label = 'pallets'
         } else {
-            steps.value[0].fields[1].attrs.name = 'Pieces'
-            steps.value[0].fields[1].attrs.label = 'Pieces'
+            steps.value[0].fields[1].attrs.name = 'pieces'
+            steps.value[0].fields[1].attrs.label = 'pieces'
             steps.value[0].fields[1].attrs.placeholder = ''
             steps.value[0].fields[1].attrs.disabled = false
         }
 
-        if (form.value.category[0] === "various") {
-            // steps.value[0].fields[2].hidden = true
-            form.value.pieces[0] = 1
+        if (value === 'various' || value === 'one') {
+            form.value.pieces[0] = 1;
+        }
+
+        if (value === "various") {
             form.value.pieces[1] = []
             form.value.weight[0] = null
             form.value.weight[1] = []
@@ -413,9 +416,14 @@ watch(() => form.value.registerCheckbox[0], (value) => {
     },
 );
 
-watch(() => form.value.dateFrom[0], () => steps.value[1].fields[3].attrs.min = form.value.dateFrom[0]);
+watch(() => form.value.dateFrom[0], (value) => steps.value[1].fields[3].attrs.min = value);
 
-const submit = () => {
+const onClose = () => {
+    bookingStore.toggleModal(false);
+    bookingStore.clearForm();
+}
+
+const onSubmit = () => {
     if (steps.value.length - 1 !== bookingStore.currentStep) {
         const name = steps.value.find(({ id }) => id === bookingStore.currentStep + 1)?.title ?? '';
         bookingStore.setCurrentStep(name, 'increment');
@@ -429,7 +437,11 @@ const submit = () => {
         formData.password_confirmation = confirmPassword;
 
         api.post('questionnaire/order', formData).then(() => {
-            // TODO notify about success. clear form.
+            bookingStore.clearForm();
+            router.push({
+                path: '/thank-you',
+                query: { action: 'booking' }
+            });
         }).catch((reason) => {
             // TODO notify about error. show validation errors.
         }).finally(() => {
@@ -438,7 +450,7 @@ const submit = () => {
     }
 }
 
-const back = () => {
+const onBack = () => {
     const name = steps.value.find(({ id }) => id === bookingStore.currentStep - 1)?.title ?? '';
     bookingStore.setCurrentStep(name, 'decrement');
 }

@@ -3,38 +3,42 @@ import { useConfig } from "~/store/config";
 import { KeyValue } from "~/types/forms";
 
 type CurrentState = {
+    submitting: boolean;
     showModal: boolean;
     currentStep: number;
     currentStepName: string;
     form: Partial<{ [p: string]: any }>
 }
 
+const formDefaults = {
+    companyName: [null, ['required']],
+    postCode: [null, ['required']],
+    country: [124, ['required']],
+    location: [null, ['required']],
+    address: [null, ['required']],
+    phone: [null, ['required']],
+    email: [null, ['required']],
+    services: [[], ['required']],
+    vehicles: [{}, ['required']],
+    commerceNumber: [null, ['required']],
+    iban: [null, ['required']],
+    vat: [null, ['required']],
+    locations: [[], ['required']],
+    name: [null, ['required']],
+    personalPhone: [null, ['required']],
+    personalEmail: [null, ['required']],
+    password: [null, ['required']],
+    confirmPassword: [null, ['required', 'password']],
+    agreeToTerms: [false, ['required']],
+};
+
 export const useTransporters = defineStore("transporters", {
     state: (): CurrentState => ({
+        submitting: false,
         showModal: false,
         currentStep: 1,
         currentStepName: '',
-        form: {
-            companyName: [null, ['required']],
-            postCode: [null, ['required']],
-            country: [124, ['required']],
-            location: [null, ['required']],
-            address: [null, ['required']],
-            phone: [null, ['required']],
-            email: [null, ['required']],
-            services: [[], ['required']],
-            vehicles: [{}, ['required']],
-            commerceNumber: [null, ['required']],
-            iban: [null, ['required']],
-            vat: [null, ['required']],
-            locations: [[], ['required']],
-            name: [null, ['required']],
-            personalPhone: [null, ['required']],
-            personalEmail: [null, ['required']],
-            password: [null, ['required']],
-            confirmPassword: [null, ['required', 'password']],
-            agreeToTerms: [false, ['required']],
-        }
+        form: JSON.parse(JSON.stringify(formDefaults))
     }),
 
     getters: {
@@ -136,7 +140,7 @@ export const useTransporters = defineStore("transporters", {
     },
 
     actions: {
-        toggleModal(toState: boolean | undefined = undefined) {
+        toggleModal(toState: boolean | undefined = undefined): void {
             if (toState !== undefined) {
                 this.showModal = toState;
             } else {
@@ -146,7 +150,7 @@ export const useTransporters = defineStore("transporters", {
             this.currentStep = 1;
         },
 
-        setCurrentStep(name: string, direction: 'increment' | 'decrement') {
+        setCurrentStep(name: string, direction: 'increment' | 'decrement'): void {
             this.currentStepName = name;
 
             if (direction === 'increment') {
@@ -154,6 +158,10 @@ export const useTransporters = defineStore("transporters", {
             } else {
                 this.currentStep--;
             }
+        },
+
+        clearForm(): void {
+            this.form = JSON.parse(JSON.stringify(formDefaults))
         }
     },
 });

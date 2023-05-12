@@ -3,15 +3,14 @@
             :title="transporterStore.currentStepName"
             :show-title="steps.length !== transporterStore.currentStep"
             :show-back-button="transporterStore.currentStep > 1"
-            @back="back"
-            @close="transporterStore.toggleModal(false)"
+            @back="onBack"
+            @close="onClose"
     >
-        <form @submit.prevent="submit">
+        <form @submit.prevent="onSubmit">
             <register-form :steps="steps"/>
             <modal-footer
                     :total-steps="steps.length"
                     :current-step="transporterStore.currentStep"
-                    :loading="loading"
             />
         </form>
     </modal>
@@ -22,14 +21,11 @@ import ModalFooter from "~/components/modals/transporters/footer.vue";
 import RegisterForm from "~/components/modals/transporters/form.vue";
 import Modal from "~/components/modals/modal.vue";
 import { useTransporters } from "~/store/transporters";
-import { storeToRefs } from 'pinia'
+import { storeToRefs } from "pinia";
 
 const router = useRouter();
 const transporterStore = useTransporters();
-const api = useApi()
-
-const { form } = storeToRefs(transporterStore);
-
+const api = useApi();
 const steps = ref([
     {
         id: 1,
@@ -141,43 +137,6 @@ const steps = ref([
             },
         ]
     },
-    // {
-    //     id: 4,
-    //     title: 'How big is the fleet.',
-    //     fields: [
-    //         {
-    //             id: 0,
-    //             attrs: {
-    //                 options: [
-    //                     {id: 0, name: 'Van (fossil fuel)'},
-    //                     {id: 1, name: 'Van (electric)'},
-    //                     {id: 2, name: 'Large bus (fossil fuel'},
-    //                     {id: 3, name: 'Large bus (electric)'},
-    //                     {id: 4, name: 'Truck box truck (fossil fuel)'},
-    //                     {id: 5, name: 'Truck box truck (electric)'},
-    //                     {id: 6, name: 'Tractor + trailer'},
-    //                     {id: 7, name: 'Truck with crane'},
-    //                     {id: 8, name: 'Truck with cage monkey'},
-    //                     {id: 9, name: 'Concrete pumptrailer'},
-    //                     {id: 10, name: 'Sailtrailer of tautliner'},
-    //                     {id: 11, name: 'Refrigerated trailers'},
-    //                     {id: 12, name: 'Tip trailers'},
-    //                     {id: 13, name: 'Walking floor trailers'},
-    //                     {id: 14, name: 'Deeploaders'},
-    //                     {id: 15, name: 'Open trailers'},
-    //                     {id: 16, name: 'Silo trailers'},
-    //                     {id: 17, name: 'Closed trailers with hard box'},
-    //                     {id: 18, name: 'Tanktrailers'},
-    //                     {id: 19, name: 'Taxibus'},
-    //                     {id: 20, name: 'Coach'},
-    //                 ],
-    //             },
-    //             fieldType: 'checkBoxGroup',
-    //             className: 'w-full',
-    //             controlName: "quantities"
-    //         },
-    //     ]
-    // },
     {
         id: 4,
         title: 'In which countries active and which regions of those countries',
@@ -325,19 +284,21 @@ const steps = ref([
         ],
     },
 ]);
-const loading = ref(false);
 
-if (transporterStore.currentStep === 1) {
-    transporterStore.currentStepName = steps.value.find(({ id }) => id === 1)?.title ?? '';
+const { form } = storeToRefs(transporterStore);
+
+const onClose = () => {
+    transporterStore.toggleModal(false);
+    transporterStore.clearForm();
 }
 
-const submit = () => {
+const onSubmit = () => {
     if (steps.value.length - 1 !== transporterStore.currentStep) {
         const name = steps.value.find(({ id }) => id === transporterStore.currentStep + 1)?.title ?? '';
         transporterStore.setCurrentStep(name, 'increment');
     } else {
-        loading.value = true;
-        const { confirmPassword, ...formData } = Object.keys(transporterStore.form).reduce((acc, it) => ({
+        transporterStore.submitting = true;
+        const { confirmPassword, ...formData } = Object.keys(form).reduce((acc, it) => ({
             ...acc,
             [it]: transporterStore.form[it][0] ?? null
         }), {});
@@ -345,6 +306,7 @@ const submit = () => {
         formData.password_confirmation = confirmPassword;
 
         api.post('questionnaire/vendor', formData).then(() => {
+            transporterStore.clearForm();
             router.push({
                 path: '/thank-you',
                 query: { action: 'register' }
@@ -352,12 +314,12 @@ const submit = () => {
         }).catch((reason) => {
             // TODO notify about error. show validation errors.
         }).finally(() => {
-            loading.value = false;
+            transporterStore.submitting = false;
         });
     }
 }
 
-const back = () => {
+const onBack = () => {
     const name = steps.value.find(({ id }) => id === transporterStore.currentStep - 1)?.title ?? '';
     transporterStore.setCurrentStep(name, 'decrement');
 }

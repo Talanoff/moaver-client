@@ -13,6 +13,34 @@ type CurrentState = {
     form: Partial<{ [p: string]: any }>
 }
 
+const formDefaults = {
+    category: [null, ['required']],
+    goods: [null, []],
+    pieces: [1, ['required']],
+    weight: [null, ['required']],
+    message: [null, []],
+    dateFrom: [null, ['required']],
+    locationFrom: [null, ['required']],
+    selectLocationFrom: [null, ['required']],
+    dateTo: [null, ['required']],
+    locationTo: [null, ['required']],
+    selectLocationTo: [null, ['required']],
+    info: [null, ['info']],
+    wishes: [[], ['required']],
+    additionalWishes: [[], []],
+    additionalWishesNotes: [null, []],
+    additionalWishesAttachment: [null, []],
+    name: [null, 'required'],
+    address: [null, 'required'],
+    phone: [null, 'required'],
+    email: [null, 'required'],
+    iban: [null, 'required'],
+    password: [null, []],
+    confirmPassword: [null, ['password']],
+    registerCheckbox: [false, []],
+    agreeToTerms: [false, ['required']],
+};
+
 export const useBooking = defineStore("booking", {
     state: (): CurrentState => ({
         submitting: false,
@@ -41,34 +69,7 @@ export const useBooking = defineStore("booking", {
                 name: 'Various goods'
             }
         ],
-        form: {
-            category: [null, ['required']],
-            goods: [null, []],
-            pieces: [1, ['required']],
-            weight: [null, ['required']],
-            message: [null, []],
-            dateFrom: [null, ['required']],
-            locationFrom: [null, ['required']],
-            selectLocationFrom: [null, ['required']],
-            dateTo: [null, ['required']],
-            locationTo: [null, ['required']],
-            selectLocationTo: [null, ['required']],
-            info: [null, ['info']],
-            // ....
-            wishes: [[], ['required']],
-            additionalWishes: [[], []],
-            additionalWishesNotes: [null, []],
-            additionalWishesAttachment: [null, []],
-            name: [null, 'required'],
-            address: [null, 'required'],
-            phone: [null, 'required'],
-            email: [null, 'required'],
-            iban: [null, 'required'],
-            password: [null, []],
-            confirmPassword: [null, ['password']],
-            registerCheckbox: [false, []],
-            agreeToTerms: [false, ['required']],
-        }
+        form: JSON.parse(JSON.stringify(formDefaults))
     }),
     getters: {
         nextStepAvailable(): boolean {
@@ -183,6 +184,10 @@ export const useBooking = defineStore("booking", {
             } else {
                 this.currentStep--;
             }
+        },
+
+        clearForm(): void {
+            this.form = JSON.parse(JSON.stringify(formDefaults));
         }
     }
 });
