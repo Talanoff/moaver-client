@@ -1,7 +1,7 @@
 <template>
     <div class="space-y-2.5">
         <div
-            class="rounded-lg border border-slate-200 p-3.5"
+            class="rounded-lg border border-slate-100 p-3.5"
             v-for="option in $attrs.options"
             :key="option.id"
         >

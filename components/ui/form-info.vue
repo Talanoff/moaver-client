@@ -1,152 +1,73 @@
 <template>
-    <div>
-        <div class="flex sm:justify-start justify-between border-b-2 pb-2">
-            <h2 class="font-semibold sm:sm:w-1/2">Category:</h2> {{ $t(`categories.${store.form.category[0]}`) }}
-        </div>
-        <div class="flex sm:justify-start justify-between border-b-2 pb-2">
-            <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.Pieces`) }}:</h2>
-            <p>{{ store.form.pieces[0] }}</p>
-        </div>
-        <div class="flex sm:justify-start justify-between border-b-2 pb-2" v-if="store.form.goods[0] !== null">
-            <h2 class="font-semibold sm:w-1/2">Dispatch type:</h2>
-            <p>{{ store.form.goods[0] }}</p>
-        </div>
-        <div class="flex sm:justify-start justify-between border-b-2 pb-2" v-if="store.form.weight[0] !== null">
-            <h2 class="font-semibold sm:w-1/2">Kg:</h2>
-            <p>{{ store.form.weight[0] }}</p>
-        </div>
-        <div class="flex sm:justify-start justify-between border-b-2 pb-2" v-if="store.form.message[0] !== null">
-            <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.Message`) }}:</h2>
-            <p>{{ store.form.message[0] }}</p>
-        </div>
-        <div class="flex sm:justify-start justify-between border-b-2 pb-2" v-if="store.form.dateFrom[0] !== null">
-            <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.Date From`) }}:</h2>
-            <p>{{ dateFrom() }}</p>
-        </div>
-        <div class="flex sm:justify-start justify-between border-b-2 pb-2" v-if="store.form.locationFrom[0] !== null">
-            <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.Location from`) }}</h2>
-            <p>{{ store.form.locationFrom[0] }}</p>
-        </div>
-        <div class="flex sm:justify-start justify-between border-b-2 pb-2"
-             v-if="store.form.selectLocationFrom[0] !== null">
-            <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.Location type from`) }}</h2>
-            <p>{{ store.form.selectLocationFrom[0] }}</p>
-        </div>
-        <div class="flex sm:justify-start justify-between border-b-2 pb-2"
-             v-if="store.form.dateTo[0] !== null">
-            <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.Date To`) }}:</h2>
-            <p>{{ dateTo() }}</p>
-        </div>
-        <div class="flex sm:justify-start justify-between border-b-2 pb-2"
-             v-if="store.form.locationTo[0] !== null">
-            <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.Location to`) }}:</h2>
-            <p>{{ store.form.locationTo[0] }}</p>
-        </div>
-        <div class="flex sm:justify-start justify-between border-b-2 pb-2"
-             v-if="store.form.selectLocationTo[0] !== null">
-            <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.Location type to`) }}:</h2>
-            <p>{{ store.form.selectLocationTo[0] }}</p>
-        </div>
-    </div>
-
-    <div class="border-b-2 pb-2 sm:flex sm:justify-start" v-if="wishes.length > 0">
-        <h2 class="font-semibold sm:w-1/2">{{ $t('forms.Pick-up and delivery wishes/requirements') }}:</h2>
-        <div class="w-1/2">
-            <div v-for="item in wishes" :key="item.id">
-                <div>{{ item.name }}</div>
-            </div>
-        </div>
-    </div>
-<!--    <div class="border-b-2 pb-2 sm:flex sm:justify-start"-->
-<!--         v-if="additionalWishes.length>0 || store.form.additionalWishesNotes[0] !== null">-->
-
-<!--        <h2 class="font-semibold sm:w-1/2">{{ $t(`forms.${steps[3].title}`) }}:</h2>-->
-<!--        <div class="w-1/2">-->
-<!--            <div v-for="field in additionalWishes" :key="field.name">-->
-<!--                <div>{{ $t(`forms.${field.name}`) }}</div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-    <div class="sm:flex sm:justify-start justify-between border-b-2 pb-2"
-         v-if="store.form.additionalWishesNotes[0] !== null">
-        <h2 class="font-semibold sm:w-1/2">Additional wishes notes:</h2>
-        <p>{{ store.form.additionalWishesNotes[0] }}</p>
-    </div>
-    <div class="sm:flex sm:justify-start justify-between border-b-2 pb-2"
-         v-if="store.form.additionalWishesAttachment[0] !== null ? store.form.additionalWishesAttachment[0][0].url : false">
-        <h2 class="font-semibold sm:w-1/2">Sending photo</h2>
-        <img class="sm:w-[20rem]" :src="store.form.additionalWishesAttachment[0][0].url" alt="">
-    </div>
-
+    <table class="divide-y divide-gray-200">
+        <tr>
+            <td class="w-1/2 text-sm font-semibold py-5 pr-5">{{ $t('forms.category') }}</td>
+            <td class="w-1/2 py-5 pl-5">{{ $t(`categories.${bookingStore.form.category[0]}`) }}</td>
+        </tr>
+        <tr>
+            <td class="w-1/2 text-sm font-semibold py-5 pr-5">{{ $t('forms.amountWeight.title') }}</td>
+            <td class="w-1/2 py-5 pl-5">
+                {{ $t(`forms.amountWeight.${bookingStore.form.category[0]}`, {
+                    count: bookingStore.form.pieces[0],
+                    weight: bookingStore.form.weight[0]
+                }) }}
+            </td>
+        </tr>
+        <tr v-if="bookingStore.form.goods[0]">
+            <td class="w-1/2 text-sm font-semibold py-5 pr-5">{{ $t('forms.dispatchType') }}</td>
+            <td class="w-1/2 py-5 pl-5">{{ bookingStore.form.goods[0] }}</td>
+        </tr>
+        <tr v-if="bookingStore.form.message[0]">
+            <td class="w-1/2 text-sm font-semibold py-5 pr-5">{{ $t('forms.message') }}</td>
+            <td class="w-1/2 py-5 pl-5">{{ bookingStore.form.message[0] }}</td>
+        </tr>
+        <tr>
+            <td class="w-1/2 text-sm font-semibold py-5 pr-5">{{ $t('forms.collect') }}</td>
+            <td class="w-1/2 py-5 pl-5">
+                <div class="font-semibold">
+                    {{ new Date(bookingStore.form.dateFrom[0]).toLocaleDateString() }}
+                </div>
+                <div class="text-slate-600">
+                    <div>{{ bookingStore.form.selectLocationFrom[0] }}</div>
+                    {{ bookingStore.form.locationFrom[0] }}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="w-1/2 text-sm font-semibold py-5 pr-5">{{ $t('forms.deliver') }}</td>
+            <td class="w-1/2 py-5 pl-5">
+                <div class="font-semibold">
+                    {{ new Date(bookingStore.form.dateTo[0]).toLocaleDateString() }}
+                </div>
+                <div class="text-slate-600">
+                    <div>{{ bookingStore.form.selectLocationTo[0] }}</div>
+                    {{ bookingStore.form.locationTo[0] }}
+                </div>
+            </td>
+        </tr>
+        <tr v-if="selectedWishes.length || selectedAdditionalWishes.length || bookingStore.form.additionalWishesNotes[0]">
+            <td class="w-1/2 text-sm font-semibold py-5 pr-5">
+                {{ $t('forms.extras') }}
+            </td>
+            <td class="w-1/2 py-5 pl-5">
+                <div class="space-y-2.5">
+                    <div v-if="selectedWishes.length">{{ selectedWishes.join(', ') }}</div>
+                    <div v-if="selectedAdditionalWishes.length">{{ selectedAdditionalWishes.join(', ') }}</div>
+                    <div class="text-gray-600" v-if="bookingStore.form.additionalWishesNotes[0]">
+                        {{ bookingStore.form.additionalWishesNotes[0] }}
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
 </template>
 
 <script setup>
-import {useBooking} from "~/store/booking";
+import { useBooking } from "~/store/booking";
+import { useConfig } from "~/store/config";
+import { storeToRefs } from "pinia";
 
-const props = defineProps({
-    steps: []
-})
-const value = ref([])
-const fields = ref([])
-const additionalWishes = ref([])
-const wishes = ref([])
-const store = useBooking()
-const setValue = () => {
-    props.steps.forEach(el => el.fields.forEach((elem) => {
-        if (elem.fieldType !== 'services') {
-            fields.value.push({name: elem.attrs?.name, value: elem.value, url: elem.attrs?.url})
-        }
-    }))
-}
-const dateFrom = () => {
-    let date = ''
-    let parse = Date.parse(store.form.dateFrom[0])
-    let year = new Date(parse).getFullYear()
-    let month = String(new Date(parse).getUTCMonth() + 1)
-    let day = new Date(parse).getUTCDate()
-    let hours = new Date(parse).getHours()
-    let minutes = new Date(parse).getMinutes()
-    date = year + '/' + (month.length === 1 ? '0' + month : month) + "/" + day + " " + hours + ":" + minutes
-    return date
-}
-const dateTo = () => {
-    let date = ''
-    let parse = Date.parse(store.form.dateTo[0])
-    let year = new Date(parse).getFullYear()
-    let month = String(new Date(parse).getMonth() + 1)
-    let day = new Date(parse).getUTCDate()
-    let hours = new Date(parse).getHours()
-    let minutes = new Date(parse).getMinutes()
-    date = year + '/' + (month.length === 1 ? '0' + month : month) + "/" + day + " " + hours + ":" + minutes
-    return date
-}
-const setWishes = () => {
-    store.form.additionalWishes.forEach((el) => {
-        props.steps[3].fields[0].attrs.options.forEach((field) => {
-            el.forEach((id) => {
-                if (field.id === id) {
-                    additionalWishes.value.push(field)
-                }
-            })
-
-        })
-    })
-    store.form.wishes.forEach((el) => {
-        props.steps[2].fields[0].attrs.options.forEach((field) => {
-            el.forEach((id) => {
-                if (field.id === id) {
-                    wishes.value.push(field)
-                }
-            })
-
-        })
-    })
-}
-setWishes()
-setValue()
-
+const bookingStore = useBooking();
+const { selectedWishes, selectedAdditionalWishes } = storeToRefs(useConfig());
 </script>
 
-<style scoped>
-
-</style>

@@ -17,11 +17,11 @@
         </div>
 
         <div class="max-w-[90%] xl:max-w-[64rem] bg-white shadow-2xl p-5 lg:p-8 rounded-md mx-auto relative z-1">
-            <card-wrapper/>
+            <categories/>
         </div>
     </section>
 </template>
 
 <script setup>
-import CardWrapper from "~/components/ui/cards/card-wrapper.vue";
+import Categories from "~/components/ui/categories.vue";
 </script>

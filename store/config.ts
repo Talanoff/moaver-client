@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import useApi from "~/composables/use-api";
 import { useMain } from "~/store/main";
 import { useTransporters } from "~/store/transporters";
+import { useBooking } from "~/store/booking";
 
 interface ServiceInterface {
     id: number;
@@ -14,9 +15,16 @@ export const useConfig = defineStore('config', () => {
     const countries = ref([]);
     const services = ref<ServiceInterface[]>([]);
     const vehicles = ref([]);
-    const wishes = ref({});
+    const wishes = ref<{
+        additional: ServiceInterface[];
+        common: ServiceInterface[]
+    }>({
+        additional: [],
+        common: []
+    });
     const mainStore = useMain();
     const transportersStore = useTransporters();
+    const bookingStore = useBooking();
 
     const getCountries = async (): Promise<void> => {
         mainStore.loader = true
@@ -67,6 +75,18 @@ export const useConfig = defineStore('config', () => {
         mainStore.loader = false;
     }
 
+    const selectedWishes = computed(() => {
+        return wishes.value.common
+            .filter((it: ServiceInterface) => bookingStore.form.wishes[0].includes(it.id))
+            .map(({name}: ServiceInterface) => name);
+    });
+
+    const selectedAdditionalWishes = computed(() => {
+        return wishes.value.additional
+            .filter((it: ServiceInterface) => bookingStore.form.additionalWishes[0].includes(it.id))
+            .map(({name}: ServiceInterface) => name);
+    });
+
     return {
         countries,
         services,
@@ -75,6 +95,9 @@ export const useConfig = defineStore('config', () => {
         getCountries,
         getServices,
         getVehicles,
-        getWishes
+        getWishes,
+
+        selectedWishes,
+        selectedAdditionalWishes
     }
 });

@@ -36,7 +36,7 @@ const steps = ref([
         id: 1,
         fields: [
             {
-                fieldType: 'card',
+                fieldType: 'categories',
                 className: 'w-full sm:grid-cols-2 grid-cols-1',
                 controlName: 'category'
             },
@@ -57,7 +57,7 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'Kg',
+                    label: 'weight',
                     type: 'text',
                     number: true,
                     maxlength: '5',
@@ -87,9 +87,9 @@ const steps = ref([
 
             {
                 attrs: {
-                    label: 'Message',
+                    label: 'message',
                     type: 'text',
-                    placeholder: 'Message',
+                    placeholder: '',
                     maxlength: '400',
                 },
                 fieldType: 'textarea',
@@ -193,11 +193,11 @@ const steps = ref([
     },
     {
         id: 4,
-        title: 'Additional wishes',
+        title: 'additionalWishes',
         fields: [
             {
                 id: 'additionalWishes',
-                title: 'Additional wishes',
+                title: 'additionalWishes',
                 attrs: {
                     required: false,
                     options: wishes.value.additional ?? [],
@@ -209,9 +209,9 @@ const steps = ref([
             {
                 id: 1,
                 attrs: {
-                    label: 'additional wishes',
+                    label: 'additionalWishes',
                     type: 'text',
-                    placeholder: 'additional wishes',
+                    placeholder: '',
                     maxlength: 400,
                 },
                 controlName: 'additionalWishesNotes',
@@ -277,7 +277,7 @@ const steps = ref([
                 },
                 fieldType: 'input',
                 className: 'w-full',
-                controlName: 'personalPhone'
+                controlName: 'phone'
             },
             {
                 attrs: {
@@ -288,27 +288,26 @@ const steps = ref([
                 },
                 fieldType: 'input',
                 className: 'w-full',
-                controlName: 'personalEmail'
+                controlName: 'email'
             },
+            // {
+            //     attrs: {
+            //         label: 'IBAN',
+            //         type: 'text',
+            //         maxlength: '34',
+            //         placeholder: 'IBAN',
+            //     },
+            //     fieldType: 'input',
+            //     className: 'w-full',
+            //     controlName: 'iban'
+            // },
             {
                 attrs: {
-                    label: 'IBAN',
-                    type: 'text',
-                    maxlength: '34',
-                    placeholder: 'IBAN',
-                },
-                fieldType: 'input',
-                className: 'w-full',
-                controlName: 'iban'
-            },
-            {
-                id: 'wishes', // хз нужен ли
-                attrs: {
-                    required: false,
-                    options: [{ name: 'do you want to register', id: 1 }],
+                    label: 'registration',
+                    translatable: true
                 },
                 controlName: 'registerCheckbox',
-                fieldType: 'checkBoxGroup',
+                fieldType: 'checkbox',
                 className: 'w-full'
             },
             {
@@ -316,7 +315,7 @@ const steps = ref([
                     label: 'password',
                     type: 'password',
                     maxlength: '50',
-                    placeholder: 'password',
+                    placeholder: '******',
                 },
                 hidden: true,
                 fieldType: 'input',
@@ -325,10 +324,10 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'repeat password',
-                    type: 'repeat password',
+                    label: 'confirmPassword',
+                    type: 'password',
                     maxlength: '50',
-                    placeholder: 'password',
+                    placeholder: '******',
                 },
                 hidden: true,
                 fieldType: 'input',
@@ -337,11 +336,11 @@ const steps = ref([
             },
             {
                 attrs: {
-                    required: false,
-                    options: [{ name: 'Agree to terms', id: 2 }],
+                    label: 'agreeToTerms',
+                    translatable: true
                 },
                 controlName: 'agreeToTerms',
-                fieldType: 'checkBoxGroup',
+                fieldType: 'checkbox',
                 className: 'w-full'
             },
         ],
@@ -395,17 +394,19 @@ watch(() => form.value.category[0], () => {
     },
 );
 
-watch(() => form.value.registerCheckbox[0][0], () => {
-        if (form.value.registerCheckbox[0][0] !== 1) {
-            steps.value[5].fields[6].hidden = true
-            steps.value[5].fields[7].hidden = true
+watch(() => form.value.registerCheckbox[0], (value) => {
+        const step = steps.value.find(it => it.id === 6);
+        const [password, confirmPassword] = step.fields.filter(it => it.controlName === 'password' || it.controlName === 'confirmPassword');
+
+        password.hidden = !value;
+        confirmPassword.hidden = !value;
+
+        if (!value) {
             form.value.password[0] = null
             form.value.password[1] = []
             form.value.confirmPassword[0] = null
             form.value.confirmPassword[1] = []
         } else {
-            steps.value[5].fields[6].hidden = false
-            steps.value[5].fields[7].hidden = false
             form.value.password[1] = ["required"]
             form.value.confirmPassword[1] = ["required"]
         }
@@ -419,6 +420,7 @@ const submit = () => {
         const name = steps.value.find(({ id }) => id === bookingStore.currentStep + 1)?.title ?? '';
         bookingStore.setCurrentStep(name, 'increment');
     } else {
+        bookingStore.submitting = true;
         const { confirmPassword, ...formData } = Object.keys(bookingStore.form).reduce((acc, it) => ({
             ...acc,
             [it]: bookingStore.form[it][0] ?? null
@@ -426,11 +428,12 @@ const submit = () => {
 
         formData.password_confirmation = confirmPassword;
 
-        api.post('questionnaire/vendor', formData).then(() => {
+        api.post('questionnaire/order', formData).then(() => {
             // TODO notify about success. clear form.
         }).catch((reason) => {
             // TODO notify about error. show validation errors.
         }).finally(() => {
+            bookingStore.submitting = false;
         });
     }
 }

@@ -1,12 +1,15 @@
 <template>
-    <div v-for="(option) in configStore.services" :key="option.id">
-        <div class="pl-4 border border-slate-300 text-slate-900 text-sm rounded-lg mb-2">
+    <div class="space-y-2.5">
+        <div
+            v-for="(option) in configStore.services"
+            class="rounded-lg border border-slate-100 p-3.5"
+            :key="option.id">
             <form-checkbox
-                    :id="`service-${option.id}`"
-                    :label="option.name"
-                    :value="option.id"
-                    :model-value="modelValue.includes(option.id)"
-                    @change="setCheckbox($event, option.id)"
+                :id="`service-${option.id}`"
+                :label="option.name"
+                :value="option.id"
+                :model-value="modelValue.includes(option.id)"
+                @change="setCheckbox($event, option.id)"
             />
         </div>
     </div>

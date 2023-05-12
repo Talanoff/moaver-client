@@ -14,7 +14,7 @@
                     @input="$emit('update:modelValue', $event.target.value)"
             >
 
-            <div class="absolute right-3.5 text-slate-1000 text-sm" v-if="$attrs.name">
+            <div class="absolute right-3.5 text-slate-1000 text-xs text-gray-500" v-if="$attrs.name">
                 {{ $t(`forms.${$attrs.name}`) }}
             </div>
         </div>

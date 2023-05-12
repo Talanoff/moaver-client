@@ -1,8 +1,7 @@
-import {defineStore} from "pinia";
-import {KeyValue} from "~/types/forms";
-import {useConfig} from "~/store/config";
+import { defineStore } from "pinia";
 
 type CurrentState = {
+    submitting: boolean;
     showModal: boolean;
     currentStep: number;
     currentStepName: string;
@@ -15,176 +14,175 @@ type CurrentState = {
 }
 
 export const useBooking = defineStore("booking", {
-        state: (): CurrentState => ({
-            showModal: false,
-            currentStep: 1,
-            currentStepName: '',
-            categories: [
-                {
-                    id: 'one',
-                    icon: 'package',
-                    name: 'One package'
-                },
-                {
-                    id: 'many',
-                    icon: 'trolley',
-                    name: 'Many packages'
-                },
-                {
-                    id: 'pallets',
-                    icon: 'pallet',
-                    name: 'Pallet(s)'
-                },
-                {
-                    id: 'various',
-                    icon: 'warehouse',
-                    name: 'Various goods'
-                }
-            ],
-            form: {
-                category: [null, ['required']],
-                goods: [null, []],
-                pieces: [1, ['required']],
-                weight: [null, ['required']],
-                message: [null, []],
-                dateFrom: [null, ['required']],
-                locationFrom: [null, ['required']],
-                selectLocationFrom: [null, ['required']],
-                dateTo: [null, ['required']],
-                locationTo: [null, ['required']],
-                selectLocationTo: [null, ['required']],
-                info: [null, ['info']],
-                // ....
-                wishes: [[], ['required']],
-                additionalWishes: [[], []],
-                additionalWishesNotes: [null, []],
-                additionalWishesAttachment: [null, []],
-                name: [null, 'required'],
-                address: [null, 'required'],
-                personalPhone: [null, 'required'],
-                personalEmail: [null, 'required'],
-                iban: [null, 'required'],
-                password: [null, []],
-                confirmPassword: [null, ['password']],
-                registerCheckbox: [[], []],
-                agreeToTerms: [[], ['required']],
+    state: (): CurrentState => ({
+        submitting: false,
+        showModal: false,
+        currentStep: 1,
+        currentStepName: '',
+        categories: [
+            {
+                id: 'one',
+                icon: 'package',
+                name: 'One package'
+            },
+            {
+                id: 'many',
+                icon: 'trolley',
+                name: 'Many packages'
+            },
+            {
+                id: 'pallets',
+                icon: 'pallet',
+                name: 'Pallet(s)'
+            },
+            {
+                id: 'various',
+                icon: 'warehouse',
+                name: 'Various goods'
             }
-        }),
-        getters: {
-            nextStepAvailable(): boolean {
-                const {
-                    category,
-                    goods,
-                    pieces,
-                    weight,
-                    message,
-                    dateFrom,
-                    locationFrom,
-                    selectLocationFrom,
-                    dateTo,
-                    locationTo,
-                    selectLocationTo,
-                    wishes,
-                    additionalWishes,
-                    additionalWishesNotes,
-                    additionalWishesAttachment,
-                    name,
-                    address,
-                    personalPhone,
-                    personalEmail,
-                    iban,
-                    password,
-                    confirmPassword,
-                    registerCheckbox,
-                    agreeToTerms
-                } = this.form;
+        ],
+        form: {
+            category: [null, ['required']],
+            goods: [null, []],
+            pieces: [1, ['required']],
+            weight: [null, ['required']],
+            message: [null, []],
+            dateFrom: [null, ['required']],
+            locationFrom: [null, ['required']],
+            selectLocationFrom: [null, ['required']],
+            dateTo: [null, ['required']],
+            locationTo: [null, ['required']],
+            selectLocationTo: [null, ['required']],
+            info: [null, ['info']],
+            // ....
+            wishes: [[], ['required']],
+            additionalWishes: [[], []],
+            additionalWishesNotes: [null, []],
+            additionalWishesAttachment: [null, []],
+            name: [null, 'required'],
+            address: [null, 'required'],
+            phone: [null, 'required'],
+            email: [null, 'required'],
+            iban: [null, 'required'],
+            password: [null, []],
+            confirmPassword: [null, ['password']],
+            registerCheckbox: [false, []],
+            agreeToTerms: [false, ['required']],
+        }
+    }),
+    getters: {
+        nextStepAvailable(): boolean {
+            const {
+                category,
+                goods,
+                pieces,
+                weight,
+                message,
+                dateFrom,
+                locationFrom,
+                selectLocationFrom,
+                dateTo,
+                locationTo,
+                selectLocationTo,
+                wishes,
+                additionalWishes,
+                additionalWishesNotes,
+                additionalWishesAttachment,
+                name,
+                address,
+                phone,
+                email,
+                // iban,
+                password,
+                confirmPassword,
+                registerCheckbox,
+                agreeToTerms
+            } = this.form;
 
-                switch (this.currentStep) {
-                    case 1:
-                        return [
-                            category,
-                            goods,
-                            pieces,
-                            weight,
-                            message
-                        ]
-                            .filter((it: any[]) => it[1].includes('required'))
-                            .every((it) => !!it[0]);
-                    case 2:
-                        return [
-                            dateFrom,
-                            locationFrom,
-                            selectLocationFrom,
-                            dateTo,
-                            locationTo,
-                            selectLocationTo,
-                        ]
-                            .filter((it: any[]) => it[1].includes('required'))
-                            .every((it) => !!it[0]);
-                    case 3:
-                        return [
-                            wishes
-                        ]
-                            .filter((it: any[]) => it[1].includes('required'))
-                            .every((it) => it[0].length > 0);
-                    case 4:
-                        return [
-                            additionalWishes,
-                            additionalWishesNotes,
-                            additionalWishesAttachment
-                        ]
-                            .filter((it: any[]) => it[1].includes('required'))
-                            .every((it) => !!it[0] || it[0] !== null ? it[0].length > 0 : false);
-                    case 5:
-                        return true
-                    case 6:
-                        return [
-                            name,
-                            address,
-                            personalPhone,
-                            personalEmail,
-                            iban,
-                            password,
-                            confirmPassword,
-                            registerCheckbox,
-                            agreeToTerms
-                        ]
-                            .filter((it: any[]) => it[1].includes('required'))
-                            .every((it) => !!it[0] || it[0] !== null ? it[0].length > 0 : false);
-                    default:
-                        return true;
-                }
+            switch (this.currentStep) {
+                case 1:
+                    return [
+                        category,
+                        goods,
+                        pieces,
+                        weight,
+                        message
+                    ]
+                        .filter((it: any[]) => it[1].includes('required'))
+                        .every((it) => !!it[0]);
+                case 2:
+                    return [
+                        dateFrom,
+                        locationFrom,
+                        selectLocationFrom,
+                        dateTo,
+                        locationTo,
+                        selectLocationTo,
+                    ]
+                        .filter((it: any[]) => it[1].includes('required'))
+                        .every((it) => !!it[0]);
+                case 3:
+                    return [
+                        wishes
+                    ]
+                        .filter((it: any[]) => it[1].includes('required'))
+                        .every((it) => it[0].length > 0);
+                case 4:
+                    return [
+                        additionalWishes,
+                        additionalWishesNotes,
+                        additionalWishesAttachment
+                    ]
+                        .filter((it: any[]) => it[1].includes('required'))
+                        .every((it) => !!it[0] || it[0] !== null ? it[0].length > 0 : false);
+                case 5:
+                    return true
+                case 6:
+                    return [
+                        name,
+                        address,
+                        phone,
+                        email,
+                        // iban,
+                        password,
+                        confirmPassword,
+                        agreeToTerms
+                    ]
+                        .filter((it: any[]) => it[1].includes('required'))
+                        .every((it) => !!it[0] && it[0]);
+                default:
+                    return true;
             }
         },
+    },
 
-        actions: {
-            toggleModal(toState: boolean | undefined = undefined) {
-                if (toState !== undefined) {
-                    this.showModal = toState;
-                } else {
-                    this.showModal = !this.showModal;
-                }
+    actions: {
+        toggleModal(toState: boolean | undefined = undefined) {
+            if (toState !== undefined) {
+                this.showModal = toState;
+            } else {
+                this.showModal = !this.showModal;
+            }
 
-                if (!this.showModal) {
-                    this.form.category[0] = null;
-                }
+            if (!this.showModal) {
+                this.form.category[0] = null;
+            }
 
-                this.currentStep = 1;
-            },
+            this.currentStep = 1;
+        },
 
-            setCategory(name: string) {
-                this.form.category[0] = name;
-            },
+        setCategory(name: string) {
+            this.form.category[0] = name;
+        },
 
-            setCurrentStep(name: string, direction: 'increment' | 'decrement') {
-                this.currentStepName = name;
+        setCurrentStep(name: string, direction: 'increment' | 'decrement') {
+            this.currentStepName = name;
 
-                if (direction === 'increment') {
-                    this.currentStep++;
-                } else {
-                    this.currentStep--;
-                }
+            if (direction === 'increment') {
+                this.currentStep++;
+            } else {
+                this.currentStep--;
             }
         }
     }
-);
+});

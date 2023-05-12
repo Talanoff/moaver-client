@@ -20,7 +20,7 @@
 }
 
 .dp__main .dp__input {
-    @apply h-12 bg-slate-50 rounded-lg border-none;
+    @apply h-12 bg-slate-100 rounded-lg border-none;
 }
 
 input[type="datetime-local"] {

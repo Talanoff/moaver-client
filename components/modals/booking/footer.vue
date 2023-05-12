@@ -12,6 +12,7 @@
             </div>
         </div>
         <x-button :disabled="! bookingStore.nextStepAvailable" theme="primary">
+            <loader class="w-5 h-5 mr-2.5" v-if="bookingStore.submitting"/>
             {{ totalSteps - 1 !== currentStep ? $t('forms.next') : $t('forms.submit') }}
         </x-button>
     </footer>
@@ -20,10 +21,9 @@
 <script setup>
 import XButton from "~/components/ui/x-button.vue";
 import { useBooking } from "~/store/booking";
+import Loader from "~/components/loaders/loader.vue";
 
 const props = defineProps(['totalSteps', 'currentStep']);
 const bookingStore = useBooking()
-const width = computed(() => {
-    return ((props.currentStep / (props.totalSteps - 1)) * 100) + '%'
-});
+const width = computed(() => ((props.currentStep / (props.totalSteps - 1)) * 100) + '%');
 </script>

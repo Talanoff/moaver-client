@@ -5,10 +5,13 @@
         </label>
         <VueDatePicker
                 :month-change-on-scroll="false"
+                :enable-time-picker="false"
+                :close-on-auto-apply="true"
+                auto-apply
                 position="left"
-                :model-value="date"
+                model-type="yyyy-MM-dd"
                 v-bind="$attrs"
-                @update:model-value="setDate"
+                v-model="date"
                 :min-date="$attrs.min"
         />
     </div>
@@ -19,11 +22,4 @@ import VueDatePicker from "@vuepic/vue-datepicker";
 import '@vuepic/vue-datepicker/dist/main.css'
 
 const date = ref();
-const setDate = (value) => date.value = value;
-
-defineProps([
-    'modelValue',
-    'disabled',
-    'required',
-]);
 </script>
