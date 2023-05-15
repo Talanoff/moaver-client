@@ -1,7 +1,7 @@
 import formInput from "~/components/ui/form-input.vue";
 import formDatepicker from "~/components/ui/form-datepicker.vue";
 import formCheckbox from "~/components/ui/form-checkbox.vue";
-import formFile from "~/components/ui/form-file.vue";
+import imageUpload from "~/components/ui/image-upload.vue";
 import formSelect from "~/components/ui/form-select.vue";
 import formTextarea from "~/components/ui/form-textarea.vue";
 import categories from "~/components/ui/categories.vue";
@@ -18,7 +18,7 @@ export function getFieldName(type) {
         case 'checkbox':
             return formCheckbox;
         case 'file':
-            return formFile;
+            return imageUpload;
         case 'categories':
             return categories;
         case 'select':

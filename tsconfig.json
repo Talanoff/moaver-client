@@ -4,6 +4,8 @@
   "compilerOptions": {
     "types": [
       "@nuxt/types",
+      "@nuxtjs/toast",
+      "@types/node"
     ]
   }
 }

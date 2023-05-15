@@ -110,7 +110,7 @@ export const useBooking = defineStore("booking", {
                         message
                     ]
                         .filter((it: any[]) => it[1].includes('required'))
-                        .every((it) => !!it[0]);
+                        .every((it) => it[0] !== null);
                 case 2:
                     return [
                         dateFrom,
@@ -121,7 +121,7 @@ export const useBooking = defineStore("booking", {
                         selectLocationTo,
                     ]
                         .filter((it: any[]) => it[1].includes('required'))
-                        .every((it) => !!it[0]);
+                        .every((it) => it[0] !== null);
                 case 3:
                     return [
                         wishes
@@ -135,7 +135,7 @@ export const useBooking = defineStore("booking", {
                         additionalWishesAttachment
                     ]
                         .filter((it: any[]) => it[1].includes('required'))
-                        .every((it) => !!it[0] || it[0] !== null ? it[0].length > 0 : false);
+                        .every((it) => it[0] !== null ? it[0].length > 0 : false);
                 case 5:
                     return true
                 case 6:

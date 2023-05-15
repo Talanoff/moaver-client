@@ -30,7 +30,7 @@ const bookingStore = useBooking();
 const configStore = useConfig();
 
 const { form, showModal, currentStepName, currentStep } = storeToRefs(bookingStore);
-const wishes = ref(configStore.wishes);
+const {wishes, locationTypes} = storeToRefs(configStore);
 
 const steps = ref([
     {
@@ -47,7 +47,6 @@ const steps = ref([
                     type: 'text',
                     number: true,
                     maxlength: '4',
-                    name: 'Pieces',
                     placeholder: '1',
                     disabled: false,
                 },
@@ -128,11 +127,7 @@ const steps = ref([
             {
                 attrs: {
                     label: 'Location type from',
-                    options: [
-                        { key: 'home', value: 'home' },
-                        { key: 'ofice', value: 'ofice' },
-                        { key: 'test', value: 'test' },
-                    ],
+                    options: locationTypes.value,
                 },
                 fieldType: 'select',
                 className: 'w-full',
@@ -163,11 +158,7 @@ const steps = ref([
             {
                 attrs: {
                     label: 'Location type to',
-                    options: [
-                        { key: 'home', value: 'home' },
-                        { key: 'ofice', value: 'ofice' },
-                        { key: 'test', value: 'test' },
-                    ],
+                    options: locationTypes.value,
                 },
                 fieldType: 'select',
                 className: 'w-full',
@@ -180,7 +171,6 @@ const steps = ref([
         title: 'Pick-up and delivery wishes/requirements',
         fields: [
             {
-                id: 'wishes', // хз нужен ли
                 attrs: {
                     required: false,
                     wishes: true,
@@ -217,7 +207,7 @@ const steps = ref([
                 },
                 controlName: 'additionalWishesNotes',
                 fieldType: 'textarea',
-                className: 'w-full m-2.5'
+                className: 'w-full'
             },
             {
                 id: 2,
@@ -366,7 +356,6 @@ watch(() => form.value.category[0], (value) => {
         if (value === "one") {
             steps.value[0].fields[1].attrs.placeholder = 1
             steps.value[0].fields[1].attrs.disabled = true
-            steps.value[0].fields[1].attrs.name = 'piece'
             steps.value[0].fields[1].attrs.label = 'piece'
         } else if (value === "pallets") {
             steps.value[0].fields[1].attrs.name = 'pallets'

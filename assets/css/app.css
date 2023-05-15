@@ -43,3 +43,15 @@ input[type="datetime-local"]::-webkit-inner-spin-button,
 input[type="datetime-local"]::-webkit-clear-button {
     z-index: 1;
 }
+
+.filepond--credits {
+    @apply hidden;
+}
+
+.filepond--root {
+    @apply font-sans;
+}
+
+.filepond--drop-label {
+    @apply bg-slate-100 text-slate-900 rounded-lg;
+}

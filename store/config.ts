@@ -3,6 +3,8 @@ import useApi from "~/composables/use-api";
 import { useMain } from "~/store/main";
 import { useTransporters } from "~/store/transporters";
 import { useBooking } from "~/store/booking";
+import { computed, ref } from "@vue/reactivity";
+import { KeyValue } from "~/types/forms";
 
 interface ServiceInterface {
     id: number;
@@ -22,6 +24,8 @@ export const useConfig = defineStore('config', () => {
         additional: [],
         common: []
     });
+    const locationTypes = ref<KeyValue[]>([]);
+
     const mainStore = useMain();
     const transportersStore = useTransporters();
     const bookingStore = useBooking();
@@ -68,10 +72,11 @@ export const useConfig = defineStore('config', () => {
         mainStore.loader = false;
     }
 
-    const getWishes = async (): Promise<void> => {
+    const getBookingItems = async (): Promise<void> => {
         mainStore.loader = true
-        const { data } = await api.get('/wishes');
-        wishes.value = data;
+        const { data } = await api.get('/booking');
+        wishes.value = data.wishes;
+        locationTypes.value = data.locationTypes;
         mainStore.loader = false;
     }
 
@@ -92,10 +97,12 @@ export const useConfig = defineStore('config', () => {
         services,
         vehicles,
         wishes,
+        locationTypes,
+
         getCountries,
         getServices,
         getVehicles,
-        getWishes,
+        getBookingItems,
 
         selectedWishes,
         selectedAdditionalWishes

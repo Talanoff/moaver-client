@@ -9,8 +9,10 @@ export default defineNuxtConfig({
         'nuxt-icons', // https://nuxt.com/modules/icons+
         '@nuxtjs/google-fonts',
         '@nuxtjs/i18n',
+        // '@nuxtjs/toast'
     ],
 
+    // @ts-ignore
     css: [
         '@/assets/css/app.css',
     ],
@@ -31,7 +33,7 @@ export default defineNuxtConfig({
     app: {
         head: {
             meta: [
-                {name: 'viewport', content: 'width=device-width, initial-scale=1'}
+                { name: 'viewport', content: 'width=device-width, initial-scale=1' }
             ],
             title: 'Moaver',
         },
@@ -53,21 +55,10 @@ export default defineNuxtConfig({
     },
 
     i18n: {
-        strategy: 'no_prefix',
-        defaultLocale: 'en',
-        lazy: true,
-        langDir: 'translations',
-        locales: [
-            { code: 'en', file: 'en.json' },
-            { code: 'nl', file: 'nl.json' },
-        ],
-        vueI18n: {
-            fallbackLocale: 'en',
-        },
-        detectBrowserLanguage: {
-            useCookie: true,
-            cookieKey: 'i18n_redirected',
-            redirectOn: 'root',
-        }
+        vueI18n: './i18n.config.ts'
+    },
+
+    toast: {
+        position: 'top-right',
     }
 });
