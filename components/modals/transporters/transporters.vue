@@ -26,6 +26,8 @@ import { storeToRefs } from "pinia";
 const router = useRouter();
 const transporterStore = useTransporters();
 const api = useApi();
+const { $toast } = useNuxtApp();
+
 const steps = ref([
     {
         id: 1,
@@ -306,13 +308,16 @@ const onSubmit = () => {
         formData.password_confirmation = confirmPassword;
 
         api.post('questionnaire/vendor', formData).then(() => {
+            transporterStore.showModal = false;
             transporterStore.clearForm();
             router.push({
                 path: '/thank-you',
                 query: { action: 'register' }
             });
         }).catch((reason) => {
-            // TODO notify about error. show validation errors.
+            Object.values(reason.response.data.errors).forEach(errors => {
+                errors.forEach((error) => $toast.error(error));
+            });
         }).finally(() => {
             transporterStore.submitting = false;
         });

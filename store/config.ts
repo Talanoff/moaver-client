@@ -1,10 +1,15 @@
 import { defineStore } from "pinia";
+// @ts-ignore
 import useApi from "~/composables/use-api";
+// @ts-ignore
 import { useMain } from "~/store/main";
+// @ts-ignore
 import { useTransporters } from "~/store/transporters";
+// @ts-ignore
 import { useBooking } from "~/store/booking";
-import { computed, ref } from "@vue/reactivity";
+// @ts-ignore
 import { KeyValue } from "~/types/forms";
+import { computed, ref } from "@vue/reactivity";
 
 interface ServiceInterface {
     id: number;
@@ -78,6 +83,8 @@ export const useConfig = defineStore('config', () => {
         wishes.value = data.wishes;
         locationTypes.value = data.locationTypes;
         mainStore.loader = false;
+
+        return Promise.resolve()
     }
 
     const selectedWishes = computed(() => {

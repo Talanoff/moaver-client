@@ -25,12 +25,14 @@ import { useBooking } from "~/store/booking";
 import { useConfig } from "~/store/config";
 import { storeToRefs } from "pinia";
 
+const api = useApi();
 const router = useRouter();
 const bookingStore = useBooking();
 const configStore = useConfig();
+const { $toast } = useNuxtApp();
 
 const { form, showModal, currentStepName, currentStep } = storeToRefs(bookingStore);
-const {wishes, locationTypes} = storeToRefs(configStore);
+const { wishes, locationTypes } = storeToRefs(configStore);
 
 const steps = ref([
     {
@@ -348,62 +350,59 @@ const steps = ref([
 
     },
 ]);
-const api = useApi();
 
 watch(() => form.value.category[0], (value) => {
-        steps.value[0].fields[3].hidden = value !== "various"
+    steps.value[0].fields[3].hidden = value !== "various"
 
-        if (value === "one") {
-            steps.value[0].fields[1].attrs.placeholder = 1
-            steps.value[0].fields[1].attrs.disabled = true
-            steps.value[0].fields[1].attrs.label = 'piece'
-        } else if (value === "pallets") {
-            steps.value[0].fields[1].attrs.name = 'pallets'
-            steps.value[0].fields[1].attrs.label = 'pallets'
-        } else {
-            steps.value[0].fields[1].attrs.name = 'pieces'
-            steps.value[0].fields[1].attrs.label = 'pieces'
-            steps.value[0].fields[1].attrs.placeholder = ''
-            steps.value[0].fields[1].attrs.disabled = false
-        }
+    if (value === "one") {
+        steps.value[0].fields[1].attrs.placeholder = 1
+        steps.value[0].fields[1].attrs.disabled = true
+        steps.value[0].fields[1].attrs.label = 'piece'
+    } else if (value === "pallets") {
+        steps.value[0].fields[1].attrs.name = 'pallets'
+        steps.value[0].fields[1].attrs.label = 'pallets'
+    } else {
+        steps.value[0].fields[1].attrs.name = 'pieces'
+        steps.value[0].fields[1].attrs.label = 'pieces'
+        steps.value[0].fields[1].attrs.placeholder = ''
+        steps.value[0].fields[1].attrs.disabled = false
+    }
 
-        if (value === 'various' || value === 'one') {
-            form.value.pieces[0] = 1;
-        }
+    if (value === 'various' || value === 'one') {
+        form.value.pieces[0] = 1;
+    }
 
-        if (value === "various") {
-            form.value.pieces[1] = []
-            form.value.weight[0] = null
-            form.value.weight[1] = []
-            form.value.goods[1] = ['required']
-        } else {
-            steps.value[0].fields[2].hidden = false
-            form.value.pieces[1] = ["required"]
-            form.value.weight[1] = ["required"]
-            form.value.goods[1] = []
-            form.value.goods[0] = null
-        }
-    },
-);
+    if (value === "various") {
+        form.value.pieces[1] = []
+        form.value.weight[0] = null
+        form.value.weight[1] = []
+        form.value.goods[1] = ['required']
+    } else {
+        steps.value[0].fields[2].hidden = false
+        form.value.pieces[1] = ["required"]
+        form.value.weight[1] = ["required"]
+        form.value.goods[1] = []
+        form.value.goods[0] = null
+    }
+});
 
 watch(() => form.value.registerCheckbox[0], (value) => {
-        const step = steps.value.find(it => it.id === 6);
-        const [password, confirmPassword] = step.fields.filter(it => it.controlName === 'password' || it.controlName === 'confirmPassword');
+    const step = steps.value.find(it => it.id === 6);
+    const [password, confirmPassword] = step.fields.filter(it => it.controlName === 'password' || it.controlName === 'confirmPassword');
 
-        password.hidden = !value;
-        confirmPassword.hidden = !value;
+    password.hidden = !value;
+    confirmPassword.hidden = !value;
 
-        if (!value) {
-            form.value.password[0] = null
-            form.value.password[1] = []
-            form.value.confirmPassword[0] = null
-            form.value.confirmPassword[1] = []
-        } else {
-            form.value.password[1] = ["required"]
-            form.value.confirmPassword[1] = ["required"]
-        }
-    },
-);
+    if (!value) {
+        form.value.password[0] = null
+        form.value.password[1] = []
+        form.value.confirmPassword[0] = null
+        form.value.confirmPassword[1] = []
+    } else {
+        form.value.password[1] = ["required"]
+        form.value.confirmPassword[1] = ["required"]
+    }
+});
 
 watch(() => form.value.dateFrom[0], (value) => steps.value[1].fields[3].attrs.min = value);
 
@@ -426,13 +425,16 @@ const onSubmit = () => {
         formData.password_confirmation = confirmPassword;
 
         api.post('questionnaire/order', formData).then(() => {
+            bookingStore.showModal = false;
             bookingStore.clearForm();
             router.push({
                 path: '/thank-you',
                 query: { action: 'booking' }
             });
         }).catch((reason) => {
-            // TODO notify about error. show validation errors.
+            Object.values(reason.response.data.errors).forEach(errors => {
+                errors.forEach((error) => $toast.error(error));
+            });
         }).finally(() => {
             bookingStore.submitting = false;
         });

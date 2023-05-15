@@ -1,5 +1,7 @@
 import { defineStore } from "pinia";
+// @ts-ignore
 import { useConfig } from "~/store/config";
+// @ts-ignore
 import { KeyValue } from "~/types/forms";
 
 type CurrentState = {
@@ -161,7 +163,9 @@ export const useTransporters = defineStore("transporters", {
         },
 
         clearForm(): void {
-            this.form = JSON.parse(JSON.stringify(formDefaults))
+            this.currentStep = 1;
+            this.currentStepName = '';
+            this.form = JSON.parse(JSON.stringify(formDefaults));
         }
     },
 });

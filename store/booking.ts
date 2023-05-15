@@ -187,6 +187,8 @@ export const useBooking = defineStore("booking", {
         },
 
         clearForm(): void {
+            this.currentStep = 1;
+            this.currentStepName = '';
             this.form = JSON.parse(JSON.stringify(formDefaults));
         }
     }

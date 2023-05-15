@@ -13,6 +13,7 @@
                 v-bind="$attrs"
                 v-model="date"
                 :min-date="$attrs.min"
+                :teleport="true"
         />
     </div>
 </template>

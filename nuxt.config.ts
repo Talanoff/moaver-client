@@ -1,9 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+// @ts-ignore
 export default defineNuxtConfig({
-    modules: [
-        '@nuxtjs/tailwindcss',
-        [
-            '@nuxtjs/i18n', {
+    modules: ['@nuxtjs/tailwindcss',
+        ['@nuxtjs/i18n', {
             legacy: false,
             locale: 'en',
             strategy: 'no_prefix',
@@ -22,20 +21,19 @@ export default defineNuxtConfig({
                 cookieKey: 'i18n_redirected',
                 redirectOn: 'root',
             }
-        }
-        ],
+        }],
         '@vueuse/nuxt',
         '@pinia/nuxt',
         'nuxt-sanctum-auth', // https://github.com/dystcz/nuxt-sanctum-auth
         'nuxt-icons', // https://nuxt.com/modules/icons+
         '@nuxtjs/google-fonts',
         '@nuxtjs/i18n',
-        // '@nuxtjs/toast'
     ],
 
     // @ts-ignore
     css: [
         '@/assets/css/app.css',
+        'vue-toast-notification/dist/theme-default.css'
     ],
 
     runtimeConfig: {
@@ -74,8 +72,4 @@ export default defineNuxtConfig({
             logout: '/'
         }
     },
-
-    toast: {
-        position: 'top-right',
-    }
 });
