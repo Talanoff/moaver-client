@@ -31,7 +31,7 @@ const formDefaults = {
     additionalWishesNotes: [null, []],
     additionalWishesAttachment: [null, []],
     name: [null, 'required'],
-    address: [null, 'required'],
+    // address: [null, 'required'],
     phone: [null, 'required'],
     email: [null, 'required'],
     iban: [null, 'required'],
@@ -90,13 +90,12 @@ export const useBooking = defineStore("booking", {
                 additionalWishesNotes,
                 additionalWishesAttachment,
                 name,
-                address,
+                // address,
                 phone,
                 email,
                 // iban,
                 password,
                 confirmPassword,
-                registerCheckbox,
                 agreeToTerms
             } = this.form;
 
@@ -141,7 +140,7 @@ export const useBooking = defineStore("booking", {
                 case 6:
                     return [
                         name,
-                        address,
+                        // address,
                         phone,
                         email,
                         // iban,

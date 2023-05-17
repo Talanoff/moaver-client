@@ -55,3 +55,19 @@ input[type="datetime-local"]::-webkit-clear-button {
 .filepond--drop-label {
     @apply bg-slate-100 text-slate-900 rounded-lg;
 }
+
+.filepond--panel-root {
+    @apply bg-slate-100 !important;
+}
+
+@media (min-width: 30em) {
+    .filepond--item {
+        width: calc(50% - 0.5em);
+    }
+}
+
+@media (min-width: 50em) {
+    .filepond--item {
+        width: calc(33.33% - 0.5em);
+    }
+}

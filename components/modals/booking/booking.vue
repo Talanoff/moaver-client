@@ -215,7 +215,7 @@ const steps = ref([
                 id: 2,
                 attrs: {
                     label: 'Pick file',
-                    url: ''
+                    storeAsFile: false,
                 },
                 controlName: 'additionalWishesAttachment',
                 fieldType: 'file',
@@ -249,17 +249,17 @@ const steps = ref([
                 className: 'w-full',
                 controlName: 'name'
             },
-            {
-                attrs: {
-                    label: 'Address',
-                    type: 'text',
-                    maxlength: 100,
-                    placeholder: 'Address',
-                },
-                fieldType: 'input',
-                className: 'w-full',
-                controlName: 'address'
-            },
+            // {
+            //     attrs: {
+            //         label: 'Address',
+            //         type: 'text',
+            //         maxlength: 100,
+            //         placeholder: 'Address',
+            //     },
+            //     fieldType: 'input',
+            //     className: 'w-full',
+            //     controlName: 'address'
+            // },
             {
                 attrs: {
                     label: 'Phone number',

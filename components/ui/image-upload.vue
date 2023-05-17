@@ -1,12 +1,12 @@
 <template>
     <no-ssr>
         <file-pond
-                ref="pond"
+                ref="filesRef"
                 label-idle="Drop files here..."
                 :allow-multiple="true"
                 accepted-file-types="image/jpeg, image/png"
                 server="/api"
-                :files="filesRef"
+                @processfile="handleFilePondInit"
         />
     </no-ssr>
 </template>
@@ -19,11 +19,21 @@ import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css
 
 import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
+import FilePondPluginFileEncode from 'filepond-plugin-file-encode';
 
 const FilePond = vueFilePond(
     FilePondPluginFileValidateType,
-    FilePondPluginImagePreview
+    FilePondPluginImagePreview,
+    FilePondPluginFileEncode
 );
 
-const filesRef = ref([]);
+const filesRef = ref(null);
+
+const emits = defineEmits(['update:modelValue']);
+
+const handleFilePondInit =  () => {
+    const files = filesRef.value.getFiles();
+
+    emits('update:modelValue', files.map(it => it.getFileEncodeDataURL()));
+}
 </script>
