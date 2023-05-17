@@ -35,11 +35,6 @@
 <script setup>
 import Transporters from "~/components/modals/transporters/transporters.vue";
 import { useTransporters } from "~/store/transporters";
-import { useConfig } from "~/store/config";
 
 const transporterStore = useTransporters();
-const configStore = useConfig();
-
-configStore.getCountries();
-configStore.getServices();
 </script>

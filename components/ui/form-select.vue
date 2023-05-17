@@ -15,6 +15,9 @@
         >
             <input
                     class="ml-3 block truncate find-input bg-slate-100"
+                    :class="{
+                        'placeholder:text-current': !$attrs.disabled
+                    }"
                     :placeholder="currentValue"
                     :disabled="$attrs.disabled"
                     @focusout="search = ''"
@@ -79,6 +82,8 @@ const props = defineProps<{
 
 const emits = defineEmits(['update:model-value']);
 
+const { $i18n } = useNuxtApp();
+
 const button = ref<HTMLButtonElement | null>(null);
 const listPosition = ref<{
     left: string;
@@ -89,7 +94,7 @@ const expanded = ref<boolean>(false);
 const search = ref<string | number>('');
 
 const currentValue = computed(() => {
-    return props.options?.find(({ key }) => props.modelValue === key)?.value ?? 'Select an option'; // TODO translate
+    return props.options?.find(({ key }) => props.modelValue === key)?.value ?? $i18n.t('forms.selectAnOption');
 });
 
 const filterCounties = computed(() => {
@@ -109,7 +114,7 @@ const onSelect = (option: {
     value: string | number;
 }) => {
     emits('update:model-value', option.key);
-    search.value = option.value;
+    search.value = '';
     expanded.value = false;
 }
 

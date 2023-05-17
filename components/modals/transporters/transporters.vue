@@ -22,11 +22,17 @@ import RegisterForm from "~/components/modals/transporters/form.vue";
 import Modal from "~/components/modals/modal.vue";
 import { useTransporters } from "~/store/transporters";
 import { storeToRefs } from "pinia";
+import { useConfig } from "~/store/config";
 
-const router = useRouter();
-const transporterStore = useTransporters();
 const api = useApi();
+const router = useRouter();
 const { $toast } = useNuxtApp();
+const transporterStore = useTransporters();
+const configStore = useConfig();
+
+await configStore.getCountries();
+configStore.getServices();
+
 const { form, currentStep, currentStepName } = storeToRefs(transporterStore);
 
 const steps = ref([

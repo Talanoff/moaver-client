@@ -98,7 +98,8 @@
       "many": "{count} packages with {weight} kg",
       "pallets": "{count} pallets with {weight} kg each",
       "various": "{count} various goods with {weight} kg"
-    }
+    },
+    "selectAnOption": "Select an option"
   },
   "categories": {
     "one": "One package",

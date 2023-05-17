@@ -27,9 +27,10 @@ import { storeToRefs } from "pinia";
 
 const api = useApi();
 const router = useRouter();
+const { $toast } = useNuxtApp();
 const bookingStore = useBooking();
 const configStore = useConfig();
-const { $toast } = useNuxtApp();
+await configStore.getBookingItems();
 
 const { form, showModal, currentStepName, currentStep } = storeToRefs(bookingStore);
 const { wishes, locationTypes } = storeToRefs(configStore);

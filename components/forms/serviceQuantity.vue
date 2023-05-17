@@ -14,7 +14,7 @@
                     <div class="w-auto flex-1 rounded-l-md text-sm px-2 bg-slate-100 flex flex-col justify-center">
                         {{ vehicle.name }}
                     </div>
-                    <div class="w-14">
+                    <div class="w-20">
                         <form-input
                                 class="rounded-l-none bg-white border-none font-semibold"
                                 v-bind="inputAttrs"

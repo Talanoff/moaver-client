@@ -3,13 +3,12 @@ import Cookies from "js-cookie";
 
 export default function () {
     const config = useRuntimeConfig();
-    const {locale} = useI18n();
+    const { locale } = useI18n();
 
     const api = axios.create({
         baseURL: config.public.API_URL,
         withCredentials: true,
         headers: {
-            'X-Locale': locale.value,
             'X-Requested-With': 'XMLHttpRequest',
             'Accept': 'application/json'
         }
@@ -18,6 +17,8 @@ export default function () {
     api.interceptors.request.use(
         (config: InternalAxiosRequestConfig) => {
             const token: string | undefined = Cookies.get('token');
+
+            config.headers["X-Locale"] = locale.value;
 
             if (token && config.headers) {
                 config.headers["Authorization"] = `Bearer ${token}`;

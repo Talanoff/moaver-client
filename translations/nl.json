@@ -98,7 +98,8 @@
       "many": "{count} pakketten met {weight} kg",
       "pallets": "{count} pallets met elk {weight} kg",
       "various": "{count} diverse goederen met {weight} kg"
-    }
+    },
+    "selectAnOption": "Kies een optie"
   },
   "categories": {
     "one": "Een pakket",
