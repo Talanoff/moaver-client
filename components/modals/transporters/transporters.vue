@@ -1,8 +1,8 @@
 <template>
     <modal
-            :title="transporterStore.currentStepName"
-            :show-title="steps.length !== transporterStore.currentStep"
-            :show-back-button="transporterStore.currentStep > 1"
+            :title="currentStepName"
+            :show-title="steps.length !== currentStep"
+            :show-back-button="currentStep > 1"
             @back="onBack"
             @close="onClose"
     >
@@ -10,7 +10,7 @@
             <register-form :steps="steps"/>
             <modal-footer
                     :total-steps="steps.length"
-                    :current-step="transporterStore.currentStep"
+                    :current-step="currentStep"
             />
         </form>
     </modal>
@@ -27,6 +27,7 @@ const router = useRouter();
 const transporterStore = useTransporters();
 const api = useApi();
 const { $toast } = useNuxtApp();
+const { form, currentStep, currentStepName } = storeToRefs(transporterStore);
 
 const steps = ref([
     {
@@ -186,6 +187,8 @@ const steps = ref([
                     label: 'IBAN',
                     type: 'text',
                     placeholder: 'IBAN',
+                    maxlength: 33,
+                    class: 'uppercase'
                 },
                 fieldType: 'input',
                 className: 'w-full',
@@ -195,8 +198,10 @@ const steps = ref([
                 id: 3,
                 attrs: {
                     label: 'VAT number',
-                    type: 'text',
+                    type: 'number',
                     placeholder: 'VAT number',
+                    min: 0,
+                    step: 0.1
                 },
                 fieldType: 'input',
                 className: 'w-full',
@@ -223,7 +228,7 @@ const steps = ref([
                 id: 1,
                 attrs: {
                     label: 'Phone number',
-                    type: 'text',
+                    type: 'tel',
                     number: true,
                     placeholder: '+',
                 },
@@ -287,22 +292,20 @@ const steps = ref([
     },
 ]);
 
-const { form } = storeToRefs(transporterStore);
-
 const onClose = () => {
     transporterStore.toggleModal(false);
     transporterStore.clearForm();
 }
 
 const onSubmit = () => {
-    if (steps.value.length - 1 !== transporterStore.currentStep) {
-        const name = steps.value.find(({ id }) => id === transporterStore.currentStep + 1)?.title ?? '';
+    if (steps.value.length - 1 !== currentStep.value) {
+        const name = steps.value.find(({ id }) => id === currentStep.value + 1)?.title ?? '';
         transporterStore.setCurrentStep(name, 'increment');
     } else {
         transporterStore.submitting = true;
-        const { confirmPassword, ...formData } = Object.keys(form).reduce((acc, it) => ({
+        const { confirmPassword, ...formData } = Object.keys(form.value).reduce((acc, it) => ({
             ...acc,
-            [it]: transporterStore.form[it][0] ?? null
+            [it]: form.value[it][0] ?? null
         }), {});
 
         formData.password_confirmation = confirmPassword;
@@ -325,7 +328,7 @@ const onSubmit = () => {
 }
 
 const onBack = () => {
-    const name = steps.value.find(({ id }) => id === transporterStore.currentStep - 1)?.title ?? '';
+    const name = steps.value.find(({ id }) => id === currentStep.value - 1)?.title ?? '';
     transporterStore.setCurrentStep(name, 'decrement');
 }
 </script>

@@ -110,6 +110,9 @@
     "thankYou": "Bedankt!",
     "register": {
       "headline": "Uw registratie is voltooid."
+    },
+    "booking": {
+      "headline": "Onze beheerder neemt spoedig contact met u op."
     }
   }
 }

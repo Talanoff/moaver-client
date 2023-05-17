@@ -4,7 +4,7 @@
       "home": "Home",
       "partner": "Become a partner",
       "login": "Log in",
-      "Sign in": "Sign in"
+      "sign_in": "Sign in"
     },
     "footer": {
       "terms": "Terms and Conditions",
@@ -110,6 +110,9 @@
     "thankYou": "Thank you!",
     "register": {
       "headline": "Your registration has been completed."
+    },
+    "booking": {
+      "headline": "Our manager will contact you soon."
     }
   }
 }

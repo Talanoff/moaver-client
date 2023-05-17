@@ -12,6 +12,7 @@
                     @keypress="$attrs.number ? onlyNumber($event) : ''"
                     class="appearance-none block w-full px-3.5 bg-slate-100 h-12 border-none text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                     @input="$emit('update:modelValue', $event.target.value)"
+                    :placeholder="placeholder"
             >
 
             <div class="absolute right-3.5 text-slate-1000 text-xs text-gray-500" v-if="$attrs.name">
@@ -26,6 +27,7 @@ defineProps([
     'modelValue',
     'disabled',
     'required',
+    'placeholder'
 ]);
 
 const onlyNumber = ($event) => {

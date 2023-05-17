@@ -20,15 +20,18 @@
                 </div>
                 <form @submit.prevent="submit">
                     <h2 class="text-xl font-bold mt-4 mb-4">
-                        {{ $t(`navigation.header.Sign in`) }}
+                        {{ $t(`navigation.header.sign_in`) }}
                     </h2>
                     <div class="mb-4">
                         <form-input v-model="form.email"
                                     v-bind="{type: 'email', placeholder:'email', required:true, name:'email'}"/>
                     </div>
-                    <form-input v-model="form.password"
-                                v-bind="{type: 'password', placeholder:'password', required:true, name:'password'}"/>
-                    <footer-component>Sign in
+                    <form-input
+                        v-model="form.password"
+                        v-bind="{type: 'password', placeholder:'password', required:true, name:'password'}"
+                    />
+                    <footer-component>
+                        {{ $t('navigation.header.sign_in') }}
                     </footer-component>
                 </form>
 

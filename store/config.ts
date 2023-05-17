@@ -83,8 +83,6 @@ export const useConfig = defineStore('config', () => {
         wishes.value = data.wishes;
         locationTypes.value = data.locationTypes;
         mainStore.loader = false;
-
-        return Promise.resolve()
     }
 
     const selectedWishes = computed(() => {

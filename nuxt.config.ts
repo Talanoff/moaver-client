@@ -22,7 +22,6 @@ export default defineNuxtConfig({
                 redirectOn: 'root',
             }
         }],
-        '@vueuse/nuxt',
         '@pinia/nuxt',
         'nuxt-sanctum-auth', // https://github.com/dystcz/nuxt-sanctum-auth
         'nuxt-icons', // https://nuxt.com/modules/icons+
