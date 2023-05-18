@@ -26,7 +26,7 @@ import { useConfig } from "~/store/config";
 
 const api = useApi();
 const router = useRouter();
-const { $toast } = useNuxtApp();
+const { $toast, $i18n } = useNuxtApp();
 const transporterStore = useTransporters();
 const configStore = useConfig();
 
@@ -38,13 +38,12 @@ const { form, currentStep, currentStepName } = storeToRefs(transporterStore);
 const steps = ref([
     {
         id: 1,
-        title: 'Company info',
+        title: $i18n.t('modals.transporter.companyInfo'),
         fields: [
             {
                 attrs: {
-                    label: 'Name transport company',
+                    label: $i18n.t('forms.companyName'),
                     type: 'text',
-                    placeholder: 'Name transport company',
                 },
                 fieldType: 'input',
                 className: 'w-full',
@@ -52,9 +51,9 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'country',
+                    label: $i18n.t('forms.country'),
                     type: 'text',
-                    placeholder: 'country',
+                    placeholder: $i18n.t('forms.country'),
                     disabled: true,
                     options: transporterStore.countries,
                 },
@@ -64,9 +63,8 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'location',
+                    label: $i18n.t('forms.location'),
                     type: 'text',
-                    placeholder: '',
                 },
                 fieldType: 'input',
                 className: 'sm:w-1/2 w-full',
@@ -74,9 +72,8 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'address',
+                    label: $i18n.t('forms.address'),
                     type: 'text',
-                    placeholder: 'address',
                 },
                 fieldType: 'textarea',
                 className: 'w-full',
@@ -84,9 +81,8 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'Postcode',
+                    label: $i18n.t('forms.postcode'),
                     type: 'text',
-                    placeholder: 'Postcode',
                 },
                 fieldType: 'input',
                 className: 'w-48',
@@ -98,9 +94,9 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'Phone number',
+                    label: $i18n.t('forms.phoneNumber'),
                     type: 'tel',
-                    placeholder: 'Phone number',
+                    placeholder: '+31',
                 },
                 fieldType: 'input',
                 className: 'sm:w-1/2 w-full',
@@ -108,9 +104,9 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'E-mail address',
+                    label: $i18n.t('forms.email'),
                     type: 'email',
-                    placeholder: 'E-mail address',
+                    placeholder: 'example@mail.com',
                 },
                 fieldType: 'input',
                 className: 'sm:w-1/2 w-full',
@@ -120,7 +116,7 @@ const steps = ref([
     },
     {
         id: 2,
-        title: 'What types of transports do they provide',
+        title: $i18n.t('modals.transporter.transports'),
         fields: [
             {
                 id: 0,
@@ -135,11 +131,10 @@ const steps = ref([
     },
     {
         id: 3,
-        title: 'What types of transports do they provide',
+        title: $i18n.t('modals.transporter.transports'),
         fields: [
             {
                 id: 0,
-
                 fieldType: 'vehicles',
                 className: 'w-full',
                 controlName: "vehicles"
@@ -148,7 +143,7 @@ const steps = ref([
     },
     {
         id: 4,
-        title: 'In which countries active and which regions of those countries',
+        title: $i18n.t('modals.transporter.countries'),
         fields: [
             {
                 id: 1,
@@ -163,7 +158,6 @@ const steps = ref([
                             },
                             options: transporterStore.countries,
                         },
-
                     ]
                 },
                 fieldType: 'locations',
@@ -174,14 +168,13 @@ const steps = ref([
     },
     {
         id: 5,
-        title: 'INFO',
+        title: $i18n.t('modals.transporter.info'),
         fields: [
             {
                 id: 1,
                 attrs: {
-                    label: 'Chamber of Commerce number',
+                    label: $i18n.t('forms.commerceNumber'),
                     type: 'text',
-                    placeholder: 'Chamber of Commerce number',
                 },
                 fieldType: 'input',
                 className: 'w-full',
@@ -203,9 +196,8 @@ const steps = ref([
             {
                 id: 3,
                 attrs: {
-                    label: 'VAT number',
+                    label: $i18n.t('forms.vat'),
                     type: 'number',
-                    placeholder: 'VAT number',
                     min: 0,
                     step: 0.1
                 },
@@ -217,14 +209,13 @@ const steps = ref([
     },
     {
         id: 6,
-        title: 'Personal info',
+        title: $i18n.t('modals.transporter.personal'),
         fields: [
             {
                 id: 0,
                 attrs: {
-                    label: 'Name',
+                    label: $i18n.t('forms.name'),
                     type: 'text',
-                    placeholder: '',
                 },
                 fieldType: 'input',
                 className: 'w-full',
@@ -233,10 +224,10 @@ const steps = ref([
             {
                 id: 1,
                 attrs: {
-                    label: 'Phone number',
+                    label: $i18n.t('forms.phoneNumber'),
                     type: 'tel',
                     number: true,
-                    placeholder: '+',
+                    placeholder: '+31',
                 },
                 fieldType: 'input',
                 className: 'w-full',
@@ -245,9 +236,9 @@ const steps = ref([
             {
                 id: 2,
                 attrs: {
-                    label: 'E-mail address',
+                    label: $i18n.t('forms.email'),
                     type: 'email',
-                    placeholder: 'E-mail address',
+                    placeholder: 'personal@mail.com',
                 },
                 fieldType: 'input',
                 className: 'w-full',
@@ -256,7 +247,7 @@ const steps = ref([
             {
                 id: 3,
                 attrs: {
-                    label: 'password',
+                    label: $i18n.t('forms.password'),
                     type: 'password',
                     placeholder: '******',
                 },
@@ -267,7 +258,7 @@ const steps = ref([
             {
                 id: 4,
                 attrs: {
-                    label: 'confirmPassword',
+                    label: $i18n.t('forms.confirmPassword'),
                     type: 'password',
                     placeholder: '******',
                 },
@@ -279,23 +270,14 @@ const steps = ref([
                 id: 5,
                 attrs: {
                     id: 'agree_to_terms',
-                    label: 'Agree to terms?',
+                    label: $i18n.t('forms.agreeToTerms'),
                 },
                 fieldType: 'checkbox',
                 className: 'w-full',
                 controlName: 'agreeToTerms'
             },
         ],
-    },
-    {
-        id: 7,
-        fields: [
-            {
-                fieldType: 'formInfo',
-                className: 'w-full'
-            },
-        ],
-    },
+    }
 ]);
 
 const onClose = () => {
@@ -304,7 +286,7 @@ const onClose = () => {
 }
 
 const onSubmit = () => {
-    if (steps.value.length - 1 !== currentStep.value) {
+    if (steps.value.length !== currentStep.value) {
         const name = steps.value.find(({ id }) => id === currentStep.value + 1)?.title ?? '';
         transporterStore.setCurrentStep(name, 'increment');
     } else {
@@ -334,7 +316,7 @@ const onSubmit = () => {
 }
 
 const onBack = () => {
-    const name = steps.value.find(({ id }) => id === currentStep.value - 1)?.title ?? '';
+    const name = steps.value.find(({ id }) => id === currentStep.value)?.title ?? '';
     transporterStore.setCurrentStep(name, 'decrement');
 }
 </script>

@@ -27,7 +27,7 @@ import { storeToRefs } from "pinia";
 
 const api = useApi();
 const router = useRouter();
-const { $toast } = useNuxtApp();
+const { $toast, $i18n } = useNuxtApp();
 const bookingStore = useBooking();
 const configStore = useConfig();
 await configStore.getBookingItems();
@@ -46,7 +46,7 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'pieces',
+                    label: $i18n.t('forms.pieces'),
                     type: 'text',
                     number: true,
                     maxlength: '4',
@@ -60,11 +60,11 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'weight',
+                    label: $i18n.t('forms.weight'),
                     type: 'text',
                     number: true,
                     maxlength: '5',
-                    name: 'Kg',
+                    name: $i18n.t('forms.kg'),
                 },
                 fieldType: 'input',
                 className: 'sm:w-1/2 w-full',
@@ -73,7 +73,7 @@ const steps = ref([
             {
                 attrs: {
                     required: false,
-                    name: 'What exactly do you want to send',
+                    label: $i18n.t('forms.variousGoods'),
                     options: [
                         { key: 'home', value: 'home' },
                         { key: 'ofice', value: 'ofice' },
@@ -85,12 +85,9 @@ const steps = ref([
                 controlName: 'goods',
                 className: 'w-full'
             },
-
-            // TODO: -add logic for select
-
             {
                 attrs: {
-                    label: 'message',
+                    label: $i18n.t('forms.message'),
                     type: 'text',
                     placeholder: '',
                     maxlength: '400',
@@ -103,14 +100,13 @@ const steps = ref([
     },
     {
         id: 2,
-        title: 'Collection date',
+        title: $i18n.t('modals.booking.collectionDate'),
         fields: [
             {
                 attrs: {
-                    label: 'Date From',
+                    label: $i18n.t('forms.dateFrom'),
                     type: 'datetime-local',
                     min: new Date(),
-                    placeholder: 'date'
                 },
                 fieldType: 'dateTime',
                 className: 'w-full ',
@@ -118,18 +114,16 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'Location from',
-                    type: 'text',
-                    maxlength: 50,
-                    placeholder: 'Location from'
+                    label: $i18n.t('forms.locationFrom'),
+                    rows: 2
                 },
-                fieldType: 'input',
+                fieldType: 'textarea',
                 className: 'w-full',
                 controlName: 'locationFrom'
             },
             {
                 attrs: {
-                    label: 'Location type from',
+                    label: $i18n.t('forms.locationType'),
                     options: locationTypes.value,
                 },
                 fieldType: 'select',
@@ -138,10 +132,9 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'Date To',
+                    label: $i18n.t('forms.dateTo'),
                     type: 'datetime-local',
                     min: form.value.dateTo[0],
-                    placeholder: 'date'
                 },
                 fieldType: 'dateTime',
                 className: 'w-full',
@@ -149,18 +142,16 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'Location to',
-                    type: 'text',
-                    maxlength: 50,
-                    placeholder: 'Location to'
+                    label: $i18n.t('forms.locationTo'),
+                    rows: 2
                 },
-                fieldType: 'input',
+                fieldType: 'textarea',
                 className: 'w-full',
                 controlName: 'locationTo'
             },
             {
                 attrs: {
-                    label: 'Location type to',
+                    label: $i18n.t('forms.locationType'),
                     options: locationTypes.value,
                 },
                 fieldType: 'select',
@@ -171,7 +162,7 @@ const steps = ref([
     },
     {
         id: 3,
-        title: 'Pick-up and delivery wishes/requirements',
+        title: $i18n.t('modals.booking.wishes'),
         fields: [
             {
                 attrs: {
@@ -187,11 +178,11 @@ const steps = ref([
     },
     {
         id: 4,
-        title: 'additionalWishes',
+        title: $i18n.t('forms.additionalWishes'),
         fields: [
             {
                 id: 'additionalWishes',
-                title: 'additionalWishes',
+                title: $i18n.t('forms.additionalWishes'),
                 attrs: {
                     required: false,
                     options: wishes.value.additional ?? [],
@@ -203,7 +194,7 @@ const steps = ref([
             {
                 id: 1,
                 attrs: {
-                    label: 'additionalWishes',
+                    label: $i18n.t('forms.additionalWishes'),
                     type: 'text',
                     placeholder: '',
                     maxlength: 400,
@@ -215,7 +206,7 @@ const steps = ref([
             {
                 id: 2,
                 attrs: {
-                    label: 'Pick file',
+                    label: $i18n.t('forms.uploadPhotos'),
                     storeAsFile: false,
                 },
                 controlName: 'additionalWishesAttachment',
@@ -226,7 +217,7 @@ const steps = ref([
     },
     {
         id: 5,
-        title: 'INFO',
+        title: $i18n.t('modals.booking.info'),
         fields: [
             {
                 fieldType: 'formInfo',
@@ -237,14 +228,12 @@ const steps = ref([
     },
     {
         id: 6,
-        title: 'Personal info',
+        title: $i18n.t('modals.booking.personal'),
         fields: [
             {
                 attrs: {
-                    label: 'Name',
+                    label: $i18n.t('forms.name'),
                     type: 'text',
-                    placeholder: 'Name',
-                    maxlength: '16',
                 },
                 fieldType: 'input',
                 className: 'w-full',
@@ -263,11 +252,11 @@ const steps = ref([
             // },
             {
                 attrs: {
-                    label: 'Phone number',
+                    label: $i18n.t('forms.phoneNumber'),
                     type: 'text',
                     number: true,
-                    maxlength: '15',
-                    placeholder: 'Phone number',
+                    maxlength: 19,
+                    placeholder: '+31',
                 },
                 fieldType: 'input',
                 className: 'w-full',
@@ -275,10 +264,10 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'E-mail address',
+                    label: $i18n.t('forms.email'),
                     maxlength: '50',
                     type: 'email',
-                    placeholder: 'E-mail address',
+                    placeholder: 'example@mail.com',
                 },
                 fieldType: 'input',
                 className: 'w-full',
@@ -297,7 +286,7 @@ const steps = ref([
             // },
             {
                 attrs: {
-                    label: 'registration',
+                    label: $i18n.t('forms.registration'),
                     translatable: true
                 },
                 controlName: 'registerCheckbox',
@@ -306,7 +295,7 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'password',
+                    label: $i18n.t('forms.password'),
                     type: 'password',
                     maxlength: '50',
                     placeholder: '******',
@@ -318,7 +307,7 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'confirmPassword',
+                    label: $i18n.t('forms.confirmPassword'),
                     type: 'password',
                     maxlength: '50',
                     placeholder: '******',
@@ -330,7 +319,7 @@ const steps = ref([
             },
             {
                 attrs: {
-                    label: 'agreeToTerms',
+                    label: $i18n.t('forms.agreeToTerms'),
                     translatable: true
                 },
                 controlName: 'agreeToTerms',
@@ -338,18 +327,7 @@ const steps = ref([
                 className: 'w-full'
             },
         ],
-    },
-    {
-        id: 7,
-        title: 'INFO',
-        fields: [
-            {
-                fieldType: 'formInfo',
-                className: 'w-full'
-            },
-        ],
-
-    },
+    }
 ]);
 
 watch(() => form.value.category[0], (value) => {
@@ -358,13 +336,13 @@ watch(() => form.value.category[0], (value) => {
     if (value === "one") {
         steps.value[0].fields[1].attrs.placeholder = 1
         steps.value[0].fields[1].attrs.disabled = true
-        steps.value[0].fields[1].attrs.label = 'piece'
+        steps.value[0].fields[1].attrs.label = $i18n.t('forms.piece')
     } else if (value === "pallets") {
-        steps.value[0].fields[1].attrs.name = 'pallets'
-        steps.value[0].fields[1].attrs.label = 'pallets'
+        steps.value[0].fields[1].attrs.name = $i18n.t('forms.pallets')
+        steps.value[0].fields[1].attrs.label = $i18n.t('forms.pallets')
     } else {
-        steps.value[0].fields[1].attrs.name = 'pieces'
-        steps.value[0].fields[1].attrs.label = 'pieces'
+        steps.value[0].fields[1].attrs.name = $i18n.t('forms.pieces')
+        steps.value[0].fields[1].attrs.label = $i18n.t('forms.pieces')
         steps.value[0].fields[1].attrs.placeholder = ''
         steps.value[0].fields[1].attrs.disabled = false
     }
@@ -413,7 +391,7 @@ const onClose = () => {
 }
 
 const onSubmit = () => {
-    if (steps.value.length - 1 !== bookingStore.currentStep) {
+    if (steps.value.length !== bookingStore.currentStep) {
         const name = steps.value.find(({ id }) => id === bookingStore.currentStep + 1)?.title ?? '';
         bookingStore.setCurrentStep(name, 'increment');
     } else {
@@ -433,9 +411,13 @@ const onSubmit = () => {
                 query: { action: 'booking' }
             });
         }).catch((reason) => {
-            Object.values(reason.response.data.errors).forEach(errors => {
-                errors.forEach((error) => $toast.error(error));
-            });
+            if (reason.response?.data?.errors) {
+                Object.values(reason.response.data.errors).forEach(errors => {
+                    errors.forEach((error) => $toast.error(error));
+                });
+            } else {
+                $toast.error('errors.server')
+            }
         }).finally(() => {
             bookingStore.submitting = false;
         });

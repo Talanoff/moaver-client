@@ -1,7 +1,7 @@
 <template>
     <div class="relative" v-click-outside="onClickOutside">
         <label class="block mb-2 text-sm  text-slate-900  font-bold" v-if="$attrs.label">
-            {{ $t(`forms.${$attrs.label}`) }}
+            {{ $attrs.label }}
         </label>
         <button
                 ref="button"

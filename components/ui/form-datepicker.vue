@@ -1,7 +1,7 @@
 <template>
     <div class="relative">
         <label class="block mb-2 text-sm text-slate-900 font-bold" v-if="$attrs.label">
-            {{ $t(`forms.${$attrs.label}`) }}
+            {{ $attrs.label }}
         </label>
         <VueDatePicker
                 :month-change-on-scroll="false"

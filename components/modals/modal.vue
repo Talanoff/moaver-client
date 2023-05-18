@@ -34,7 +34,7 @@
                         </button>
                     </div>
                     <h2 class="sm:text-3xl text-xl font-bold" v-if="title && showTitle">
-                        {{ $t(`forms.${title}`) }}
+                        {{ title }}
                     </h2>
                 </div>
 

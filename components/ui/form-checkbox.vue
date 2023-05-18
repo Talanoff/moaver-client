@@ -12,7 +12,7 @@
                 :for="id"
                 class="w-full ml-2 text-sm font-medium text-slate-900 cursor-pointer"
         >
-            {{ $attrs.translatable ? $t(`forms.${label}`) : label }}
+            {{ label }}
         </label>
     </div>
 </template>

@@ -2,10 +2,9 @@
     <no-ssr>
         <file-pond
                 ref="filesRef"
-                label-idle="Drop files here..."
+                :label-idle="$attrs.label ?? 'Drop files here...'"
                 :allow-multiple="true"
                 accepted-file-types="image/jpeg, image/png"
-                server="/api"
                 @processfile="handleFilePondInit"
         />
     </no-ssr>
