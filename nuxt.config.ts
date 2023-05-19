@@ -23,7 +23,6 @@ export default defineNuxtConfig({
             }
         }],
         '@pinia/nuxt',
-        'nuxt-sanctum-auth', // https://github.com/dystcz/nuxt-sanctum-auth
         'nuxt-icons', // https://nuxt.com/modules/icons+
         '@nuxtjs/google-fonts',
         '@nuxtjs/i18n',
@@ -55,20 +54,5 @@ export default defineNuxtConfig({
             ],
             title: 'Moaver',
         },
-    },
-
-    nuxtSanctumAuth: {
-        baseUrl: process.env.API_URL,
-        endpoints: {
-            csrf: '/sanctum/csrf-cookie',
-            login: '/login',
-            logout: '/logout',
-            user: '/user'
-        },
-        redirects: {
-            home: '/',
-            login: '/auth/login',
-            logout: '/'
-        }
-    },
+    }
 });

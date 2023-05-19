@@ -23,11 +23,14 @@ import BookingForm from './form.vue'
 import Modal from "~/components/modals/modal.vue";
 import { useBooking } from "~/store/booking";
 import { useConfig } from "~/store/config";
+import { useAuth } from "~/store/auth";
 import { storeToRefs } from "pinia";
+import Cookies from "js-cookie";
 
 const api = useApi();
 const router = useRouter();
 const { $toast, $i18n } = useNuxtApp();
+const authStore = useAuth();
 const bookingStore = useBooking();
 const configStore = useConfig();
 await configStore.getBookingItems();
@@ -289,7 +292,7 @@ const steps = ref([
                     label: $i18n.t('forms.registration'),
                     translatable: true
                 },
-                controlName: 'registerCheckbox',
+                controlName: 'registrationRequired',
                 fieldType: 'checkbox',
                 className: 'w-full'
             },
@@ -365,7 +368,7 @@ watch(() => form.value.category[0], (value) => {
     }
 });
 
-watch(() => form.value.registerCheckbox[0], (value) => {
+watch(() => form.value.registrationRequired[0], (value) => {
     const step = steps.value.find(it => it.id === 6);
     const [password, confirmPassword] = step.fields.filter(it => it.controlName === 'password' || it.controlName === 'confirmPassword');
 
@@ -403,7 +406,8 @@ const onSubmit = () => {
 
         formData.password_confirmation = confirmPassword;
 
-        api.post('questionnaire/order', formData).then(() => {
+        api.post('questionnaire/order', formData).then(({ data }) => {
+            authStore.assign(data);
             bookingStore.showModal = false;
             bookingStore.clearForm();
             router.push({

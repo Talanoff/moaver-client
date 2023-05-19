@@ -1,12 +1,12 @@
 <template>
-    <div class="fixed top-0 w-screen h-screen z-20">
+    <div class="fixed inset-0 z-[90]">
         <div
                 class="flex bg-slate-600  bg-opacity-50 items-center justify-center absolute inset-0"
                 @click="$emit('close')"
         />
 
-        <div class="z-[999] max-w-[800px] w-[90vw] m-auto absolute inset-x-0 top-1/2 -translate-y-1/2">
-            <div class="relative sm:p-8 p-5 bg-white rounded-3xl z-20">
+        <div class="z-[100] max-w-[50rem] w-[90vw] m-auto absolute inset-x-0 top-1/2 -translate-y-1/2">
+            <div class="relative sm:p-8 p-5 bg-white rounded-3xl z-10">
                 <button
                         type="button"
                         class="absolute -top-5 -right-5 z-10 flex justify-center items-center px-3 py-3 bg-blue-900 rounded-lg text-slate-100"

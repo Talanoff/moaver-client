@@ -37,21 +37,21 @@ export const useConfig = defineStore('config', () => {
 
     const getCountries = async (): Promise<void> => {
         mainStore.loader = true
-        const { data } = await api.get('/countries');
+        const { data } = await api.get('countries');
         countries.value = data;
         mainStore.loader = false
     }
 
     const getServices = async (): Promise<void> => {
         mainStore.loader = true
-        const { data } = await api.get('/services');
+        const { data } = await api.get('services');
         services.value = data;
         mainStore.loader = false;
     }
 
     const getVehicles = async (serviceIds: number[]): Promise<void> => {
         mainStore.loader = true
-        const { data } = await api.get('/vehicles', {
+        const { data } = await api.get('vehicles', {
             params: {
                 services: serviceIds.join(',')
             }
@@ -79,7 +79,7 @@ export const useConfig = defineStore('config', () => {
 
     const getBookingItems = async (): Promise<void> => {
         mainStore.loader = true
-        const { data } = await api.get('/booking');
+        const { data } = await api.get('booking');
         wishes.value = data.wishes;
         locationTypes.value = data.locationTypes;
         mainStore.loader = false;

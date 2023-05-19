@@ -10,7 +10,7 @@
                 <logo/>
             </div>
             <transition name="translateX">
-                <nav v-show="navOpen">
+                <nav v-if="navOpen">
                     <div class="sidemenu__wrapper flex flex-col overflow-auto justify-between h-full">
                         <ul class="sidemenu__list">
                             <li class="sidemenu__item px-5" @click="navOpen=!navOpen">
@@ -28,21 +28,7 @@
                             </li>
                         </ul>
                         <div class="sidemenu__item flex " @click="navOpen=!navOpen">
-                            <button
-                                    class="text-white text-sm w-auto px-5 py-2.5 mb-12 flex items-center"
-                                    @click="store.login = !store.login"
-                            >
-                                <div class="w-6 mr-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                                    </svg>
-                                </div>
-                                <div class="cursor-pointer text-xl">
-                                    {{ $t('navigation.header.login') }}
-                                </div>
-                            </button>
+                            <auth-dropdown/>
                         </div>
                     </div>
                 </nav>
@@ -70,14 +56,7 @@
 
             <locale-switcher class="ml-auto px-5"/>
 
-            <button class="inline-flex items-center font-semibold" @click="storeAuth.onModalToggle()">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24"
-                     stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                </svg>
-                {{ $t('navigation.header.login') }}
-            </button>
+            <auth-dropdown/>
         </nav>
     </header>
 </template>
@@ -85,9 +64,8 @@
 <script setup>
 import Logo from "~/components/layout/logo.vue";
 import LocaleSwitcher from "~/components/layout/locale-switcher.vue";
-import {useAuth} from "~/store/auth";
+import AuthDropdown from "~/components/layout/auth-dropdown.vue";
 
-const storeAuth = useAuth();
 const navOpen = ref(false)
 </script>
 

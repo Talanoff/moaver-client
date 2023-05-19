@@ -28,7 +28,7 @@
                     {{ new Date(bookingStore.form.dateFrom[0]).toLocaleDateString() }}
                 </div>
                 <div class="text-slate-600">
-                    <div>{{ bookingStore.form.selectLocationFrom[0] }}</div>
+                    <div>{{ getLocationTypeName(bookingStore.form.selectLocationFrom[0]) }}</div>
                     {{ bookingStore.form.locationFrom[0] }}
                 </div>
             </td>
@@ -40,7 +40,7 @@
                     {{ new Date(bookingStore.form.dateTo[0]).toLocaleDateString() }}
                 </div>
                 <div class="text-slate-600">
-                    <div>{{ bookingStore.form.selectLocationTo[0] }}</div>
+                    <div>{{ getLocationTypeName(bookingStore.form.selectLocationTo[0]) }}</div>
                     {{ bookingStore.form.locationTo[0] }}
                 </div>
             </td>
@@ -68,6 +68,10 @@ import { useConfig } from "~/store/config";
 import { storeToRefs } from "pinia";
 
 const bookingStore = useBooking();
-const { selectedWishes, selectedAdditionalWishes } = storeToRefs(useConfig());
+const { selectedWishes, selectedAdditionalWishes, locationTypes } = storeToRefs(useConfig());
+
+const getLocationTypeName = (key) => {
+    return locationTypes.value.find(it => it.key === key)?.value;
+}
 </script>
 

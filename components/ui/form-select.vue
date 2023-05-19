@@ -1,6 +1,6 @@
 <template>
     <div class="relative" v-click-outside="onClickOutside">
-        <label class="block mb-2 text-sm  text-slate-900  font-bold" v-if="$attrs.label">
+        <label class="block mb-2 text-sm  text-slate-900 font-bold" v-if="$attrs.label">
             {{ $attrs.label }}
         </label>
         <button
@@ -35,7 +35,7 @@
         <teleport to="body">
             <ul
                     v-if="expanded"
-                    class="fixed z-50 mt-1 max-h-56 overflow-auto rounded-md bg-white py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm border-1"
+                    class="fixed z-[100] mt-1 max-h-56 overflow-auto rounded-md bg-white py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm border-1"
                     tabindex="-1"
                     role="listbox"
                     aria-labelledby="listbox-label"

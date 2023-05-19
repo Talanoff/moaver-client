@@ -31,7 +31,6 @@
     "js-cookie": "^3.0.1",
     "maska": "^2.1.9",
     "nuxt-icons": "^3.1.0",
-    "nuxt-sanctum-auth": "^0.3.1",
     "pinia": "^2.0.33",
     "vue-filepond": "^7.0.3",
     "vue-toast-notification": "^3.1.1"

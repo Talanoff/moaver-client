@@ -17,18 +17,21 @@
 </template>
 
 <script setup>
+import { storeToRefs } from "pinia";
+import Cookies from "js-cookie";
 import ModalFooter from "~/components/modals/transporters/footer.vue";
 import RegisterForm from "~/components/modals/transporters/form.vue";
 import Modal from "~/components/modals/modal.vue";
 import { useTransporters } from "~/store/transporters";
-import { storeToRefs } from "pinia";
 import { useConfig } from "~/store/config";
+import { useAuth } from "~/store/auth";
 
 const api = useApi();
 const router = useRouter();
 const { $toast, $i18n } = useNuxtApp();
 const transporterStore = useTransporters();
 const configStore = useConfig();
+const authStore = useAuth();
 
 await configStore.getCountries();
 configStore.getServices();
@@ -298,7 +301,8 @@ const onSubmit = () => {
 
         formData.password_confirmation = confirmPassword;
 
-        api.post('questionnaire/vendor', formData).then(() => {
+        api.post('questionnaire/vendor', formData).then(({ data }) => {
+            authStore.assign(data);
             transporterStore.showModal = false;
             transporterStore.clearForm();
             router.push({

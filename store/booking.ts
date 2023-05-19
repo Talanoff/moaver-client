@@ -37,7 +37,7 @@ const formDefaults = {
     iban: [null, 'required'],
     password: [null, []],
     confirmPassword: [null, ['password']],
-    registerCheckbox: [false, []],
+    registrationRequired: [false, []],
     agreeToTerms: [false, ['required']],
 };
 
