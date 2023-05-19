@@ -1,7 +1,7 @@
 <template>
     <modal
             :title="currentStepName"
-            :show-title="steps.length !== currentStep"
+            :show-title="steps.length !== 1"
             :show-back-button="currentStep > 1"
             @back="onBack"
             @close="onClose"
@@ -310,9 +310,13 @@ const onSubmit = () => {
                 query: { action: 'register' }
             });
         }).catch((reason) => {
-            Object.values(reason.response.data.errors).forEach(errors => {
-                errors.forEach((error) => $toast.error(error));
-            });
+            if (reason.response?.data?.errors) {
+                Object.values(reason.response.data.errors).forEach(errors => {
+                    errors.forEach((error) => $toast.error(error));
+                });
+            } else {
+                $toast.error($i18n.t('errors.server'))
+            }
         }).finally(() => {
             transporterStore.submitting = false;
         });

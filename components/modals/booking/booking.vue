@@ -2,7 +2,7 @@
     <modal
             v-if="showModal"
             :title="currentStepName"
-            :show-title="steps.length !== currentStep"
+            :show-title="steps.length !== 1"
             :show-back-button="currentStep > 1"
             @close="onClose"
             @back="onBack"
@@ -25,7 +25,6 @@ import { useBooking } from "~/store/booking";
 import { useConfig } from "~/store/config";
 import { useAuth } from "~/store/auth";
 import { storeToRefs } from "pinia";
-import Cookies from "js-cookie";
 
 const api = useApi();
 const router = useRouter();
@@ -394,6 +393,12 @@ const onClose = () => {
 }
 
 const onSubmit = () => {
+    console.log({
+        s: steps.value.length,
+        ss: bookingStore.currentStep,
+        sn: bookingStore.currentStepName
+    })
+
     if (steps.value.length !== bookingStore.currentStep) {
         const name = steps.value.find(({ id }) => id === bookingStore.currentStep + 1)?.title ?? '';
         bookingStore.setCurrentStep(name, 'increment');
@@ -420,7 +425,7 @@ const onSubmit = () => {
                     errors.forEach((error) => $toast.error(error));
                 });
             } else {
-                $toast.error('errors.server')
+                $toast.error($i18n.t('errors.server'))
             }
         }).finally(() => {
             bookingStore.submitting = false;
