@@ -37,7 +37,7 @@ await configStore.getBookingItems();
 const { form, showModal, currentStepName, currentStep } = storeToRefs(bookingStore);
 const { wishes, locationTypes } = storeToRefs(configStore);
 
-const steps = ref([
+const steps = computed(() => [
     {
         id: 1,
         fields: [
@@ -393,12 +393,6 @@ const onClose = () => {
 }
 
 const onSubmit = () => {
-    console.log({
-        s: steps.value.length,
-        ss: bookingStore.currentStep,
-        sn: bookingStore.currentStepName
-    })
-
     if (steps.value.length !== bookingStore.currentStep) {
         const name = steps.value.find(({ id }) => id === bookingStore.currentStep + 1)?.title ?? '';
         bookingStore.setCurrentStep(name, 'increment');

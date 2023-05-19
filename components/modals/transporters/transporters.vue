@@ -38,7 +38,7 @@ configStore.getServices();
 
 const { form, currentStep, currentStepName } = storeToRefs(transporterStore);
 
-const steps = ref([
+const steps = computed(() => [
     {
         id: 1,
         title: $i18n.t('modals.transporter.companyInfo'),
