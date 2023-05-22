@@ -1,9 +1,10 @@
-import axios, { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from "axios";
+import axios, {AxiosError, AxiosResponse, InternalAxiosRequestConfig} from "axios";
 import Cookies from "js-cookie";
 
 export default function () {
+    const nuxtApp = useNuxtApp();
     const config = useRuntimeConfig();
-    const { locale } = useI18n();
+    const {locale} = useI18n();
 
     const api = axios.create({
         baseURL: config.public.API_URL,
@@ -38,6 +39,16 @@ export default function () {
             return Promise.reject(error);
         }
     );
+
+    // @ts-ignore
+    nuxtApp.hook('i18n:localeSwitched', ({newLocale}) => {
+        api.interceptors.request.use(
+            (config: InternalAxiosRequestConfig) => {
+                config.headers["X-Locale"] = newLocale;
+                return config;
+            }
+        );
+    });
 
     return api;
 }

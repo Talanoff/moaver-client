@@ -14,20 +14,20 @@
                 @click.prevent="onToggle"
         >
             <input
-                    class="ml-3 block truncate find-input bg-slate-100"
+                    class="ml-3 block w-full outline-none border-0 bg-slate-100"
                     :class="{
                         'placeholder:text-current': !$attrs.disabled
                     }"
                     :placeholder="currentValue"
                     :disabled="$attrs.disabled"
-                    @focusout="search = ''"
                     v-model="search"
             />
             <div class="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
                 <svg class="h-5 w-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd"
                           d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
-                          clip-rule="evenodd"/>
+                          clip-rule="evenodd"
+                    />
                 </svg>
             </div>
         </button>
@@ -43,28 +43,29 @@
             >
                 <li
                         class="text-slate-900 relative cursor-default select-none py-2 pr-9"
-                        id="listbox-option-0"
                         role="option"
-                        v-for="option in filterCounties"
+                        v-for="option of filteredItems"
+                        :key="option.key"
                 >
                     <button
                             type="button"
+                            @click.prevent="onSelect(option.key)"
+                            class="block w-full text-left truncate pl-3"
                             :value="option.key"
-                            @click.prevent="onSelect(option)"
-                            class="block w-full text-left"
                     >
-                        <span class="font-normal ml-3 block truncate">{{ option.value }}</span>
+                        {{ option.value }}
                     </button>
-                    <span
-                            v-if="modelValue === option.key"
+                    <div
+                            v-if="modelValue == option.key"
                             class="text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-4"
                     >
-                    <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd"
-                            d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                            clip-rule="evenodd"/>
-                    </svg>
-                  </span>
+                        <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                  d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                  clip-rule="evenodd"
+                            />
+                        </svg>
+                    </div>
                 </li>
             </ul>
         </teleport>
@@ -91,15 +92,16 @@ const listPosition = ref<{
     top: string;
 }>();
 const expanded = ref<boolean>(false);
-const search = ref<string | number>('');
+const search = ref<string>('');
 
 const currentValue = computed(() => {
-    return props.options?.find(({ key }) => props.modelValue === key)?.value ?? $i18n.t('forms.selectAnOption');
+    return props.options?.find(({ key }) => props.modelValue == key)?.value ?? $i18n.t('forms.selectAnOption');
 });
 
-const filterCounties = computed(() => {
-    return props.options?.filter(item => item.value.toLowerCase().indexOf(search.value.toString().toLowerCase()) !== -1)
-});
+const filteredItems = computed(() => props.options?.filter(({ value }) => {
+    const name = new RegExp(search.value.toString(), 'i');
+    return name.test(value);
+}));
 
 const onToggle = () => {
     if (!expanded.value) {
@@ -109,16 +111,13 @@ const onToggle = () => {
     expanded.value = !expanded.value
 }
 
-const onSelect = (option: {
-    key: string;
-    value: string | number;
-}) => {
-    emits('update:model-value', option.key);
-    search.value = '';
-    expanded.value = false;
+const onSelect = (value: string|number) => {
+    emits('update:model-value', value);
+    onClickOutside();
 }
 
 const onClickOutside = () => {
+    search.value = '';
     expanded.value = false;
 }
 
@@ -146,12 +145,5 @@ document.addEventListener('scroll', scrollCallback);
 
 onDeactivated(() => {
     document.removeEventListener('scroll', scrollCallback);
-})
+});
 </script>
-<style scoped>
-.find-input {
-    width: 100%;
-    border: none;
-    outline: none;
-}
-</style>

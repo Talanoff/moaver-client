@@ -23,7 +23,7 @@
                         @click="transporterStore.toggleModal()"
                         class="flex justify-center items-center p-5 lg:p-8 border-4 border-slate-200 text-2xl font-bold rounded-md group-hover:border-blue-600 group-hover:bg-slate-100 transition-colors duration-300"
                 >
-                    {{$t('partners_hero_banner.button')}}
+                    {{ $t('partners_hero_banner.button') }}
                 </div>
             </button>
         </div>
@@ -33,8 +33,20 @@
 </template>
 
 <script setup>
+const { $i18n } = useNuxtApp();
+import { useConfig } from "~/store/config";
 import Transporters from "~/components/modals/transporters/transporters.vue";
 import { useTransporters } from "~/store/transporters";
 
+const configStore = useConfig();
+
+configStore.getCountries();
+configStore.getServices();
+
 const transporterStore = useTransporters();
+
+$i18n.onLanguageSwitched = () => {
+    configStore.getCountries();
+    configStore.getServices();
+}
 </script>

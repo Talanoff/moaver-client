@@ -32,7 +32,6 @@ const { $toast, $i18n } = useNuxtApp();
 const authStore = useAuth();
 const bookingStore = useBooking();
 const configStore = useConfig();
-await configStore.getBookingItems();
 
 const { form, showModal, currentStepName, currentStep } = storeToRefs(bookingStore);
 const { wishes, locationTypes } = storeToRefs(configStore);
@@ -136,7 +135,7 @@ const steps = computed(() => [
                 attrs: {
                     label: $i18n.t('forms.dateTo'),
                     type: 'datetime-local',
-                    min: form.value.dateTo[0],
+                    min: form.value.dateTo[0] ?? new Date(),
                 },
                 fieldType: 'dateTime',
                 className: 'w-full',

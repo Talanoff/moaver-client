@@ -5,7 +5,7 @@
                 :label-idle="$attrs.label ?? 'Drop files here...'"
                 :allow-multiple="true"
                 accepted-file-types="image/jpeg, image/png"
-                @processfile="handleFilePondInit"
+                @addfile="handleUpload"
         />
     </no-ssr>
 </template>
@@ -30,9 +30,10 @@ const filesRef = ref(null);
 
 const emits = defineEmits(['update:modelValue']);
 
-const handleFilePondInit =  () => {
+const handleUpload =  () => {
     const files = filesRef.value.getFiles();
+    const value = files.map(it => it.getFileEncodeDataURL());
 
-    emits('update:modelValue', files.map(it => it.getFileEncodeDataURL()));
+    emits('update:modelValue', value);
 }
 </script>

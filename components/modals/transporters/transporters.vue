@@ -30,11 +30,7 @@ const api = useApi();
 const router = useRouter();
 const { $toast, $i18n } = useNuxtApp();
 const transporterStore = useTransporters();
-const configStore = useConfig();
 const authStore = useAuth();
-
-await configStore.getCountries();
-configStore.getServices();
 
 const { form, currentStep, currentStepName } = storeToRefs(transporterStore);
 
@@ -46,7 +42,6 @@ const steps = computed(() => [
             {
                 attrs: {
                     label: $i18n.t('forms.companyName'),
-                    type: 'text',
                 },
                 fieldType: 'input',
                 className: 'w-full',
@@ -55,9 +50,8 @@ const steps = computed(() => [
             {
                 attrs: {
                     label: $i18n.t('forms.country'),
-                    type: 'text',
                     placeholder: $i18n.t('forms.country'),
-                    disabled: true,
+                    // disabled: true,
                     options: transporterStore.countries,
                 },
                 fieldType: 'select',
@@ -67,7 +61,6 @@ const steps = computed(() => [
             {
                 attrs: {
                     label: $i18n.t('forms.location'),
-                    type: 'text',
                 },
                 fieldType: 'input',
                 className: 'sm:w-1/2 w-full',
@@ -76,7 +69,6 @@ const steps = computed(() => [
             {
                 attrs: {
                     label: $i18n.t('forms.address'),
-                    type: 'text',
                 },
                 fieldType: 'textarea',
                 className: 'w-full',
@@ -85,7 +77,6 @@ const steps = computed(() => [
             {
                 attrs: {
                     label: $i18n.t('forms.postcode'),
-                    type: 'text',
                 },
                 fieldType: 'input',
                 className: 'w-48',
@@ -177,7 +168,6 @@ const steps = computed(() => [
                 id: 1,
                 attrs: {
                     label: $i18n.t('forms.commerceNumber'),
-                    type: 'text',
                 },
                 fieldType: 'input',
                 className: 'w-full',
@@ -187,8 +177,7 @@ const steps = computed(() => [
                 id: 2,
                 attrs: {
                     label: 'IBAN',
-                    type: 'text',
-                    placeholder: 'IBAN',
+                    placeholder: 'NL91ABNA0417164300',
                     maxlength: 33,
                     class: 'uppercase'
                 },
@@ -200,9 +189,8 @@ const steps = computed(() => [
                 id: 3,
                 attrs: {
                     label: $i18n.t('forms.vat'),
-                    type: 'number',
-                    min: 0,
-                    step: 0.1
+                    placeholder: 'NL000099998B57',
+                    class: 'uppercase'
                 },
                 fieldType: 'input',
                 className: 'w-full',
@@ -218,7 +206,6 @@ const steps = computed(() => [
                 id: 0,
                 attrs: {
                     label: $i18n.t('forms.name'),
-                    type: 'text',
                 },
                 fieldType: 'input',
                 className: 'w-full',
