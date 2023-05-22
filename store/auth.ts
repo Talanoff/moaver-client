@@ -47,7 +47,7 @@ export const useAuth = defineStore("auth", () => {
         });
     }
 
-    const assign = (payload: {token: string; user: User}) => {
+    const assign = (payload: { token: string; user: User }) => {
         isLoggedIn.value = true;
         user.value = payload.user;
         Cookies.set('token', payload.token);

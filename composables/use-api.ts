@@ -1,10 +1,12 @@
 import axios, {AxiosError, AxiosResponse, InternalAxiosRequestConfig} from "axios";
 import Cookies from "js-cookie";
+import { useAuth } from "~/store/auth";
 
 export default function () {
     const nuxtApp = useNuxtApp();
     const config = useRuntimeConfig();
     const {locale} = useI18n();
+    const authStore= useAuth();
 
     const api = axios.create({
         baseURL: config.public.API_URL,
@@ -33,7 +35,9 @@ export default function () {
         (response: AxiosResponse<any, any>) => response,
         (error: AxiosError) => {
             if (error.response?.status === 401) {
-                // window.location.href = '/auth/login';
+                authStore.user = null;
+                authStore.isLoggedIn = false;
+                Cookies.remove('token');
             }
 
             return Promise.reject(error);

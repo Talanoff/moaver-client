@@ -36,300 +36,285 @@ const configStore = useConfig();
 const { form, showModal, currentStepName, currentStep } = storeToRefs(bookingStore);
 const { wishes, locationTypes } = storeToRefs(configStore);
 
-const steps = computed(() => [
-    {
-        id: 1,
-        fields: [
-            {
-                fieldType: 'categories',
-                className: 'w-full sm:grid-cols-2 grid-cols-1',
-                controlName: 'category'
-            },
-            {
-                attrs: {
-                    label: $i18n.t('forms.pieces'),
-                    type: 'text',
-                    number: true,
-                    maxlength: '4',
-                    placeholder: '1',
-                    disabled: false,
+const steps = computed(() => {
+    const steps = [
+        {
+            id: 1,
+            fields: [
+                {
+                    fieldType: 'categories',
+                    className: 'w-full sm:grid-cols-2 grid-cols-1',
+                    controlName: 'category'
                 },
-                hidden: false,
-                fieldType: 'input',
-                className: 'sm:w-1/2 w-full',
-                controlName: 'pieces'
-            },
-            {
-                attrs: {
-                    label: $i18n.t('forms.weight'),
-                    type: 'text',
-                    number: true,
-                    maxlength: '5',
-                    name: $i18n.t('forms.kg'),
+                {
+                    attrs: {
+                        label: $i18n.t('forms.pieces'),
+                        type: 'text',
+                        number: true,
+                        maxlength: '4',
+                        placeholder: '1',
+                        disabled: false,
+                    },
+                    hidden: false,
+                    fieldType: 'input',
+                    className: 'sm:w-1/2 w-full',
+                    controlName: 'pieces'
                 },
-                fieldType: 'input',
-                className: 'sm:w-1/2 w-full',
-                controlName: 'weight'
-            },
-            {
-                attrs: {
-                    required: false,
-                    label: $i18n.t('forms.variousGoods'),
-                    options: [
-                        { key: 'home', value: 'home' },
-                        { key: 'ofice', value: 'ofice' },
-                        { key: 'test', value: 'test' },
-                    ],
+                {
+                    attrs: {
+                        label: $i18n.t('forms.weight'),
+                        type: 'text',
+                        number: true,
+                        maxlength: '5',
+                        name: $i18n.t('forms.kg'),
+                    },
+                    fieldType: 'input',
+                    className: 'sm:w-1/2 w-full',
+                    controlName: 'weight'
                 },
-                hidden: false,
-                fieldType: 'select',
-                controlName: 'goods',
-                className: 'w-full'
-            },
-            {
-                attrs: {
-                    label: $i18n.t('forms.message'),
-                    type: 'text',
-                    placeholder: '',
-                    maxlength: '400',
+                {
+                    attrs: {
+                        required: false,
+                        label: $i18n.t('forms.variousGoods'),
+                        options: [
+                            { key: 'home', value: 'home' },
+                            { key: 'ofice', value: 'ofice' },
+                            { key: 'test', value: 'test' },
+                        ],
+                    },
+                    hidden: false,
+                    fieldType: 'select',
+                    controlName: 'goods',
+                    className: 'w-full'
                 },
-                fieldType: 'textarea',
-                className: 'w-full',
-                controlName: 'message',
-            },
-        ]
-    },
-    {
-        id: 2,
-        title: $i18n.t('modals.booking.collectionDate'),
-        fields: [
-            {
-                attrs: {
-                    label: $i18n.t('forms.dateFrom'),
-                    type: 'datetime-local',
-                    min: new Date(),
+                {
+                    attrs: {
+                        label: $i18n.t('forms.message'),
+                        type: 'text',
+                        placeholder: '',
+                        maxlength: '400',
+                    },
+                    fieldType: 'textarea',
+                    className: 'w-full',
+                    controlName: 'message',
                 },
-                fieldType: 'dateTime',
-                className: 'w-full ',
-                controlName: 'dateFrom'
-            },
-            {
-                attrs: {
-                    label: $i18n.t('forms.locationFrom'),
-                    rows: 2
+            ]
+        },
+        {
+            id: 2,
+            title: $i18n.t('modals.booking.collectionDate'),
+            fields: [
+                {
+                    attrs: {
+                        label: $i18n.t('forms.dateFrom'),
+                        type: 'datetime-local',
+                        min: new Date(),
+                    },
+                    fieldType: 'dateTime',
+                    className: 'w-full ',
+                    controlName: 'dateFrom'
                 },
-                fieldType: 'textarea',
-                className: 'w-full',
-                controlName: 'locationFrom'
-            },
-            {
-                attrs: {
-                    label: $i18n.t('forms.locationType'),
-                    options: locationTypes.value,
+                {
+                    attrs: {
+                        label: $i18n.t('forms.locationFrom'),
+                        rows: 2
+                    },
+                    fieldType: 'textarea',
+                    className: 'w-full',
+                    controlName: 'locationFrom'
                 },
-                fieldType: 'select',
-                className: 'w-full',
-                controlName: 'selectLocationFrom'
-            },
-            {
-                attrs: {
-                    label: $i18n.t('forms.dateTo'),
-                    type: 'datetime-local',
-                    min: form.value.dateTo[0] ?? new Date(),
+                {
+                    attrs: {
+                        label: $i18n.t('forms.locationType'),
+                        options: locationTypes.value,
+                    },
+                    fieldType: 'select',
+                    className: 'w-full',
+                    controlName: 'selectLocationFrom'
                 },
-                fieldType: 'dateTime',
-                className: 'w-full',
-                controlName: 'dateTo'
-            },
-            {
-                attrs: {
-                    label: $i18n.t('forms.locationTo'),
-                    rows: 2
+                {
+                    attrs: {
+                        label: $i18n.t('forms.dateTo'),
+                        type: 'datetime-local',
+                        min: form.value.dateTo[0] ?? new Date(),
+                    },
+                    fieldType: 'dateTime',
+                    className: 'w-full',
+                    controlName: 'dateTo'
                 },
-                fieldType: 'textarea',
-                className: 'w-full',
-                controlName: 'locationTo'
-            },
-            {
-                attrs: {
-                    label: $i18n.t('forms.locationType'),
-                    options: locationTypes.value,
+                {
+                    attrs: {
+                        label: $i18n.t('forms.locationTo'),
+                        rows: 2
+                    },
+                    fieldType: 'textarea',
+                    className: 'w-full',
+                    controlName: 'locationTo'
                 },
-                fieldType: 'select',
-                className: 'w-full',
-                controlName: 'selectLocationTo'
-            },
-        ]
-    },
-    {
-        id: 3,
-        title: $i18n.t('modals.booking.wishes'),
-        fields: [
-            {
-                attrs: {
-                    required: false,
-                    wishes: true,
-                    options: wishes.value.common ?? [],
+                {
+                    attrs: {
+                        label: $i18n.t('forms.locationType'),
+                        options: locationTypes.value,
+                    },
+                    fieldType: 'select',
+                    className: 'w-full',
+                    controlName: 'selectLocationTo'
                 },
-                controlName: 'wishes',
-                fieldType: 'checkBoxGroup',
-                className: 'w-full'
-            },
-        ]
-    },
-    {
-        id: 4,
-        title: $i18n.t('forms.additionalWishes'),
-        fields: [
-            {
-                id: 'additionalWishes',
-                title: $i18n.t('forms.additionalWishes'),
-                attrs: {
-                    required: false,
-                    options: wishes.value.additional ?? [],
+            ]
+        },
+        {
+            id: 3,
+            title: $i18n.t('modals.booking.wishes'),
+            fields: [
+                {
+                    attrs: {
+                        required: false,
+                        wishes: true,
+                        options: wishes.value.common ?? [],
+                    },
+                    controlName: 'wishes',
+                    fieldType: 'checkBoxGroup',
+                    className: 'w-full'
                 },
-                controlName: 'additionalWishes',
-                fieldType: 'checkBoxGroup',
-                className: 'w-full'
-            },
-            {
-                id: 1,
-                attrs: {
-                    label: $i18n.t('forms.additionalWishes'),
-                    type: 'text',
-                    placeholder: '',
-                    maxlength: 400,
+            ]
+        },
+        {
+            id: 4,
+            title: $i18n.t('forms.additionalWishes'),
+            fields: [
+                {
+                    id: 'additionalWishes',
+                    title: $i18n.t('forms.additionalWishes'),
+                    attrs: {
+                        required: false,
+                        options: wishes.value.additional ?? [],
+                    },
+                    controlName: 'additionalWishes',
+                    fieldType: 'checkBoxGroup',
+                    className: 'w-full'
                 },
-                controlName: 'additionalWishesNotes',
-                fieldType: 'textarea',
-                className: 'w-full'
-            },
-            {
-                id: 2,
-                attrs: {
-                    label: $i18n.t('forms.uploadPhotos'),
-                    storeAsFile: false,
+                {
+                    id: 1,
+                    attrs: {
+                        label: $i18n.t('forms.additionalWishes'),
+                        type: 'text',
+                        placeholder: '',
+                        maxlength: 400,
+                    },
+                    controlName: 'additionalWishesNotes',
+                    fieldType: 'textarea',
+                    className: 'w-full'
                 },
-                controlName: 'additionalWishesAttachment',
-                fieldType: 'file',
-                className: 'w-full'
-            },
-        ]
-    },
-    {
-        id: 5,
-        title: $i18n.t('modals.booking.info'),
-        fields: [
-            {
-                fieldType: 'formInfo',
-                controlName: 'info',
-                className: 'w-full'
-            },
-        ],
-    },
-    {
-        id: 6,
-        title: $i18n.t('modals.booking.personal'),
-        fields: [
-            {
-                attrs: {
-                    label: $i18n.t('forms.name'),
-                    type: 'text',
+                {
+                    id: 2,
+                    attrs: {
+                        label: $i18n.t('forms.uploadPhotos'),
+                        storeAsFile: false,
+                    },
+                    controlName: 'additionalWishesAttachment',
+                    fieldType: 'file',
+                    className: 'w-full'
                 },
-                fieldType: 'input',
-                className: 'w-full',
-                controlName: 'name'
-            },
-            // {
-            //     attrs: {
-            //         label: 'Address',
-            //         type: 'text',
-            //         maxlength: 100,
-            //         placeholder: 'Address',
-            //     },
-            //     fieldType: 'input',
-            //     className: 'w-full',
-            //     controlName: 'address'
-            // },
-            {
-                attrs: {
-                    label: $i18n.t('forms.phoneNumber'),
-                    type: 'text',
-                    number: true,
-                    maxlength: 19,
-                    placeholder: '+31',
+            ]
+        },
+        {
+            id: 5,
+            title: $i18n.t('modals.booking.info'),
+            fields: [
+                {
+                    fieldType: 'formInfo',
+                    controlName: 'info',
+                    className: 'w-full'
                 },
-                fieldType: 'input',
-                className: 'w-full',
-                controlName: 'phone'
-            },
-            {
-                attrs: {
-                    label: $i18n.t('forms.email'),
-                    maxlength: '50',
-                    type: 'email',
-                    placeholder: 'example@mail.com',
+            ],
+        },
+    ];
+
+    if (!authStore.isLoggedIn) {
+        steps.push({
+            id: 6,
+            title: $i18n.t('modals.booking.personal'),
+            fields: [
+                {
+                    attrs: {
+                        label: $i18n.t('forms.name'),
+                        type: 'text',
+                    },
+                    fieldType: 'input',
+                    className: 'w-full',
+                    controlName: 'name'
                 },
-                fieldType: 'input',
-                className: 'w-full',
-                controlName: 'email'
-            },
-            // {
-            //     attrs: {
-            //         label: 'IBAN',
-            //         type: 'text',
-            //         maxlength: '34',
-            //         placeholder: 'IBAN',
-            //     },
-            //     fieldType: 'input',
-            //     className: 'w-full',
-            //     controlName: 'iban'
-            // },
-            {
-                attrs: {
-                    label: $i18n.t('forms.registration'),
-                    translatable: true
+                {
+                    attrs: {
+                        label: $i18n.t('forms.phoneNumber'),
+                        type: 'text',
+                        number: true,
+                        maxlength: 19,
+                        placeholder: '+31',
+                    },
+                    fieldType: 'input',
+                    className: 'w-full',
+                    controlName: 'phone'
                 },
-                controlName: 'registrationRequired',
-                fieldType: 'checkbox',
-                className: 'w-full'
-            },
-            {
-                attrs: {
-                    label: $i18n.t('forms.password'),
-                    type: 'password',
-                    maxlength: '50',
-                    placeholder: '******',
+                {
+                    attrs: {
+                        label: $i18n.t('forms.email'),
+                        maxlength: '50',
+                        type: 'email',
+                        placeholder: 'example@mail.com',
+                    },
+                    fieldType: 'input',
+                    className: 'w-full',
+                    controlName: 'email'
                 },
-                hidden: true,
-                fieldType: 'input',
-                className: 'w-full',
-                controlName: 'password'
-            },
-            {
-                attrs: {
-                    label: $i18n.t('forms.confirmPassword'),
-                    type: 'password',
-                    maxlength: '50',
-                    placeholder: '******',
+                {
+                    attrs: {
+                        label: $i18n.t('forms.registration'),
+                        translatable: true
+                    },
+                    controlName: 'registrationRequired',
+                    fieldType: 'checkbox',
+                    className: 'w-full'
                 },
-                hidden: true,
-                fieldType: 'input',
-                className: 'w-full',
-                controlName: 'confirmPassword'
-            },
-            {
-                attrs: {
-                    label: $i18n.t('forms.agreeToTerms'),
-                    translatable: true
+                {
+                    attrs: {
+                        label: $i18n.t('forms.password'),
+                        type: 'password',
+                        maxlength: '50',
+                        placeholder: '******',
+                    },
+                    hidden: true,
+                    fieldType: 'input',
+                    className: 'w-full',
+                    controlName: 'password'
                 },
-                controlName: 'agreeToTerms',
-                fieldType: 'checkbox',
-                className: 'w-full'
-            },
-        ],
+                {
+                    attrs: {
+                        label: $i18n.t('forms.confirmPassword'),
+                        type: 'password',
+                        maxlength: '50',
+                        placeholder: '******',
+                    },
+                    hidden: true,
+                    fieldType: 'input',
+                    className: 'w-full',
+                    controlName: 'confirmPassword'
+                },
+                {
+                    attrs: {
+                        label: $i18n.t('forms.agreeToTerms'),
+                        translatable: true
+                    },
+                    controlName: 'agreeToTerms',
+                    fieldType: 'checkbox',
+                    className: 'w-full'
+                },
+            ],
+        });
     }
-]);
+
+    return steps;
+});
 
 watch(() => form.value.category[0], (value) => {
     steps.value[0].fields[3].hidden = value !== "various"
