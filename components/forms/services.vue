@@ -3,13 +3,13 @@
         <div
             v-for="(option) in configStore.services"
             class="rounded-lg border border-slate-100 p-3.5"
-            :key="option.id">
+            :key="option.key">
             <form-checkbox
-                :id="`service-${option.id}`"
-                :label="option.name"
-                :value="option.id"
-                :model-value="modelValue.includes(option.id)"
-                @change="setCheckbox($event, option.id)"
+                :id="`service-${option.key}`"
+                :label="option.value"
+                :value="option.key"
+                :model-value="modelValue.includes(option.key)"
+                @change="setCheckbox($event, option.key)"
             />
         </div>
     </div>

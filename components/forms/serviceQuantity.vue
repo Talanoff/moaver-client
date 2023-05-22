@@ -1,24 +1,24 @@
 <template>
     <div class="space-y-5">
-        <div v-for="service in displayedServices" :key="service.id">
+        <div v-for="service in displayedServices" :key="service.key">
             <h2 class="text-md font-bold mb-2">
-                {{ service.name }}:
+                {{ service.value }}:
             </h2>
 
             <div class="space-y-2">
                 <div
                         class="flex border border-slate-100 rounded-md"
-                        v-for="vehicle in vehicles[service.id]"
-                        :key="vehicle.id"
+                        v-for="vehicle in vehicles[service.key]"
+                        :key="vehicle.key"
                 >
                     <div class="w-auto flex-1 rounded-l-md text-sm px-2 bg-slate-100 flex flex-col justify-center">
-                        {{ vehicle.name }}
+                        {{ vehicle.value }}
                     </div>
                     <div class="w-20">
                         <form-input
                                 class="rounded-l-none bg-white border-none font-semibold"
                                 v-bind="inputAttrs"
-                                v-model="transportersStore.form.vehicles[0][service.id][vehicle.id]['value']"
+                                v-model="transportersStore.form.vehicles[0][service.key][vehicle.key]['value']"
                         />
                     </div>
                 </div>
@@ -48,6 +48,6 @@ const { services, vehicles } = storeToRefs(configStore);
 configStore.getVehicles(form.value.services[0]);
 
 const displayedServices = ref(
-    services.value.filter(it => form.value.services[0].includes(it.id))
+    services.value.filter(it => form.value.services[0].includes(it.key))
 );
 </script>

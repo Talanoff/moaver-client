@@ -1,19 +1,14 @@
 import { defineStore } from "pinia";
-// @ts-ignore
 import useApi from "~/composables/use-api";
-// @ts-ignore
 import { useMain } from "~/store/main";
-// @ts-ignore
 import { useTransporters } from "~/store/transporters";
-// @ts-ignore
 import { useBooking } from "~/store/booking";
-// @ts-ignore
-import { KeyValue } from "~/types/forms";
 import { computed, ref } from "@vue/reactivity";
+import { KeyValue } from "~/types/forms";
 
 interface ServiceInterface {
-    id: number;
-    name: string;
+    key: number;
+    value: string;
 }
 
 export const useConfig = defineStore('config', () => {
@@ -58,17 +53,17 @@ export const useConfig = defineStore('config', () => {
         });
         vehicles.value = data;
 
-        const selectedServices = services.value.filter((it: ServiceInterface) => transportersStore.form.services[0].includes(it.id))
+        const selectedServices = services.value.filter((it: ServiceInterface) => transportersStore.form.services[0].includes(it.key))
 
         selectedServices.forEach((service: ServiceInterface) => {
-            const control = transportersStore.form.vehicles[0][service.id];
+            const control = transportersStore.form.vehicles[0][service.key];
 
-            transportersStore.form.vehicles[0][service.id] = data[service.id]?.reduce(
+            transportersStore.form.vehicles[0][service.key] = data[service.key]?.reduce(
                 (vacc: any, v: any) => ({
                     ...vacc,
-                    [v.id]: {
-                        key: v.id,
-                        value: control ? control[v.id]['value'] : null
+                    [v.key]: {
+                        key: v.key,
+                        value: control ? control[v.key]['value'] : null
                     }
                 }),
                 {}
@@ -87,14 +82,14 @@ export const useConfig = defineStore('config', () => {
 
     const selectedWishes = computed(() => {
         return wishes.value.common
-            .filter((it: ServiceInterface) => bookingStore.form.wishes[0].includes(it.id))
-            .map(({name}: ServiceInterface) => name);
+            .filter((it: ServiceInterface) => bookingStore.form.wishes[0].includes(it.key))
+            .map(({value}: ServiceInterface) => value);
     });
 
     const selectedAdditionalWishes = computed(() => {
         return wishes.value.additional
-            .filter((it: ServiceInterface) => bookingStore.form.additionalWishes[0].includes(it.id))
-            .map(({name}: ServiceInterface) => name);
+            .filter((it: ServiceInterface) => bookingStore.form.additionalWishes[0].includes(it.key))
+            .map(({value}: ServiceInterface) => value);
     });
 
     return {

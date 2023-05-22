@@ -1,6 +1,6 @@
 <template>
     <div class=" flex flex-wrap sm:items-end items-center sm:flex-row flex-col w-full gap-5">
-        <div v-for="(item,idx) in items" :key="item.id" class="w-full flex items-center gap-5">
+        <div v-for="(item,idx) in items" :key="item.key" class="w-full flex items-center gap-5">
             <form-select
                     v-model="item.country"
                     :id="`country-${item.country}`"
@@ -46,7 +46,7 @@ const items = ref([{
     location: '',
 }]);
 const options = ref(
-    configStore.countries.map(({ id, name }) => ({ key: id, value: name }))
+    configStore.countries
 );
 const onRemove = (idx) => {
     items.value.splice(idx, 1)

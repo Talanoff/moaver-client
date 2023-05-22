@@ -3,15 +3,15 @@
         <div
             class="rounded-lg border border-slate-100 p-3.5"
             v-for="option in $attrs.options"
-            :key="option.id"
+            :key="option.key"
         >
             <form-checkbox
-                :id="`id-${option.id}`"
-                :label="option.name"
-                :value="option.id"
+                :id="`id-${option.key}`"
+                :label="option.value"
+                :value="option.key"
                 :wishes="$attrs.wishes"
-                :checked="modelValue.includes(option.id)"
-                @change="setCheckbox($event, option.id)"
+                :checked="modelValue.includes(option.key)"
+                @change="setCheckbox($event, option.key)"
             />
         </div>
     </div>

@@ -1,7 +1,5 @@
 import { defineStore } from "pinia";
-// @ts-ignore
 import { useConfig } from "~/store/config";
-// @ts-ignore
 import { KeyValue } from "~/types/forms";
 
 type CurrentState = {
@@ -46,14 +44,7 @@ export const useTransporters = defineStore("transporters", {
     getters: {
         countries(): KeyValue[] {
             const config = useConfig();
-
-            return config.countries.map((it: {
-                id: number;
-                name: string;
-            }): KeyValue => ({
-                key: it.id,
-                value: it.name
-            }));
+            return config.countries;
         },
 
         nextStepAvailable(): boolean {
