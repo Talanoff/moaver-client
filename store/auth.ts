@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import Cookies from "js-cookie";
+import {tokens} from "maska";
 
 interface User {
     id: string;
@@ -48,9 +49,11 @@ export const useAuth = defineStore("auth", () => {
     }
 
     const assign = (payload: { token: string; user: User }) => {
-        isLoggedIn.value = true;
-        user.value = payload.user;
-        Cookies.set('token', payload.token);
+        if (payload.token) {
+            isLoggedIn.value = true;
+            user.value = payload.user;
+            Cookies.set('token', payload.token);
+        }
     }
 
     return {
