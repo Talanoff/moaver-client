@@ -1,4 +1,5 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
+const colors = require("tailwindcss/colors")
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -7,19 +8,28 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
+                sans: ['Poppins', ...defaultTheme.fontFamily.sans],
             },
 
             colors: {
+                emerald: {
+                    ...colors.emerald,
+                    400: '#32EE9E'
+                },
+                slate: {
+                    ...colors.slate,
+                    200: '#EDF0F5',
+                    900:'#14121E'
+                },
                 gray: {
-                    ...defaultTheme.colors.gray,
-                    500: '#9c9fa9',
+                    ...colors.gray,
+                    500: '#9694A2',
                 },
                 blue: {
-                    ...defaultTheme.colors.blue,
-                    500: '#3875ff',
+                    ...colors.blue,
+                    500: '#2266FB',
                     600: '#1a60ff',
-                    950: '#0B122D'
+                    950: '#04246B'
                 }
             },
 

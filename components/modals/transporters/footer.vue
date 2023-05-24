@@ -5,7 +5,7 @@
                 {{ $t('forms.step', [currentStep, totalSteps]) }}
             </h2>
             <div class="w-full bg-slate-200 rounded-full h-2.5">
-                <div :style="{width}" class="bg-blue-600 h-2.5 rounded-full"/>
+                <div :style="{width}" class="bg-blue-800 h-2.5 rounded-full"/>
             </div>
         </div>
         <x-button :disabled="!transporterStore.nextStepAvailable" theme="primary">

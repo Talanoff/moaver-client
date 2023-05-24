@@ -1,3 +1,3 @@
 <template>
-    <div>MOAVER</div>
+    <img src="/images/logo.svg" alt="MOAVER">
 </template>

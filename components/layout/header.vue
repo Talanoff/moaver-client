@@ -6,9 +6,11 @@
                 <span class="mid"></span>
                 <span class="bottom"></span>
             </button>
+
             <div class="text-2xl font-black text-blue-600">
                 <logo/>
             </div>
+
             <transition name="translateX">
                 <nav v-if="navOpen">
                     <div class="sidemenu__wrapper flex flex-col overflow-auto justify-between h-full">
@@ -36,10 +38,10 @@
         </div>
 
         <nav class="hidden sm:flex justify-between items-center">
-            <ul class="flex items-end font-semibold">
+            <ul class="flex items-center font-semibold">
                 <li class="mr-16">
-                    <nuxt-link to="/" class="text-3xl font-black text-blue-600">
-                        <logo/>
+                    <nuxt-link to="/">
+                        <logo class="h-10"/>
                     </nuxt-link>
                 </li>
                 <li class=" hover" :class="{'activeHover': $route.path === '/'}">

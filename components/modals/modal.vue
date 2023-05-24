@@ -1,7 +1,7 @@
 <template>
     <div class="fixed inset-0 z-[90]">
         <div
-                class="flex bg-slate-600  bg-opacity-50 items-center justify-center absolute inset-0"
+                class="flex bg-slate-600 bg-opacity-50 items-center justify-center absolute inset-0"
                 @click="$emit('close')"
         />
 
@@ -9,7 +9,7 @@
             <div class="relative sm:p-8 p-5 bg-white rounded-3xl z-10">
                 <button
                         type="button"
-                        class="absolute -top-5 -right-5 z-10 flex justify-center items-center px-3 py-3 bg-blue-900 rounded-lg text-slate-100"
+                        class="absolute -top-5 -right-5 z-10 flex justify-center items-center p-3 bg-slate-900 rounded-lg text-slate-100"
                         @click="$emit('close')"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
