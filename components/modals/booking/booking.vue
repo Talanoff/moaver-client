@@ -34,7 +34,7 @@ const bookingStore = useBooking();
 const configStore = useConfig();
 
 const { form, showModal, currentStepName, currentStep } = storeToRefs(bookingStore);
-const { wishes, locationTypes } = storeToRefs(configStore);
+const { wishes, locationTypes, goodsTypes } = storeToRefs(configStore);
 
 const steps = computed(() => {
     const steps = [
@@ -76,11 +76,7 @@ const steps = computed(() => {
                     attrs: {
                         required: false,
                         label: $i18n.t('forms.variousGoods'),
-                        options: [
-                            { key: 'home', value: 'home' },
-                            { key: 'ofice', value: 'ofice' },
-                            { key: 'test', value: 'test' },
-                        ],
+                        options: goodsTypes.value,
                     },
                     hidden: false,
                     fieldType: 'select',

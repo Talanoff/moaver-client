@@ -6,25 +6,21 @@ import { useBooking } from "~/store/booking";
 import { computed, ref } from "@vue/reactivity";
 import { KeyValue } from "~/types/forms";
 
-interface ServiceInterface {
-    key: number;
-    value: string;
-}
-
 export const useConfig = defineStore('config', () => {
     const api = useApi();
 
-    const countries = ref([]);
-    const services = ref<ServiceInterface[]>([]);
-    const vehicles = ref([]);
+    const countries = ref<KeyValue[]>([]);
+    const services = ref<KeyValue[]>([]);
+    const vehicles = ref<KeyValue[]>([]);
     const wishes = ref<{
-        additional: ServiceInterface[];
-        common: ServiceInterface[]
+        additional: KeyValue[];
+        common: KeyValue[]
     }>({
         additional: [],
         common: []
     });
     const locationTypes = ref<KeyValue[]>([]);
+    const goodsTypes = ref<KeyValue[]>([]);
 
     const mainStore = useMain();
     const transportersStore = useTransporters();
@@ -53,9 +49,9 @@ export const useConfig = defineStore('config', () => {
         });
         vehicles.value = data;
 
-        const selectedServices = services.value.filter((it: ServiceInterface) => transportersStore.form.services[0].includes(it.key))
+        const selectedServices = services.value.filter((it: KeyValue) => transportersStore.form.services[0].includes(it.key))
 
-        selectedServices.forEach((service: ServiceInterface) => {
+        selectedServices.forEach((service: KeyValue) => {
             const control = transportersStore.form.vehicles[0][service.key];
 
             transportersStore.form.vehicles[0][service.key] = data[service.key]?.reduce(
@@ -77,19 +73,20 @@ export const useConfig = defineStore('config', () => {
         const { data } = await api.get('booking');
         wishes.value = data.wishes;
         locationTypes.value = data.locationTypes;
+        goodsTypes.value = data.goodsTypes;
         mainStore.loader = false;
     }
 
     const selectedWishes = computed(() => {
         return wishes.value.common
-            .filter((it: ServiceInterface) => bookingStore.form.wishes[0].includes(it.key))
-            .map(({value}: ServiceInterface) => value);
+            .filter((it: KeyValue) => bookingStore.form.wishes[0].includes(it.key))
+            .map(({value}: KeyValue) => value);
     });
 
     const selectedAdditionalWishes = computed(() => {
         return wishes.value.additional
-            .filter((it: ServiceInterface) => bookingStore.form.additionalWishes[0].includes(it.key))
-            .map(({value}: ServiceInterface) => value);
+            .filter((it: KeyValue) => bookingStore.form.additionalWishes[0].includes(it.key))
+            .map(({value}: KeyValue) => value);
     });
 
     return {
@@ -98,6 +95,7 @@ export const useConfig = defineStore('config', () => {
         vehicles,
         wishes,
         locationTypes,
+        goodsTypes,
 
         getCountries,
         getServices,
