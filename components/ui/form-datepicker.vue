@@ -5,11 +5,11 @@
         </label>
         <VueDatePicker
                 :month-change-on-scroll="false"
-                :enable-time-picker="false"
+                :enable-time-picker="$attrs.withTime ?? false"
                 :close-on-auto-apply="true"
                 auto-apply
                 position="left"
-                model-type="yyyy-MM-dd"
+                :model-type="$attrs.format ?? 'yyyy-MM-dd'"
                 v-bind="$attrs"
                 v-model="date"
                 :min-date="$attrs.min"

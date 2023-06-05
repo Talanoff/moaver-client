@@ -59,6 +59,7 @@
     "deliver": "Deliver",
     "kg": "Kg",
     "variousGoods": "What exactly do you want to send",
+    "bulk": "Bulk",
     "message": "Message",
     "dateFrom": "Date From",
     "locationFrom": "Location From",
@@ -86,6 +87,9 @@
     "quantity": "quantity",
     "addLocation": "Add more",
     "extras": "Extras",
+    "recurringShipping": "Recurring shipping",
+    "recurringShippingType": "Recurring interval",
+    "recurringShippingInterval": "Custom recurring interval",
     "amountWeight": {
       "title": "Amount and weight",
       "one": "One package with {weight} kg",

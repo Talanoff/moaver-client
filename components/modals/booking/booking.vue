@@ -34,7 +34,7 @@ const bookingStore = useBooking();
 const configStore = useConfig();
 
 const { form, showModal, currentStepName, currentStep } = storeToRefs(bookingStore);
-const { wishes, locationTypes, goodsTypes } = storeToRefs(configStore);
+const { wishes, locationTypes, goodsTypes, recurringShippingTypes } = storeToRefs(configStore);
 
 const steps = computed(() => {
     const steps = [
@@ -85,6 +85,16 @@ const steps = computed(() => {
                 },
                 {
                     attrs: {
+                        label: $i18n.t('forms.bulk'),
+                        type: 'text',
+                    },
+                    hidden: true,
+                    fieldType: 'textarea',
+                    className: 'w-full',
+                    controlName: 'bulk'
+                },
+                {
+                    attrs: {
                         label: $i18n.t('forms.message'),
                         type: 'text',
                         placeholder: '',
@@ -105,6 +115,8 @@ const steps = computed(() => {
                         label: $i18n.t('forms.dateFrom'),
                         type: 'datetime-local',
                         min: new Date(),
+                        format: 'yyyy-MM-dd hh:mm',
+                        withTime: true
                     },
                     fieldType: 'dateTime',
                     className: 'w-full ',
@@ -133,6 +145,8 @@ const steps = computed(() => {
                         label: $i18n.t('forms.dateTo'),
                         type: 'datetime-local',
                         min: form.value.dateTo[0] ?? new Date(),
+                        format: 'yyyy-MM-dd hh:mm',
+                        withTime: true
                     },
                     fieldType: 'dateTime',
                     className: 'w-full',
@@ -156,6 +170,33 @@ const steps = computed(() => {
                     className: 'w-full',
                     controlName: 'selectLocationTo'
                 },
+                {
+                    attrs: {
+                        label: $i18n.t('forms.recurringShipping'),
+                    },
+                    fieldType: 'checkbox',
+                    className: 'w-full sm:w-1/2',
+                    controlName: 'recurringShipping'
+                },
+                {
+                    attrs: {
+                        label: $i18n.t('forms.recurringShippingType'),
+                        options: recurringShippingTypes.value
+                    },
+                    hidden: true,
+                    fieldType: 'select',
+                    className: 'w-full sm:w-1/2',
+                    controlName: 'recurringShippingType'
+                },
+                {
+                    attrs: {
+                        label: $i18n.t('forms.recurringShippingInterval'),
+                    },
+                    hidden: true,
+                    fieldType: 'textarea',
+                    className: 'w-full',
+                    controlName: 'recurringShippingCustom'
+                }
             ]
         },
         {
@@ -365,7 +406,37 @@ watch(() => form.value.registrationRequired[0], (value) => {
     }
 });
 
-watch(() => form.value.dateFrom[0], (value) => steps.value[1].fields[3].attrs.min = value);
+watch(() => form.value, (value) => {
+    const conditionInterval = value.recurringShippingType[0] === 6;
+    const conditionBulk = value.goods[0] === 11;
+
+    const intervalSelectControl = steps.value[1].fields.find(it => it.controlName === 'recurringShippingType');
+    const intervalInputControl = steps.value[1].fields.find(it => it.controlName === 'recurringShippingCustom');
+    const bulkControl = steps.value[0].fields.find(it => it.controlName === 'bulk');
+    const dateToControl = steps.value[1].fields.find(it => it.controlName === 'dateTo');
+
+    if (intervalSelectControl) {
+        intervalSelectControl.hidden = !value.recurringShipping[0];
+        intervalSelectControl.attrs.required = value.recurringShipping[0];
+        form.value.recurringShippingType[1] = value.recurringShipping[0] ? ['required'] : [];
+    }
+
+    if (intervalInputControl) {
+        intervalInputControl.hidden = !conditionInterval;
+        intervalInputControl.attrs.required = conditionInterval;
+        form.value.recurringShippingType[1] = conditionInterval ? ['required'] : [];
+    }
+
+    if (bulkControl) {
+        bulkControl.hidden = !conditionBulk;
+        bulkControl.attrs.required = conditionBulk;
+        form.value.bulk[1] = conditionBulk ? ['required'] : [];
+    }
+
+    if (dateToControl) {
+        dateToControl.attrs.min = value.dateFrom[0];
+    }
+}, { deep: true });
 
 const onClose = () => {
     bookingStore.toggleModal(false);

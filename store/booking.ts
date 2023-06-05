@@ -16,6 +16,7 @@ type CurrentState = {
 const formDefaults = {
     category: [null, ['required']],
     goods: [null, []],
+    bulk: [null, []],
     pieces: [1, ['required']],
     weight: [null, ['required']],
     message: [null, []],
@@ -39,6 +40,9 @@ const formDefaults = {
     confirmPassword: [null, ['password']],
     registrationRequired: [false, []],
     agreeToTerms: [false, ['required']],
+    recurringShipping: [false, []],
+    recurringShippingType: [null, []],
+    recurringShippingCustom: [null, []],
 };
 
 export const useBooking = defineStore("booking", {
@@ -76,6 +80,7 @@ export const useBooking = defineStore("booking", {
             const {
                 category,
                 goods,
+                bulk,
                 pieces,
                 weight,
                 message,
@@ -90,10 +95,11 @@ export const useBooking = defineStore("booking", {
                 additionalWishesNotes,
                 additionalWishesAttachment,
                 name,
-                // address,
+                recurringShipping,
+                recurringShippingType,
+                recurringShippingCustom,
                 phone,
                 email,
-                // iban,
                 password,
                 confirmPassword,
                 agreeToTerms
@@ -106,7 +112,8 @@ export const useBooking = defineStore("booking", {
                         goods,
                         pieces,
                         weight,
-                        message
+                        message,
+                        bulk
                     ]
                         .filter((it: any[]) => it[1].includes('required'))
                         .every((it) => it[0] !== null);
@@ -118,6 +125,9 @@ export const useBooking = defineStore("booking", {
                         dateTo,
                         locationTo,
                         selectLocationTo,
+                        recurringShipping,
+                        recurringShippingType,
+                        recurringShippingCustom,
                     ]
                         .filter((it: any[]) => it[1].includes('required'))
                         .every((it) => it[0] !== null);

@@ -21,6 +21,7 @@ export const useConfig = defineStore('config', () => {
     });
     const locationTypes = ref<KeyValue[]>([]);
     const goodsTypes = ref<KeyValue[]>([]);
+    const recurringShippingTypes = ref<KeyValue[]>([]);
 
     const mainStore = useMain();
     const transportersStore = useTransporters();
@@ -74,6 +75,7 @@ export const useConfig = defineStore('config', () => {
         wishes.value = data.wishes;
         locationTypes.value = data.locationTypes;
         goodsTypes.value = data.goodsTypes;
+        recurringShippingTypes.value = data.recurringShipping;
         mainStore.loader = false;
     }
 
@@ -96,6 +98,7 @@ export const useConfig = defineStore('config', () => {
         wishes,
         locationTypes,
         goodsTypes,
+        recurringShippingTypes,
 
         getCountries,
         getServices,

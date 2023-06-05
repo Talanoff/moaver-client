@@ -1,8 +1,8 @@
 {
   "navigation": {
     "header": {
-      "home": "Thuis",
-      "partner": "Een partner worden",
+      "home": "Plaats een order",
+      "partner": "Partner worden",
       "login": "Log in",
       "logout": "Uitloggen",
       "Sign in": "Aanmelden"
@@ -13,12 +13,12 @@
     }
   },
   "home_hero_banner": {
-    "title": " Wat wil je vervoeren?",
-    "description": "Vind jouw vervoere, zonder omwegen"
+    "title": " Wat wil je verzenden?",
+    "description": "Vind jouw transport, zonder omwegen"
   },
   "partners_hero_banner": {
-    "title": "Wat wil je vervoeren?",
-    "description": "Vind jouw vervoere, zonder omwegen",
+    "title": "Wat wil je verzenden?",
+    "description": "Vind jouw transport, zonder omwegen",
     "button": "Doe nu mee"
   },
   "about_us": {
@@ -34,32 +34,33 @@
   },
   "modals": {
     "transporter": {
-      "companyInfo": "Company info",
-      "transports": "Welke soorten transporten bieden ze aan",
-      "countries": "In welke landen actief en welke regio's van die landen",
+      "companyInfo": "Bedrijfsgegevens",
+      "transports": "Welke soorten transport bieden jullie aan",
+      "countries": "In welke landen zijn jullie actief en welke regio's van die landen",
       "info": "Info",
       "personal": "Persoonlijke informatie"
     },
     "booking": {
-      "collectionDate": "Inzamelingsdatum",
+      "collectionDate": "Ophaal- en bezorgdatum",
       "wishes": "Ophaal- en bezorgwensen/eisen",
       "info": "Info",
-      "personal": "Persoonlijke informatie"
+      "personal": "Persoonsgegevens"
     }
   },
   "forms": {
     "step": "Stap {0} van {1}",
-    "pieces": "Vissen",
-    "piece": "Deel",
+    "pieces": "Aantal",
+    "piece": "Aantal",
     "pallets": "Pallets",
-    "category": "Category",
+    "category": "Categorie",
     "dispatchType": "Verzendtype",
     "weight": "Gewicht",
     "collect": "Ophalen",
     "deliver": "Bezorgen",
     "kg": "Kg",
-    "variousGoods": "Wat wil je precies sturen",
-    "message": "Bericht",
+    "variousGoods": "Wat wil je precies verzenden",
+    "bulk": "Bulk",
+    "message": "Omschrijving",
     "dateFrom": "Datum vanaf",
     "locationFrom": "Locatie van",
     "locationType": "Locatie type",
@@ -75,9 +76,9 @@
     "country": "Land",
     "location": "Plaats",
     "address": "Adres",
-    "email": "E-mailen",
+    "email": "E-mail",
     "commerceNumber": "Kamer van koophandelnummer",
-    "vat": "VAT nummer",
+    "vat": "BTW-nummer",
     "next": "Volgende",
     "submit": "Indienen",
     "registration": "Ik wil me inschrijven",
@@ -86,6 +87,9 @@
     "quantity": "hoeveelheid",
     "addLocation": "Voeg meer toe",
     "extras": "Extra's",
+    "recurringShipping": "Terugkerende verzending",
+    "recurringShippingType": "Terugkerend interval",
+    "recurringShippingInterval": "Aangepast terugkerend interval",
     "amountWeight": {
         "title": "Hoeveelheid en gewicht",
       "one": "Eén pakket met {weight} kg",
@@ -97,7 +101,7 @@
   },
   "categories": {
     "one": "Een pakket",
-    "many": "Veel pakket",
+    "many": "Meerdere pakketten",
     "pallets": "Pallet(s)",
     "various": "Diverse goederen"
   },
@@ -107,7 +111,7 @@
       "headline": "Uw registratie is voltooid."
     },
     "booking": {
-      "headline": "Onze beheerder neemt spoedig contact met u op."
+      "headline": "Moaver neemt spoedig contact met u op."
     }
   },
   "errors": {
