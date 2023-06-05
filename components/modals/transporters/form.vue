@@ -1,9 +1,8 @@
 <template>
     <div class="mb-8 mt-5">
-        <div v-for="step in steps">
+        <div v-for="step in steps" :key="step.id">
             <div
-                v-if="step.id === currentStep"
-                :key="step.id"
+                v-show="step.id === currentStep"
                 class="max-h-[60vh] overflow-y overflow-x-hidden custom-scroll"
             >
                 <div class="flex flex-wrap">

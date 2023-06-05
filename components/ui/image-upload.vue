@@ -1,5 +1,5 @@
 <template>
-    <no-ssr>
+    <client-only>
         <file-pond
                 ref="filesRef"
                 :label-idle="$attrs.label ?? 'Drop files here...'"
@@ -7,7 +7,7 @@
                 accepted-file-types="image/jpeg, image/png"
                 @addfile="handleUpload"
         />
-    </no-ssr>
+    </client-only>
 </template>
 
 <script setup>

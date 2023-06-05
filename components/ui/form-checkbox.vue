@@ -20,8 +20,8 @@
 <script>
 export default {
     props: {
-        id: { type: String },
-        value: { type: String },
+        id: String,
+        value: String|Number,
         modelValue: { default: "" },
         label: { type: String, required: true },
         trueValue: { default: true },

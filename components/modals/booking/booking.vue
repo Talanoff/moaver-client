@@ -371,86 +371,107 @@ watch(() => form.value.registrationRequired[0], (value) => {
     }
 });
 
-watch(() => form.value, (value) => {
-    if (!value) {
-        return;
+watch(() => form.value.category[0], (value) => {
+    const piecesControl = steps.value[0].fields.find(it => it.controlName === 'pieces');
+    const goodsControl = steps.value[0].fields.find(it => it.controlName === 'goods');
+
+    if (goodsControl) {
+        goodsControl.hidden = value !== "various";
     }
 
-    if (bookingStore.currentStep === 1) {
-        const piecesControl = steps.value[0].fields.find(it => it.controlName === 'pieces');
-        const goodsControl = steps.value[0].fields.find(it => it.controlName === 'goods');
-        const bulkControl = steps.value[0].fields.find(it => it.controlName === 'bulk');
-
-        const category = value.category[0];
-
-        if (category && piecesControl) {
-            goodsControl.hidden = category !== "various"
-
-            if (category === "one") {
-                piecesControl.attrs.placeholder = 1
-                piecesControl.attrs.disabled = true
-                piecesControl.attrs.label = $i18n.t('forms.piece')
-            } else if (category === "pallets") {
-                piecesControl.attrs.name = $i18n.t('forms.pallets')
-                piecesControl.attrs.label = $i18n.t('forms.pallets')
-            } else {
-                piecesControl.attrs.name = $i18n.t('forms.pieces')
-                piecesControl.attrs.label = $i18n.t('forms.pieces')
-                piecesControl.attrs.placeholder = ''
-                piecesControl.attrs.disabled = false
-            }
-
-            if (category === 'various' || category === 'one') {
-                form.value.pieces[0] = 1;
-            }
-
-            if (category === "various") {
-                form.value.pieces[1] = []
-                form.value.weight[0] = null
-                form.value.weight[1] = []
-                form.value.goods[1] = ['required']
-            } else {
-                steps.value[0].fields[2].hidden = false
-                form.value.pieces[1] = ["required"]
-                form.value.weight[1] = ["required"]
-                form.value.goods[1] = []
-                form.value.goods[0] = null
-            }
+    if (piecesControl) {
+        if (value === "one") {
+            piecesControl.attrs.placeholder = 1
+            piecesControl.attrs.disabled = true
+            piecesControl.attrs.label = $i18n.t('forms.piece')
+        } else if (value === "pallets") {
+            piecesControl.attrs.name = $i18n.t('forms.pallets')
+            piecesControl.attrs.label = $i18n.t('forms.pallets')
+        } else {
+            piecesControl.attrs.name = $i18n.t('forms.pieces')
+            piecesControl.attrs.label = $i18n.t('forms.pieces')
+            piecesControl.attrs.placeholder = ''
+            piecesControl.attrs.disabled = false
         }
 
-        if (bulkControl) {
-            const conditionBulk = value.goods[0] === 11;
+        if (value === 'various' || value === 'one') {
+            form.value.pieces[0] = 1;
+        }
 
-            bulkControl.hidden = !conditionBulk;
-            bulkControl.attrs.required = conditionBulk;
-            form.value.bulk[1] = conditionBulk ? ['required'] : [];
+        if (value === "various") {
+            form.value.pieces[1] = []
+            form.value.weight[0] = null
+            form.value.weight[1] = []
+            form.value.goods[1] = ['required']
+        } else {
+            steps.value[0].fields[2].hidden = false
+            form.value.pieces[1] = ["required"]
+            form.value.weight[1] = ["required"]
+            form.value.goods[1] = []
+            form.value.goods[0] = null
         }
     }
+});
 
-    if (bookingStore.currentStep === 2) {
-        const intervalSelectControl = steps.value[1].fields.find(it => it.controlName === 'recurringShippingType');
-        const intervalInputControl = steps.value[1].fields.find(it => it.controlName === 'recurringShippingCustom');
-        const dateToControl = steps.value[1].fields.find(it => it.controlName === 'dateTo');
+watch(() => form.value.goods[0], (value) => {
+    const bulkControl = steps.value[0].fields.find(it => it.controlName === 'bulk');
 
-        if (intervalSelectControl) {
-            intervalSelectControl.hidden = !value.recurringShipping[0];
-            intervalSelectControl.attrs.required = value.recurringShipping[0];
-            form.value.recurringShippingType[1] = value.recurringShipping[0] ? ['required'] : [];
-        }
+    if (bulkControl) {
+        const conditionBulk = value === 11;
 
-        if (intervalInputControl) {
-            const conditionInterval = value.recurringShippingType[0] === 6;
-
-            intervalInputControl.hidden = !conditionInterval;
-            intervalInputControl.attrs.required = conditionInterval;
-            form.value.recurringShippingType[1] = conditionInterval ? ['required'] : [];
-        }
-
-        if (dateToControl) {
-            dateToControl.attrs.min = value.dateFrom[0];
-        }
+        bulkControl.hidden = !conditionBulk;
+        bulkControl.attrs.required = conditionBulk;
+        form.value.bulk[1] = conditionBulk ? ['required'] : [];
     }
-}, { deep: true });
+});
+
+const recurringShippingCallback = (value) => {
+    const intervalSelectControl = steps.value[1].fields.find(it => it.controlName === 'recurringShippingType');
+
+    if (intervalSelectControl) {
+        intervalSelectControl.hidden = !value;
+        intervalSelectControl.attrs.required = value;
+        form.value.recurringShippingType[1] = value ? ['required'] : [];
+    }
+}
+
+const recurringShippingTypeCallback = (value) => {
+    const intervalInputControl = steps.value[1].fields.find(it => it.controlName === 'recurringShippingCustom');
+
+    if (intervalInputControl) {
+        const conditionInterval = value === 6;
+
+        intervalInputControl.hidden = !conditionInterval;
+        intervalInputControl.attrs.required = conditionInterval;
+        form.value.recurringShippingType[1] = conditionInterval ? ['required'] : [];
+    }
+}
+
+watch(() => form.value.recurringShipping[0], recurringShippingCallback);
+
+watch(() => form.value.recurringShippingType[0], recurringShippingTypeCallback);
+
+watch(() => form.value.dateTo[0], (value) => {
+    const dateToControl = steps.value[1].fields.find(it => it.controlName === 'dateFrom');
+
+    if (dateToControl) {
+        dateToControl.attrs.max = value;
+    }
+
+    recurringShippingCallback(form.value.recurringShipping[0]);
+    recurringShippingTypeCallback(form.value.recurringShippingType[0]);
+});
+
+watch(() => form.value.dateFrom[0], (value) => {
+    const dateToControl = steps.value[1].fields.find(it => it.controlName === 'dateTo');
+
+    if (dateToControl) {
+        dateToControl.attrs.min = value;
+    }
+
+    recurringShippingCallback(form.value.recurringShipping[0]);
+    recurringShippingTypeCallback(form.value.recurringShippingType[0]);
+});
 
 const onClose = () => {
     bookingStore.toggleModal(false);
