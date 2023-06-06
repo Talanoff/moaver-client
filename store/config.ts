@@ -55,16 +55,13 @@ export const useConfig = defineStore('config', () => {
         selectedServices.forEach((service: KeyValue) => {
             const control = transportersStore.form.vehicles[0][service.key];
 
-            transportersStore.form.vehicles[0][service.key] = data[service.key]?.reduce(
-                (vacc: any, v: any) => ({
-                    ...vacc,
-                    [v.key]: {
-                        key: v.key,
-                        value: control ? control[v.key]['value'] : null
-                    }
-                }),
-                {}
-            )
+            transportersStore.form.vehicles[0][service.key] = data[service.key]?.reduce((vacc: any, v: any) => {
+                vacc[v.key] = {
+                    key: v.key,
+                    value: control ? control[v.key]['value'] : null
+                }
+                return vacc;
+            }, {})
         })
         mainStore.loader = false;
     }
@@ -82,13 +79,13 @@ export const useConfig = defineStore('config', () => {
     const selectedWishes = computed(() => {
         return wishes.value.common
             .filter((it: KeyValue) => bookingStore.form.wishes[0].includes(it.key))
-            .map(({value}: KeyValue) => value);
+            .map(({ value }: KeyValue) => value);
     });
 
     const selectedAdditionalWishes = computed(() => {
         return wishes.value.additional
             .filter((it: KeyValue) => bookingStore.form.additionalWishes[0].includes(it.key))
-            .map(({value}: KeyValue) => value);
+            .map(({ value }: KeyValue) => value);
     });
 
     return {

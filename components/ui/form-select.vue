@@ -35,14 +35,14 @@
         <teleport to="body">
             <ul
                     v-if="expanded"
-                    class="fixed z-[100] mt-1 max-h-56 overflow-auto rounded-md bg-white py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm border-1"
+                    class="fixed z-[100] my-1 max-h-52 overflow-auto rounded-md bg-white py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm border-1"
                     tabindex="-1"
                     role="listbox"
                     aria-labelledby="listbox-label"
                     :style="listPosition"
             >
                 <li
-                        class="text-slate-900 relative cursor-default select-none py-2 pr-9"
+                        class="text-slate-900 relative cursor-default select-none py-1.5 pr-9"
                         role="option"
                         v-for="option of filteredItems"
                         :key="option.key"
@@ -89,7 +89,8 @@ const button = ref<HTMLButtonElement | null>(null);
 const listPosition = ref<{
     left: string;
     width: string;
-    top: string;
+    top?: string|undefined;
+    bottom?: string|undefined;
 }>();
 const expanded = ref<boolean>(false);
 const search = ref<string>('');
@@ -126,13 +127,19 @@ const calculateListPosition = (): void => {
         return;
     }
 
-    const { left, bottom, width } = button.value.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    const { left, top, bottom, width } = button.value.getBoundingClientRect();
 
     listPosition.value = {
         left: left + 'px',
         width: width + 'px',
-        top: bottom + 'px'
     };
+
+    if (windowHeight < bottom + 200) {
+        listPosition.value.bottom = (windowHeight - top) + 'px';
+    } else {
+        listPosition.value.top = bottom + 'px';
+    }
 }
 
 const scrollCallback = () => {

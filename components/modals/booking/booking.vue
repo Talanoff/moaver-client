@@ -115,7 +115,7 @@ const steps = computed(() => {
                         label: $i18n.t('forms.dateFrom'),
                         type: 'datetime-local',
                         min: new Date(),
-                        format: 'yyyy-MM-dd hh:mm',
+                        format: 'yyyy-MM-dd HH:mm',
                         withTime: true
                     },
                     fieldType: 'dateTime',
@@ -145,7 +145,7 @@ const steps = computed(() => {
                         label: $i18n.t('forms.dateTo'),
                         type: 'datetime-local',
                         min: form.value.dateTo[0] ?? new Date(),
-                        format: 'yyyy-MM-dd hh:mm',
+                        format: 'yyyy-MM-dd HH:mm',
                         withTime: true
                     },
                     fieldType: 'dateTime',
@@ -175,7 +175,7 @@ const steps = computed(() => {
                         label: $i18n.t('forms.recurringShipping'),
                     },
                     fieldType: 'checkbox',
-                    className: 'w-full sm:w-1/2',
+                    className: 'w-full',
                     controlName: 'recurringShipping'
                 },
                 {
@@ -185,7 +185,7 @@ const steps = computed(() => {
                     },
                     hidden: true,
                     fieldType: 'select',
-                    className: 'w-full sm:w-1/2',
+                    className: 'w-full',
                     controlName: 'recurringShippingType'
                 },
                 {

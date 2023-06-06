@@ -7,10 +7,12 @@
         <tr>
             <td class="w-1/2 text-sm font-semibold py-5 pr-5">{{ $t('forms.amountWeight.title') }}</td>
             <td class="w-1/2 py-5 pl-5">
-                {{ $t(`forms.amountWeight.${bookingStore.form.category[0]}`, {
-                    count: bookingStore.form.pieces[0],
-                    weight: bookingStore.form.weight[0]
-                }) }}
+                {{
+                $t(`forms.amountWeight.${bookingStore.form.category[0]}`, {
+                  count: bookingStore.form.pieces[0],
+                  weight: bookingStore.form.weight[0]
+                })
+                }}
             </td>
         </tr>
         <tr v-if="bookingStore.form.goods[0]">
@@ -45,6 +47,18 @@
                 </div>
             </td>
         </tr>
+        <tr v-if="bookingStore.form.recurringShipping[0]">
+            <td class="w-1/2 text-sm font-semibold py-5 pr-5">{{ $t('forms.recurringShipping') }}</td>
+            <td class="w-1/2 py-5 pl-5">
+                <div>
+                    {{ getShippingInterval(bookingStore.form.recurringShippingType[0]) }}
+                </div>
+
+                <div v-if="bookingStore.form.recurringShippingType[0] === 6">
+                    {{ bookingStore.form.recurringShippingCustom[0] }}
+                </div>
+            </td>
+        </tr>
         <tr v-if="selectedWishes.length || selectedAdditionalWishes.length || bookingStore.form.additionalWishesNotes[0]">
             <td class="w-1/2 text-sm font-semibold py-5 pr-5">
                 {{ $t('forms.extras') }}
@@ -63,12 +77,16 @@
 </template>
 
 <script setup>
-import { useBooking } from "~/store/booking";
-import { useConfig } from "~/store/config";
-import { storeToRefs } from "pinia";
+import {useBooking} from "~/store/booking";
+import {useConfig} from "~/store/config";
+import {storeToRefs} from "pinia";
 
 const bookingStore = useBooking();
-const { selectedWishes, selectedAdditionalWishes, locationTypes } = storeToRefs(useConfig());
+const {selectedWishes, selectedAdditionalWishes, locationTypes, recurringShippingTypes} = storeToRefs(useConfig());
+
+const getShippingInterval = (key) => {
+    return recurringShippingTypes.value.find(it => it.key === key)?.value;
+}
 
 const getLocationTypeName = (key) => {
     return locationTypes.value.find(it => it.key === key)?.value;

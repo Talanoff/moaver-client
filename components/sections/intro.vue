@@ -23,5 +23,5 @@
 </template>
 
 <script setup>
-import Categories from "~/components/ui/categories.vue";
+import Categories from "~/components/forms/categories.vue";
 </script>

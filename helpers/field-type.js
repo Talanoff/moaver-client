@@ -4,7 +4,7 @@ import formCheckbox from "~/components/ui/form-checkbox.vue";
 import imageUpload from "~/components/ui/image-upload.vue";
 import formSelect from "~/components/ui/form-select.vue";
 import formTextarea from "~/components/ui/form-textarea.vue";
-import categories from "~/components/ui/categories.vue";
+import categories from "~/components/forms/categories.vue";
 import services from "~/components/forms/services.vue";
 import formInfo from "~/components/ui/form-info.vue";
 import locations from "~/components/forms/locations.vue";
