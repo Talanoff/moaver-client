@@ -29,6 +29,8 @@ import { useAuth } from "~/store/auth";
 const api = useApi();
 const router = useRouter();
 const { $toast, $i18n } = useNuxtApp();
+
+const configStore = useConfig();
 const transporterStore = useTransporters();
 const authStore = useAuth();
 
@@ -129,7 +131,6 @@ const steps = computed(() => {
             title: $i18n.t('modals.transporter.transports'),
             fields: [
                 {
-                    id: 0,
                     fieldType: 'vehicles',
                     className: 'w-full',
                     controlName: "vehicles"
@@ -141,11 +142,9 @@ const steps = computed(() => {
             title: $i18n.t('modals.transporter.countries'),
             fields: [
                 {
-                    id: 1,
                     attrs: {
                         items: [
                             {
-                                id: 1,
                                 attrs: {
                                     del: true,
                                     required: false,
@@ -166,7 +165,6 @@ const steps = computed(() => {
             title: $i18n.t('modals.transporter.info'),
             fields: [
                 {
-                    id: 1,
                     attrs: {
                         label: $i18n.t('forms.commerceNumber'),
                     },
@@ -175,7 +173,6 @@ const steps = computed(() => {
                     controlName: 'commerceNumber'
                 },
                 {
-                    id: 2,
                     attrs: {
                         label: 'IBAN',
                         placeholder: 'NL91ABNA0417164300',
@@ -187,7 +184,6 @@ const steps = computed(() => {
                     controlName: 'iban'
                 },
                 {
-                    id: 3,
                     attrs: {
                         label: $i18n.t('forms.vat'),
                         placeholder: 'NL000099998B57',
@@ -207,7 +203,6 @@ const steps = computed(() => {
             title: $i18n.t('modals.transporter.personal'),
             fields: [
                 {
-                    id: 0,
                     attrs: {
                         label: $i18n.t('forms.name'),
                     },
@@ -216,7 +211,6 @@ const steps = computed(() => {
                     controlName: 'name'
                 },
                 {
-                    id: 1,
                     attrs: {
                         label: $i18n.t('forms.phoneNumber'),
                         type: 'tel',
@@ -228,7 +222,6 @@ const steps = computed(() => {
                     controlName: 'personalPhone'
                 },
                 {
-                    id: 2,
                     attrs: {
                         label: $i18n.t('forms.email'),
                         type: 'email',
@@ -239,7 +232,6 @@ const steps = computed(() => {
                     controlName: 'personalEmail'
                 },
                 {
-                    id: 3,
                     attrs: {
                         label: $i18n.t('forms.password'),
                         type: 'password',
@@ -250,7 +242,6 @@ const steps = computed(() => {
                     controlName: 'password'
                 },
                 {
-                    id: 4,
                     attrs: {
                         label: $i18n.t('forms.confirmPassword'),
                         type: 'password',
@@ -261,7 +252,6 @@ const steps = computed(() => {
                     controlName: 'confirmPassword'
                 },
                 {
-                    id: 5,
                     attrs: {
                         id: 'agree_to_terms',
                         label: $i18n.t('forms.agreeToTerms'),
@@ -284,7 +274,13 @@ const onClose = () => {
 
 const onSubmit = () => {
     if (steps.value.length !== currentStep.value) {
-        const name = steps.value.find(({ id }) => id === currentStep.value + 1)?.title ?? '';
+        const currentStepValue = steps.value.find(({ id }) => id === currentStep.value + 1);
+        const name = currentStepValue?.title ?? '';
+
+        if (currentStepValue.id === 3) {
+            configStore.getVehicles(form.value.services[0]);
+        }
+
         transporterStore.setCurrentStep(name, 'increment');
     } else {
         transporterStore.submitting = true;

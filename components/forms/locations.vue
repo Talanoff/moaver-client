@@ -41,13 +41,16 @@ import { useConfig } from "~/store/config";
 
 const storeTransporters = useTransporters();
 const configStore = useConfig();
+
+defineProps(['id', 'items', 'modelValue']);
+
 const items = ref([{
     country: '',
     location: '',
 }]);
-const options = ref(
-    configStore.countries
-);
+
+const options = ref(configStore.countries)
+
 const onRemove = (idx) => {
     items.value.splice(idx, 1)
 }
@@ -58,6 +61,7 @@ const onAdd = () => {
         location: '',
     })
 }
+
 watch(() => items, (val) => {
         storeTransporters.form.locations[0] = val.value
     },

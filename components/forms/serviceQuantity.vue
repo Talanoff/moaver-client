@@ -34,8 +34,8 @@ import { useTransporters } from "~/store/transporters";
 import { storeToRefs } from "pinia";
 
 const inputAttrs = {
-    type: 'number',
     min: 1,
+    type: 'number',
     placeholder: '*'
 }
 
@@ -45,9 +45,5 @@ const transportersStore = useTransporters();
 const { form } = storeToRefs(transportersStore);
 const { services, vehicles } = storeToRefs(configStore);
 
-configStore.getVehicles(form.value.services[0]);
-
-const displayedServices = ref(
-    services.value.filter(it => form.value.services[0].includes(it.key))
-);
+const displayedServices = computed(() => services.value.filter(it => form.value.services[0].includes(it.key)));
 </script>
