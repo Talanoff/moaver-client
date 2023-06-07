@@ -8,9 +8,9 @@
 
             <div class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
                 <h1 class="px-5 md:px-10 text-center text-white font-bold text-3xl sm:text-[5rem] leading-normal mb-4">
-                    {{ $t('partners_hero_banner.title') }}</h1>
+                    {{ $t('partnersBanner.title') }}</h1>
                 <p class="sm:text-left text-center text-white sm:text-2xl text-xl">
-                    {{ $t('partners_hero_banner.description') }}</p>
+                    {{ $t('partnersBanner.description') }}</p>
             </div>
         </div>
 
@@ -23,7 +23,7 @@
                         @click="transporterStore.toggleModal()"
                         class="flex justify-center items-center p-5 lg:p-8 border-4 border-slate-200 text-2xl font-bold rounded-md group-hover:border-blue-600 group-hover:bg-slate-100 transition-colors duration-300"
                 >
-                    {{ $t('partners_hero_banner.button') }}
+                    {{ $t('partnersBanner.button') }}
                 </div>
             </button>
         </div>
@@ -49,4 +49,8 @@ $i18n.onLanguageSwitched = () => {
     configStore.getCountries();
     configStore.getServices();
 }
+
+useHead({
+    title: $i18n.t('partnersBanner.description')
+})
 </script>

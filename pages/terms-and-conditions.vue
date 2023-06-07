@@ -7,6 +7,7 @@
 import BaseTemplate from "~/components/ui/pages/base-template.vue";
 import SkeletonLoader from "~/components/ui/pages/skeleton-loader.vue";
 
+const { $i18n } = useNuxtApp();
 const api = useApi();
 const loading = ref(true);
 const page = ref({});
@@ -19,7 +20,7 @@ try {
     loading.value = false;
 }
 
-watch(locale, (value) => {
+$i18n.onLanguageSwitched = (value) => {
     loading.value = true;
 
     api.get('pages/1', {
@@ -27,5 +28,9 @@ watch(locale, (value) => {
     })
         .then(({ data }) => page.value = data)
         .finally(() => loading.value = false);
-});
+}
+
+useHead({
+    title: page.value?.title
+})
 </script>

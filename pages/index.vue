@@ -17,4 +17,8 @@ configStore.getBookingItems();
 $i18n.onLanguageSwitched = () => {
     configStore.getBookingItems();
 }
+
+useHead({
+    title: $i18n.t('homeBanner.description')
+})
 </script>

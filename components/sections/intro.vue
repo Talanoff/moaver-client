@@ -8,10 +8,10 @@
 
             <div class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
                 <h1 class="px-5 md:px-10 text-center text-white font-bold text-3xl sm:text-[5rem] leading-normal mb-4">
-                    {{ $t('home_hero_banner.title') }}
+                    {{ $t('homeBanner.title') }}
                 </h1>
                 <p class="sm:text-left text-center text-white sm:text-2xl text-xl">
-                    {{ $t('home_hero_banner.description') }}
+                    {{ $t('homeBanner.description') }}
                 </p>
             </div>
         </div>

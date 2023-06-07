@@ -12,5 +12,10 @@
 
 <script setup>
 const router = useRoute();
-const action = ref(router.query.action ?? '')
+const { $i18n } = useNuxtApp();
+
+const action = ref(router.query.action ?? '');
+useHead({
+    title: $i18n.t('messages.thankYou')
+})
 </script>

@@ -12,11 +12,11 @@
       "policy": "Privacy Policy"
     }
   },
-  "home_hero_banner": {
+  "homeBanner": {
     "title": "What do you want to transport?",
     "description": "Find your transport, without detours"
   },
-  "partners_hero_banner": {
+  "partnersBanner": {
     "title": "What do you want to transport?",
     "description": "Find your transport, without detours",
     "button": "Join now"

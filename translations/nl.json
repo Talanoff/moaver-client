@@ -12,11 +12,11 @@
       "policy": "Privacybeleid"
     }
   },
-  "home_hero_banner": {
+  "homeBanner": {
     "title": " Wat wil je verzenden?",
     "description": "Vind jouw transport, zonder omwegen"
   },
-  "partners_hero_banner": {
+  "partnersBanner": {
     "title": "Wat wil je verzenden?",
     "description": "Vind jouw transport, zonder omwegen",
     "button": "Doe nu mee"
