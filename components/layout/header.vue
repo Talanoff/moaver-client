@@ -1,5 +1,5 @@
 <template>
-    <header class="sm:px-10 py-10 px-2 container">
+    <header class="sm:px-10 py-5 px-2 container">
         <div id="sidemenu" class="sm:hidden flex justify-between items-center flex-row-reverse">
             <button class="sidemenu__btn" @click="navOpen=!navOpen" v-bind:class="{active:navOpen}">
                 <span class="top"></span>
@@ -15,17 +15,24 @@
                 <nav v-if="navOpen">
                     <div class="sidemenu__wrapper flex flex-col overflow-auto justify-between h-full">
                         <ul class="sidemenu__list">
-                            <li class="sidemenu__item px-5" @click="navOpen=!navOpen">
-                                <nuxt-link to="/" class="text-lg py-2  font-bold">
+                            <li class="sidemenu__item px-2.5" @click="navOpen=!navOpen">
+                                <nuxt-link to="/">
                                     {{ $t('navigation.header.home') }}
                                 </nuxt-link>
                             </li>
-                            <li class="sidemenu__item px-5" @click="navOpen=!navOpen">
-                                <nuxt-link
-                                        to="/partners"
-                                        class="font-bold text-lg py-2 mb-8 "
-                                >
-                                    {{ $t('navigation.header.partner') }}
+                            <li class="sidemenu__item px-2.5" @click="navOpen=!navOpen">
+                                <nuxt-link to="/shippers">
+                                    {{ $t('navigation.header.shippers') }}
+                                </nuxt-link>
+                            </li>
+                            <li class="sidemenu__item px-2.5" @click="navOpen=!navOpen">
+                                <nuxt-link to="/transporters">
+                                    {{ $t('navigation.header.transporters') }}
+                                </nuxt-link>
+                            </li>
+                            <li class="sidemenu__item px-2.5" @click="navOpen=!navOpen">
+                                <nuxt-link to="/about-us">
+                                    {{ $t('navigation.header.about') }}
                                 </nuxt-link>
                             </li>
                         </ul>
@@ -38,20 +45,46 @@
         </div>
 
         <nav class="hidden sm:flex justify-between items-center">
-            <ul class="flex items-center font-semibold">
+            <ul class="flex items-center font-medium lowercase">
                 <li class="mr-16">
                     <nuxt-link to="/">
                         <logo class="h-10"/>
                     </nuxt-link>
                 </li>
-                <li class=" hover" :class="{'activeHover': $route.path === '/'}">
-                    <nuxt-link to="/" class="font-semibold p-4">
+                <li>
+                    <nuxt-link
+                        to="/"
+                        class="border-b-2 border-transparent hover:border-blue-600 transition-colors duration-300 px-2.5 py-1.5"
+                        :class="{'text-blue-600 !border-blue-600': $route.path === '/'}"
+                    >
                         {{ $t('navigation.header.home') }}
                     </nuxt-link>
                 </li>
-                <li class="ml-6 hover" :class="{'activeHover': $route.path === '/partners'}">
-                    <nuxt-link to="/partners" class="font-semibold p-4">
-                        {{ $t('navigation.header.partner') }}
+                <li class="px-2.5">
+                    <nuxt-link
+                        to="/shippers"
+                        class="border-b-2 border-transparent hover:border-blue-600 transition-colors duration-300 px-2.5 py-1.5"
+                        :class="{'text-blue-600 !border-blue-600': $route.path === '/shippers'}"
+                    >
+                        {{ $t('navigation.header.shippers') }}
+                    </nuxt-link>
+                </li>
+                <li class="px-2.5">
+                    <nuxt-link
+                        to="/transporters"
+                        class="border-b-2 border-transparent hover:border-blue-600 transition-colors duration-300 px-2.5 py-1.5"
+                        :class="{'text-blue-600 !border-blue-600': $route.path === '/transporters'}"
+                    >
+                        {{ $t('navigation.header.transporters') }}
+                    </nuxt-link>
+                </li>
+                <li class="px-2.5">
+                    <nuxt-link
+                        to="/about-us"
+                        class="border-b-2 border-transparent hover:border-blue-600 transition-colors duration-300 px-2.5 py-1.5"
+                        :class="{'text-blue-600 !border-blue-600': $route.path === '/about-us'}"
+                    >
+                        {{ $t('navigation.header.about') }}
                     </nuxt-link>
                 </li>
             </ul>
@@ -177,30 +210,5 @@ const navOpen = ref(false)
 .translateX-leave-to {
     transform: translateX(200px);
     opacity: 0;
-}
-
-.hover {
-    display: inline-block;
-}
-
-.hover:after {
-    display: block;
-    content: '';
-    border-bottom: solid 3px rgb(37 99 235 / 1);
-    transform: scaleX(0);
-    transition: transform 250ms ease-in-out;
-}
-
-.hover:hover:after {
-    transform: scaleX(1);
-}
-
-
-.hover.fromLeft:after {
-    transform-origin: 0% 50%;
-}
-
-.activeHover:after {
-    transform: scaleX(1);
 }
 </style>

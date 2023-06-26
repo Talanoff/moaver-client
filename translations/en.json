@@ -2,9 +2,11 @@
   "navigation": {
     "header": {
       "home": "Home",
-      "partner": "Become a partner",
+      "shippers": "For shippers",
+      "transporters": "For transporters",
+      "about": "About us",
       "login": "Log in",
-      "logout": "Logout",
+      "logout": "Log out",
       "sign_in": "Sign in"
     },
     "footer": {
@@ -12,16 +14,75 @@
       "policy": "Privacy Policy"
     }
   },
-  "homeBanner": {
-    "title": "What do you want to transport?",
-    "description": "Find your transport, without detours"
+  "home": {
+    "title": "Moaver matches supply and demand",
+    "description": [
+      "Transport companies often have spare capacity, but shippers don't know about this.",
+      "Moaver brings shippers and transporters together, matching supply and demand.",
+      "Transporters are able to reduce their empty miles and keep more of their margin.",
+      "Shippers do not have to shop around to get the best price."
+    ],
+    "blockA": {
+      "title": "For any load and any route",
+      "lineA": "Pallets or plants, parcels or bulk? Regional only or international? Weekends, Wednesday mornings or all year round?",
+      "lineB": "Moaver effectively connects the transportation needs of shippers with the available choices offered by transport companies. Moaver considers various factors such as timing, load, capacity, destination, loading options, sustainable transport, and more."
+    },
+    "blockB": {
+      "title": "For every shipper and every transporter",
+      "lineA": "Moaver is there for all shippers, both private individuals and organisations. This makes Moaver the only Dutch online transport platform for B2B and B2C that is not operated by a broker. The focus on user-friendliness is also unique.",
+      "lineB": "Within minutes, shippers can enter their selection criteria and transporters can create a profile. Moaver does the rest.",
+      "lineC": "Read more about Moaver's unique approach"
+    },
+    "blockC": {
+      "title": "Why Moaver?",
+      "table": {
+        "header": {
+          "a": "Transport companies",
+          "b": "Shippers"
+        },
+        "body": {
+          "a": [
+            "A fully loaded hold",
+            "Fewer empty return trips",
+            "More margin",
+            "No searching",
+            "Smaller footprint"
+          ],
+          "b": [
+            "Best value for money",
+            "No searching",
+            "Post a transport request in two minutes",
+            "For any freight and any route",
+            "Select by sustainability"
+          ]
+        },
+        "transporter": "Register your transport company",
+        "shipper": "Create a transport request"
+      }
+    },
+    "blockD": {
+      "title": "Fill up your loading space with Moaver",
+      "lineA": "Say goodbye to empty miles and hello to efficiency. With Moaver, you avoid empty return trips or partial loads. This is not only more efficient, but also more sustainable. You get the same turnover from transport orders with fewer or the same number of miles. And the more goods you transport, the higher your margin. Because with Moaver you pay a fixed subscription amount, not a fee per transport request.",
+      "lineB": "This is how Moaver makes your transport more efficient, sustainable and economical.",
+      "button": "Read more about Moaver for transport companies"
+    },
+    "blockE": {
+      "title": "Ship your packages with Moaver",
+      "lineA": "Finding the right transporter in the online transport jungle can be difficult. How do you know if they will deliver to the right destination at the right time? If they can help you with loading or if they offer electric transport? Whether they are able to transport temperature-controlled goods or agricultural products? And do they have good reviews? Often you have to fill in a lot of personal and shipment details before a transport broker will give you the information you want.",
+      "lineB": "Moaver makes it easier. You enter your search criteria in seven steps and Moaver makes the match. This saves you a lot of time and you can be sure that you are choosing the most suitable transporter at the best price. After all, the transporter will often be driving back and forth anyway. So that transporter can give you a competitive quote.",
+      "button": "Read more about Moaver for shippers"
+    },
+    "seo": {
+      "description": "Moaver brings shippers and transport companies together. This means fewer empty miles for transporters and the best value for shippers. Read more about it here.",
+      "keywords": "transport, transport company, transporter, shipping packages"
+    }
   },
   "partnersBanner": {
     "title": "What do you want to transport?",
     "description": "Find your transport, without detours",
     "button": "Join now"
   },
-  "about_us": {
+  "aboutUs": {
     "title": "About Us",
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda exercitationem fugiat laudantium magni quae quidem veritatis? Deleniti nobis possimus qui! Ab aliquid autem corporis deserunt distinctio fugiat natus, necessitatibus officiis perspiciatis possimus quas qui quis quod sequi, sit suscipit unde."
   },

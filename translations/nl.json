@@ -1,8 +1,10 @@
 {
   "navigation": {
     "header": {
-      "home": "Plaats een order",
-      "partner": "Partner worden",
+      "home": "Home",
+      "shippers": "Voor verzenders",
+      "transporters": "Voor transporteurs",
+      "about": "Over ons",
       "login": "Log in",
       "logout": "Uitloggen",
       "Sign in": "Aanmelden"
@@ -12,16 +14,75 @@
       "policy": "Privacybeleid"
     }
   },
-  "homeBanner": {
-    "title": " Wat wil je verzenden?",
-    "description": "Vind jouw transport, zonder omwegen"
+  "home": {
+    "title": "Moaver matcht vraag en aanbod",
+    "description": [
+      "Transportbedrijven hebben vaak capaciteit over, maar verzenders weten dat niet.",
+      "Moaver matcht de vraag van verzenders met het aanbod van vervoerders.",
+      "Transportbedrijven beperken het aantal lege kilometers en houden meer marge over.",
+      "Verzenders hoeven niet te zoeken en krijgen de beste prijs."
+    ],
+    "blockA": {
+      "title": "Voor elke vracht en route",
+      "lineA": "Pallets of planten, pakketten of bulk? Alleen in de regio of internationale ritten? In het weekend, op woensdagochtend of gedurende het jaar?",
+      "lineB": "Moaver koppelt de transportwensen van verzenders aan de mogelijkheden van de transporteurs. Qua tijdstip, lading, capaciteit, bestemming, laadmogelijkheden, duurzaam vervoer en meer."
+    },
+    "blockB": {
+      "title": "Voor elke verzender en transporteur",
+      "lineA": "Moaver is er voor alle verzendingen, van zowel particulieren als organisaties. Daarmee is Moaver het enige online Nederlandse transportplatform voor B2B én B2C dat niet uitgegeven wordt door een broker.",
+      "lineB": "Ook uniek is de aandacht voor gebruiksgemak. In enkele minuten voeren verzenders hun selectiecriteria in en maken transporteurs een profiel aan. Moaver doet de rest.",
+      "lineC": "Lees meer over de unieke aanpak van Moaver"
+    },
+    "blockC": {
+      "title": "Waarom Moaver?",
+      "table": {
+        "header": {
+          "a": "Transportbedrijven",
+          "b": "Verzenders"
+        },
+        "body": {
+          "a": [
+            "Een volle laadruimte",
+            "Minder lege terugritten",
+            "Meer marge",
+            "Geen zoekwerk",
+            "Kleinere footprint"
+          ],
+          "b": [
+            "Beste prijs-kwaliteit",
+            "Geen zoekwerk",
+            "In twee minuten transportvraag uitzetten",
+            "Voor elke vracht en route",
+            "Selecteer op duurzaamheid"
+          ]
+        },
+        "transporter": "Schrijf jouw transportbedrijf in",
+        "shipper": "Maak een transportopdracht aan"
+      }
+    },
+    "blockD": {
+      "title": "Vul jouw transportruimte op met Moaver",
+      "lineA": "Vaarwel lege kilometers, welkom efficiëntie. Met Moaver voorkom je lege terugritten of deelvrachten. Dat is niet alleen efficiënter, maar ook duurzamer. Je behaalt dezelfde omzet uit transportopdrachten met minder of evenveel kilometers. En hoe meer vracht je vervoert, hoe meer marge je overhoudt. Want bij Moaver betaal je geen fee per transportopdracht, maar een vast abonnementsbedrag.",
+      "lineB": "Zo maakt Moaver jouw transport efficiënter, duurzamer en voordeliger.",
+      "button": "Lees meer over Moaver voor transportbedrijven"
+    },
+    "blockE": {
+      "title": "Verzend jouw pakketten met Moaver",
+      "lineA": "In de online transportjungle is het lastig om de juiste vervoerder te vinden. Hoe weet je of een transporteur rijdt op het gewenste moment en naar de juiste bestemming? Of hij je kan helpen met laden en elektrische transport aanbiedt? Of hij geconditioneerde of agrarische producten kan vervoeren en goede recensies heeft? Vaak moet je eerst veel persoonlijke en vrachtgegevens invullen voordat een transportbroker de gewenste informatie prijsgeeft.",
+      "lineB": "Moaver maakt dat makkelijker. In zeven stappen vul je jouw zoekcriteria in, Moaver maakt de match. Dat scheelt je veel tijd en je weet zeker je de best passende vervoerder kiest tegen de beste prijs. Want vaak rijdt dit transportbedrijf toch al op een neer. Dus kan deze vervoerder jou een scherp aanbod doen.",
+      "button": "Lees meer over Moaver voor verzenders"
+    },
+    "seo": {
+      "description": "Moaver brings shippers and transport companies together. This means fewer empty miles for transporters and the best value for shippers. Read more about it here.",
+      "keywords": "transport, transport company, transporter, shipping packages"
+    }
   },
   "partnersBanner": {
     "title": "Wat wil je verzenden?",
     "description": "Vind jouw transport, zonder omwegen",
     "button": "Doe nu mee"
   },
-  "about_us": {
+  "aboutUs": {
     "title": "Over ons",
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda exercitationem fugiat laudantium magni quae quidem veritatis? Deleniti nobis possimus qui! Ab aliquid autem corporis deserunt distinctio fugiat natus, necessitatibus officiis perspiciatis possimus quas qui quis quod sequi, sit suscipit unde."
   },

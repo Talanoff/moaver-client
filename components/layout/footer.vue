@@ -1,8 +1,14 @@
+<script setup lang="ts">
+defineProps<{
+    showAboutUs: boolean
+}>()
+</script>
+
 <template>
-    <section class="lg:mt-44 lg:mb-28 mt-28 mb-16">
+    <section class="lg:mt-44 lg:mb-28 mt-28 mb-16" v-if="showAboutUs">
         <div class="container">
             <div class="flex sm:flex-row flex-col justify-between">
-                <h3 class="sm:w-[45%] text-blue-950 lg:text-6xl md:text-3xl text-2xl font-bold sm:leading-relaxed sm:mb-0 mb-4">
+                <h3 class="sm:w-[45%] text-blue-950 lg:text-6xl md:text-3xl text-2xl font-bold !leading-tight sm:mb-0 mb-4">
                     {{ $t('footer.intro.title') }}
                 </h3>
                 <div class="sm:w-[45%] w-full flex flex-col justify-between">
@@ -34,5 +40,3 @@
         <img src="/images/footer-bg.png" class="block mx-auto max-h-[144px]" alt="">
     </footer>
 </template>
-<script setup lang="ts">
-</script>

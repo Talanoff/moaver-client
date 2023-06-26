@@ -1,27 +1,26 @@
 <template>
     <section class="container">
-        <div class="relative">
-            <figure
-                    class="sm:h-screen h-[120vw] max-h-[65vh] -mb-24 rounded-lg overflow-hidden bg-center bg-cover"
-                    style="background-image: url('/images/topBg.png')"
-            />
+        <hero-banner
+            :title="$t('home.title')"
+            :description="$t('home.description')"
+        >
+            <template #picture>
+                <img
+                    srcset="/images/hero/shippers-hero-400w.avif 400w, /images/hero/shippers-hero-600w.avif 600w, /images/hero/shippers-hero-800w.avif 800w, /images/hero/shippers-hero-1000w.avif 1000w, /images/hero/shippers-hero-1200w.avif 1200w, /images/hero/shippers-hero-1600w.avif 1600w, /images/hero/shippers-hero-2000w.avif 2000w"
+                    sizes="(max-width: 400px) 400px, (max-width: 600px) 600px, (max-width: 800px) 800px, (max-width: 1000px) 1000px, (max-width: 1200px) 1200px, (max-width: 1600px) 1600px, (min-width: 1601px) 2000px"
+                    src="/images/hero/shippers-hero.png"
+                    class="relative z-0 object-cover min-h-full min-w-full"
+                    loading="lazy"
+                    alt=""
+                />
+            </template>
 
-            <div class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
-                <h1 class="px-5 md:px-10 text-center text-white font-bold text-3xl sm:text-[5rem] leading-normal mb-4">
-                    {{ $t('homeBanner.title') }}
-                </h1>
-                <p class="sm:text-left text-center text-white sm:text-2xl text-xl">
-                    {{ $t('homeBanner.description') }}
-                </p>
-            </div>
-        </div>
-
-        <div class="max-w-[90%] xl:max-w-[64rem] bg-white shadow-2xl p-5 lg:p-8 rounded-md mx-auto relative z-1">
             <categories/>
-        </div>
+        </hero-banner>
     </section>
 </template>
 
 <script setup>
 import Categories from "~/components/forms/categories.vue";
+import HeroBanner from "~/components/layout/hero-banner.vue";
 </script>

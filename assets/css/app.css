@@ -81,3 +81,7 @@ input[type=number] {
         width: calc(33.33% - 0.5em);
     }
 }
+
+.content {
+    @apply prose-slate prose-a:text-blue-600 hover:prose-a:text-blue-800 prose-a:underline-offset-4;
+}

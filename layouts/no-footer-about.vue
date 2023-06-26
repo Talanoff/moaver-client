@@ -4,7 +4,7 @@
         <main role="main" class="flex-1 flex flex-col">
             <slot/>
         </main>
-        <app-footer :show-about-us="true"/>
+        <app-footer :show-about-us="false"/>
         <login v-if="storeAuth.showModal"/>
     </div>
 </template>
