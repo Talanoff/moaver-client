@@ -137,15 +137,14 @@ const navOpen = ref(false)
     }
 
     nav {
-        @apply w-screen h-screen bg-slate-700/90 fixed inset-0 z-[100];
+        @apply w-screen h-screen bg-slate-700/90 fixed inset-0 z-40;
     }
 
     .sidemenu__btn {
         display: block;
         width: 20px;
         height: 20px;
-        z-index: 110;
-        @apply appearance-none relative;
+        @apply appearance-none relative z-50;
 
         &.active {
             position: fixed !important;
