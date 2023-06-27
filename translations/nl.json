@@ -150,23 +150,160 @@
       ]
     },
     "seo": {
-      "description": "Looking for a transport company? Moaver will find your transporter. With the right price, speciality, destination and capacity at the right time.",
-      "keywords": "transport, transport company, send package, ship package, freight"
+      "description": "Zoek je een transportbedrijf? Moaver vindt jouw vervoerder. Met de juiste prijs, specialiteit, bestemming en capaciteit op het juiste moment.",
+      "keywords": "transport, transportbedrijf, pakket verzenden, pakket versturen, vracht"
     }
   },
-  "partnersBanner": {
-    "title": "Wat wil je verzenden?",
-    "description": "Vind jouw transport, zonder omwegen",
-    "button": "Doe nu mee"
+  "transporters": {
+    "title": "Moaver maakt jouw transport slimmer",
+    "blockA": {
+      "title": "Moaver maakt jouw transport slimmer",
+      "lineA": "Jouw transport kan efficiënter, duurzamer, voordeliger en digitaler. Met minder lege kilometers en meer marge als resultaat. Hoe maak je jouw transportbedrijf slimmer? Online transportplatform Moaver matcht de vraag van verzenders aan jouw transportaanbod.",
+      "lineB": "Minder lege kilometers",
+      "lineC": "Deelvrachten en lege terugritten. Als transporteur lijk je daar niet aan te ontkomen. Maar dit hoef je helemaal niet voor lief te nemen. Is er in de buurt geen verzending die jouw vrachtruimte kan opvullen? Moaver zoekt voor jou een passende opvulvracht en minimaliseert zo het aantal lege kilometers. Dat is niet alleen efficiënt, maar ook duurzaam.",
+      "lineD": "Meer marge",
+      "lineE": "De 8% marge op transport is jouw verdienste. Het is zonde als je daarvan een groot deel moet afstaan aan tussenpartijen zoals transportbrokers. Jij verdient meer. Daarom betaal je bij Moaver geen fee per vracht, maar een vast abonnementsbedrag van 49,95 euro per maand. Dus hoe meer transportopdrachten je uitvoert, hoe meer marge je overhoudt."
+    },
+    "blockB": {
+      "title": "Hoe helpt Moaver jou?",
+      "lineA": "Moaver koppelt de vraag van vrachtverzenders aan jouw transportaanbod. Geautomatiseerd, dus als transportbedrijf heb je daar geen omkijken naar. Jij geeft aan waar je behoefte aan hebt. Waar en wanneer vinden ritten meestal plaats? Welke goederen vervoer je? Hoeveel wagens heb je? Moaver matcht jouw transportcapaciteit met de vraag van verzenders, zowel organisaties als particulieren. Daarmee zijn we het enige Nederlandse online transportplatform dat niet in handen is van een broker, dat B2B- én B2C-transportopdrachten aanbiedt.",
+      "items": [
+        {
+          "title": "Profiel",
+          "description": "Bij inschrijving maak je een profiel aan. Met daarin jouw voorkeuren en mogelijkheden: ben je gespecialiseerd in pallettransport, geconditioneerd transport of bulkvervoer? Ben je alleen actief in Noord-Nederland of rijd je voornamelijk op buitenlandse bestemmingen? Heb je transportcapaciteit over, bijvoorbeeld bij een deelvracht of lege terugrit? Moaver lost het voor je op."
+        },
+        {
+          "title": "Match",
+          "description": "Nadat jouw profiel compleet is, gaat Moaver aan de slag. Commerciële en particuliere verzenders zien jouw profiel. Matcht jouw aanbod met hun vraag? Dan kunnen ze bij jou een offerte opvragen. Wil een verzender bijvoorbeeld op maandag sierbloemen van Aalsmeer naar Friesland vervoeren en rijd jij dan met lege vrachtruimte terug naar Heerenveen? Dan is dat een match."
+        },
+        {
+          "title": "Offerte",
+          "description": "Is er een match? Dan vraagt een verzender een offerte aan. Moaver stuurt jou die offerteaanvraag direct door per e-mail. Jij bepaalt of je daar wel of niet op ingaat. Ben je geïnteresseerd in een transportopdracht? Vul het vaste offerteformat in en Moaver regelt de rest. Wanneer de verzender voor jou kiest, krijg je een bevestiging en kun je de rit inplannen."
+        }
+      ]
+    },
+    "blockC": {
+      "title": "Voordelen voor transportbedrijven",
+      "items": [
+        {
+          "title": "Tijdswinst",
+          "description": "Nooit meer online zoeken naar geschikte transportopdrachten. Moaver neemt dit uit handen door aangesloten transportbedrijven proactief te benaderen bij een match."
+        },
+        {
+          "title": "Efficiëntie",
+          "description": "Je kunt lege vrachtruimte eenvoudig opvullen. Dat resulteert in minder lege kilometers. Ofwel; meer vracht en inkomsten per gereden kilometer."
+        },
+        {
+          "title": "Duurzaamheid",
+          "description": "Door vrachtruimte slim op te vullen, hoef je minder kilometers te maken. Zo reduceer je de CO2-uitstoot van jouw wagenpark. Bovendien selecteren steeds meer verzenders hun transportpartner op duurzaamheid. Daarom kun je in jouw profiel ook aangeven of je elektrisch transport aanbiedt."
+        },
+        {
+          "title": "Houd de regie",
+          "description": "Als transportbedrijf houd jij de controle. Jij bepaalt of je wel of niet ingaat op een offerteaanvraag en of je een opdracht wel of niet aangaat."
+        },
+        {
+          "title": "Schaalvoordeel",
+          "description": "Hoe meer transportopdrachten je als transportbedrijf uitvoert, hoe meer marge je overhoudt. Bij Moaver betaal je geen fee per opdracht, maar vaste abonnementskosten van 49,95 euro per maand. Zo bespaar je flink op transportkosten en maak je uitgaven voorspelbaar."
+        },
+        {
+          "title": "Digital ready",
+          "description": "Zet de stap naar verdere digitalisering. Als online transportplatform automatiseert Moaver jouw zoektocht naar de geschikte transportopdrachten. Daarnaast maak je het mogelijk om transportgegevens automatisch in te voeren in planningsystemen."
+        },
+        {
+          "title": "Procesoptimalisatie",
+          "description": "Jouw administratieve systemen integreren met Moaver door middel van API’s. Adressen, tijden, vrachtinformatie en andere planningsinformatie wordt automatisch ingevoerd in jouw systemen. Met optimale processen, tijdswinst en minder typefouten als resultaat."
+        },
+        {
+          "title": "Zichtbaar",
+          "description": "Als transportbedrijf ben je zichtbaarder voor potentiële klanten. In jouw profiel en recensies zien zij waar jouw expertise ligt, wat jouw organisatie te bieden heeft en jouw sterke punten zijn."
+        },
+        {
+          "title": "Basis voor groei",
+          "description": "Laat jouw klantenbestand en omzet groeien. Moaver brengt je nieuwe klanten, zonder dat jij daar tijd in hoeft te steken. Geen lange wachttijden en lastige vrachten, maar directe transportopdrachten die perfect aansluiten op jouw capaciteit en planning."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Jouw transport slimmer maken?",
+      "description": "Maak jouw transport efficiënter, duurzamer, voordeliger en digitaler.",
+      "button": "Schrijf je in op Moaver"
+    },
+    "seo": {
+      "description": "Hoe maak je jouw transport efficiënter, duurzamer en voordeliger? Moaver matcht de vraag van verzenders aan het aanbod van transportbedrijven. Lees hier hoe.",
+      "keywords": "transport, transportbedrijf, transportkosten, transport online, duurzaam transport, vracht"
+    }
   },
   "aboutUs": {
-    "title": "Over ons",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda exercitationem fugiat laudantium magni quae quidem veritatis? Deleniti nobis possimus qui! Ab aliquid autem corporis deserunt distinctio fugiat natus, necessitatibus officiis perspiciatis possimus quas qui quis quod sequi, sit suscipit unde."
+    "title": "Moaver overbrugt de transportkloof",
+    "description": "Transportbedrijven rijden vaak lege kilometers, terwijl verzenders pakketten of een vracht hebben om deze vrije laadruimte op te vullen. Transportplatform Moaver overbrugt deze transportkloof. Hoe? Door verzendingen te matchen met vrije transportruimte. Daardoor halen transportbedrijven meer uit hun ritten en krijgen verzenders passend transport tegen de beste prijs-kwaliteit.",
+    "blockA": {
+      "title": "Moaver is er voor…",
+      "items": [
+        {
+          "title": "…elke transporteur",
+          "description": "Voor mkb en zzp’er. Voor internationaal en lokaal. Voor specialisten en alleskunners."
+        },
+        {
+          "title": "…elke verzender",
+          "description": "Voor bedrijven en particulieren. Voor hulp bij laden-lossen. Voor duurzaam transport."
+        },
+        {
+          "title": "…elke vracht",
+          "description": "Voor één pakket of terugkerende bulkladingen. Voor agrarische producten en pallets."
+        },
+        {
+          "title": "…elke bestemming",
+          "description": "Voor regionaal en internationaal. Voor logistieke hubs of particuliere adressen. "
+        },
+        {
+          "title": "…elk moment",
+          "description": "Voor een specifiek tijdstip of gedurende de maand. Voor eenmalig en terugkerend transport."
+        }
+      ]
+    },
+    "blockB": {
+      "title": "Een uniek transportplatform ontstaan vanuit een behoefte",
+      "lineA": "Transportbedrijven willen graag laadruimte opvullen, maar weten niet hoe. Particulieren en bedrijven willen hun pakketten en vracht verzenden tegen de beste prijs-kwaliteit, maar weten niet hoe. Moaver is opgericht vanuit deze behoefte.",
+      "lineB": "Als telg uit een transportfamilie en ervaringsdeskundige zag initiatiefnemer Roy Bleeker de kloof tussen de transportvraag en het transportaanbod groeien. Sterker nog, in zijn dagelijkse werk liep hij daar vaak tegenaan. Zijn werkgever wilde producten snel vervoeren maar kon niet op tijd de gewenste transporteur vinden. Met vertragingen en wachtende afnemers als resultaat. Daarom besloot Roy om Moaver op te richten: een online platform dat de vraag en aanbod bij elkaar brengt. Voor verzenders en transporteurs, snel en zonder dat zij veel tijd en geld hoeven te investeren.",
+      "lineC": "De huidige transportbrokers en transporteurs maken de online match niet makkelijker. Verzenders moeten zich eerst door aanmeldprocedures worstelen voordat ze überhaupt kunnen zien of een broker of transporteur kan voldoen aan hun transportwensen. Bijvoorbeeld of een vervoerder wel rijdt op bepaalde bestemmingen, op specifieke tijden en bepaalde transportmogelijkheden zoals geconditioneerd transport of personenvervoer aanbiedt. Dat moet toch slimmer kunnen?"
+    },
+    "blockC": {
+      "title": "Hoe helpt Moaver transportbedrijven?",
+      "items": [
+        "Transportbedrijven maken eenmalig een profiel aan op Moaver.",
+        "Daarin geven ze aan welke transportmogelijkheden ze op welk moment hebben.",
+        "Komt er een passende transportvraag binnen? Dan e-mailt Moaver die naar de transporteur.",
+        "De transporteur zit achter het stuur: hij geeft per opdracht aan of hij die wel of niet wil.",
+        "Heeft een vervoerder interesse in een transportdracht? Dan legt Moaver zijn profiel voor aan de verzender.",
+        "De verzender geeft aan of de interesse wederzijds is. Zo ja? Dan vraagt Moaver de transporteur om via het vaste format een offerte uit te brengen.",
+        "Is de offerte aangenomen? Dan kan de transporteur akkoord geven en de opdracht inplannen."
+      ],
+      "button": "Lees meer over de voordelen voor transportbedrijven"
+    },
+    "blockD": {
+      "title": "Hoe helpt Moaver verzenders?",
+      "items": [
+        "Bedrijven of particulieren maken een transportopdracht aan in Moaver. In twee minuten doorlopen ze zeven stappen.",
+        "Daarin geven ze relevante zoekcriteria aan: wat willen ze versturen, wanneer en naar welke bestemming? Willen ze pakketten CO2-neutraal verzenden en hebben ze hulp nodig bij laden-lossen? Heeft de verzending spoed?",
+        "Moaver selecteert drie passende transportbedrijven, die hun offerte aanbieden binnen een tijdrange, en e-mailt hun offertes naar de verzender.",
+        "Uit de drie offertes kiest de verzender de gewenste transporteur.",
+        "Moaver regelt het akkoord van het transportbedrijf en brengt verzender en vervoerder met elkaar in contact."
+      ],
+      "button": "Lees meer over Moaver voor verzenders"
+    },
+    "blockE": {
+      "title": "Moaver maakt matchen makkelijk",
+      "description": "Moaver heeft een duidelijke missie: het makkelijker maken om transportvraag en -aanbod bij elkaar te brengen, voor zowel verzenders als transporteurs. Daarvoor hanteert Moaver zijn geheel eigen aanpak. Na een snelle inschrijving, neemt Moaver de zoektocht uit handen. Zodat transportbedrijven en verzenders elkaar weten te vinden, met minimale investeringen in tijd en geld."
+    },
+    "seo": {
+      "description": "Transportplatform Moaver brengt vraag en aanbod bij elkaar. Transport made easy, voor verzenders en transportbedrijven. Voor elke vracht, route en tijdstip.",
+      "keywords": "transport, transportbedrijf, transporteur, pakket, vracht"
+    }
   },
   "footer": {
     "intro": {
-      "title": "Voor elke route, op ieder moment, jouw vracht op de juiste plek.",
-      "description": "Fusce porta libero non feugiat placerat. Vestibulum suscript, tortor eu sollicitudin tempor, ligula nibh lobortis sapien, en efficitur justo diam vitae mauris. Suspendise et tincidunt elit. Sed sollicitudin neque justo, in molestie leo scelerisque ut. Donec urna nibh, egestas vel convallis vel, finibus sit amet eros. Aenean id tortor nec.",
+      "title": "Moaver overbrugt de transportkloof",
+      "description": "Transportbedrijven rijden vaak lege kilometers, terwijl verzenders pakketten of een vracht hebben om deze vrije laadruimte op te vullen. Transportplatform Moaver overbrugt deze transportkloof. Hoe? Door verzendingen te matchen met vrije transportruimte. Daardoor halen transportbedrijven meer uit hun ritten en krijgen verzenders passend transport tegen de beste prijs-kwaliteit.",
       "link": "Lees meer over ons"
     }
   },
@@ -229,7 +366,7 @@
     "recurringShippingType": "Terugkerend interval",
     "recurringShippingInterval": "Aangepast terugkerend interval",
     "amountWeight": {
-        "title": "Hoeveelheid en gewicht",
+      "title": "Hoeveelheid en gewicht",
       "one": "Eén pakket met {weight} kg",
       "many": "{count} pakketten met {weight} kg",
       "pallets": "{count} pallets met elk {weight} kg",

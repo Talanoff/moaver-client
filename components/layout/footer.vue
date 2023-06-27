@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import ArrowLink from "~/components/ui/arrow-link.vue";
+
 defineProps<{
     showAboutUs: boolean
 }>()
@@ -16,9 +18,9 @@ defineProps<{
                         {{ $t('footer.intro.description') }}
                     </p>
                     <div class="mt-5">
-                        <nuxt-link to="/" class="text-blue-500 lg:text-2xl font-bold">
-                            {{ $t('footer.intro.link') }} ›
-                        </nuxt-link>
+                        <arrow-link to="/about-us" class="text-blue-500 lg:text-2xl font-bold">
+                            {{ $t('footer.intro.link') }}
+                        </arrow-link>
                     </div>
                 </div>
             </div>

@@ -154,19 +154,156 @@
       "keywords": "transport, transport company, send package, ship package, freight"
     }
   },
-  "partnersBanner": {
-    "title": "What do you want to transport?",
-    "description": "Find your transport, without detours",
-    "button": "Join now"
+  "transporters": {
+    "title": "Moaver makes your transport smarter",
+    "blockA": {
+      "title": "Moaver makes your transport smarter",
+      "lineA": "Your transport can be more efficient, sustainable, economical and digital. With fewer empty miles and more profit margin. Wondering how to make your transport company smarter? Moaver, the online transport platform, seamlessly connects shippers' requests with your transport services.",
+      "lineB": "Fewer empty miles",
+      "lineC": "Partial loads and empty return trips. As a transporter, you can't escape it. But you don't have to take it for granted. What if there is available freight nearby to optimise your loading space? Moaver will find a suitable load for you, minimising the number of empty miles. This is not only efficient, but also sustainable.",
+      "lineD": "More profit margin",
+      "lineE": "The circa 8% margin you get on transport is your profit. It would be a shame if you had to hand over a large part of it to middlemen such as transport brokers. You deserve better. That is why, with Moaver, instead of paying a fee per load, you pay a fixed subscription fee per month. So the more you transport, the greater the margin you keep."
+    },
+    "blockB": {
+      "title": "How can Moaver help you?",
+      "lineA": "Moaver matches shippers' demand with your transport services. This is automated, which means that as a transport company, you do not have to worry about it. You specify what you want. Where do you usually transport to and when? What goods do you transport? How many vehicles do you have? Moaver matches your transport capacity to the demand of shippers, both organisations and private individuals. This makes Moaver the only Dutch online transport platform for transport orders from B2B and B2C that is not operated by a broker.",
+      "items": [
+        {
+          "title": "Profile",
+          "description": "When you register, you create a profile. This includes your preferences and options: do you specialise in pallet transport, temperature-controlled transport or bulk transport? Do you only operate in the north of the Netherlands or do you mainly drive to foreign destinations? Do you have spare transport capacity, for example for partial loads or empty return trips? Moaver can solve this for you."
+        },
+        {
+          "title": "Match",
+          "description": "Once your profile is complete, Moaver gets to work. Commercial and private shippers see your profile. Does your offer match their needs? Then they can request a quote from you. For example, a shipper wants to transport ornamental flowers from Aalsmeer to Friesland on Monday, while you return to Heerenveen with vacant space? Then that's a match."
+        },
+        {
+          "title": "Quote",
+          "description": "Is there a match? Then a shipper will request a quote. Moaver will send this request directly to you by email. You decide whether to accept it or not. Are you interested in a transport job? Fill in the fixed quotation format and Moaver will do the rest. If the shipper chooses you, you will receive confirmation and you can schedule the trip."
+        }
+      ]
+    },
+    "blockC": {
+      "title": "Benefits for transport companies",
+      "items": [
+        {
+          "title": "Save time",
+          "description": "No more searching online for suitable transport assignments. Moaver does this for you by proactively contacting affiliated transport companies when a match is found."
+        },
+        {
+          "title": "Efficiency",
+          "description": "You can easily fill empty loading space. This means fewer empty miles. In other words, more freight and more revenue per mile you drive."
+        },
+        {
+          "title": "Sustainability",
+          "description": "By cleverly filling cargo space, you need to travel fewer miles. This reduces your fleet's CO2 emissions. In addition, more and more shippers are choosing their transport partners based on sustainability. This is why you can indicate whether you offer electric transport in your profile."
+        },
+        {
+          "title": "Stay in control",
+          "description": "As a transport company, you are in control. You decide whether or not to respond to a request and whether or not to accept a job."
+        },
+        {
+          "title": "Economies of scale",
+          "description": "The more transport jobs you perform as a transport company, the greater your margin. With Moaver, you do not pay a fee per job, but a fixed subscription fee per month. This allows you to save a lot on transport costs and helps you to plan your expenses."
+        },
+        {
+          "title": "Digital ready",
+          "description": "Take the step towards further digitalisation. As an online transport platform, Moaver automates your search for suitable transport orders. It also enables you to automatically enter transport data into planning systems. "
+        },
+        {
+          "title": "Process optimisation",
+          "description": "Your administrative systems integrate with Moaver via APIs. Addresses, times, freight information and other planning information are automatically entered into your systems. This results in streamlined processes, time saved and fewer typing errors."
+        },
+        {
+          "title": "Visibility",
+          "description": "As a transport company, you are more visible to potential customers. In your profile and reviews, they can see where your expertise lies, what your organisation has to offer and what your strengths are."
+        },
+        {
+          "title": "The foundation for growth",
+          "description": "Increase your customer base and turnover. Moaver provides you with new customers without you having to invest time. No long waits and awkward loads, just direct transport orders that fit perfectly with your capacity and planning."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Looking to make your transport smarter?",
+      "description": "Make your transport more efficient, sustainable, economical and digital. ",
+      "button": "Subscribe to Moaver"
+    },
+    "seo": {
+      "description": "How can you make your transport more efficient, sustainable and cost-effective? Moaver matches the demand of shippers with the supply of transport companies. Read more about it here.",
+      "keywords": "transport, transport company, transport costs, transport online, sustainable transport, freight"
+    }
   },
   "aboutUs": {
-    "title": "About Us",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda exercitationem fugiat laudantium magni quae quidem veritatis? Deleniti nobis possimus qui! Ab aliquid autem corporis deserunt distinctio fugiat natus, necessitatibus officiis perspiciatis possimus quas qui quis quod sequi, sit suscipit unde."
+    "title": "Moaver bridges the transport gap",
+    "description": "Transport companies frequently incur empty miles, while shippers possess packages or freight that could occupy that vacant space. Moaver’s transport platform aims to bridge this transportation gap. How? By effectively pairing shipments with available transport capacity. As a result, transport companies can optimise their journeys, and shippers secure suitable transportation while maximising value for money.",
+    "blockA": {
+      "title": "Moaver is there for...",
+      "items": [
+        {
+          "title": "…every transporter",
+          "description": "For SMEs and sole traders. For international to local transport. For specialists and all-rounders."
+        },
+        {
+          "title": "…every shipper",
+          "description": "For companies and private customers. For help with loading/unloading. For sustainable transport."
+        },
+        {
+          "title": "…any load",
+          "description": "For a single parcel or recurring bulk loads. For agricultural produce and pallets."
+        },
+        {
+          "title": "…any destination",
+          "description": "For regional and international deliveries. For logistics centres or private addresses."
+        },
+        {
+          "title": "…any time",
+          "description": "For a specific time of day or throughout the month. For one-off and recurring shipments."
+        }
+      ]
+    },
+    "blockB": {
+      "title": "A unique transport platform born from necessity",
+      "lineA": "Transporters want to fill up their freight space, but don't know how. Private customers and companies want to ship their parcels and freight at the best value for money, but don't know how. Moaver was born out of this necessity.",
+      "lineB": "Coming from a family of transport professionals, founder Roy Bleeker saw the gap between transport demand and supply grow. In fact, he often encountered this gap in his daily work. His employer wanted to move products quickly, but could not find the right transporter in time. This resulted in delays and waiting customers. So Roy decided to set up Moaver: an online platform that brings supply and demand together. It quickly and easily connects shippers and transporters, without the need to invest a lot of time and money.",
+      "lineC": "Current transport brokers and transporters do not make online matching any easier. Shippers have to wade through registration procedures before they can even see if a broker or transport company can meet their transport needs. For example, to see if a transporter operates to certain destinations, at certain times, and offers certain transport options such as temperature-controlled transport or passenger transport. Surely there must be a smarter way of doing this?"
+    },
+    "blockC": {
+      "title": "How does Moaver help transport companies?",
+      "items": [
+        "Transport companies create a one-off profile on Moaver.",
+        "In this profile, they specify which transport options they have available at any given time.",
+        "Does a suitable transport request come in? Then Moaver emails it to the transporter.",
+        "The transporter is in control: they decide for each job whether they want it or not.",
+        "Is a transporter interested in a transport assignment? Then Moaver sends their profile to the shipper.",
+        "The shipper indicates whether the interest is mutual. If so, Moaver asks the transporter to submit an offer using the fixed format.",
+        "Is the offer accepted? Then the transporter can accept and schedule the job."
+      ],
+      "button": "Read more about the benefits for transport companies"
+    },
+    "blockD": {
+      "title": "How does Moaver help shippers?",
+      "items": [
+        "Companies or private customers create a transport order in Moaver. The process takes two minutes and consists of seven steps.",
+        "In these steps, they enter relevant search criteria: What do they want to send, when and where to? Do they want to send parcels carbon-neutral? Do they need help with loading/unloading? Is the shipment urgent?",
+        "Moaver selects three suitable transport companies that offer their quotes within a certain time frame and emails their quotes to the shipper.",
+        "From the three quotes, the shipper chooses the preferred transport company.",
+        "Moaver arranges the agreement with the transport company and puts the shipper and the transporter in touch with each other."
+      ],
+      "button": "Read more about Moaver for shippers"
+    },
+    "blockE": {
+      "title": "Moaver makes matching easy",
+      "description": "Moaver has a clear mission: to make it easier to match transport supply and demand, for both shippers and transporters. To do this, Moaver takes a unique approach. After a quick registration, Moaver will take the search out of your hands. This means that transporters and shippers know how to find each other, with minimal investment in time and money."
+    },
+    "seo": {
+      "description": "The Moaver transport platform brings supply and demand together. Transport made easy, for shippers and transport companies. For any shipment, any route and any time of day.",
+      "keywords": "transport, transport company, transporter, parcel, shipment"
+    }
   },
   "footer": {
     "intro": {
-      "title": "For every route, at any time, your cargo in the right place.",
-      "description": "Fusce porta libero non feugiat placerat. Vestibulum suscript, tortor eu sollicitudin tempor, ligula nibh lobortis sapien, en efficitur justo diam vitae mauris. Suspendise et tincidunt elit. Sed sollicitudin neque justo, in molestie leo scelerisque ut. Donec urna nibh, egestas vel convallis vel, finibus sit amet eros. Aenean id tortor nec.",
+      "title": "Moaver bridges the transport gap",
+      "description": "Transport companies frequently incur empty miles, while shippers possess packages or freight that could occupy that vacant space. Moaver’s transport platform aims to bridge this transportation gap. How? By effectively pairing shipments with available transport capacity. As a result, transport companies can optimise their journeys, and shippers secure suitable transportation while maximising value for money.",
       "link": "Read more about us"
     }
   },

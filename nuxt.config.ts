@@ -31,7 +31,8 @@ export default defineNuxtConfig({
     // @ts-ignore
     css: [
         '@/assets/css/app.css',
-        'vue-toast-notification/dist/theme-default.css'
+        'vue-toast-notification/dist/theme-default.css',
+        '@splidejs/vue-splide/css'
     ],
 
     runtimeConfig: {
@@ -65,5 +66,5 @@ export default defineNuxtConfig({
             ],
             titleTemplate: '%s | Moaver'
         },
-    },
+    }
 });
