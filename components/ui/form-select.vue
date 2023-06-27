@@ -1,12 +1,14 @@
 <template>
-    <div class="relative" v-click-outside="onClickOutside">
+    <div class="relative" v-click-outside="onClickOutside" v-if="!isMobile">
         <label class="block mb-2 text-sm  text-slate-900 font-bold" v-if="$attrs.label">
             {{ $attrs.label }}
         </label>
+
         <button
                 ref="button"
                 type="button"
-                class="relative w-full cursor-default rounded-md text-sm bg-slate-100 h-12 pr-10 text-left focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                class="relative w-full cursor-default rounded-md text-sm bg-slate-100 h-12 pr-10 text-left focus:outline-none ring-2 ring-transparent focus:ring-blue-500/50"
+                :class="{'!ring-red-500/50 !focus:ring-red-500/50': errors}"
                 aria-haspopup="listbox"
                 :aria-expanded="expanded"
                 aria-labelledby="listbox-label"
@@ -31,6 +33,12 @@
                 </svg>
             </div>
         </button>
+
+        <ul v-if="errors" class="text-red-500 text-sm">
+            <li v-for="(error, index) of errors" :key="index">
+                {{ error }}
+            </li>
+        </ul>
 
         <teleport to="body">
             <ul
@@ -70,36 +78,78 @@
             </ul>
         </teleport>
     </div>
+
+    <div class="relative" v-else>
+        <label class="block mb-2 text-sm font-bold" v-if="$attrs.label">
+            {{ $attrs.label }}
+        </label>
+        <div class="relative">
+            <select
+                    :class="{'!ring-red-500/50 !focus:ring-red-500/50': errors}"
+                    class="appearance-none block w-full px-3.5 bg-slate-100 h-12 border-none text-sm rounded-lg focus:outline-none ring-2 ring-transparent focus:ring-blue-500/50"
+                    @change="$emit('update:model-value', $event.target.value)"
+            >
+                <option :disabled="$attrs.required" value="">
+                    {{ $t('forms.selectAnOption') }}
+                </option>
+                <option
+                        v-for="option of options"
+                        :value="option.key"
+                        :selected="modelValue == option.key"
+                >
+                    {{ option.value }}
+                </option>
+            </select>
+
+            <div class="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
+                <svg class="h-5 w-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                          d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
+                          clip-rule="evenodd"
+                    />
+                </svg>
+            </div>
+        </div>
+
+        <ul v-if="errors" class="text-red-500 text-sm">
+            <li v-for="(error, index) of errors" :key="index">
+                {{ error }}
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script lang="ts" setup>
+const isMobile = ref(navigator && /Android|iPhone/i.test(navigator.userAgent));
+
 const props = defineProps<{
     modelValue: string | number | null;
     options: {
         key: string;
         value: string;
     }[];
+    errors?: string[] | null | undefined
 }>();
 
 const emits = defineEmits(['update:model-value']);
 
-const { $i18n } = useNuxtApp();
+const {$i18n} = useNuxtApp();
 
 const button = ref<HTMLButtonElement | null>(null);
 const listPosition = ref<{
     left: string;
     width: string;
-    top?: string|undefined;
-    bottom?: string|undefined;
+    top?: string | undefined;
+    bottom?: string | undefined;
 }>();
 const expanded = ref<boolean>(false);
 const search = ref<string>('');
 
 const currentValue = computed(() => {
-    return props.options?.find(({ key }) => props.modelValue == key)?.value ?? $i18n.t('forms.selectAnOption');
+    return props.options?.find(({key}) => props.modelValue == key)?.value ?? $i18n.t('forms.selectAnOption');
 });
 
-const filteredItems = computed(() => props.options?.filter(({ value }) => {
+const filteredItems = computed(() => props.options?.filter(({value}) => {
     const name = new RegExp(search.value.toString(), 'i');
     return name.test(value);
 }));
@@ -112,7 +162,7 @@ const onToggle = () => {
     expanded.value = !expanded.value
 }
 
-const onSelect = (value: string|number) => {
+const onSelect = (value: string | number) => {
     emits('update:model-value', value);
     onClickOutside();
 }
@@ -128,7 +178,7 @@ const calculateListPosition = (): void => {
     }
 
     const windowHeight = window.innerHeight;
-    const { left, top, bottom, width } = button.value.getBoundingClientRect();
+    const {left, top, bottom, width} = button.value.getBoundingClientRect();
 
     listPosition.value = {
         left: left + 'px',

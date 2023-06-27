@@ -1,5 +1,5 @@
 <template>
-    <div class="relative text-slate-900">
+    <div class="relative">
         <label class="block mb-2 text-sm font-bold" v-if="$attrs.label">
             {{ $attrs.label }}
         </label>
