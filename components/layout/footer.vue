@@ -2,7 +2,7 @@
 import ArrowLink from "~/components/ui/arrow-link.vue";
 
 defineProps<{
-    showAboutUs: boolean
+    showAboutUs: boolean;
 }>()
 </script>
 

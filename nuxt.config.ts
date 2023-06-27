@@ -1,7 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 // @ts-ignore
 export default defineNuxtConfig({
-    modules: ['@nuxtjs/tailwindcss',
+    modules: [
+        '@nuxt/devtools',
+        '@nuxtjs/tailwindcss',
         ['@nuxtjs/i18n', {
             legacy: false,
             locale: 'en',
@@ -66,5 +68,7 @@ export default defineNuxtConfig({
             ],
             titleTemplate: '%s | Moaver'
         },
-    }
+    },
+
+    components: false
 });
