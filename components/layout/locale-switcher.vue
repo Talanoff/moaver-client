@@ -17,5 +17,5 @@
 <script setup>
 const { locale, setLocale } = useI18n();
 
-const locales = ref(['en', 'nl']);
+const locales = ref(['nl', 'en']);
 </script>

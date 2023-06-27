@@ -43,7 +43,10 @@ export default defineNuxtConfig({
     googleFonts: {
         display: 'swap',
         families: {
-            Poppins: [400, 500, 600, 700],
+            Poppins: {
+                wght: [400, 500, 600, 700],
+                ital: [400, 500]
+            },
         }
     },
 

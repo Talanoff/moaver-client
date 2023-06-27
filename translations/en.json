@@ -77,6 +77,83 @@
       "keywords": "transport, transport company, transporter, shipping packages"
     }
   },
+  "shippers": {
+    "title": "Moave your package",
+    "description": "Request a transport order.",
+    "blockA": {
+      "title": "Search less",
+      "lineA": "When it comes to sending a package or freight, choosing the right carrier can be a daunting task. How do you find a reliable, low-cost carrier in the vast online landscape of providers? Moaver does the search for you. You enter your search request and we find the ideal transport company. So you can quickly find the right transport at the best value for money."
+    },
+    "blockB": {
+      "title": "Find more",
+      "lineA": "You know where to find the transport company around the corner... but the best-known transporter is not always the best choice. How do you find the transport company with the right price, specialisation, destination and capacity at the right time? Moaver can help you. Enter your search criteria and we will give you three options. Reliable transport companies with good reviews and prices. Transporters who have spare transport capacity at that very moment, so they can offer you a competitive price."
+    },
+    "blockC": {
+      "title": "How can Moaver help you?",
+      "lineA": "Am I paying too much? Will this transport company handle my fragile parcels properly? Can't I send my freight earlier? As a shipper, you often only find out the answer when it is too late. When it turns out that your regular transporter is charging you a high price because he is only driving back and forth to deliver your freight. Or when your recipient complains about damaged deliveries.",
+      "lineB": "With Moaver, you can be sure that you are hiring the ideal transport company – with the best value for money, experience and references. No need to do a lengthy Google search or enter all sorts of package details first. Simply enter your search query and Moaver will provide you with three suitable transport companies based on your search criteria. All three have already been screened for their accuracy, timing, location, specialisation and value for money. The final choice is yours.",
+      "lineC": "Moaver brings supply and demand together. For every type of freight and every destination. Does a transport company have available space on a return trip, for example? Then the transport price is often lower. You can benefit from this. Moaver knows which transport companies have available space and when. But also when they have scheduled trips in your area."
+    },
+    "blockD": {
+      "title": "Five steps in two minutes",
+      "lineA": "How do you know if a transport company is right for your shipment? With other online brokers or transporters, you usually have to provide a lot of information upfront. The broker or transporter will then give you the information you want, such as times, transport options, prices and capacity. Only then do you find out if this transport company is suitable for your freight or package. Moaver makes this easier.",
+      "lineB": "Criteria questions",
+      "lineC": "With Moaver you can create a transport order in two minutes. To do this, you go through seven steps. You answer questions that help Moaver find the right transporter, such as \"What do you want to send?\", \"Is your package fragile?\", \"Do you want to use sustainable transport for your packages?\" and \"Do you need help with loading and unloading or will you do it yourself?",
+      "lineD": "Three quotes",
+      "lineE": "Have you completed the seven selection steps? Then Moaver will get to work. Within a day/a few hours, you will receive three quotes from transport companies. All of them are suitable transporters that perfectly match the selection criteria you have entered. Not only in terms of price and time, but also in terms of reliability, capacity and loading options.",
+      "lineF": "Let’s Moave",
+      "lineJ": "Have you compared the quotes? Then the decision is up to you. You choose the transport company you wish to use by emailing your choice to Moaver. We will then contact the transporter and send you confirmation if your transport order is approved."
+    },
+    "blockE": {
+      "title": "Benefits for you as a shipper",
+      "items": [
+        {
+          "title": "Best value for money",
+          "description": "Moaver selects three transport companies that match your shipment, time, destination and other transport requirements. Transporters who are already heading that way anyway, so they can offer you a competitive price."
+        },
+        {
+          "title": "Save time",
+          "description": "No more lengthy Google searches to find the right transport company. Moaver takes the online search out of your hands."
+        },
+        {
+          "title": "The right transporter",
+          "description": "You can be sure that the transport company will meet all your requirements. Based on your selection criteria, Moaver will select three transporters that match your shipment."
+        },
+        {
+          "title": "Reliable",
+          "description": "Quality matters. That is why Moaver selects its affiliated transport companies based on reviews. This way, you can be sure that your goods are transported carefully and as agreed."
+        },
+        {
+          "title": "Sustainable",
+          "description": "Want to send your parcel in a CO<sub>2</sub>-neutral way? Then choose a transport company that uses electric vehicles, a bike courier or a transporter that uses the railways."
+        },
+        {
+          "title": "In your own hands",
+          "description": "You decide which transport company you want to use. Moaver will present you with three suitable quotes."
+        },
+        {
+          "title": "No strings attached",
+          "description": "You do not need a subscription to send a package with Moaver. You simply pay a 3% fee on each transport order."
+        },
+        {
+          "title": "Customised transport",
+          "description": "What kind of freight or package do you want to transport: a fragile package or bulk goods, for example? You specify your requirements in the search criteria. Moaver will then search for suitable transport companies."
+        },
+        {
+          "title": "Transparent",
+          "description": "What you see is what you get. Moaver matches your transport request with the right transporter. There are no brokers or middlemen involved."
+        },
+        {
+          "title": "Fast",
+          "description": "Transport companies are required to respond within a set timeframe, both for the quote request and the agreement. This ensures you get a fast response."
+        }
+      ]
+    },
+    "seo": {
+      "description": "Looking for a transport company? Moaver will find your transporter. With the right price, speciality, destination and capacity at the right time.",
+      "keywords": "transport, transport company, send package, ship package, freight"
+    }
+  },
   "partnersBanner": {
     "title": "What do you want to transport?",
     "description": "Find your transport, without detours",

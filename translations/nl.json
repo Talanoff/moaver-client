@@ -73,8 +73,85 @@
       "button": "Lees meer over Moaver voor verzenders"
     },
     "seo": {
-      "description": "Moaver brings shippers and transport companies together. This means fewer empty miles for transporters and the best value for shippers. Read more about it here.",
-      "keywords": "transport, transport company, transporter, shipping packages"
+      "description": "Moaver matcht verzenders en transportbedrijven. Met minder lege kilometers voor vervoerders en de beste prijs-kwaliteit voor verzenders. Lees hier hoe.",
+      "keywords": "transport, transportbedrijf, transporteur, pakket verzenden"
+    }
+  },
+  "shippers": {
+    "title": "Jouw pakket moaven",
+    "description": "Vraag een transportdracht aan.",
+    "blockA": {
+      "title": "Minder zoeken",
+      "lineA": "Bij het verzenden van een pakket of vracht is het best lastig om het juiste transportbedrijf te kiezen. Hoe vind je een betrouwbare, voordelige vervoerder in de online jungle aan aanbieders? Moaver neemt je het zoekwerk uit handen. Jij voert je zoekopdracht in, wij zoeken het ideale transportbedrijf. Zo vind jij snel passend transport voor de beste prijs-kwaliteit."
+    },
+    "blockB": {
+      "title": "Meer vinden",
+      "lineA": "Het transportbedrijf om de hoek weet je te vinden… maar de meest bekende transporteur is niet altijd de beste keuze. Hoe vind jij het transportbedrijf met de juiste prijs, specialiteit, bestemming en capaciteit op het juiste moment? Moaver helpt je. Vul jouw zoekcriteria in en wij geven je drie opties. Betrouwbare transportbedrijven met goede recensies en prijzen. Transporteurs die juist op dat moment vervoerscapaciteit overhebben, zodat ze jou een scherpe prijs kunnen bieden."
+    },
+    "blockC": {
+      "title": "Hoe helpt Moaver jou?",
+      "lineA": "Betaal ik niet te veel? Gaat dit transportbedrijf wel netjes om met mijn breekbare pakketten? Kan ik mijn vracht niet eerder verzenden? Daar kom je als verzender vaak pas achter als het te laat is. Als blijkt dat jouw vaste transporteur een hoge prijs vraagt omdat hij alleen voor jouw vracht op en neer rijdt. Of als jouw ontvanger klaagt over kapotte zendingen.",
+      "lineB": "Met Moaver weet je zeker dat je het ideale transportbedrijf inschakelt; met de beste prijs-kwaliteit, ervaring en referenties. Daarvoor hoef je niet lang te Googlen of eerst allerlei pakketgegevens in te voeren. Vul je zoekvraag in en op basis van jouw zoekcriteria geeft Moaver je drie passende transporteurs. Deze zijn alledrie al gecheckt op zorgvuldigheid, tijdstip, locatie, specialisme en prijs-kwaliteit. De uiteindelijke keuze is aan jou.",
+      "lineC": "Moaver matcht vraag en aanbod. Voor elke soort vracht en elke bestemming. Heeft een transportbedrijf ruimte over, bijvoorbeeld bij een terugrit? Dan is de transportprijs vaak lager. Daar kan jij van profiteren. Moaver weet wanneer, welke transporteurs vrachtruimte over hebben. Maar ook wanneer ze bij jou in de buurt een rit gepland hebben."
+    },
+    "blockD": {
+      "title": "Zeven stappen in twee minuten",
+      "lineA": "Hoe weet je of een transportbedrijf past bij jouw verzending? Bij andere online bemiddelaars of transporteurs moet je daarvoor meestal eerst veel gegevens invoeren. Daarna geeft de transportbroker of transporteur jou de gewenste informatie, bijvoorbeeld over tijdstippen, transportmogelijkheden, prijzen en vervoerscapaciteit. Op dat moment kom jij er pas achter of dit transportbedrijf wel geschikt is voor jouw vracht of pakket. Moaver maakt dit makkelijker.",
+      "lineB": "Selectievragen",
+      "lineC": "Bij Moaver maak je binnen twee minuten een transportopdracht aan. Daarvoor doorloop je zeven stappen. Hierin beantwoord je vragen die Moaver helpen om de juiste transporteur te vinden, zoals ‘Wat wil je verzenden?’, ‘Is jouw pakket breekbaar’, ‘Wil je jouw pakketten via duurzame vervoersmiddelen transporteren?’ en ‘Heb je hulp nodig bij het laden en lossen of doe je dit zelf?’",
+      "lineD": "Drie offertes",
+      "lineE": "Heb je de zeven selectiestappen doorlopen? Dan gaat Moaver aan de slag. Binnen een dag/een paar uur ontvang je drie offertes van transportbedrijven. Stuk voor stuk geschikte vervoerders die perfect passen bij de ingevulde selectiecriteria. Qua prijs en tijdslot, maar ook qua betrouwbaarheid, capaciteit en laadmogelijkheden.",
+      "lineF": "Moaven maar",
+      "lineJ": "Heb je de offertes vergeleken? Daarna is de keuze aan jou. Jij bepaalt met welke vervoerder je verder gaat door jouw keuze aan Moaver te e-mailen. Daarna nemen wij contact op met het transportbedrijf en sturen we jou een bevestiging als de transportopdracht akkoord is."
+    },
+    "blockE": {
+      "title": "Voordelen voor jou als verzender",
+      "items": [
+        {
+          "title": "Beste prijs-kwaliteit",
+          "description": "Moaver selecteert drie transportbedrijven die passen bij jouw vracht, tijdstip, bestemming en andere transportwensen. Transporteurs die toch die kant opgaan, dus jou een scherpe prijs kunnen bieden."
+        },
+        {
+          "title": "Tijdswinst",
+          "description": "Nooit meer Googlen naar een geschikt transportbedrijf. Moaver neemt je het online zoekwerk uit handen."
+        },
+        {
+          "title": "De juiste transporteur",
+          "description": "Je weet zeker dat een transporteur voldoet aan jouw wensen. Op basis van jouw selectiecriteria kiest Moaver drie vervoerders die passen bij jouw vracht."
+        },
+        {
+          "title": "Betrouwbaar",
+          "description": "Kwaliteit is cruciaal. Daarom screent Moaver aangesloten transportbedrijven naar aanleiding van hun recensies. Zodat jij zeker weet dat jouw vracht zorgvuldig en volgens afspraak vervoerd wordt."
+        },
+        {
+          "title": "Duurzaam",
+          "description": "Wil je jouw pakket CO<sub>2</sub>-neutraal versturen? Kies dan voor transportbedrijven met elektrische voertuigen, fietstransporteurs of vervoerders die gebruikmaken van het spoor."
+        },
+        {
+          "title": "In eigen hand",
+          "description": "Jij bepaalt welk transportbedrijf je kiest. Moaver legt je daarvoor drie passende offertes voor."
+        },
+        {
+          "title": "Nergens aan vast",
+          "description": "Je hoeft geen abonnement af te sluiten om een pakket via Moaver te verzenden. Over elke transportopdracht betaal je een fee van 3%."
+        },
+        {
+          "title": "Transport op maat",
+          "description": "Wat voor vracht of pakket wil je vervoeren: bijvoorbeeld een fragiel pakket of bulkvracht? In de zoekcriteria geef je jouw wensen aan. Vervolgens zoekt Moaver geschikte vervoerders."
+        },
+        {
+          "title": "Transparant",
+          "description": "What you see is what you get. Moaver koppelt jouw transportvraag aan de juiste vervoerder. Daar zit geen broker of bemiddelaar tussen."
+        },
+        {
+          "title": "Snel",
+          "description": "Transportbedrijven moeten reageren binnen een tijdrange, zowel bij de offerteaanvraag als bij het akkoord. Daardoor ben jij verzekerd van snelle actie."
+        }
+      ]
+    },
+    "seo": {
+      "description": "Looking for a transport company? Moaver will find your transporter. With the right price, speciality, destination and capacity at the right time.",
+      "keywords": "transport, transport company, send package, ship package, freight"
     }
   },
   "partnersBanner": {
