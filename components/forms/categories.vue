@@ -11,7 +11,7 @@
                     :class="{'!border-blue-500': form.category[0] === category.id}"
                     class="flex justify-center items-center p-5 lg:p-8 border-2 border-slate-200 rounded-md group-hover:border-blue-600 group-hover:bg-slate-100 transition-colors duration-300"
             >
-                <svg class="h-16">
+                <svg width="100%" height="4rem">
                     <use :xlink:href="`/icons/categories.svg#${category.icon}`"/>
                 </svg>
             </div>
