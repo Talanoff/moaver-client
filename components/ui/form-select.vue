@@ -88,6 +88,7 @@
                     :class="{'!ring-red-500/50 !focus:ring-red-500/50': errors}"
                     class="appearance-none block w-full px-3.5 bg-slate-100 h-12 border-none text-sm rounded-lg focus:outline-none ring-2 ring-transparent focus:ring-blue-500/50"
                     @change="$emit('update:model-value', $event.target.value)"
+                    :disabled="$attrs.disabled"
             >
                 <option :disabled="$attrs.required" value="">
                     {{ $t('forms.selectAnOption') }}
