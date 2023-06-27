@@ -73,9 +73,9 @@ useSeoMeta({
 
     <section class="py-10 lg:py-20">
         <div class="container max-w-6xl">
-            <div class="md:flex gap-10">
+            <div class="flex flex-col md:flex-row gap-10">
                 <div class="md:w-1/3 md:text-right">
-                    <h2 class="text-3xl lg:text-4xl text-blue-950 font-bold mb-5">
+                    <h2 class="text-3xl lg:text-4xl text-blue-950 font-bold">
                         {{ $t('home.blockA.title') }}
                     </h2>
                 </div>
@@ -89,7 +89,7 @@ useSeoMeta({
 
     <section class="py-10 lg:py-20 bg-slate-50/50">
         <div class="container max-w-6xl">
-            <div class="md:flex gap-10">
+            <div class="flex flex-col md:flex-row gap-10">
                 <div class="md:w-2/3 prose xl:prose-lg content order-2 md:order-1">
                     <p>{{ $t('home.blockB.lineA') }}</p>
                     <p>{{ $t('home.blockB.lineB') }}</p>
@@ -100,7 +100,7 @@ useSeoMeta({
                     </p>
                 </div>
                 <div class="md:w-1/3 order-1 md:order-2">
-                    <h2 class="text-3xl lg:text-4xl text-blue-950 font-bold mb-5">
+                    <h2 class="text-3xl lg:text-4xl text-blue-950 font-bold">
                         {{ $t('home.blockB.title') }}
                     </h2>
                 </div>
@@ -116,8 +116,10 @@ useSeoMeta({
 
             <table class="w-full">
                 <thead>
-                <th class="pl-8">{{ $t('home.blockC.table.header.a') }}</th>
-                <th class="pl-8">{{ $t('home.blockC.table.header.b') }}</th>
+                <tr>
+                    <th class="pl-8">{{ $t('home.blockC.table.header.a') }}</th>
+                    <th class="pl-8">{{ $t('home.blockC.table.header.b') }}</th>
+                </tr>
                 </thead>
 
                 <tbody>

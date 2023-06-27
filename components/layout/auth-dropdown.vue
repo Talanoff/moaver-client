@@ -35,7 +35,7 @@ const onToggleDropdown = () => {
     <section class="w-32 flex flex-col justify-center items-end">
         <button
                 class="flex items-center font-medium"
-                @click.prevent="authStore.onModalToggle()"
+                @click.prevent="authStore.onModalToggle(); $emit('open')"
                 v-if="!authStore.isLoggedIn"
         >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 mr-2">

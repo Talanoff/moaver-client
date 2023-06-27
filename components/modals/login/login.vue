@@ -11,6 +11,8 @@
                     placeholder="example@mail.com"
                     v-model="form.email"
                     :required="true"
+                    :errors="errors.email"
+
                 />
             </div>
 
@@ -20,6 +22,7 @@
                     v-model="form.password"
                     placeholder="********"
                     :required="true"
+                    :errors="errors.password"
                 />
             </div>
 
@@ -42,15 +45,24 @@ import { useAuth } from "~/store/auth";
 
 const authStore = useAuth();
 const loadingRef = ref(false);
+
 const form = ref({
     email: '',
     password: '',
+});
+
+const errors = ref({
+    email: null,
+    password: null,
 });
 
 const submit = () => {
     loadingRef.value = true;
     authStore.login(form.value)
         .then(() => authStore.onModalToggle())
+        .catch((reason) => {
+            errors.value = Object.assign({}, errors.value, reason?.response?.data?.errors ?? {})
+        })
         .finally(() => loadingRef.value = false);
 }
 </script>

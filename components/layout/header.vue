@@ -1,50 +1,60 @@
 <template>
-    <header class="sm:px-10 py-5 px-2 container">
-        <div id="sidemenu" class="sm:hidden flex justify-between items-center flex-row-reverse">
-            <button class="sidemenu__btn" @click="navOpen=!navOpen" v-bind:class="{active:navOpen}">
-                <span class="top"></span>
-                <span class="mid"></span>
-                <span class="bottom"></span>
-            </button>
+    <header class="sm:px-10 py-5 container">
+        <div id="sidemenu" class="lg:hidden">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl font-black text-blue-600">
+                    <nuxt-link to="/">
+                        <logo class="h-10"/>
+                    </nuxt-link>
+                </div>
 
-            <div class="text-2xl font-black text-blue-600">
-                <logo/>
+                <button class="sidemenu__btn" @click="navOpen=!navOpen" v-bind:class="{active:navOpen}">
+                    <span class="top"></span>
+                    <span class="mid"></span>
+                    <span class="bottom"></span>
+                </button>
             </div>
 
             <transition name="translateX">
                 <nav v-if="navOpen">
                     <div class="sidemenu__wrapper flex flex-col overflow-auto justify-between h-full">
-                        <ul class="sidemenu__list">
-                            <li class="sidemenu__item px-2.5" @click="navOpen=!navOpen">
+                        <ul class="sidemenu__list my-auto">
+                            <li class="sidemenu__item" @click="navOpen=!navOpen">
                                 <nuxt-link to="/">
                                     {{ $t('navigation.header.home') }}
                                 </nuxt-link>
                             </li>
-                            <li class="sidemenu__item px-2.5" @click="navOpen=!navOpen">
+                            <li class="sidemenu__item" @click="navOpen=!navOpen">
                                 <nuxt-link to="/shippers">
                                     {{ $t('navigation.header.shippers') }}
                                 </nuxt-link>
                             </li>
-                            <li class="sidemenu__item px-2.5" @click="navOpen=!navOpen">
+                            <li class="sidemenu__item" @click="navOpen=!navOpen">
                                 <nuxt-link to="/transporters">
                                     {{ $t('navigation.header.transporters') }}
                                 </nuxt-link>
                             </li>
-                            <li class="sidemenu__item px-2.5" @click="navOpen=!navOpen">
+                            <li class="sidemenu__item" @click="navOpen=!navOpen">
                                 <nuxt-link to="/about-us">
                                     {{ $t('navigation.header.about') }}
                                 </nuxt-link>
                             </li>
+                            <li class="sidemenu__item">
+                                <auth-dropdown
+                                    class="mx-auto w-auto text-white items-center"
+                                    @open="navOpen=!navOpen"
+                                />
+                            </li>
+                            <li class="sidemenu__item mt-20">
+                                <locale-switcher class="mx-auto justify-center text-white"/>
+                            </li>
                         </ul>
-                        <div class="sidemenu__item flex " @click="navOpen=!navOpen">
-                            <auth-dropdown/>
-                        </div>
                     </div>
                 </nav>
             </transition>
         </div>
 
-        <nav class="hidden sm:flex justify-between items-center">
+        <nav class="hidden lg:flex justify-between items-center">
             <ul class="flex items-center font-medium lowercase">
                 <li class="mr-16">
                     <nuxt-link to="/">
@@ -53,36 +63,36 @@
                 </li>
                 <li>
                     <nuxt-link
-                        to="/"
-                        class="border-b-2 border-transparent hover:border-blue-600 transition-colors duration-300 px-2.5 py-1.5"
-                        :class="{'text-blue-600 !border-blue-600': $route.path === '/'}"
+                            to="/"
+                            class="border-b-2 border-transparent hover:border-blue-600 transition-colors duration-300 px-2.5 py-1.5"
+                            :class="{'text-blue-600 !border-blue-600': $route.path === '/'}"
                     >
                         {{ $t('navigation.header.home') }}
                     </nuxt-link>
                 </li>
                 <li class="px-2.5">
                     <nuxt-link
-                        to="/shippers"
-                        class="border-b-2 border-transparent hover:border-blue-600 transition-colors duration-300 px-2.5 py-1.5"
-                        :class="{'text-blue-600 !border-blue-600': $route.path === '/shippers'}"
+                            to="/shippers"
+                            class="border-b-2 border-transparent hover:border-blue-600 transition-colors duration-300 px-2.5 py-1.5"
+                            :class="{'text-blue-600 !border-blue-600': $route.path === '/shippers'}"
                     >
                         {{ $t('navigation.header.shippers') }}
                     </nuxt-link>
                 </li>
                 <li class="px-2.5">
                     <nuxt-link
-                        to="/transporters"
-                        class="border-b-2 border-transparent hover:border-blue-600 transition-colors duration-300 px-2.5 py-1.5"
-                        :class="{'text-blue-600 !border-blue-600': $route.path === '/transporters'}"
+                            to="/transporters"
+                            class="border-b-2 border-transparent hover:border-blue-600 transition-colors duration-300 px-2.5 py-1.5"
+                            :class="{'text-blue-600 !border-blue-600': $route.path === '/transporters'}"
                     >
                         {{ $t('navigation.header.transporters') }}
                     </nuxt-link>
                 </li>
                 <li class="px-2.5">
                     <nuxt-link
-                        to="/about-us"
-                        class="border-b-2 border-transparent hover:border-blue-600 transition-colors duration-300 px-2.5 py-1.5"
-                        :class="{'text-blue-600 !border-blue-600': $route.path === '/about-us'}"
+                            to="/about-us"
+                            class="border-b-2 border-transparent hover:border-blue-600 transition-colors duration-300 px-2.5 py-1.5"
+                            :class="{'text-blue-600 !border-blue-600': $route.path === '/about-us'}"
                     >
                         {{ $t('navigation.header.about') }}
                     </nuxt-link>
@@ -104,97 +114,84 @@ import AuthDropdown from "~/components/layout/auth-dropdown.vue";
 const navOpen = ref(false)
 </script>
 
-<style scoped>
-#sidemenu nav {
-    width: 100vw;
-    background: grey;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9;
-}
+<style lang="scss" scoped>
+#sidemenu {
+    .sidemenu__wrapper {
+        //padding-top: 100px;
+    }
 
-#sidemenu .sidemenu__btn {
-    display: block;
-    width: 50px;
-    height: 0px;
-    /*background: grey;*/
-    border: none;
-    position: relative;
-    z-index: 10;
-    appearance: none;
-    cursor: pointer;
-    outline: none;
-}
+    .sidemenu__list {
+        @apply text-center text-xl p-0;
 
-#sidemenu .sidemenu__btn span {
-    display: block;
-    width: 20px;
-    height: 2px;
-    margin: auto;
-    background: rgb(37 99 235);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    transition: all 0.4s ease;
-}
+        .sidemenu__item {
+            @apply px-2.5 py-3.5;
 
-#sidemenu .sidemenu__btn span.top {
-    background: rgb(37 99 235);
-    transform: translateY(-8px);
-}
+            a {
+                text-decoration: none;
+                line-height: 1.6em;
+                display: block;
+                color: white;
+                transition: 0.4s ease;
+            }
+        }
+    }
 
-#sidemenu .sidemenu__btn span.bottom {
-    background: rgb(37 99 235);
-    transform: translateY(8px);
-}
+    nav {
+        @apply w-screen h-screen bg-slate-700/90 fixed inset-0 z-[100];
+    }
 
-.active {
-    position: fixed !important;
-    right: 0;
-}
+    .sidemenu__btn {
+        display: block;
+        width: 20px;
+        height: 20px;
+        z-index: 110;
+        @apply appearance-none relative;
 
-#sidemenu .sidemenu__btn.active .top {
-    background: white;
-    transform: rotate(-45deg);
-}
+        &.active {
+            position: fixed !important;
+            @apply right-5;
 
-#sidemenu .sidemenu__btn.active .mid {
-    background: white;
-    transform: translateX(-20px) rotate(360deg);
-    opacity: 0;
-}
+            .top {
+                background: white;
+                transform: rotate(-45deg);
+            }
 
-#sidemenu .sidemenu__btn.active .bottom {
-    background: white;
-    transform: rotate(45deg);
-}
+            .mid {
+                background: white;
+                transform: translateX(-20px) rotate(360deg);
+                opacity: 0;
+            }
 
-#sidemenu .sidemenu__wrapper {
-    padding-top: 100px;
-}
+            .bottom {
+                background: white;
+                transform: rotate(45deg);
+            }
+        }
 
-#sidemenu .sidemenu__list {
-    padding-top: 50px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+        span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            margin: auto;
+            background: rgb(37 99 235);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transition: all 0.4s ease;
 
-#sidemenu .sidemenu__item a {
-    text-decoration: none;
-    line-height: 1.6em;
-    display: block;
-    color: white;
-    transition: 0.4s ease;
-}
+            &.top {
+                background: rgb(37 99 235);
+                transform: translateY(-8px);
+            }
 
-#sidemenu .sidemenu__item a:hover {
-    background: lightgrey;
-    color: dimgrey;
+            &.bottom {
+                background: rgb(37 99 235);
+                transform: translateY(8px);
+            }
+        }
+    }
 }
 
 .translateX-enter {
