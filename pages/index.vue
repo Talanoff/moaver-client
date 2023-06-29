@@ -56,6 +56,8 @@ useSeoMeta({
                         alt=""
                 />
             </template>
+
+          <categories/>
         </hero-banner>
     </section>
 
@@ -222,4 +224,6 @@ useSeoMeta({
             </div>
         </div>
     </section>
+
+    <booking/>
 </template>
