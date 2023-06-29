@@ -1,16 +1,9 @@
 <script setup>
 import {useBooking} from "~/store/booking";
 import {storeToRefs} from "pinia";
-import {useConfig} from "~/store/config";
 
 const bookingStore = useBooking();
 const {form, categories} = storeToRefs(bookingStore);
-const {$i18n} = useNuxtApp();
-
-const configStore = useConfig();
-configStore.getBookingItems();
-
-$i18n.onLanguageSwitched = () => configStore.getBookingItems();
 
 const setCategory = (name) => {
   bookingStore.toggleModal(true);
