@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import HeroBanner from "~/components/layout/hero-banner.vue";
 import ArrowLink from "~/components/ui/arrow-link.vue";
+import Categories from "~/components/forms/categories.vue";
+import Booking from "~/components/modals/booking/booking.vue";
 
 const {$i18n} = useNuxtApp();
 
