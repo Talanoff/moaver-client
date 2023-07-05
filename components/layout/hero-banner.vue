@@ -7,7 +7,7 @@ defineProps<{
 
 <template>
     <div class="relative">
-        <picture class="block sm:h-screen h-[120vw] max-h-[65vh] rounded-lg overflow-hidden relative z-10">
+        <picture class="block sm:h-screen h-[120vw] min-h-[20rem] max-h-[65vh] rounded-lg overflow-hidden relative z-10">
             <div class="absolute inset-0 bg-slate-900/20 z-10"/>
             <slot name="picture"/>
         </picture>
