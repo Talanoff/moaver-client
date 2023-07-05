@@ -314,7 +314,7 @@ const onSubmit = () => {
 }
 
 const onBack = () => {
-    const name = steps.value.find(({ id }) => id === currentStep.value)?.title ?? '';
+    const name = steps.value.find(({ id }) => id === currentStep.value - 1)?.title ?? '';
     transporterStore.setCurrentStep(name, 'decrement');
 }
 </script>
