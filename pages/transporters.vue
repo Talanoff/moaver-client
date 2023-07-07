@@ -129,14 +129,14 @@ useSeoMeta({
   <section class="py-10 lg:py-20 bg-slate-50/50">
     <div class="container">
       <h2 class="text-center text-blue-950 text-4xl lg:text-6xl font-bold mb-10">
-        {{ $t('shippers.blockE.title') }}
+        {{ $t('transporters.blockC.title') }}
       </h2>
 
       <div class="prose lg:prose-lg content max-w-5xl mx-auto">
         <ul>
           <li v-for="(_,index) in 9">
-            <h4 class="font-semibold !mb-1.5">{{ $t(`shippers.blockE.items.${index}.title`) }}</h4>
-            <div v-html="$t(`shippers.blockE.items.${index}.description`)"></div>
+            <h4 class="font-semibold !mb-1.5">{{ $t(`transporters.blockC.items.${index}.title`) }}</h4>
+            <div v-html="$t(`transporters.blockC.items.${index}.description`)"></div>
           </li>
         </ul>
       </div>
