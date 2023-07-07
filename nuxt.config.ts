@@ -28,6 +28,7 @@ export default defineNuxtConfig({
         'nuxt-icons', // https://nuxt.com/modules/icons+
         '@nuxtjs/google-fonts',
         '@nuxtjs/i18n',
+        '@nuxt/image',
     ],
 
     // @ts-ignore

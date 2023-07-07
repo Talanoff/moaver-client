@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "^0.6.4",
+    "@nuxt/image": "^1.0.0-rc.1",
     "@nuxtjs/google-fonts": "^3.0.0",
     "@nuxtjs/tailwindcss": "^6.4.1",
     "@tailwindcss/typography": "^0.5.9",

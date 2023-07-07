@@ -39,6 +39,6 @@ defineProps<{
                 </nuxt-link>
             </div>
         </div>
-        <img src="/images/footer-bg.png" class="block mx-auto max-h-[144px]" alt="">
+        <nuxt-img src="/images/footer-bg.png" class="block mx-auto max-h-[144px]" alt=""/>
     </footer>
 </template>

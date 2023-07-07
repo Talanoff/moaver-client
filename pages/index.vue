@@ -3,6 +3,7 @@ import HeroBanner from "~/components/layout/hero-banner.vue";
 import ArrowLink from "~/components/ui/arrow-link.vue";
 import Categories from "~/components/forms/categories.vue";
 import Booking from "~/components/modals/booking/booking.vue";
+import ResponsiveHeroImage from "~/components/ui/responsive-hero-image.vue";
 
 const {$i18n} = useNuxtApp();
 
@@ -49,13 +50,7 @@ useSeoMeta({
   <section class="container">
     <hero-banner :title="$i18n.t('home.title')">
       <template #picture>
-        <img
-            srcset="/images/hero/main-hero-400w.avif 400w, /images/hero/main-hero-600w.avif 600w, /images/hero/main-hero-800w.avif 800w, /images/hero/main-hero-1000w.avif 1000w, /images/hero/main-hero-1200w.avif 1200w, /images/hero/main-hero-1600w.avif 1600w, /images/hero/main-hero-2000w.avif 2000w"
-            sizes="(max-width: 400px) 400px, (max-width: 600px) 600px, (max-width: 800px) 800px, (max-width: 1000px) 1000px, (max-width: 1200px) 1200px, (max-width: 1600px) 1600px, (min-width: 1601px) 2000px"
-            src="/images/hero/main-hero.png"
-            class="relative z-0 min-h-full min-w-full"
-            alt=""
-        />
+        <responsive-hero-image name="main"/>
       </template>
 
       <categories/>

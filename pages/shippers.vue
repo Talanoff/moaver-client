@@ -2,6 +2,7 @@
 import Booking from "~/components/modals/booking/booking.vue";
 import Categories from "~/components/forms/categories.vue";
 import HeroBanner from "~/components/layout/hero-banner.vue";
+import ResponsiveHeroImage from "~/components/ui/responsive-hero-image.vue";
 
 const {$i18n} = useNuxtApp();
 
@@ -29,13 +30,7 @@ useSeoMeta({
         :description="$t('shippers.description')"
     >
       <template #picture>
-        <img
-            srcset="/images/hero/shippers-hero-400w.avif 400w, /images/hero/shippers-hero-600w.avif 600w, /images/hero/shippers-hero-800w.avif 800w, /images/hero/shippers-hero-1000w.avif 1000w, /images/hero/shippers-hero-1200w.avif 1200w, /images/hero/shippers-hero-1600w.avif 1600w, /images/hero/shippers-hero-2000w.avif 2000w"
-            sizes="(max-width: 400px) 400px, (max-width: 600px) 600px, (max-width: 800px) 800px, (max-width: 1000px) 1000px, (max-width: 1200px) 1200px, (max-width: 1600px) 1600px, (min-width: 1601px) 2000px"
-            src="/images/hero/shippers-hero.jpg"
-            class="relative z-0 object-cover min-h-full min-w-full"
-            alt=""
-        />
+        <responsive-hero-image name="shippers"/>
       </template>
 
       <categories/>
@@ -56,18 +51,7 @@ useSeoMeta({
       </div>
 
       <div class="my-10">
-        <svg viewBox="0 0 70 69" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-auto w-20 h-20">
-          <path
-              d="M63.8247 16.4597L60.3878 18.4815L38.3151 31.2859L17.9228 19.4549L38.3151 8.22294L43.0504 10.9186L39.3844 11.8921L41.1411 18.4066L55.958 14.6626L52.1392 0.0610352L45.4945 1.70839L46.411 5.07799L40.0718 1.40887H36.6349L9.36871 16.4597L9.29234 22.3004L34.8782 37.1266V53.9746V60.0398L14.4859 48.2088V42.8923L17.0827 45.3634L21.8943 40.5711L11.049 29.9381L0.203613 40.5711L5.09167 45.3634L7.61207 42.8923V50.1557L9.29234 53.0011L36.5585 68.8757L41.7521 65.9553V53.9746V37.1266L46.1055 34.5807L62.1444 25.2956V48.2088L57.4091 50.9794L58.2492 47.46L51.6045 45.8126L47.8621 60.4142L62.7554 64.0833L64.4357 57.4939L60.9988 56.6702L67.338 53.0011L69.0182 50.1557V19.38L63.8247 16.4597Z"
-              fill="url(#paint0_linear_5_2208)"/>
-          <defs>
-            <linearGradient id="paint0_linear_5_2208" x1="65.5054" y1="0.0610398" x2="15.5629" y2="70.0013"
-                            gradientUnits="userSpaceOnUse">
-              <stop stop-color="#32EE9E"/>
-              <stop offset="1" stop-color="#2266FB"/>
-            </linearGradient>
-          </defs>
-        </svg>
+        <svg viewBox="0 0 70 69" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-auto w-20 h-20"><path d="M63.8247 16.4597L60.3878 18.4815L38.3151 31.2859L17.9228 19.4549L38.3151 8.22294L43.0504 10.9186L39.3844 11.8921L41.1411 18.4066L55.958 14.6626L52.1392 0.0610352L45.4945 1.70839L46.411 5.07799L40.0718 1.40887H36.6349L9.36871 16.4597L9.29234 22.3004L34.8782 37.1266V53.9746V60.0398L14.4859 48.2088V42.8923L17.0827 45.3634L21.8943 40.5711L11.049 29.9381L0.203613 40.5711L5.09167 45.3634L7.61207 42.8923V50.1557L9.29234 53.0011L36.5585 68.8757L41.7521 65.9553V53.9746V37.1266L46.1055 34.5807L62.1444 25.2956V48.2088L57.4091 50.9794L58.2492 47.46L51.6045 45.8126L47.8621 60.4142L62.7554 64.0833L64.4357 57.4939L60.9988 56.6702L67.338 53.0011L69.0182 50.1557V19.38L63.8247 16.4597Z" fill="url(#paint0_linear_5_2208)"/><defs><linearGradient id="paint0_linear_5_2208" x1="65.5054" y1="0.0610398" x2="15.5629" y2="70.0013" gradientUnits="userSpaceOnUse"><stop stop-color="#32EE9E"/><stop offset="1" stop-color="#2266FB"/></linearGradient></defs></svg>
       </div>
 
       <div class="flex items-end space-x-5">

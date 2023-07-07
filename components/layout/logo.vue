@@ -1,3 +1,3 @@
 <template>
-    <img src="/images/logo.svg" alt="MOAVER">
+    <nuxt-img src="/images/logo.svg" alt="MOAVER"/>
 </template>
