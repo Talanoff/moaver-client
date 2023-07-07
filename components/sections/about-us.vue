@@ -2,7 +2,7 @@
   <section class="bg-[#F5F7FA] py-10 lg:py-20">
     <div class="container">
       <div class="flex justify-between sm:items-center md:flex-row flex-col-reverse">
-        <nuxt-img
+        <img
             src="https://blog.advesa.com/wp-content/uploads/2019/11/about-us-page.png"
             class="md:w-[45%] w-full"
             alt=""
