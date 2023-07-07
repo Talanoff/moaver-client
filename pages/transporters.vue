@@ -46,7 +46,6 @@ useSeoMeta({
                     sizes="(max-width: 400px) 400px, (max-width: 600px) 600px, (max-width: 800px) 800px, (max-width: 1000px) 1000px, (max-width: 1200px) 1200px, (max-width: 1600px) 1600px, (min-width: 1601px) 2000px"
                     src="/images/hero/transporters-hero.png"
                     class="relative z-0 object-cover min-h-full min-w-full"
-                    loading="lazy"
                     alt=""
                 />
             </template>
